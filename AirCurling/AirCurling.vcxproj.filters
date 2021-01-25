@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="System\Sound">
+      <UniqueIdentifier>{d77dca39-874d-47c9-ab66-e3caea4fcda2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{6e3fd998-12d6-4896-9e1d-d58d279d8b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{d47c468e-8f5a-46a1-813b-fb4f8f17e2ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Collision">
+      <UniqueIdentifier>{d217fd50-de53-4dbc-a0f0-5e48db77ab5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Block">
+      <UniqueIdentifier>{533a0061-2d4f-4714-af75-1e44b8c36fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Floor">
+      <UniqueIdentifier>{1bd44dd0-4a8b-4b50-8f63-02038c74f236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Score">
+      <UniqueIdentifier>{f28eafb5-1fdc-480a-8e5f-4550468037ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Floor\Debuf">
+      <UniqueIdentifier>{610d9cc6-2423-4816-991f-c3e06d9cd1fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\System\Effect.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\FBX.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Graphics.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\SystemController.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Window.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Main.cpp" />
+    <ClCompile Include="Sor\System\Sound\AudioPlayer.cpp">
+      <Filter>System\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Sound\DirectSound.cpp">
+      <Filter>System\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\GameUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\TitleUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\ResultUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\SceneBase.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\ResultScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\SceneController.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Utility\Collision\Collision.cpp">
+      <Filter>Utility\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Utility\Calculation.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Floor.cpp">
+      <Filter>Object\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\GoalFloor.cpp">
+      <Filter>Object\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Sky.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Score\CSV.cpp">
+      <Filter>Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Camera.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Sound\SoundController.cpp">
+      <Filter>System\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\System\FBXController.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\CircleBlock.cpp">
+      <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\RectBlock.cpp">
+      <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\BlockController.cpp">
+      <Filter>Object\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\LoadUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Score\GameScore.cpp">
+      <Filter>Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Debuf\StopFloor.cpp">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Debuf\ResetFloor.cpp">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Debuf\DebufController.cpp">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\PlayerDirection.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\PoseUI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\System\FBX.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Effect.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Graphics.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Inputter.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\SystemController.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Window.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\AudioPlayer.h">
+      <Filter>System\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\DirectSound.h">
+      <Filter>System\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\UIBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\GameUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\TitleUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\ResultUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\SceneBase.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\GameScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\ResultScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\SceneController.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Collision\Collision.h">
+      <Filter>Utility\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Collision\Shape.h">
+      <Filter>Utility\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Calculation.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Vec.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\ObjectBase.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Floor.h">
+      <Filter>Object\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\GoalFloor.h">
+      <Filter>Object\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Sky.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Score\CSV.h">
+      <Filter>Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Camera.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\SoundController.h">
+      <Filter>System\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\System\FBXController.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Block\CircleBlock.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Block\RectBlock.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Block\BlockController.h">
+      <Filter>Object\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\LoadUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Score\GameScore.h">
+      <Filter>Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Debuf\StopFloor.h">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Debuf\ResetFloor.h">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Debuf\DebufController.h">
+      <Filter>Object\Floor\Debuf</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\PlayerDirection.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\PoseUI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

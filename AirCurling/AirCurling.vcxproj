@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{bb6bb73f-0752-4af4-a349-7407f6985692}</ProjectGuid>
+    <RootNamespace>AirCurling</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(FBXSDK_DIR)2019.0\include;$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>K_PLUGIN;K_FBXSDK;K_NODLL;K_DLLINFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>$(FBXSDK_DIR)2019.0\include;C:\EffekseerRuntime152h\install_msvc2019\include\Effekseer;C:\EffekseerRuntime152h\install_msvc2019\include\EffekseerRendererDX9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(FBXSDK_DIR)2019.0\lib\vs2015\x64\debug;C:\Users\matuishiryuu\source\repos\AirCurling\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libfbxsdk-md.lib;d3d9.lib;d3dx9.lib;Effekseerd.lib;EffekseerRendererDX9d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Sor\Main.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\BlockController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\CircleBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Block\RectBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Camera.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Debuf\DebufController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\Debuf\ResetFloor.cpp" />
+    <ClCompile Include="Sor\Object\Floor\Debuf\StopFloor.cpp" />
+    <ClCompile Include="Sor\Object\Floor\Floor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Floor\GoalFloor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Player.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\PlayerDirection.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Object\Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\GameScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\ResultScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\SceneBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\SceneController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Scene\TitleScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Score\CSV.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Score\GameScore.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Effect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\FBX.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\FBXController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Graphics.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Inputter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Sound\AudioPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Sound\DirectSound.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Sound\SoundController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\SystemController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\System\Window.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\GameUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\PoseUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\LoadUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\ResultUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\UI\TitleUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Utility\Calculation.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sor\Utility\Collision\Collision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sor\Object\Block\BlockController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Block\CircleBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Block\RectBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Camera.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Debuf\DebufController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\Debuf\ResetFloor.h" />
+    <ClInclude Include="Sor\Object\Floor\Debuf\StopFloor.h" />
+    <ClInclude Include="Sor\Object\Floor\Floor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Floor\GoalFloor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\ObjectBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Player.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\PlayerDirection.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Object\Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\GameScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\ResultScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\SceneBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\SceneController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Scene\TitleScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Score\CSV.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Score\GameScore.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Effect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\FBX.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\FBXController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Graphics.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Inputter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\AudioPlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\DirectSound.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Sound\SoundController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\SystemController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\System\Window.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\GameUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\PoseUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\LoadUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\ResultUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\TitleUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\UI\UIBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Calculation.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Collision\Collision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Collision\Shape.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sor\Utility\Vec.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

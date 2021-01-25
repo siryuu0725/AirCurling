@@ -1,0 +1,167 @@
+﻿#include "SoundController.h"
+
+SoundManager* SoundManager::p_instance = 0;
+
+SoundManager* SoundManager::Instance()
+{
+	if (p_instance == 0)
+	{
+		p_instance = new SoundManager;
+	}
+
+	return p_instance;
+}
+
+void SoundManager::RegisterTitleSound()
+{
+	bgm_file = "Res/wav/BGM/Title.wav";
+	se1_file = "Res/wav/SE/選択音.wav";
+	click_se_file = "Res/wav/SE/決定音.wav";
+	cancel_file = "Res/wav/SE/リセット音.wav";
+	p_audio->LoadUI(bgm, bgm_file);
+	p_audio->LoadUI(select1_se, se1_file);
+	p_audio->LoadUI(click_se, click_se_file);
+	p_audio->LoadUI(cancel_se, cancel_file);
+}
+
+void SoundManager::RegisterGameSound()
+{
+	bgm_file = "Res/wav/BGM/Game.wav";
+	shot_file = "Res/wav/SE/ショット音1.wav";
+	reflect_file = "Res/wav/SE/反射音.wav";
+	goal_file = "Res/wav/SE/ゴール時.wav";
+	friction_file = "Res/wav/SE/摩擦音.wav";
+	//m_fall_file= "Res/wav/SE/落ちたとき.wav";
+
+	p_audio->LoadUI(bgm, bgm_file);
+	p_audio->LoadUI(shot_se, shot_file);
+	p_audio->LoadUI(reflect_se, reflect_file);
+	p_audio->LoadUI(goal_se, goal_file);
+	p_audio->LoadUI(friction_se, friction_file);
+	//m_pAudio->Load(m_fall_se, m_fall_file);
+
+
+}
+
+void SoundManager::RegisterHelpSound()
+{
+}
+
+void SoundManager::RegisterResultSound()
+{
+	bgm_file = "Res/wav/BGM/Result.wav";
+
+	p_audio->LoadUI(bgm, bgm_file);
+}
+
+
+void SoundManager::SoundBGM(int volume_)
+{
+	p_audio->Play(bgm, volume_, true);
+}
+
+void SoundManager::SoundSelectBGM()
+{
+	p_audio->Play(bgm, 0, true);
+}
+
+void SoundManager::SoundSelectSE()
+{
+	if (m_select1_flag == false)
+	{
+		p_audio->Play(select1_se, -1000, false);
+		m_select1_flag = true;
+		m_cancel_flag = false;
+	}
+}
+
+void SoundManager::SoundCancelSE()
+{
+	if (m_cancel_flag == false)
+	{
+		p_audio->Play(cancel_se, -1000, false);
+		m_select1_flag = false;
+		m_cancel_flag = true;
+	}
+}
+
+void SoundManager::SoundClickSE()
+{
+	p_audio->Play(click_se, 0, false);
+}
+
+void SoundManager::SoundShotSE()
+{
+	p_audio->Play(shot_se, 0, false);
+}
+
+void SoundManager::SoundReflectSE()
+{
+	p_audio->Play(reflect_se, 0, false);
+}
+
+void SoundManager::SoundGoalSE()
+{
+	p_audio->Play(goal_se, 0, false);
+}
+
+void SoundManager::SoundFrictionSE()
+{
+	p_audio->Play(friction_se, 0, false);
+}
+
+void SoundManager::SoundFallSE()
+{
+	p_audio->Play(fall_se, 0, false);
+}
+
+
+void SoundManager::ResetSelectFlag()
+{
+	m_select1_flag = false;
+	m_cancel_flag = false;
+}
+
+void SoundManager::ReleaseTitleSound()
+{
+	p_audio->Release(bgm);
+	p_audio->Release(select1_se);
+	p_audio->Release(click_se);
+	p_audio->Release(cancel_se);
+
+}
+
+void SoundManager::ReleaseSelectSound()
+{
+	p_audio->Release(bgm);
+
+}
+
+void SoundManager::ReleaseGameSound()
+{
+	p_audio->Release(bgm);
+}
+
+void SoundManager::ReleaseReselutSound()
+{
+	p_audio->Release(bgm);
+}
+
+SoundManager::SoundManager()
+{
+	m_select1_flag = false;
+	m_cancel_flag = false;
+
+	bgm = "BGM";
+	select1_se = "SelectSE";
+	click_se = "ClickSE";
+	cancel_se = "CancelSE";
+
+	shot_se = "ショット音";
+	reflect_se = "反射音";
+	goal_se = "ゴール音";
+	friction_se = "摩擦音";
+	fall_se = "落下音";
+}
+
+

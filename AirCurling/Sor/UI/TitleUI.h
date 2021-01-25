@@ -1,0 +1,117 @@
+﻿#ifndef TITLE_H_
+#define TITLE_H_
+
+#include "UIBase.h"
+#include "../System/Sound/SoundController.h"
+
+/**
+*@clss  タイトル用UIクラス
+*/
+
+class TitleUI
+{
+public:
+	//!UIの種類
+	enum class TitleUICategory :int
+	{
+		BG,            //!背景
+		Name,		   //!タイトル名
+		Start,		   //!文字「スタート」
+		End,		   //!文字「終わり」
+		Help,		   //!文字「ヘルプ」
+		NowSerect,	   //!現在選択枠
+		HelpBG,	       //!ヘルプ画面用BG
+		SerectStage1,  //!文字「1」
+		SerectStage2,  //!文字「2」
+		NowSerectStage,//!現在選択ステージ枠
+		SerectStageFont,//!文字「ステージを選択」
+		CategoryMax,   //!UI数
+	};
+
+private:
+	//!タイトル画面UI情報
+	struct TitleUIInfo
+	{
+		Graphics::TEXTURE_DATA ui_tex[(int)TitleUICategory::CategoryMax];  
+
+		D3DXVECTOR2  ui_pos[(int)TitleUICategory::CategoryMax];
+
+		/* 各Sceneへ飛ぶ判定 */
+		bool startui_flg;  //!「はじめる」を押した時
+		bool endui_flg;	   //!「おわる」を押した時
+		bool helpui_flg;   //!「ヘルプ」を押した時
+
+		bool m_stage_1;   //!ステージ1を選んだ場合
+		bool m_stage_2;   //!ステージ2を選んだ場合
+
+	}title_ui_info;
+
+
+public:
+	TitleUI() {}
+	~TitleUI() {}
+
+	/**
+	 * @brief  初期化関数
+	 * @detail オブジェクト情報初期化
+	 */
+	void Init();
+
+	/**
+	 * @brief  テクスチャ読み込み関数
+	 */
+	void LoadTex();
+
+	/**
+	 * @brief  描画情報送信関数
+	 */
+	void SetUpBuffer();
+
+	/**
+	 * @brief  更新関数
+	 * @detail 更新処理まとめ関数
+	 */
+	void Update();
+
+	/**
+	 * @brief  テクスチャ解放関数
+	 */
+	void ReleaseTex();
+
+	/**
+	 * @brief  UI当たり判定関数
+	 * @detail 次のシーンに移るための当たり判定を行う
+	 */
+	void Select();
+
+	/**
+	 * @brief  選択画面キャンセル関数
+	 * @detail ステージ選択、またはヘルプ画面時初期のタイトル画面に戻る用
+	 */
+	void ReturnSelect();
+
+	/**
+	 * @brief  ステージUI当たり判定関数
+	 * @detail ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
+	 */
+	void SelectStage();
+
+	/**
+ 　　* @brief  UI情報Getter
+ 　　*/
+	const TitleUIInfo* GetTitleUIInfo() { return &title_ui_info; }
+
+private:
+	SoundManager* sound_mgr = SoundManager::Instance();
+
+	int m_ui_num;
+
+	struct TitleUIInfoCopy
+	{
+		float pos_x;   //!座標
+		float pos_y;   //!座標
+	};
+
+	TitleUIInfoCopy titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
+};
+#endif
