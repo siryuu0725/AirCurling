@@ -31,55 +31,50 @@ private:
 	{
 		//!初期化
 		PlayerInfo() :
-			old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			speed(0.0f),
-			change_radian(0.0f),
-			m(0.0f), fa(0.0f), e(0.0f), timer(0),
-			reflectcounter(0),
-			turnend(false),
-			truncounter(0),
-			score_counter(0),
-			start(false), goal(false), end(false),
+			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_speed(0.0f),
+			m_change_radian(0.0f),
+			m_m(0.0f), m_fa(0.0f), m_timer(0),
+			m_reflectcounter(0),
+			m_turnend(false),
+			m_truncounter(0),
+			m_score_counter(0),
+			m_start(false), m_goal(false), m_end(false),
 			m_move(false),
-			efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			rote_efkpos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
+			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
 		{}
 
-		D3DXVECTOR3 old_pos;  //!移動前座標(回転用)
+		D3DXVECTOR3 m_old_pos;  //!移動前座標(回転用)
 
-		D3DXVECTOR3 nor_speed; //!方向ベクトル
+		D3DXVECTOR3 m_nor_speed; //!方向ベクトル
 
-		float speed;  //!移動スピード
-		float speed2;  //!移動スピード
+		float m_speed;  //!移動スピード
+		float m_setspeed;  //!移動スピード
 
 
-		float change_radian; //!回転角度
+		float m_change_radian; //!回転角度
 
 		/* 摩擦用 */
-		float m;   //!質量
-		float fa;  //!摩擦係数
-		float e;   //!自然対数(ネイピアの数)
-		float a;   //!加速度
+		float m_m;   //!質量
+		float m_fa;  //!摩擦係数
+		float m_a;   //!加速度
 
-		float timer;
+		float m_timer;  //!経過時間
 
-		int reflectcounter; //!反射回数
-		int truncounter;    //!進行ターン数
-		__int16 score_counter;  //!ゴール時減算スコア
+		int m_reflectcounter; //!反射回数
+		int m_truncounter;    //!進行ターン数
+		__int16 m_score_counter;  //!ゴール時減算スコア
 
 		/* 操作可能判定 */
-		bool start; //!ゲームスタート
-		bool goal;	//!ゴール時
-		bool end;	//!ゲームエンドフラグ
+		bool m_start; //!ゲームスタート
+		bool m_goal;	//!ゴール時
+		bool m_end;	//!ゲームエンドフラグ
 
 		bool m_move;
-		bool turnend;       //!1ターン終了フラグ
+		bool m_turnend;       //!1ターン終了フラグ
 
-
-		D3DXVECTOR3 efk_pos;      //!エフェクト表示座標保存用
-		D3DXVECTOR3 rote_efkpos;  //!エフェクト表示座標回転用
-
+		D3DXVECTOR3 m_efk_pos;      //!エフェクト表示座標保存用
 	}player_info;
 
 	struct ObjectInfoCopy
@@ -261,7 +256,7 @@ public:
  　　* @brief  プレイヤーのスピードSetter
  　　* @detail プレイヤーの移動スピードをUIの方でSetするよう
  　　*/
-	void SetAddSpeed(float speed_) { player_info.speed2 = speed_; }
+	void SetAddSpeed(float speed_) { player_info.m_setspeed = speed_; }
 
 	/**
  　　* @brief  オブジェクト情報Getter

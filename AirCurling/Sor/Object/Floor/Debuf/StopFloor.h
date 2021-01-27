@@ -30,28 +30,6 @@ public:
 	const ObjectInfo* GetObjInfo()const { return &m_stop_floor_info; }
 private:
 	ObjectInfo m_stop_floor_info;  //!スピード減衰床情報
-
-	struct HeadData
-	{
-		int DataNum;
-	}m_head_data;
-
-	struct ObjectInfoCopy
-	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
-
-		float scale_x; //!サイズ
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
-
-		float rote_x; //!サイズ
-		float rote_y; //!サイズ
-		float rote_z; //!サイズ
-
-	}stop_floor_info_copy;
-
 };
 
 #endif

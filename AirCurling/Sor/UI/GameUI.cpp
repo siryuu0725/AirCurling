@@ -51,7 +51,7 @@ void GameUI::Init()
 	game_ui_info.m_one_score = 0; //!スコア1の位保存用
 	game_ui_info.m_ten_score = 0; //!スコア10の位保存用
 
-	game_ui_info.shotmode = false; //!shot(打つ)モード切り替えフラグ
+	game_ui_info.m_shotmode = false; //!shot(打つ)モード切り替えフラグ
 
 	game_ui_info.stoptimer = 0; //!開始演出の文字が止まる演出時間
 
@@ -103,7 +103,7 @@ void GameUI::SetUpBuffer()
 	}
 
 	//!打つとき(shotモードの時)
-	if (game_ui_info.shotmode == true)
+	if (game_ui_info.m_shotmode == true)
 	{
 		Graphics::Instance()->DrawTexture(&game_ui_info.ui_tex[(int)GameUICategory::ShotGaugeFlame], game_ui_info.ui_pos[(int)GameUICategory::ShotGaugeFlame]);
 		Graphics::Instance()->DrawTexture(&game_ui_info.ui_tex[(int)GameUICategory::ShotGauge], game_ui_info.ui_pos[(int)GameUICategory::ShotGauge]);
@@ -147,7 +147,7 @@ void GameUI::Update(Player* player_, Camera* camera_)
 		Rset();
 
 		//!プレイヤーがゴールした場合
-		if (player_->GetObjInfo()->goal == true)
+		if (player_->GetObjInfo()->m_goal == true)
 		{
 			m_update_step = UpdateStep::EndProduction;
 			break;
@@ -198,7 +198,7 @@ void GameUI::GaugeStop(Player* player_)
 void GameUI::UpdateTurn(Player* player_)
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->turnend == true)
+	if (player_->GetObjInfo()->m_turnend == true)
 	{
 		//!ターン数加算
 		game_ui_info.ui_tu[(int)GameUICategory::TurnNumber] += 0.1f;
@@ -225,7 +225,7 @@ void GameUI::UpdateTurn(Player* player_)
 void GameUI::AddScore(Player* player_)
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->turnend == true)
+	if (player_->GetObjInfo()->m_turnend == true)
 	{
 		//!スコアの1の位を算出
 		game_ui_info.m_one_score = Score::Instance()->GetNowScore() % 10;
@@ -262,13 +262,13 @@ void GameUI::ModeChange()
 	//!モード切替キーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
 	{
-		if (game_ui_info.shotmode == false)
+		if (game_ui_info.m_shotmode == false)
 		{
-			game_ui_info.shotmode = true;
+			game_ui_info.m_shotmode = true;
 		}
 		else
 		{
-			game_ui_info.shotmode = false;
+			game_ui_info.m_shotmode = false;
 		}
 	}
 }

@@ -33,7 +33,7 @@ void DebufController::Init(std::string stage_id_)
 		fread(&m_resetfloor_num, sizeof(m_resetfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&resetfloor_info_copy, sizeof(ResetFloorInfoCopy), m_resetfloor_num, fp);
+		fread(&m_resetfloor_info_copy, sizeof(ResetFloorInfoCopy), m_resetfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -42,15 +42,15 @@ void DebufController::Init(std::string stage_id_)
 	for (int i = 0; i < m_resetfloor_num; i++)
 	{
 		//!読み込んだ数分追加
-		m_reset_floor.push_back(new ResetFloor(D3DXVECTOR3(resetfloor_info_copy[i].pos_x, resetfloor_info_copy[i].pos_y, resetfloor_info_copy[i].pos_z),
-			D3DXVECTOR3(resetfloor_info_copy[i].scale_x, resetfloor_info_copy[i].scale_y, resetfloor_info_copy[i].scale_z),
-			resetfloor_info_copy[i].radius, "reset"));
+		m_reset_floor.push_back(new ResetFloor(D3DXVECTOR3(m_resetfloor_info_copy[i].pos_x, m_resetfloor_info_copy[i].pos_y, m_resetfloor_info_copy[i].pos_z),
+			D3DXVECTOR3(m_resetfloor_info_copy[i].scale_x, m_resetfloor_info_copy[i].scale_y, m_resetfloor_info_copy[i].scale_z),
+			m_resetfloor_info_copy[i].radius, "reset"));
 	}
 
 	for (int i = 0; i < m_resetfloor_num; i++)
 	{
 		//あたり判定用に追加
-		m_reset_shape.push_back(new CircleShape(m_reset_floor[i]->GetObjInfo()->pos, m_reset_floor[i]->GetObjInfo()->radius));
+		m_reset_shape.push_back(new CircleShape(m_reset_floor[i]->GetObjInfo()->m_pos, m_reset_floor[i]->GetObjInfo()->m_radius));
 	}
 #pragma endregion
 
@@ -67,7 +67,7 @@ void DebufController::Init(std::string stage_id_)
 		fread(&m_stopfloor_num, sizeof(m_stopfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&stopfloor_info_copy, sizeof(StopFloorInfoCopy), m_stopfloor_num, fp);
+		fread(&m_stopfloor_info_copy, sizeof(StopFloorInfoCopy), m_stopfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -76,16 +76,16 @@ void DebufController::Init(std::string stage_id_)
 	for (int i = 0; i < m_stopfloor_num; i++)
 	{
 		//!読み込んだ数分追加
-		m_stop_floor.push_back(new StopFloor(D3DXVECTOR3(stopfloor_info_copy[i].pos_x, stopfloor_info_copy[i].pos_y, stopfloor_info_copy[i].pos_z),
-			D3DXVECTOR3(stopfloor_info_copy[i].scale_x, stopfloor_info_copy[i].scale_y, stopfloor_info_copy[i].scale_z),
-			D3DXVECTOR3(stopfloor_info_copy[i].rote_x, stopfloor_info_copy[i].rote_y, stopfloor_info_copy[i].rote_z),
-			stopfloor_info_copy[i].width, stopfloor_info_copy[i].height, "stop"));
+		m_stop_floor.push_back(new StopFloor(D3DXVECTOR3(m_stopfloor_info_copy[i].pos_x, m_stopfloor_info_copy[i].pos_y, m_stopfloor_info_copy[i].pos_z),
+			D3DXVECTOR3(m_stopfloor_info_copy[i].scale_x, m_stopfloor_info_copy[i].scale_y, m_stopfloor_info_copy[i].scale_z),
+			D3DXVECTOR3(m_stopfloor_info_copy[i].rote_x, m_stopfloor_info_copy[i].rote_y, m_stopfloor_info_copy[i].rote_z),
+			m_stopfloor_info_copy[i].width, m_stopfloor_info_copy[i].height, "stop"));
 	}
 
 	for (int i = 0; i < m_stopfloor_num; i++)
 	{
 		//あたり判定用に追加
-		m_stop_shape.push_back(new RectShape(m_stop_floor[i]->GetObjInfo()->pos, m_stop_floor[i]->GetObjInfo()->width, m_stop_floor[i]->GetObjInfo()->height, m_stop_floor[i]->GetObjInfo()->angle.y));
+		m_stop_shape.push_back(new RectShape(m_stop_floor[i]->GetObjInfo()->m_pos, m_stop_floor[i]->GetObjInfo()->m_width, m_stop_floor[i]->GetObjInfo()->m_height, m_stop_floor[i]->GetObjInfo()->m_angle.y));
 	}
 
 #pragma endregion

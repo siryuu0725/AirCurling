@@ -31,22 +31,26 @@ public:
 private:
 	ObjectInfo m_floor_info;  //!ステージ床情報
 
+	//!外部データ保存用構造体
 	struct ObjectInfoCopy
 	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
+		//!座標
+		float pos_x;   
+		float pos_y;  
+		float pos_z;  
 
-		float scale_x; //!サイズ
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
+		//!サイズ
+		float scale_x;
+		float scale_y;
+		float scale_z;
 
-		float rote_x; //!サイズ
-		float rote_y; //!サイズ
-		float rote_z; //!サイズ
+		//!回転角度
+		float rote_x; 
+		float rote_y; 
+		float rote_z; 
 
-		float width;
-		float height;
+		float width;  //!横幅
+		float height; //!縦幅
 
 
 	}floor_info_copy;

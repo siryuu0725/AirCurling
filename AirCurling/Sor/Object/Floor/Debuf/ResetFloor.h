@@ -32,23 +32,6 @@ public:
 	const ObjectInfo* GetObjInfo()const { return &m_reset_floor_info; }
 private:
 	ObjectInfo m_reset_floor_info; //!リセット床情報
-
-	struct HeadData
-	{
-		int DataNum;
-	}m_head_data;
-
-	struct ObjectInfoCopy
-	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
-
-		float scale_x; //!サイズ
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
-
-	}reset_floor_info_copy;
 };
 
 #endif

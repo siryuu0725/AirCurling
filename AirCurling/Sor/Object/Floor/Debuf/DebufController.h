@@ -4,9 +4,6 @@
 #include "StopFloor.h"
 #include <vector>
 
-#define RESET_FLOOR_NUM 2   //!リセット床数
-#define STOP_FLOOR_NUM 1    //!スピード減衰床数
-
 /**
 *@clss   デバフ床管理クラス
 *@brief  各デバフの床の処理を管理する
@@ -38,50 +35,56 @@ public:
 	const std::vector<Shape*>* GetStopShape()const { return &m_stop_shape; }
 
 private:
-	std::vector<ResetFloor*> m_reset_floor;    //!矩形型情報保存用
-	std::vector<StopFloor*> m_stop_floor;	 //!円形型情報保存用
+	std::vector<ResetFloor*> m_reset_floor;  //!リセット床情報保存用
+	std::vector<StopFloor*> m_stop_floor;	 //!スピード減衰床情報保存用
 
-	std::vector<Shape*> m_reset_shape;    //!矩形型情報保存用
-	std::vector<Shape*> m_stop_shape;	 //!円形型情報保存用
+	std::vector<Shape*> m_reset_shape;  //!リセット床情報保存用
+	std::vector<Shape*> m_stop_shape;   //!スピード減衰床情報保存用
 
 	int m_resetfloor_num;
 	int m_stopfloor_num;
 
-
+	//!外部データ保存用構造体(リセット床)
 	struct ResetFloorInfoCopy
 	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
+		//!座標
+		float pos_x;   
+		float pos_y;   
+		float pos_z;   
 
-		float scale_x; //!サイズ
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
+		//!サイズ
+		float scale_x; 
+		float scale_y; 
+		float scale_z; 
 
-		float radius;
+		float radius; //!半径
 	};
 
+	//!外部データ保存用構造体(スピード減衰床)
 	struct StopFloorInfoCopy
 	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
+		//!座標
+		float pos_x; 
+		float pos_y; 
+		float pos_z; 
 
-		float scale_x; //!サイズ
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
+		//!サイズ
+		float scale_x; 
+		float scale_y; 
+		float scale_z; 
 
-		float rote_x; //!サイズ
-		float rote_y; //!サイズ
-		float rote_z; //!サイズ
+		//!回転角度
+		float rote_x; 
+		float rote_y;
+		float rote_z; 
 
-		float width;
-		float height;
+		float width;  //!横幅 
+		float height; //!縦幅
 	};
 
-
-	ResetFloorInfoCopy resetfloor_info_copy[5];
-	StopFloorInfoCopy stopfloor_info_copy[5];
+	//!外部データ保存用
+	ResetFloorInfoCopy m_resetfloor_info_copy[5];  //!リセット床
+	StopFloorInfoCopy m_stopfloor_info_copy[5];    //!スピード減衰床
 
 };
 

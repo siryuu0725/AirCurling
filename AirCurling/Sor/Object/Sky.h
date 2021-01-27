@@ -28,9 +28,9 @@ public:
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &skydome_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_skydome_info; }
 private:
-	ObjectInfo skydome_info;
+	ObjectInfo m_skydome_info;
 
 	struct ObjectInfoCopy
 	{
@@ -71,10 +71,10 @@ public:
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &skyfloor_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_skyfloor_info; }
 
 private:
-	ObjectInfo skyfloor_info;
+	ObjectInfo m_skyfloor_info;
 
 	struct ObjectInfoCopy
 	{

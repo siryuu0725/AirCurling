@@ -21,35 +21,36 @@ private:
 
 		D3DXMATRIX mat_view;   //!カメラのビュー情報を保存する変数
 
-		float packup;          //!パックの上にカメラを配置するよう
+		float m_packup;          //!パックの上にカメラを配置するよう
 
-		float yaw;     //!X軸回転
+		float m_yaw;     //!X軸回転
 
-		float pitch;   //!Y軸回転
+		float m_pitch;   //!Y軸回転
 
-		float roll;    //!Z軸回転
+		float m_roll;    //!Z軸回転
 
-		float m_Speed; //!スピード
+		bool m_shotmode; //!打つモードかどうか
 
-		bool shotmode; //!打つモードかどうか
-
-		bool m_operation;
+		bool m_operation; //!操作可能フラグ
 
 	}m_camerainfo;
 
+	//!外部データ保存用構造体
 	struct ObjectInfoCopy
 	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-		float pos_z;   //!座標
+		//!座標
+		float pos_x;  
+		float pos_y;   
+		float pos_z;   
 
-		float eye_pos_x; //!サイズ
-		float eye_pos_y; //!サイズ
-		float eye_pos_z; //!サイズ
+		//!サイズ
+		float eye_pos_x; 
+		float eye_pos_y; 
+		float eye_pos_z; 
 
 		float packup;          //!パックの上にカメラを配置するよう
 
-	}camera_info_copy;
+	}m_camera_info_copy;
 
 public:
 	Camera() {}

@@ -69,7 +69,7 @@ private:
 
 		float old_one;
 
-		bool shotmode; //!shot(打つ)モード切り替えフラグ
+		bool m_shotmode; //!shot(打つ)モード切り替えフラグ
 
 		__int16 stoptimer; //!開始演出の文字が止まる演出時間
 

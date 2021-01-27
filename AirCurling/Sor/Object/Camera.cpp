@@ -17,25 +17,25 @@ void Camera::Init(std::string stage_id_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&camera_info_copy, sizeof(ObjectInfoCopy), 1, fp);
+		fread(&m_camera_info_copy, sizeof(ObjectInfoCopy), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
 	}
 
-	m_camerainfo.pos = D3DXVECTOR3(camera_info_copy.pos_x, camera_info_copy.pos_y, camera_info_copy.pos_z);   //!座標
+	m_camerainfo.m_pos = D3DXVECTOR3(m_camera_info_copy.pos_x, m_camera_info_copy.pos_y, m_camera_info_copy.pos_z);   //!座標
 
-	m_camerainfo.m_eye_pos = D3DXVECTOR3(camera_info_copy.eye_pos_x, camera_info_copy.eye_pos_y, camera_info_copy.eye_pos_z); //!注視点
+	m_camerainfo.m_eye_pos = D3DXVECTOR3(m_camera_info_copy.eye_pos_x, m_camera_info_copy.eye_pos_y, m_camera_info_copy.eye_pos_z); //!注視点
 
 	m_camerainfo.m_camera_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f); //!上向きベクトル
 
-	m_camerainfo.yaw = 0.0f;    //!X軸回転用
-	m_camerainfo.pitch = 0.0f;	//!Y軸回転用
-	m_camerainfo.roll = 0.0f;	//!Z軸回転用
+	m_camerainfo.m_yaw = 0.0f;    //!X軸回転用
+	m_camerainfo.m_pitch = 0.0f;	//!Y軸回転用
+	m_camerainfo.m_roll = 0.0f;	//!Z軸回転用
 
-	m_camerainfo.packup = camera_info_copy.packup; //!パックの位置からどれだけ離れているか
+	m_camerainfo.m_packup = m_camera_info_copy.packup; //!パックの位置からどれだけ離れているか
 
-	m_camerainfo.shotmode = false;  //!打つモードかどうか
+	m_camerainfo.m_shotmode = false;  //!打つモードかどうか
 
 	D3DXMatrixIdentity(&m_camerainfo.mat_view);
 }
@@ -43,7 +43,7 @@ void Camera::Init(std::string stage_id_)
 void Camera::Update(D3DXVECTOR3 player_pos_)
 {
 	//!ビュー座標変換用の行列算出 start
-	D3DXVECTOR3 camera_pos(m_camerainfo.pos.x, m_camerainfo.pos.y, m_camerainfo.pos.z);	                  //!カメラ位置
+	D3DXVECTOR3 camera_pos(m_camerainfo.m_pos.x, m_camerainfo.m_pos.y, m_camerainfo.m_pos.z);	                  //!カメラ位置
 	D3DXVECTOR3 eye_pos(m_camerainfo.m_eye_pos.x, m_camerainfo.m_eye_pos.y, m_camerainfo.m_eye_pos.z);		  //!注視点
 	D3DXVECTOR3 up_vector(m_camerainfo.m_camera_up.x, m_camerainfo.m_camera_up.y, m_camerainfo.m_camera_up.z);  //!カメラの向き;
 	D3DXMatrixLookAtLH(&m_camerainfo.mat_view,
@@ -84,7 +84,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 {
 	//!カメラの前向きベクトルを出す
 	D3DXVECTOR3 forward;
-	m_camerainfo.m_forward = m_camerainfo.m_eye_pos - m_camerainfo.pos;
+	m_camerainfo.m_forward = m_camerainfo.m_eye_pos - m_camerainfo.m_pos;
 
 	//!ベクトルの正規化
 	D3DXVec3Normalize(&m_camerainfo.m_forward, &m_camerainfo.m_forward);
@@ -98,12 +98,12 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 	ModeChange(player_pos_);
 
 	//!shotモード(打つ)時
-	if (m_camerainfo.shotmode == true)
+	if (m_camerainfo.m_shotmode == true)
 	{
 		//!座標更新(プレイヤーの上についてくる形)
-		m_camerainfo.pos.x = player_pos_.x;
-		m_camerainfo.pos.y = player_pos_.y + m_camerainfo.packup; //!プレイヤーの上にくるようにずらす
-		m_camerainfo.pos.z = player_pos_.z;
+		m_camerainfo.m_pos.x = player_pos_.x;
+		m_camerainfo.m_pos.y = player_pos_.y + m_camerainfo.m_packup; //!プレイヤーの上にくるようにずらす
+		m_camerainfo.m_pos.z = player_pos_.z;
 
 		//!注視点更新
 		m_camerainfo.m_eye_pos.y = -28.0f;
@@ -118,25 +118,25 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		//!左移動
 		if (Inputter::Instance()->GetKey(Inputter::A_KEY))
 		{
-			m_camerainfo.pos.x -= 1.0f;
+			m_camerainfo.m_pos.x -= 1.0f;
 			m_camerainfo.m_eye_pos.x -= 1.0f;
 		}
 		//!右移動
 		else if (Inputter::Instance()->GetKey(Inputter::D_KEY))
 		{
-			m_camerainfo.pos.x += 1.0f;
+			m_camerainfo.m_pos.x += 1.0f;
 			m_camerainfo.m_eye_pos.x += 1.0f;
 		}
 		//!上移動
 		else if (Inputter::Instance()->GetKey(Inputter::W_KEY))
 		{
-			m_camerainfo.pos.z += 1.0f;
+			m_camerainfo.m_pos.z += 1.0f;
 			m_camerainfo.m_eye_pos.z += 1.0f;
 		}
 		//!下移動
 		else if (Inputter::Instance()->GetKey(Inputter::S_KEY))
 		{
-			m_camerainfo.pos.z -= 1.0f;
+			m_camerainfo.m_pos.z -= 1.0f;
 			m_camerainfo.m_eye_pos.z -= 1.0f;
 		}
 	}
@@ -150,15 +150,15 @@ void Camera::EyePosRotate()
 	SetCursorPos(GetSystemMetrics(SM_CXSCREEN) / 2, GetSystemMetrics(SM_CYSCREEN) / 2);
 
 	//!ここでカメラ感度変更可能
-	m_camerainfo.yaw += (Inputter::Instance()->GetMousePos().X - (GetWindowSize().x / 2)) / GetWindowSize().x * 50;
-	m_camerainfo.pitch -= (Inputter::Instance()->GetMousePos().Y - (GetWindowSize().y / 2)) / GetWindowSize().y * 20;
-	if (m_camerainfo.pitch > 88.0f) { m_camerainfo.pitch = 178.0f - m_camerainfo.pitch; }
-	if (m_camerainfo.pitch < -88.0f) { m_camerainfo.pitch = -178.0f - m_camerainfo.pitch; }
+	m_camerainfo.m_yaw += (Inputter::Instance()->GetMousePos().X - (GetWindowSize().x / 2)) / GetWindowSize().x * 50;
+	m_camerainfo.m_pitch -= (Inputter::Instance()->GetMousePos().Y - (GetWindowSize().y / 2)) / GetWindowSize().y * 20;
+	if (m_camerainfo.m_pitch > 88.0f) { m_camerainfo.m_pitch = 178.0f - m_camerainfo.m_pitch; }
+	if (m_camerainfo.m_pitch < -88.0f) { m_camerainfo.m_pitch = -178.0f - m_camerainfo.m_pitch; }
 
 
-	m_camerainfo.m_eye_pos.x = m_camerainfo.pos.x + sinf(D3DXToRadian(m_camerainfo.yaw));
-	//m_camerainfo.m_eye_pos.y = m_camerainfo.m_eye_pos.y + sinf(D3DXToRadian(m_camerainfo.pitch));
-	m_camerainfo.m_eye_pos.z = m_camerainfo.pos.z + cosf(D3DXToRadian(m_camerainfo.yaw));
+	m_camerainfo.m_eye_pos.x = m_camerainfo.m_pos.x + sinf(D3DXToRadian(m_camerainfo.m_yaw));
+	//m_camerainfo.m_eye_pos.y = m_camerainfo.m_eye_pos.y + sinf(D3DXToRadian(m_camerainfo.m_pitch));
+	m_camerainfo.m_eye_pos.z = m_camerainfo.m_pos.z + cosf(D3DXToRadian(m_camerainfo.m_yaw));
 
 }
 
@@ -168,16 +168,16 @@ void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 	//!切り替えキーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
 	{
-		if (m_camerainfo.shotmode == false)
+		if (m_camerainfo.m_shotmode == false)
 		{
-			m_camerainfo.shotmode = true;
+			m_camerainfo.m_shotmode = true;
 		}
 		else
 		{
-			m_camerainfo.shotmode = false;
+			m_camerainfo.m_shotmode = false;
 
-			m_camerainfo.pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
-			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, camera_info_copy.eye_pos_y, player_pos_.z + 1.0f); //!注視点
+			m_camerainfo.m_pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
+			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_info_copy.eye_pos_y, player_pos_.z + 1.0f); //!注視点
 			m_camerainfo.m_eye_pos.y = -50.0f; //!真下を向くように設定
 
 		}

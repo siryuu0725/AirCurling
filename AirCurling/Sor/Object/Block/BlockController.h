@@ -35,15 +35,16 @@ public:
 	const std::vector<Shape*>* GetCircleShape()const { return &m_circleshape; }
 
 private:
-	std::vector<CircleBlock*> m_circle_block;  //!円型ブロック
+	std::vector<CircleBlock*> m_circle_block;  //!円形ブロック
 	std::vector<RectBlock*> m_rect_block;	   //!矩形ブロック
 
 	std::vector<Shape*> m_rect_shape;    //!矩形情報保存用
 	std::vector<Shape*> m_circleshape;	 //!円形型情報保存用
 
 	int m_rectblock_num;    //!矩形ブロックデータ数
-	int m_circleblock_num;  //!円型ブロック
+	int m_circleblock_num;  //!円形ブロック
 
+	//!外部データ保存用構造体(矩形ブロック)
 	struct RectBlockInfoCopy
 	{
 		//!座標
@@ -65,6 +66,7 @@ private:
 		float height; //!縦幅
 	};
 
+	//!外部データ保存用構造体(円形ブロック)
 	struct CircleBlockInfoCopy
 	{
 		//!座標
@@ -82,8 +84,9 @@ private:
 
 	};
 
-	CircleBlockInfoCopy circleblock_info_copy[20];
-	RectBlockInfoCopy rectblock_info_copy[20];
+	//!外部データ保存用
+	CircleBlockInfoCopy m_circleblock_info_copy[20]; //!円形ブロック
+	RectBlockInfoCopy m_rectblock_info_copy[20];	 //!矩形ブロック
 };
 
 

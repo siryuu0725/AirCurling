@@ -111,11 +111,11 @@ void Effect::EndEffect()
 void Effect::UpdateEffect(Camera* camera_)
 {
 	//!Shotモード時
-	if (camera_->GetObjInfo()->shotmode == true)
+	if (camera_->GetObjInfo()->m_shotmode == true)
 	{
-		e_camera_pos.X = camera_->GetObjInfo()->pos.x;
-		e_camera_pos.Y = camera_->GetObjInfo()->pos.y;
-		e_camera_pos.Z = camera_->GetObjInfo()->pos.z;
+		e_camera_pos.X = camera_->GetObjInfo()->m_pos.x;
+		e_camera_pos.Y = camera_->GetObjInfo()->m_pos.y;
+		e_camera_pos.Z = camera_->GetObjInfo()->m_pos.z;
 
 		e_eye_pos.X = camera_->GetObjInfo()->m_eye_pos.x;
 		e_eye_pos.Y = camera_->GetObjInfo()->m_eye_pos.y;
@@ -124,9 +124,9 @@ void Effect::UpdateEffect(Camera* camera_)
 	//!Viewモード時
 	else
 	{
-		e_camera_pos.X = camera_->GetObjInfo()->pos.x;
-		e_camera_pos.Y = camera_->GetObjInfo()->pos.y;
-		e_camera_pos.Z = camera_->GetObjInfo()->pos.z;
+		e_camera_pos.X = camera_->GetObjInfo()->m_pos.x;
+		e_camera_pos.Y = camera_->GetObjInfo()->m_pos.y;
+		e_camera_pos.Z = camera_->GetObjInfo()->m_pos.z;
 
 		e_eye_pos.X = camera_->GetObjInfo()->m_eye_pos.x;
 		e_eye_pos.Y = camera_->GetObjInfo()->m_eye_pos.y;

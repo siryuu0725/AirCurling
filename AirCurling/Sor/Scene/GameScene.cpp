@@ -192,7 +192,7 @@ void GameScene::ObjectInit()
 void GameScene::ObjectUpdate()
 {
 	m_player->Update();
-	m_camera->Update(m_player->GetObjInfo()->pos);
+	m_camera->Update(m_player->GetObjInfo()->m_pos);
 	m_player_direction->Update();
 }
 
