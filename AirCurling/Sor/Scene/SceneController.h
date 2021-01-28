@@ -79,13 +79,11 @@ public:
 
 private:
 	static SceneController* p_instance;
-	std::vector<SceneBase*> scene;
 	SceneBase* m_scene;
 
-	SceneId cur_scene_id;
+	SceneId m_cur_scene_id;
 
 	std::string m_stage;
 };
-
 
 #endif // !SCENEMANAGER_H_

@@ -22,6 +22,12 @@ SceneController* SceneController::Instance()
 void SceneController::Init()
 {
 	m_scene = nullptr;
+
+	Graphics::Instance()->SetRenderMode(true);
+
+	Graphics::Instance()->GetD3DDevice()->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+
+	Graphics::Instance()->SetLight();
 }
 
 //!更新関数
@@ -44,13 +50,8 @@ void SceneController::SceneDraw()
 	if (m_scene->NowStep() == SceneStep::ThreadStep ||
 		m_scene->NowStep() == SceneStep::MainStep)
 	{
+		//!描画開始
 		Graphics::Instance()->DrawStart();
-
-		Graphics::Instance()->SetRenderMode(true);
-
-		Graphics::Instance()->GetD3DDevice()->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-
-		Graphics::Instance()->SetLight();
 
 		//!描画情報送信関数
 		SetUpBuffer();
@@ -68,7 +69,7 @@ void SceneController::SetUpBuffer()
 //!現在シーンSetter
 void SceneController::SetSceneId(SceneId sceneid_)
 {
-	cur_scene_id = sceneid_;
+	m_cur_scene_id = sceneid_;
 }
 
 //!シーン切り替え判定関数
@@ -82,7 +83,7 @@ void SceneController::ChangeScene()
 		m_scene = nullptr;
 
 		//!指定のゲームの管理クラスに切り替える
-		m_scene = s_controller_array[static_cast<int>(cur_scene_id)]();
+		m_scene = s_controller_array[static_cast<int>(m_cur_scene_id)]();
 	}
 }
 

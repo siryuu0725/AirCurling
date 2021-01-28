@@ -24,6 +24,10 @@ public:
 　　*/
 	void AddGameScore(__int16 score_);
 
+	/**
+　　* @brief  スコア初期化関数
+　　* @detail ResultScene終了時にスコアが残らないようにするため
+　　*/
 	void Reset();
 
 	/**

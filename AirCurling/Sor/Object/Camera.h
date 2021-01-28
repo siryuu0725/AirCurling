@@ -29,6 +29,8 @@ private:
 
 		float m_roll;    //!Z軸回転
 
+		float m_speed;   //!移動スピード
+
 		bool m_shotmode; //!打つモードかどうか
 
 		bool m_operation; //!操作可能フラグ

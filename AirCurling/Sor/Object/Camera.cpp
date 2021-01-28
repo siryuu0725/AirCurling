@@ -33,6 +33,8 @@ void Camera::Init(std::string stage_id_)
 	m_camerainfo.m_pitch = 0.0f;	//!Y軸回転用
 	m_camerainfo.m_roll = 0.0f;	//!Z軸回転用
 
+	m_camerainfo.m_speed = 1.0f;
+
 	m_camerainfo.m_packup = m_camera_info_copy.packup; //!パックの位置からどれだけ離れているか
 
 	m_camerainfo.m_shotmode = false;  //!打つモードかどうか
@@ -106,7 +108,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		m_camerainfo.m_pos.z = player_pos_.z;
 
 		//!注視点更新
-		m_camerainfo.m_eye_pos.y = -28.0f;
+		m_camerainfo.m_eye_pos.y = -27.8f;
 
 		//!注視点移動
 		EyePosRotate();
@@ -118,26 +120,26 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		//!左移動
 		if (Inputter::Instance()->GetKey(Inputter::A_KEY))
 		{
-			m_camerainfo.m_pos.x -= 1.0f;
-			m_camerainfo.m_eye_pos.x -= 1.0f;
+			m_camerainfo.m_pos.x -= m_camerainfo.m_speed;
+			m_camerainfo.m_eye_pos.x -= m_camerainfo.m_speed;
 		}
 		//!右移動
 		else if (Inputter::Instance()->GetKey(Inputter::D_KEY))
 		{
-			m_camerainfo.m_pos.x += 1.0f;
-			m_camerainfo.m_eye_pos.x += 1.0f;
+			m_camerainfo.m_pos.x += m_camerainfo.m_speed;
+			m_camerainfo.m_eye_pos.x += m_camerainfo.m_speed;
 		}
 		//!上移動
 		else if (Inputter::Instance()->GetKey(Inputter::W_KEY))
 		{
-			m_camerainfo.m_pos.z += 1.0f;
-			m_camerainfo.m_eye_pos.z += 1.0f;
+			m_camerainfo.m_pos.z += m_camerainfo.m_speed;
+			m_camerainfo.m_eye_pos.z += m_camerainfo.m_speed;
 		}
 		//!下移動
 		else if (Inputter::Instance()->GetKey(Inputter::S_KEY))
 		{
-			m_camerainfo.m_pos.z -= 1.0f;
-			m_camerainfo.m_eye_pos.z -= 1.0f;
+			m_camerainfo.m_pos.z -= m_camerainfo.m_speed;
+			m_camerainfo.m_eye_pos.z -= m_camerainfo.m_speed;
 		}
 	}
 
@@ -151,15 +153,9 @@ void Camera::EyePosRotate()
 
 	//!ここでカメラ感度変更可能
 	m_camerainfo.m_yaw += (Inputter::Instance()->GetMousePos().X - (GetWindowSize().x / 2)) / GetWindowSize().x * 50;
-	m_camerainfo.m_pitch -= (Inputter::Instance()->GetMousePos().Y - (GetWindowSize().y / 2)) / GetWindowSize().y * 20;
-	if (m_camerainfo.m_pitch > 88.0f) { m_camerainfo.m_pitch = 178.0f - m_camerainfo.m_pitch; }
-	if (m_camerainfo.m_pitch < -88.0f) { m_camerainfo.m_pitch = -178.0f - m_camerainfo.m_pitch; }
-
 
 	m_camerainfo.m_eye_pos.x = m_camerainfo.m_pos.x + sinf(D3DXToRadian(m_camerainfo.m_yaw));
-	//m_camerainfo.m_eye_pos.y = m_camerainfo.m_eye_pos.y + sinf(D3DXToRadian(m_camerainfo.m_pitch));
 	m_camerainfo.m_eye_pos.z = m_camerainfo.m_pos.z + cosf(D3DXToRadian(m_camerainfo.m_yaw));
-
 }
 
 //!モード切替関数

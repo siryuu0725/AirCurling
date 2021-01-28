@@ -51,15 +51,15 @@ void ResultScene::MainStep()
 //!終了ステップ関数
 void ResultScene::EndStep()
 {
+	//!UI解放
 	m_ui->ReleaseTex();
-
 	delete m_ui;
 	m_ui = nullptr;
 
+	//!スコア初期化
 	Score::Instance()->Reset();
 	
 	SoundManager::Instance()->ReleaseReselutSound();
-
 	SceneController::Instance()->SetSceneId(SceneId::Title);
 
 	//!シーン移行フラグtrue

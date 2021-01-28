@@ -124,7 +124,7 @@ private:
 
 	static DWORD WINAPI LoadResorse(LPVOID lpparm_);
 
-	bool m_option;
+	bool m_pose; //!ポーズ画面かどうか
 };
 
 #endif
