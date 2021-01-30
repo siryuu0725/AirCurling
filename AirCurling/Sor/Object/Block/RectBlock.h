@@ -7,7 +7,6 @@
 *@brief  矩形型ブロックの情報を持つ
 */
 
-//円ブロック
 class RectBlock :public ObjectBase
 {
 private:

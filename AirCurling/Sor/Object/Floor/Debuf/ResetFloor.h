@@ -28,6 +28,7 @@ public:
 
 	/**
  　　* @brief  オブジェクト情報Getter
+	 * @return ObjectInfoの指定した変数の情報を返す
  　　*/
 	const ObjectInfo* GetObjInfo()const { return &m_reset_floor_info; }
 private:

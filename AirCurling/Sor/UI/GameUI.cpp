@@ -59,7 +59,7 @@ void GameUI::Init()
 	game_ui_info.movestop = false;  //!開始演出の文字が止まるフラグ
 	game_ui_info.remove = false;    //!開始演出の文字が再び動くフラグ
 
-	game_ui_info.m_end_game = false;
+	game_ui_info.m_end_game = false; //!ゲームUIの終了演出が終わったかどうか
 
 	game_ui_info.t = 0.0f;
 	game_ui_info.flame = 0.01666667f;

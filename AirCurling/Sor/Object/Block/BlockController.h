@@ -17,6 +17,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail 各ブロックのメンバ変数初期化
 	 */
 	void Init(std::string stage_id_);
@@ -39,7 +40,7 @@ private:
 	std::vector<RectBlock*> m_rect_block;	   //!矩形ブロック
 
 	std::vector<Shape*> m_rect_shape;    //!矩形情報保存用
-	std::vector<Shape*> m_circleshape;	 //!円形型情報保存用
+	std::vector<Shape*> m_circleshape;	 //!円形情報保存用
 
 	int m_rectblock_num;    //!矩形ブロックデータ数
 	int m_circleblock_num;  //!円形ブロック

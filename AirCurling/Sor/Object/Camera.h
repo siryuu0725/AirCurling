@@ -25,10 +25,6 @@ private:
 
 		float m_yaw;     //!X軸回転
 
-		float m_pitch;   //!Y軸回転
-
-		float m_roll;    //!Z軸回転
-
 		float m_speed;   //!移動スピード
 
 		bool m_shotmode; //!打つモードかどうか
@@ -60,6 +56,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail オブジェクト情報初期化
 	 */
 	void Init(std::string stage_id_);

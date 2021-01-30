@@ -3,11 +3,10 @@
 #include "../ObjectBase.h"
 
 /**
-*@clss   円型ブロッククラス
-*@brief  円型ブロックの情報を持つ
+*@clss   円形ブロッククラス
+*@brief  円形ブロックの情報を持つ
 */
 
-//円ブロック
 class CircleBlock :public ObjectBase
 {
 public:

@@ -18,6 +18,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail オブジェクト情報初期化
 	 */
 	void Init(std::string stage_id_);
@@ -41,8 +42,8 @@ private:
 	std::vector<Shape*> m_reset_shape;  //!リセット床情報保存用
 	std::vector<Shape*> m_stop_shape;   //!スピード減衰床情報保存用
 
-	int m_resetfloor_num;
-	int m_stopfloor_num;
+	int m_resetfloor_num;  //!リセット床数
+	int m_stopfloor_num;   //!スピード減衰床数
 
 	//!外部データ保存用構造体(リセット床)
 	struct ResetFloorInfoCopy

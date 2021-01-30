@@ -20,7 +20,7 @@ BlockController::~BlockController()
 //!初期化関数
 void BlockController::Init(std::string stage_id_)
 {
-#pragma region 円型ブロック
+#pragma region 円形ブロック
 	FILE* fp = NULL;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "CircleBlockData.dat";

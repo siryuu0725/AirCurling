@@ -76,7 +76,7 @@ void Player::Update()
 	case PlayerUpdateStep::GameMain:  //!ゲーム本編
 		Move();  //!移動
 
-		Hit();   //!当たり判定
+		HitController();   //!当たり判定
 
 		ResetPos();
 		break;
@@ -143,7 +143,7 @@ void Player::Move()
 }
 
 //!当たり判定関数
-void Player::Hit()
+void Player::HitController()
 {
 	HitRectBlock(); //!矩形型ブロック当たり判定関数
 	
@@ -283,7 +283,7 @@ void Player::HitReset()
 			player_info.m_pos = D3DXVECTOR3(0.0f, -29.0f, -70.0f);
 
 			//!移動スピードを0に
-			player_info.m_speed = 0.0f;
+			player_info.m_setspeed = 0.0f;
 
 			//!サウンド再生
 			SoundManager::Instance()->SoundFallSE();
@@ -308,6 +308,8 @@ void Player::HitStop()
 			player_info.m_fa = 0.4f;
 		}
 	}
+
+	player_info.m_a = -player_info.m_fa * 9.8f; //!摩擦係数
 }
 
 //!ゴール当たり判定関数
@@ -361,7 +363,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
-		if (player_info.m_truncounter >= 9)
+		if (player_info.m_truncounter >= GAME_TRUN)
 		{
 			player_info.m_goal = true;
 			//!更新ステップを終了演出へ
@@ -384,11 +386,11 @@ D3DXVECTOR3 Player::RectReflection(std::string type_,float rad_)
 	*/
 	if (type_ == "Top")
 	{
-		old_direction.z *= -1.0f;
+		old_direction.z = -old_direction.z;
 	}
 	else if (type_ == "Left")
 	{
-		old_direction.x *= -1.0f;
+		old_direction.x = -old_direction.x;
 	}
 
 	//3Dと2Dで回転する方向が逆のため逆に回転させる
@@ -406,8 +408,8 @@ D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
 
 	//方向ベクトルを反転
-	old_direction.x *= -1.0f;
-	old_direction.z *= -1.0f;
+	old_direction.x = -old_direction.x;
+	old_direction.z = -old_direction.z;
 
 	//プエイヤーと円の接線に垂直なベクトル
 	D3DXVECTOR3 vec = player_info.m_pos - circle_pos_;
@@ -421,15 +423,16 @@ D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 	float degree2 = 0;
 	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
 
+	//!atan()が0～180、0～-180の範囲でしか値が出せないため、どちらかのベクトルが負の場合360度足して比較する値を直す
 	if (direction_rad > 0 && vec_rad < 0 &&
 		D3DXToDegree(direction_rad) > 90 && D3DXToDegree(vec_rad) < -90)
 	{
-		vec_rad = 6.28319f + vec_rad;
+		vec_rad = D3DXToRadian(360) + vec_rad;
 	}
 	else if (vec_rad > 0 && direction_rad < 0 &&
 		D3DXToDegree(vec_rad) > 90 && D3DXToDegree(direction_rad) < -90)
 	{
-		direction_rad = 6.28319f + direction_rad;
+		direction_rad = D3DXToRadian(360) + direction_rad;
 	}
 
 	if (direction_rad > vec_rad)
@@ -452,8 +455,8 @@ D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, floa
 	D3DXVECTOR3 ver_pos;
 
 	//方向ベクトルを反転
-	old_direction.x *= -1.0f;
-	old_direction.z *= -1.0f;
+	old_direction.x = -old_direction.x;
+	old_direction.z = -old_direction.z;
 
 	//!左上
 	if (type_ == "LeftTop")
@@ -492,17 +495,16 @@ D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, floa
 	float degree2 = 0;
 	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
 
-	//!
+	//!atan()が0～180、0～-180の範囲でしか値が出せないため、どちらかのベクトルが負の場合360度足して比較する値を直す
 	if (direction_rad > 0 && vec_rad < 0 &&
 		D3DXToDegree(direction_rad) > 90 && D3DXToDegree(vec_rad) < -90)
 	{
-		vec_rad = 6.28319f + vec_rad;
+		vec_rad = D3DXToRadian(360) + vec_rad;
 	}
-	//!
 	else if (vec_rad > 0 && direction_rad < 0 &&
 		D3DXToDegree(vec_rad) > 90 && D3DXToDegree(direction_rad) < -90)
 	{
-		direction_rad = 6.28319f + direction_rad;
+		direction_rad = D3DXToRadian(360) + direction_rad;
 	}
 
 	if (direction_rad > vec_rad)
@@ -522,7 +524,7 @@ void Player::ResetPos()
 		ResetEffectStart();
 		//player_info.pos = D3DXVECTOR3(-29.0f, -29.0f, -29.0f);
 		player_info.m_pos = D3DXVECTOR3(0.0f, -29.0f, -70.0f);
-		player_info.m_speed = 0.0f;
+		player_info.m_setspeed = 0.0f;
 	}
 	if (player_info.m_pos.x <= m_floor->GetObjInfo()->m_pos.x - m_floor->GetObjInfo()->m_width
 		|| player_info.m_pos.x >= m_floor->GetObjInfo()->m_pos.x + m_floor->GetObjInfo()->m_width
@@ -532,7 +534,7 @@ void Player::ResetPos()
 
 		ResetEffectStart();
 		player_info.m_pos = D3DXVECTOR3(player_info_copy.pos_x, -29.0f, player_info_copy.pos_z); //!座標
-		player_info.m_speed = 0.0f;
+		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();
 		SoundManager::Instance()->SoundFallSE();
@@ -547,14 +549,6 @@ void Player::StartMove()
 	if (player_info.m_pos.y > -29.0f
 		&& player_info.m_goal == false)
 	{
-		//!摩擦によるスピード減算を利用
-		player_info.m_timer++;
-
-		if (player_info.m_timer == 10)
-		{
-			player_info.m_speed *= exp((-player_info.m_fa) * player_info.m_timer / player_info.m_m);//時間tにおける速度
-			player_info.m_timer = 0;
-		}
 		player_info.m_pos.y -= player_info.m_speed;
 
 		player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);

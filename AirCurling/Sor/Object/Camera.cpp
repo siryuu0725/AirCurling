@@ -30,8 +30,6 @@ void Camera::Init(std::string stage_id_)
 	m_camerainfo.m_camera_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f); //!上向きベクトル
 
 	m_camerainfo.m_yaw = 0.0f;    //!X軸回転用
-	m_camerainfo.m_pitch = 0.0f;	//!Y軸回転用
-	m_camerainfo.m_roll = 0.0f;	//!Z軸回転用
 
 	m_camerainfo.m_speed = 1.0f;
 

@@ -12,6 +12,8 @@
 #include "Floor/Debuf/DebufController.h"
 #include "Floor/GoalFloor.h"
 
+#define GAME_TRUN 9 //!ゲームの制限ターン
+
 //!更新ステップ
 enum class PlayerUpdateStep
 {
@@ -113,6 +115,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail オブジェクト情報初期化
 	 */
 	void Init(std::string stage_id_);
@@ -153,7 +156,7 @@ public:
 　　* @detail 各オブジェクトとの当たり判定まとめ
 　　* @detail 衝突時にプレイヤーの反射も行っている
 　　*/
-	void Hit();
+	void HitController();
 
 	/**
  　　* @brief  矩形型ブロック当たり判定関数
@@ -270,7 +273,7 @@ private:
 	DebufController* m_debuf; //!デバフ床アドレス保存用
 	Goal* m_goal;			  //!ゴールアドレス保存用
 
-	PlayerUpdateStep m_update_step;
+	PlayerUpdateStep m_update_step; //!更新ステップ
 };
 
 

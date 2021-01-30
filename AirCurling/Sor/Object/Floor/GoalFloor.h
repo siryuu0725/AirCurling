@@ -16,6 +16,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail オブジェクト情報初期化
 	 */
 	void Init(std::string stage_id_);

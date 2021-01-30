@@ -67,8 +67,6 @@ private:
 
 		char score[20];//!スコア描画用
 
-		float old_one;
-
 		bool m_shotmode; //!shot(打つ)モード切り替えフラグ
 
 		__int16 stoptimer; //!開始演出の文字が止まる演出時間

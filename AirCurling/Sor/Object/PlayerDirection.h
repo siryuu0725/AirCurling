@@ -17,7 +17,7 @@ public:
 
 		D3DXVECTOR3 m_dir_vec; //!カメラの方向Vec保存用
 
-		float m_add_zpos; //!
+		float m_add_zpos; //!プレイヤーの前にくるように足す値
 
 		float m_rote;       //!モデル回転角度
 
