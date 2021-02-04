@@ -15,7 +15,7 @@ void Goal::Init(std::string stage_id_)
 	{
 
 		//!書き込む
-		fread(&goal_info_copy, sizeof(ObjectInfoCopy), 1, fp);
+		fread(&m_goal_info_copy, sizeof(ObjectInfoCopy), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -23,8 +23,8 @@ void Goal::Init(std::string stage_id_)
 
 	m_goal_info.m_key = "goal";  //!描画用キー
 
-	m_goal_info.m_pos = D3DXVECTOR3(goal_info_copy.pos_x, goal_info_copy.pos_y, goal_info_copy.pos_z);          //!座標
-	m_goal_info.m_scale = D3DXVECTOR3(goal_info_copy.scale_x, goal_info_copy.scale_y, goal_info_copy.scale_z);  //!描画サイズ
+	m_goal_info.m_pos = D3DXVECTOR3(m_goal_info_copy.pos_x, m_goal_info_copy.pos_y, m_goal_info_copy.pos_z);          //!座標
+	m_goal_info.m_scale = D3DXVECTOR3(m_goal_info_copy.scale_x, m_goal_info_copy.scale_y, m_goal_info_copy.scale_z);  //!描画サイズ
 	m_goal_info.m_angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f);   //!回転角度
 
 	m_goal_info.m_mat_world = Calculation::Matrix(m_goal_info.m_pos, m_goal_info.m_scale, m_goal_info.m_angle); //!ワールド座標

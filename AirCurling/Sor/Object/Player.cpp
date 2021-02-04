@@ -24,7 +24,7 @@ void Player::Init(std::string stage_id_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&player_info_copy, sizeof(ObjectInfoCopy), 1, fp);
+		fread(&m_player_info_copy, sizeof(ObjectInfoCopy), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -33,18 +33,18 @@ void Player::Init(std::string stage_id_)
 	player_info.m_key = "pac";  //!描画用キー
 	//player_info.pos = D3DXVECTOR3(-29.0f, 0.0f, -29.0f); //!座標
 
-	player_info.m_pos = D3DXVECTOR3(player_info_copy.pos_x, player_info_copy.pos_y, player_info_copy.pos_z); //!座標
-	player_info.m_scale = D3DXVECTOR3(player_info_copy.scale_x, player_info_copy.scale_y, player_info_copy.scale_z);	 //!描画サイズ
+	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos_x, m_player_info_copy.pos_y, m_player_info_copy.pos_z); //!座標
+	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.scale_x, m_player_info_copy.scale_y, m_player_info_copy.scale_z);	 //!描画サイズ
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //!ワールド座標
 
-	player_info.m_m = player_info_copy.m;     //!質量
-	player_info.m_fa = player_info_copy.fa;   //!摩擦係数
+	player_info.m_m = m_player_info_copy.m;     //!質量
+	player_info.m_fa = m_player_info_copy.fa;   //!摩擦係数
 	player_info.m_a = -player_info.m_fa * 9.8f; //!摩擦係数
 
 
-	player_info.m_radius = player_info_copy.radius;    //!半径
-	player_info.m_speed = player_info_copy.speed;  //!移動スピード
+	player_info.m_radius = m_player_info_copy.radius;    //!半径
+	player_info.m_speed = m_player_info_copy.speed;  //!移動スピード
 
 	player_info.m_timer = 0;  //!経過時間
 	player_info.m_truncounter = 0;    //!進行ターン数
@@ -52,7 +52,7 @@ void Player::Init(std::string stage_id_)
 	player_info.m_turnend = false;    //!1ターン終了フラグ
 	player_info.m_goal = false;       //!ゴールフラグ
 	player_info.m_end = false;        //!ゲームエンドフラグ
-	player_info.m_score_counter = player_info_copy.score_counter;
+	player_info.m_score_counter = m_player_info_copy.score_counter;
 
 	player_info.m_move = false;
 
@@ -533,7 +533,7 @@ void Player::ResetPos()
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = D3DXVECTOR3(player_info_copy.pos_x, -29.0f, player_info_copy.pos_z); //!座標
+		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos_x, -29.0f, m_player_info_copy.pos_z); //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();

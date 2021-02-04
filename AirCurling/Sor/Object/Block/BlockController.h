@@ -5,6 +5,10 @@
 #include "../../System/FBXController.h"
 #include <vector>
 
+//!ステージに置ける最大ブロック数 
+#define RECTBLOCK_MAX_NUM 20   
+#define CIRCLEBLOCK_MAX_NUM 20 
+
 /**
 *@clss   ブロック管理クラス
 *@brief  各ブロックの処理を管理する
@@ -39,11 +43,11 @@ private:
 	std::vector<CircleBlock*> m_circle_block;  //!円形ブロック
 	std::vector<RectBlock*> m_rect_block;	   //!矩形ブロック
 
-	std::vector<Shape*> m_rect_shape;    //!矩形情報保存用
-	std::vector<Shape*> m_circleshape;	 //!円形情報保存用
+	std::vector<Shape*> m_rect_shape;    //!矩形情報保存用(当たり判定用)
+	std::vector<Shape*> m_circleshape;	 //!円形情報保存用(当たり判定用)
 
 	int m_rectblock_num;    //!矩形ブロックデータ数
-	int m_circleblock_num;  //!円形ブロック
+	int m_circleblock_num;  //!円形ブロックデータ数
 
 	//!外部データ保存用構造体(矩形ブロック)
 	struct RectBlockInfoCopy
@@ -86,8 +90,8 @@ private:
 	};
 
 	//!外部データ保存用
-	CircleBlockInfoCopy m_circleblock_info_copy[20]; //!円形ブロック
-	RectBlockInfoCopy m_rectblock_info_copy[20];	 //!矩形ブロック
+	CircleBlockInfoCopy m_circleblock_info_copy[CIRCLEBLOCK_MAX_NUM]; //!円形ブロック
+	RectBlockInfoCopy m_rectblock_info_copy[RECTBLOCK_MAX_NUM];	 //!矩形ブロック
 };
 
 

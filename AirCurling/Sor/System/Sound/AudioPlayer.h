@@ -63,7 +63,6 @@ private:
 	AudioPlayer(HWND hwnd) {
 		//再生先のウィンドウハンドルを取得
 		m_Sound = new DirectSound(hwnd);
-		ZeroMemory(&m_SoundData, 0, sizeof(IDirectSoundBuffer8));
 	}
 
 	/*

@@ -25,7 +25,7 @@ public:
 
 		bool m_shotmode;  //!打つモードかどうか
 
-	}direction_info;
+	}m_direction_info;
 public:
 	/**
  　　* @brief  コンストラクタ

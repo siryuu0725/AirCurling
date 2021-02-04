@@ -58,7 +58,7 @@ private:
 	//!ロード画面UI情報
 	struct LoadInfo
 	{
-		Graphics::TEXTURE_DATA ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
+		Graphics::TEXTURE_DATA m_ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
 
 		/* 回転用に各頂点のposを用意 */
 		D3DXVECTOR2 left_top_pos;    //!左上
@@ -66,9 +66,9 @@ private:
 		D3DXVECTOR2 right_top_pos;	 //!右上
 		D3DXVECTOR2 right_down_pos;	 //!右下
 
-		D3DXVECTOR2 center_pos;   //!回転用軸pos
+		D3DXVECTOR2 m_center_pos;   //!回転用軸pos
 
-		D3DXVECTOR2 nowload_pos;  //!「NowLoading」文字座標
+		D3DXVECTOR2 m_nowload_pos;  //!「NowLoading」文字座標
 
 		float m_rote_angle; //!テクスチャ回転角度
 
@@ -76,7 +76,7 @@ private:
 
 	};
 
-	LoadInfo load_ui_info;
+	LoadInfo m_load_ui_info;
 };
 
 #endif

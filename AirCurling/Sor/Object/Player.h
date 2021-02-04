@@ -97,7 +97,7 @@ private:
 		float fa;     //!摩擦係数
 		int score_counter;
 
-	}player_info_copy;
+	}m_player_info_copy;
 
 public:
 	/**

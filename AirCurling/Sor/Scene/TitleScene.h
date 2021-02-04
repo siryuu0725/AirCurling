@@ -18,7 +18,7 @@ public:
 	 * @brief  描画情報送信まとめ関数
 	 * @detail UIの描画情報送信処理を行う
 	 */
-	void SetUpBuffer()override;
+	virtual void SetUpBuffer()override;
 
 #pragma region 各ステップ処理
 	/**

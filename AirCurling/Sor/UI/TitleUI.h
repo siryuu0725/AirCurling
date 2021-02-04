@@ -32,9 +32,12 @@ private:
 	//!タイトル画面UI情報
 	struct TitleUIInfo
 	{
-		Graphics::TEXTURE_DATA ui_tex[(int)TitleUICategory::CategoryMax];  
+		Graphics::TEXTURE_DATA m_ui_tex[(int)TitleUICategory::CategoryMax];  
 
-		D3DXVECTOR2  ui_pos[(int)TitleUICategory::CategoryMax];
+		D3DXVECTOR2  m_ui_pos[(int)TitleUICategory::CategoryMax];
+
+		float m_ui_width[(int)TitleUICategory::CategoryMax];  //!テクスチャの横幅
+		float m_ui_height[(int)TitleUICategory::CategoryMax]; //!テクスチャの縦幅
 
 		/* 各Sceneへ飛ぶ判定 */
 		bool startui_flg;  //!「はじめる」を押した時
@@ -44,7 +47,7 @@ private:
 		bool m_stage_1;   //!ステージ1を選んだ場合
 		bool m_stage_2;   //!ステージ2を選んだ場合
 
-	}title_ui_info;
+	}m_title_ui_info;
 
 
 public:
@@ -99,7 +102,7 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const TitleUIInfo* GetTitleUIInfo() { return &title_ui_info; }
+	const TitleUIInfo* GetTitleUIInfo() { return &m_title_ui_info; }
 
 private:
 	SoundManager* sound_mgr = SoundManager::Instance();
@@ -112,6 +115,6 @@ private:
 		float pos_y;   //!座標
 	};
 
-	TitleUIInfoCopy titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
+	TitleUIInfoCopy m_titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
 };
 #endif

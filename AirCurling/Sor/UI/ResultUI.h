@@ -57,13 +57,13 @@ private:
 	//!結果画面UI情報
 	struct ResultUIInfo
 	{
-		Graphics::TEXTURE_DATA ui_tex[(int)ResultUICategory::CategoryMax];
+		Graphics::TEXTURE_DATA m_ui_tex[(int)ResultUICategory::CategoryMax];
 
-		D3DXVECTOR2  ui_pos[(int)ResultUICategory::CategoryMax];
+		D3DXVECTOR2  m_ui_pos[(int)ResultUICategory::CategoryMax];
 
 	};
 
-	ResultUIInfo result_ui_info;
+	ResultUIInfo m_result_ui_info;
 
 	Ranking m_ranking;
 };

@@ -4,6 +4,10 @@
 #include "StopFloor.h"
 #include <vector>
 
+//!ステージに置ける最大デバフ床数数 
+#define RESET_FLOOR_MAX_NUM 5  //!リセット床
+#define STOP_FLLOR_MAX_NUM 5   //!スピード減衰床
+
 /**
 *@clss   デバフ床管理クラス
 *@brief  各デバフの床の処理を管理する
@@ -84,8 +88,8 @@ private:
 	};
 
 	//!外部データ保存用
-	ResetFloorInfoCopy m_resetfloor_info_copy[5];  //!リセット床
-	StopFloorInfoCopy m_stopfloor_info_copy[5];    //!スピード減衰床
+	ResetFloorInfoCopy m_resetfloor_info_copy[RESET_FLOOR_MAX_NUM];  //!リセット床
+	StopFloorInfoCopy m_stopfloor_info_copy[STOP_FLLOR_MAX_NUM];    //!スピード減衰床
 
 };
 

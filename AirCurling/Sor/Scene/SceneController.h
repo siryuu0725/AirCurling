@@ -69,6 +69,10 @@ public:
 	 */
 	void SetStageID(std::string stage_);
 
+	/**
+	 * @brief  選択ステージGettr
+	 * @detail タイトルで選んだステージを取得
+	 */
 	std::string GetStageID() { return m_stage; }
 
 	/**

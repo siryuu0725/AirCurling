@@ -54,7 +54,7 @@ private:
 		float height; //!縦幅
 
 
-	}floor_info_copy;
+	}m_floor_info_copy;
 };
 
 

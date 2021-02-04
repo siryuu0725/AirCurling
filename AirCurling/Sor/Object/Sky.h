@@ -44,7 +44,7 @@ private:
 		float scale_x; 
 		float scale_y; 
 		float scale_z; 
-	}skydome_info_copy;
+	}m_skydome_info_copy;
 };
 
 /**
@@ -89,6 +89,6 @@ private:
 		float scale_y; 
 		float scale_z; 
 
-	}skyfloor_info_copy;
+	}m_skyfloor_info_copy;
 };
 #endif

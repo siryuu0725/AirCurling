@@ -27,9 +27,9 @@ private:
 	//!ヘルプ画面UI情報
 	struct HelpUIInfo
 	{
-		Graphics::TEXTURE_DATA ui_tex[(int)HelpUICategory::CategoryMax];  //!テクスチャ情報構造体
+		Graphics::TEXTURE_DATA m_ui_tex[(int)HelpUICategory::CategoryMax];  //!テクスチャ情報構造体
 
-		D3DXVECTOR2  ui_pos[(int)HelpUICategory::CategoryMax];  //!テクスチャ座標
+		D3DXVECTOR2  m_ui_pos[(int)HelpUICategory::CategoryMax];  //!テクスチャ座標
 
 		bool m_select;    //!ポーズ画面各項目選択中フラグ
 		bool m_continue;  //!「つづける」選択フラグ
@@ -83,10 +83,10 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const HelpUIInfo* GetGameUIInfo() { return &pose_ui_info; }
+	const HelpUIInfo* GetGameUIInfo() { return &m_pose_ui_info; }
 private:
-	HelpUIInfo pose_ui_info;
+	HelpUIInfo m_pose_ui_info;
 
-	UIInfoCopy pose_ui_info_copy[static_cast<int>(HelpUICategory::CategoryMax)];
+	UIInfoCopy m_pose_ui_info_copy[static_cast<int>(HelpUICategory::CategoryMax)];
 };
 #endif

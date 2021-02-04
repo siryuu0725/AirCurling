@@ -6,6 +6,8 @@
 #include "../Object/Player.h"
 #include "UIBase.h"
 
+#define ADD_SPEED_POWER 0.001f  //!プレイヤーに加える力
+
 //!更新ステップ
 enum class UpdateStep
 {
@@ -43,46 +45,43 @@ private:
 	//!ゲーム画面UI情報
 	struct GameUIInfo
 	{
-		Graphics::TEXTURE_DATA ui_tex[(int)GameUICategory::CategoryMax];  //!テクスチャ
+		Graphics::TEXTURE_DATA m_ui_tex[(int)GameUICategory::CategoryMax];  //!テクスチャ
 
-		D3DXVECTOR2  ui_pos[(int)GameUICategory::CategoryMax]; //!座標
+		D3DXVECTOR2  m_ui_pos[(int)GameUICategory::CategoryMax]; //!座標
 
-		float ui_width[(int)GameUICategory::CategoryMax];  //!テクスチャの横幅
-		float ui_height[(int)GameUICategory::CategoryMax]; //!テクスチャの縦幅
+		float  m_ui_tu[(int)GameUICategory::CategoryMax]; //!テクスチャのTU値
+		float  m_ui_tv[(int)GameUICategory::CategoryMax]; //!テクスチャのTV値
 
-		float  ui_tu[(int)GameUICategory::CategoryMax]; //!テクスチャのTU値
-		float  ui_tv[(int)GameUICategory::CategoryMax]; //!テクスチャのTV値
+		float m_gauge_speed;  //!ゲージバーの動くスピード
+		float m_gauge_pos;    //!ゲージバーの座標
+		bool m_gauge_stop;    //!ゲージバー停止フラグ
 
-		float gauge_speed;  //!ゲージバーの動くスピード
-		float gauge_pos;    //!ゲージバーの座標
-		bool gauge_stop;    //!ゲージバー停止フラグ
+		float m_add_speed;  //!プレイヤーの移動スピード
 
-		float add_speed;  //!プレイヤーの移動スピード
-
-		int now_score; //!総合スコア 
+		int m_now_score; //!総合スコア 
 
 		__int16 m_one_score;  //!スコア1の位保存用
 		__int16 m_ten_score;  //!スコア10の位保存用
 
 
-		char score[20];//!スコア描画用
+		char m_score[20];//!スコア描画用
 
 		bool m_shotmode; //!shot(打つ)モード切り替えフラグ
 
-		__int16 stoptimer; //!開始演出の文字が止まる演出時間
+		__int16 m_stoptimer; //!開始演出の文字が止まる演出時間
 
-		float movespeed;  //!開始演出の文字が動くスピード
+		float m_movespeed;  //!開始演出の文字が動くスピード
 
-		bool movestop;   //!開始演出の文字が止まるフラグ
+		bool m_movestop;   //!開始演出の文字が止まるフラグ
 
-		bool remove;//!開始演出の文字が再び動くフラグ
+		bool m_remove;//!開始演出の文字が再び動くフラグ
 
 		bool m_end_game;
 
 		float t;		// 秒
 		float flame;	// 1フレーム当たりの時間
 
-	}game_ui_info;
+	}m_game_ui_info;
 public:
 	GameUI() {}
 	~GameUI() {}
@@ -132,8 +131,6 @@ public:
 	 */
 	void AddScore(Player* player_);
 
-	void Rset();
-
 	/**
 	 * @brief  モード切替判定関数
 	 * @detail ゲージがshotモード時にしか表示されないようにフラグを切り替える
@@ -156,11 +153,11 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const GameUIInfo* GetGameUIInfo() { return &game_ui_info; }
+	const GameUIInfo* GetGameUIInfo() { return &m_game_ui_info; }
 
 private:
 	UpdateStep m_update_step;  //!更新ステップ
 
-	UIInfoCopy gameui_info_copy[static_cast<int>(GameUICategory::CategoryMax)];
+	UIInfoCopy m_gameui_info_copy[static_cast<int>(GameUICategory::CategoryMax)];
 };
 #endif

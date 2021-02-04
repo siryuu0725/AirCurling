@@ -47,6 +47,6 @@ private:
 		float scale_y; 
 		float scale_z; 
 
-	}goal_info_copy;
+	}m_goal_info_copy;
 };
 #endif
