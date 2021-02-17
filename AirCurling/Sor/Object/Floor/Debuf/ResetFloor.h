@@ -27,6 +27,11 @@ public:
 	void SetUpBuffer();
 
 	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
+	/**
  　　* @brief  オブジェクト情報Getter
 	 * @return ObjectInfoの指定した変数の情報を返す
  　　*/

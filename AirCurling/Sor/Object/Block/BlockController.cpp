@@ -4,13 +4,15 @@
 //!デストラクタ
 BlockController::~BlockController()
 {
-	for (int i = 0; i < m_circle_block.size(); i++)
+	//!円形ブロック
+	for (__int16 i = 0; i < m_circle_block.size(); i++)
 	{
 		delete m_circle_block[i];
 		m_circle_block[i] = nullptr;
 	}
 
-	for (int i = 0; i < m_rect_block.size(); i++)
+	//!矩形ブロック
+	for (__int16 i = 0; i < m_rect_block.size(); i++)
 	{
 		delete m_rect_block[i];
 		m_rect_block[i] = nullptr;
@@ -40,7 +42,7 @@ void BlockController::Init(std::string stage_id_)
 	}
 
 	//!インスタンス化
-	for (int i = 0; i < m_circleblock_num; i++)
+	for (__int16 i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
 		m_circle_block.push_back(new CircleBlock
@@ -49,14 +51,14 @@ void BlockController::Init(std::string stage_id_)
 		 m_circleblock_info_copy[i].radius, "circleblock"));
 	}
 
-	for (int i = 0; i < m_circleblock_num; i++)
+	for (__int16 i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
 		m_circleshape.push_back(new CircleShape(m_circle_block[i]->GetObjInfo()->m_pos, m_circle_block[i]->GetObjInfo()->m_radius));
 	}
 #pragma endregion
 
-#pragma region 矩形型ブロック
+#pragma region 矩形ブロック
 	fp = NULL;
 
 	stage_id = "Res/ObjectData/" + stage_id_ + "RectBlockData.dat";
@@ -76,7 +78,7 @@ void BlockController::Init(std::string stage_id_)
 	}
 
 	//!インスタンス化
-	for (int i = 0; i < m_rectblock_num; i++)
+	for (__int16 i = 0; i < m_rectblock_num; i++)
 	{
 		//読み込んだ数分追加
 		m_rect_block.push_back(new RectBlock
@@ -86,7 +88,7 @@ void BlockController::Init(std::string stage_id_)
 		 m_rectblock_info_copy[i].width, m_rectblock_info_copy[i].height ,"rectblock"));
 	}
 
-	for (int i = 0; i < m_rectblock_num; i++)
+	for (__int16 i = 0; i < m_rectblock_num; i++)
 	{
 		//あたり判定用に追加
 		m_rect_shape.push_back(new RectShape(m_rect_block[i]->GetObjInfo()->m_pos, m_rect_block[i]->GetObjInfo()->m_width, m_rect_block[i]->GetObjInfo()->m_height, m_rect_block[i]->GetObjInfo()->m_angle.y));
@@ -98,13 +100,31 @@ void BlockController::Init(std::string stage_id_)
 //!描画情報送信関数
 void BlockController::SetUpBuffer()
 {
-	for (int i = 0; i < m_circle_block.size(); i++)
+	//!円形ブロック
+	for (__int16 i = 0; i < m_circle_block.size(); i++)
 	{
 		m_circle_block[i]->SetUpDrawBuffer();
 	}
 	
-	for (int i = 0; i < m_rect_block.size(); i++)
+	//!矩形ブロック
+	for (__int16 i = 0; i < m_rect_block.size(); i++)
 	{
 		m_rect_block[i]->SetUpDrawBuffer();
+	}
+}
+
+//!FBXモデル解放関数
+void BlockController::ReleaseModel()
+{
+	//!円形ブロック
+	for (__int16 i = 0; i < m_circle_block.size(); i++)
+	{
+		m_circle_block[i]->ReleaseModel();
+	}
+
+	//!矩形ブロック
+	for (__int16 i = 0; i < m_rect_block.size(); i++)
+	{
+		m_rect_block[i]->ReleaseModel();
 	}
 }

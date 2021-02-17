@@ -38,6 +38,11 @@ public:
 	void SetUpDrawBuffer();
 
 	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
+	/**
  　　* @brief  オブジェクト情報Getter
      * @return RectBlockInfoの指定した変数の情報を返す
  　　*/

@@ -32,6 +32,11 @@ public:
 	 */
 	void SetUpBuffer();
 
+	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
    /**
 	* @brief  各デバフ床情報Getter関数
 	* @return 各デバフ床の座標、サイズの情報を返す

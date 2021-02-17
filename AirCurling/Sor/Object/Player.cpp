@@ -64,6 +64,12 @@ void Player::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(player_info.m_key, player_info.m_mat_world);
 }
 
+//!FBXモデル解放関数
+void Player::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(player_info.m_key);
+}
+
 //!更新関数
 void Player::Update()
 {
@@ -392,33 +398,33 @@ D3DXVECTOR3 Player::RectReflection(std::string type_,float rad_)
 		old_direction.x = -old_direction.x;
 	}
 
-	//3Dと2Dで回転する方向が逆のため逆に回転させる
+	//!3Dと2Dで回転する方向が逆のため逆に回転させる
 	m_change_radian = -rad_;
 	m_change_radian *= 2;
 
-	//方向ベクトルを回転
+	//!方向ベクトルを回転
 	return Calculation::Rote(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), m_change_radian);
 }
 
 //!円形型ブロック反射方向計算関数
 D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 {
-	//値初期化
+	//!値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
 
-	//方向ベクトルを反転
+	//!方向ベクトルを反転
 	old_direction.x = -old_direction.x;
 	old_direction.z = -old_direction.z;
 
-	//プエイヤーと円の接線に垂直なベクトル
+	//!プレイヤーと円の接線に垂直なベクトル
 	D3DXVECTOR3 vec = player_info.m_pos - circle_pos_;
 
-	//Playerの進む方向ベクトルと
-	//Playerと円のベクトルのatanを求める
+	//!Playerの進む方向ベクトルと
+	//!Playerと円のベクトルのatanを求める
 	float direction_rad = atan2f(old_direction.z, old_direction.x);
 	float vec_rad = atan2f(vec.z, vec.x);
 
-	//方向ベクトルと接線に垂直なベクトルのなす角を求める
+	//!方向ベクトルと接線に垂直なベクトルのなす角を求める
 	float degree2 = 0;
 	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
 
@@ -434,6 +440,10 @@ D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 		direction_rad = D3DXToRadian(360) + direction_rad;
 	}
 
+	/*
+		方向ベクトルとプレイヤーと円の接線に垂直なベクトルの角度を比較し
+		方向ベクトルを回転させる方向を決める(右回転か左回転か)
+	*/
 	if (direction_rad > vec_rad)
 	{
 		degree2 = -degree2;
@@ -446,14 +456,14 @@ D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 //!矩形型ブロック頂点反射方向計算関数
 D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
 {
-	//値初期化
+	//!値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
 	D3DXVECTOR3 vec;
 
 	D3DXVECTOR3 player_lotepos = Calculation::Rote(player_info.m_pos, r_pos_, rad_);
 	D3DXVECTOR3 ver_pos;
 
-	//方向ベクトルを反転
+	//!方向ベクトルを反転
 	old_direction.x = -old_direction.x;
 	old_direction.z = -old_direction.z;
 
@@ -481,16 +491,16 @@ D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, floa
 		ver_pos.x = r_pos_.x + (width_ / 2);
 		ver_pos.z = r_pos_.z - (height_ / 2);
 	}
-	// Playerと頂点のベクトル
+	//!Playerと頂点のベクトル
 	D3DXVECTOR3 old_vec = player_lotepos - ver_pos;
 
-	// 矩形が回転していたらベクトルも回転させる
+	//!矩形が回転していたらベクトルも回転させる
 	vec = Calculation::Rote(old_vec, D3DXVECTOR3(0.0f, 0.0f, 0.0f), -rad_);
 
 	float direction_rad = atan2f(old_direction.z, old_direction.x);
 	float vec_rad = atan2f(vec.z, vec.x);
 
-	//方向ベクトルと接線に垂直なベクトルのなす角を求める
+	//!方向ベクトルと接線に垂直なベクトルのなす角を求める
 	float degree2 = 0;
 	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
 
@@ -506,25 +516,23 @@ D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, floa
 		direction_rad = D3DXToRadian(360) + direction_rad;
 	}
 
+	/*
+		方向ベクトルとプレイヤーと円の接線に垂直なベクトルの角度を比較し
+		方向ベクトルを回転させる方向を決める(右回転か左回転か)
+	*/
 	if (direction_rad > vec_rad)
 	{
 		degree2 = -degree2;
 	}
 
-	//方向ベクトルを回転
+	//!方向ベクトルを回転
 	return Calculation::Rote(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
 }
 
 //!初期位置移動関数
 void Player::ResetPos()
 {
-	if (Inputter::Instance()->GetKeyDown(Inputter::A_KEY))
-	{
-		ResetEffectStart();
-		//player_info.pos = D3DXVECTOR3(-29.0f, -29.0f, -29.0f);
-		player_info.m_pos = D3DXVECTOR3(0.0f, -29.0f, -70.0f);
-		player_info.m_setspeed = 0.0f;
-	}
+	//!ステージから落ちた場合
 	if (player_info.m_pos.x <= m_floor->GetObjInfo()->m_pos.x - m_floor->GetObjInfo()->m_width
 		|| player_info.m_pos.x >= m_floor->GetObjInfo()->m_pos.x + m_floor->GetObjInfo()->m_width
 		|| player_info.m_pos.z <= m_floor->GetObjInfo()->m_pos.z - m_floor->GetObjInfo()->m_height

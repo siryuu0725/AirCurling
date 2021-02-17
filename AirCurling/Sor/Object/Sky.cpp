@@ -34,6 +34,12 @@ void SkyDome::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_skydome_info.m_key, m_skydome_info.m_mat_world);
 }
 
+//!FBXモデル解放関数
+void SkyDome::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_skydome_info.m_key);
+}
+
 //!初期化関数
 void SkyFloor::Init(std::string stage_id_)
 {
@@ -70,4 +76,8 @@ void SkyFloor::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_skyfloor_info.m_key, m_skyfloor_info.m_mat_world);
 }
 
-
+//!FBXモデル解放関数
+void SkyFloor::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_skyfloor_info.m_key);
+}

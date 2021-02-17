@@ -25,6 +25,11 @@ public:
 	void SetUpBuffer();
 
 	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
+	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
 	const ObjectInfo* GetObjInfo()const { return &m_floor_info; }

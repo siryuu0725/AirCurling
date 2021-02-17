@@ -37,12 +37,16 @@ private:
 			m_nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
-			m_mass(0.0f), m_friction(0.0f), m_timer(0),
+			m_mass(0.0f), 
+			m_friction(0.0f),
+			m_timer(0),
 			m_reflectcounter(0),
-			m_is_turnend(false),
 			m_truncounter(0),
 			m_score_counter(0),
-			m_start(false), m_goal(false), m_end(false),
+			m_is_turnend(false),
+			m_start(false),
+			m_goal(false), 
+			m_end(false),
 			m_is_movement(false),
 			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
 		{}
@@ -125,6 +129,11 @@ public:
 	 * @detail  Fbx管理クラスにオブジェクト情報を送る
 	 */
 	void SetUpBuffer();
+
+	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
 
 	/**
  　　* @brief  開始演出関数

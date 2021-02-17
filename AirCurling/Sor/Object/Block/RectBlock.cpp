@@ -22,3 +22,9 @@ void RectBlock::SetUpDrawBuffer()
 {
 	FbxController::Instance()->DrawFbx(m_rect_block_info.m_key, m_rect_block_info.m_mat_world);
 }
+
+//!FBXモデル解放関数
+void RectBlock::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_rect_block_info.m_key);
+}

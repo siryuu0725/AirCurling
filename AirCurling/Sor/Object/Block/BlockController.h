@@ -33,6 +33,11 @@ public:
 	void SetUpBuffer();
 
 	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
+	/**
 	 * @brief  各ブロック情報Getter関数
 	 * @return 各ブロック座標、サイズの情報を返す
 	 */

@@ -20,3 +20,9 @@ void CircleBlock::SetUpDrawBuffer()
 {
 	FbxController::Instance()->DrawFbx(m_circle_block_info.m_key, m_circle_block_info.m_mat_world);
 }
+
+//!FBXモデル解放関数
+void CircleBlock::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_circle_block_info.m_key);
+}

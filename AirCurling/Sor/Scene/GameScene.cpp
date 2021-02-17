@@ -217,34 +217,42 @@ void GameScene::ObjectDelete()
 	m_camera = nullptr;
 
 	//!ブロック
+	m_block_controller->ReleaseModel();
 	delete m_block_controller;
 	m_block_controller = nullptr;
 
 	//!プレイヤー
+	m_player->ReleaseModel();
 	delete m_player;
 	m_player = nullptr;
 
 	//!プレイヤー矢印
+	m_player_direction->ReleaseModel();
 	delete m_player_direction;
 	m_player_direction = nullptr;
 
 	//!背景
+	m_sky_dome->ReleaseModel();
 	delete m_sky_dome;
 	m_sky_dome = nullptr;
 
 	//!背景床
+	m_sky_floor->ReleaseModel();
 	delete m_sky_floor;
 	m_sky_floor = nullptr;
 
 	//!ステージ床
+	m_floor->ReleaseModel();
 	delete m_floor;
 	m_floor = nullptr;
 
 	//!デバフ床
+	m_debuf->ReleaseModel();
 	delete m_debuf;
 	m_debuf = nullptr;
 
 	//!ゴール床
+	m_goal->ReleaseModel();
 	delete m_goal;
 	m_goal = nullptr;
 }

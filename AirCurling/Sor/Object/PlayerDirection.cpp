@@ -51,6 +51,12 @@ void PlayerDirection::SetUpBuffer()
 	}
 }
 
+//!FBXモデル解放関数
+void PlayerDirection::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_direction_info.m_key);
+}
+
 //!矢印回転関数
 void PlayerDirection::Rote()
 {

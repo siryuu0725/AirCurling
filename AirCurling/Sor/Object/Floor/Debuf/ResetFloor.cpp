@@ -1,5 +1,6 @@
 ﻿#include "ResetFloor.h"
 
+//!コンストラクタ
 ResetFloor::ResetFloor(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, float radius_, std::string key_)
 {
 	m_reset_floor_info.m_key = key_;  //!描画用キー
@@ -21,8 +22,8 @@ void ResetFloor::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_reset_floor_info.m_key, m_reset_floor_info.m_mat_world);
 }
 
-//void ResetFloor::ReleaseFbx()
-//{
-//	MyFbxManager::FbxManager::Instance()->ReleaseFbxMesh("reset");
-//
-//}
+//!FBXモデル解放関数
+void ResetFloor::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_reset_floor_info.m_key);
+}

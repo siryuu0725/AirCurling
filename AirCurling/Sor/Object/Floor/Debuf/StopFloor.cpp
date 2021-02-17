@@ -1,5 +1,6 @@
 ﻿#include "StopFloor.h"
 
+//!コンストラクタ
 StopFloor::StopFloor(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3 angle_, float width_, float height_, std::string key_)
 {
 	m_stop_floor_info.m_key = key_; //!描画用キー
@@ -20,8 +21,8 @@ void StopFloor::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_stop_floor_info.m_key, m_stop_floor_info.m_mat_world);
 }
 
-//void StopFloor::ReleaseFbx()
-//{
-//	MyFbxManager::FbxManager::Instance()->ReleaseFbxMesh("stop");
-//
-//}
+//!FBXモデル解放関数
+void StopFloor::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_stop_floor_info.m_key);
+}

@@ -36,3 +36,9 @@ void Goal::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_goal_info.m_key, m_goal_info.m_mat_world);
 }
 
+//!FBXモデル解放関数
+void Goal::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_goal_info.m_key);
+}
+

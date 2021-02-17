@@ -55,6 +55,11 @@ public:
 	void SetUpBuffer();
 
 	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	void ReleaseModel();
+
+	/**
 	 * @brief   矢印回転関数
 	 * @detail  プレイヤーが視を動かした時矢印も一緒に動くようにする
 	 */

@@ -3,12 +3,14 @@
 //!デストラクタ
 DebufController::~DebufController()
 {
+	//!リセット床
 	for (__int16 i = 0; i < m_reset_floor.size(); i++)
 	{
 		delete m_reset_floor[i];
 		m_reset_floor[i] = nullptr;
 	}
 
+	//!スピード減衰床
 	for (__int16 i = 0; i < m_stop_floor.size(); i++)
 	{
 		delete m_stop_floor[i];
@@ -16,7 +18,7 @@ DebufController::~DebufController()
 	}
 }
 
-//!ステージ2用初期化関数
+//!初期化関数
 void DebufController::Init(std::string stage_id_)
 {
 #pragma region リセット床
@@ -96,13 +98,32 @@ void DebufController::Init(std::string stage_id_)
 //!描画情報送信関数
 void DebufController::SetUpBuffer()
 {
+	//!リセット床
 	for (__int16 i = 0; i < m_reset_floor.size(); i++)
 	{
 		m_reset_floor[i]->SetUpBuffer();
 	}
 
+	//!スピード減衰床
 	for (__int16 i = 0; i < m_stop_floor.size(); i++)
 	{
 		m_stop_floor[i]->SetUpBuffer();
 	}
+}
+
+//!FBXモデル解放関数
+void DebufController::ReleaseModel()
+{
+	//!リセット床
+	for (__int16 i = 0; i < m_reset_floor.size(); i++)
+	{
+		m_reset_floor[i]->ReleaseModel();
+	}
+
+	//!スピード減衰床
+	for (__int16 i = 0; i < m_stop_floor.size(); i++)
+	{
+		m_stop_floor[i]->ReleaseModel();
+	}
+
 }

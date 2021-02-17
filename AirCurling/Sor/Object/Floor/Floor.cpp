@@ -37,3 +37,9 @@ void Floor::SetUpBuffer()
 	FbxController::Instance()->DrawFbx(m_floor_info.m_key, m_floor_info.m_mat_world);
 
 }
+
+//!FBXモデル解放関数
+void Floor::ReleaseModel()
+{
+	FbxController::Instance()->ReleaseFbxMesh(m_floor_info.m_key);
+}
