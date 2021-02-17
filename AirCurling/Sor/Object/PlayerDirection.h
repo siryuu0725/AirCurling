@@ -11,19 +11,19 @@ class PlayerDirection :public ObjectBase
 public:
 	struct DirectionInfo :public ObjectInfo
 	{
-		D3DXVECTOR3 m_old_pos;  //!回転用oldpos
+		D3DXVECTOR3 m_old_pos;     //!回転用oldpos
 
 		D3DXVECTOR3 m_player_pos;  //!プレイヤーpos保存用
 
 		D3DXVECTOR3 m_dir_vec; //!カメラの方向Vec保存用
 
-		float m_add_zpos; //!プレイヤーの前にくるように足す値
+		float m_add_zpos;   //!プレイヤーの前にくるように足す値
 
 		float m_rote;       //!モデル回転角度
 
 		float m_pos_rote_r; //!pos回転角度
 
-		bool m_shotmode;  //!打つモードかどうか
+		bool m_is_shotmode;    //!打つモードかどうか
 
 	}m_direction_info;
 public:

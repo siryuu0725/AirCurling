@@ -66,7 +66,7 @@ private:
 
 		char m_score[20];//!スコア描画用
 
-		bool m_shotmode; //!shot(打つ)モード切り替えフラグ
+		bool m_is_shotmode; //!shot(打つ)モード切り替えフラグ
 
 		__int16 m_stoptimer; //!開始演出の文字が止まる演出時間
 
@@ -158,6 +158,6 @@ public:
 private:
 	UpdateStep m_update_step;  //!更新ステップ
 
-	UIInfoCopy m_gameui_info_copy[static_cast<int>(GameUICategory::CategoryMax)];
+	UIExternalInfo m_gameui_info_copy[static_cast<int>(GameUICategory::CategoryMax)];
 };
 #endif

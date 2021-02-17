@@ -56,15 +56,13 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 	FbxImporter* importer = FbxImporter::Create(m_manager, "");
 	//シーン作成
 	FbxScene* m_scene = FbxScene::Create(m_manager, "");
-	//FBXに対する入出力
-	FbxIOSettings* ios = FbxIOSettings::Create(m_manager, IOSROOT);
-
+	
 	//filePathに指定したファイルを読み込む
 	importer->Initialize(file_name);
 	//シーンにインポートしたファイルを渡す
 	bool result = importer->Import(m_scene);
 	//インポーターの役目は終わりなので解放する
-	SAFE_DESTROY(importer);
+	
 
 
 	//シーンのポリゴンを三角にする
@@ -121,9 +119,9 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 		pMeshData[i].materialIndex = i;
 	}
 
-
-	SAFE_DESTROY(m_scene);
-	SAFE_DESTROY(m_manager);
+	importer->Destroy();
+	m_scene->Destroy();
+	m_manager->Destroy();
 
 	Play(&fbxMeshData, "default");
 

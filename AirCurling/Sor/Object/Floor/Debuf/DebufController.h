@@ -50,46 +50,34 @@ private:
 	int m_stopfloor_num;   //!スピード減衰床数
 
 	//!外部データ保存用構造体(リセット床)
-	struct ResetFloorInfoCopy
+	struct ResetFloorExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y;   
-		float pos_z;   
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
+		float scale[3];
 
 		float radius; //!半径
 	};
 
 	//!外部データ保存用構造体(スピード減衰床)
-	struct StopFloorInfoCopy
+	struct StopFloorExternalInfo
 	{
 		//!座標
-		float pos_x; 
-		float pos_y; 
-		float pos_z; 
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
+		float scale[3];
 
 		//!回転角度
-		float rote_x; 
-		float rote_y;
-		float rote_z; 
+		float rote[3];
 
 		float width;  //!横幅 
 		float height; //!縦幅
 	};
 
 	//!外部データ保存用
-	ResetFloorInfoCopy m_resetfloor_info_copy[RESET_FLOOR_MAX_NUM];  //!リセット床
-	StopFloorInfoCopy m_stopfloor_info_copy[STOP_FLLOR_MAX_NUM];    //!スピード減衰床
+	ResetFloorExternalInfo m_resetfloor_info_copy[RESET_FLOOR_MAX_NUM];  //!リセット床
+	StopFloorExternalInfo m_stopfloor_info_copy[STOP_FLLOR_MAX_NUM];    //!スピード減衰床
 
 };
 

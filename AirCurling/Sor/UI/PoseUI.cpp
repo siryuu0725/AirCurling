@@ -14,7 +14,7 @@ void PoseUI::Init()
 		fread(&m_ui_num, sizeof(m_ui_num), 1, fp);
 
 		//!書き込む
-		fread(&m_pose_ui_info_copy, sizeof(UIInfoCopy), m_ui_num, fp);
+		fread(&m_pose_ui_info_copy, sizeof(UIExternalInfo), m_ui_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);

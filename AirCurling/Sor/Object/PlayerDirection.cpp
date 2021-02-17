@@ -24,7 +24,7 @@ void PlayerDirection::Init()
 
 	m_direction_info.m_add_zpos = 3.0;
 
-	m_direction_info.m_shotmode = false;
+	m_direction_info.m_is_shotmode = false;
 }
 
 //!更新関数
@@ -45,7 +45,7 @@ void PlayerDirection::Update()
 void PlayerDirection::SetUpBuffer()
 {
 	if (m_ui->GetGameUIInfo()->m_gauge_stop == false
-		&& m_direction_info.m_shotmode == true)
+		&& m_direction_info.m_is_shotmode == true)
 	{
 		FbxController::Instance()->DrawFbx(m_direction_info.m_key, m_direction_info.m_mat_world);
 	}
@@ -80,13 +80,13 @@ void PlayerDirection::ModeChange()
 {
 	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
 	{
-		if (m_direction_info.m_shotmode == false)
+		if (m_direction_info.m_is_shotmode == false)
 		{
-			m_direction_info.m_shotmode = true;
+			m_direction_info.m_is_shotmode = true;
 		}
 		else
 		{
-			m_direction_info.m_shotmode = false;
+			m_direction_info.m_is_shotmode = false;
 		}
 	}
 }

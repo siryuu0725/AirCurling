@@ -33,7 +33,7 @@ void BlockController::Init(std::string stage_id_)
 		fread(&m_circleblock_num, sizeof(m_circleblock_num), 1, fp);
 
 		//!書き込む
-		fread(&m_circleblock_info_copy, sizeof(CircleBlockInfoCopy), m_circleblock_num, fp);
+		fread(&m_circleblock_info_copy, sizeof(CircleBlockExternalInfo), m_circleblock_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -43,9 +43,10 @@ void BlockController::Init(std::string stage_id_)
 	for (int i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
-		m_circle_block.push_back(new CircleBlock(D3DXVECTOR3(m_circleblock_info_copy[i].pos_x, m_circleblock_info_copy[i].pos_y, m_circleblock_info_copy[i].pos_z),
-			D3DXVECTOR3(m_circleblock_info_copy[i].scale_x, m_circleblock_info_copy[i].scale_y, m_circleblock_info_copy[i].scale_z),
-			m_circleblock_info_copy[i].radius, "circleblock"));
+		m_circle_block.push_back(new CircleBlock
+		(D3DXVECTOR3(m_circleblock_info_copy[i].pos[ARRAY_DATA::X], m_circleblock_info_copy[i].pos[ARRAY_DATA::Y], m_circleblock_info_copy[i].pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_circleblock_info_copy[i].scale[ARRAY_DATA::X], m_circleblock_info_copy[i].scale[ARRAY_DATA::Y], m_circleblock_info_copy[i].scale[ARRAY_DATA::Z]),
+		 m_circleblock_info_copy[i].radius, "circleblock"));
 	}
 
 	for (int i = 0; i < m_circleblock_num; i++)
@@ -68,7 +69,7 @@ void BlockController::Init(std::string stage_id_)
 		fread(&m_rectblock_num, sizeof(m_rectblock_num), 1, fp);
 
 		//!書き込む
-		fread(&m_rectblock_info_copy, sizeof(RectBlockInfoCopy), m_rectblock_num, fp);
+		fread(&m_rectblock_info_copy, sizeof(RectBlockExternalInfo), m_rectblock_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -78,10 +79,11 @@ void BlockController::Init(std::string stage_id_)
 	for (int i = 0; i < m_rectblock_num; i++)
 	{
 		//読み込んだ数分追加
-		m_rect_block.push_back(new RectBlock(D3DXVECTOR3(m_rectblock_info_copy[i].pos_x, m_rectblock_info_copy[i].pos_y, m_rectblock_info_copy[i].pos_z),
-			D3DXVECTOR3(m_rectblock_info_copy[i].scale_x, m_rectblock_info_copy[i].scale_y, m_rectblock_info_copy[i].scale_z),
-			D3DXVECTOR3(m_rectblock_info_copy[i].rote_x, m_rectblock_info_copy[i].rote_y, m_rectblock_info_copy[i].rote_z),
-			m_rectblock_info_copy[i].width, m_rectblock_info_copy[i].height ,"rectblock"));
+		m_rect_block.push_back(new RectBlock
+		(D3DXVECTOR3(m_rectblock_info_copy[i].pos[ARRAY_DATA::X], m_rectblock_info_copy[i].pos[ARRAY_DATA::Y], m_rectblock_info_copy[i].pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_rectblock_info_copy[i].scale[ARRAY_DATA::X], m_rectblock_info_copy[i].scale[ARRAY_DATA::Y], m_rectblock_info_copy[i].scale[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_rectblock_info_copy[i].rote[ARRAY_DATA::X], m_rectblock_info_copy[i].rote[ARRAY_DATA::Y], m_rectblock_info_copy[i].rote[ARRAY_DATA::Z]),
+		 m_rectblock_info_copy[i].width, m_rectblock_info_copy[i].height ,"rectblock"));
 	}
 
 	for (int i = 0; i < m_rectblock_num; i++)

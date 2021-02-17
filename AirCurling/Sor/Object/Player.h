@@ -37,13 +37,13 @@ private:
 			m_nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
-			m_m(0.0f), m_fa(0.0f), m_timer(0),
+			m_mass(0.0f), m_friction(0.0f), m_timer(0),
 			m_reflectcounter(0),
-			m_turnend(false),
+			m_is_turnend(false),
 			m_truncounter(0),
 			m_score_counter(0),
 			m_start(false), m_goal(false), m_end(false),
-			m_move(false),
+			m_is_movement(false),
 			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
 		{}
 
@@ -54,48 +54,42 @@ private:
 		float m_speed;  //!移動スピード
 		float m_setspeed;  //!移動スピード
 
-
 		float m_change_radian; //!回転角度
 
 		/* 摩擦用 */
-		float m_m;   //!質量
-		float m_fa;  //!摩擦係数
-		float m_a;   //!加速度
+		float m_mass;  //!質量
+		float m_friction;    //!動摩擦係数
+		float m_acceleration;     //!加速度
 
 		float m_timer;  //!経過時間
 
 		int m_reflectcounter; //!反射回数
 		int m_truncounter;    //!進行ターン数
-		__int16 m_score_counter;  //!ゴール時減算スコア
+		__int16 m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
 		bool m_start; //!ゲームスタート
 		bool m_goal;	//!ゴール時
 		bool m_end;	//!ゲームエンドフラグ
 
-		bool m_move;
-		bool m_turnend;       //!1ターン終了フラグ
+		bool m_is_movement;
+		bool m_is_turnend;       //!1ターン終了フラグ
 
 		D3DXVECTOR3 m_efk_pos;      //!エフェクト表示座標保存用
 	}player_info;
 
-	struct ObjectInfoCopy
+	struct PlayerExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y;   
-		float pos_z; 
-
+		float pos[3];
 		//!サイズ
-		float scale_x;
-		float scale_y; 
-		float scale_z;
+		float scale[3];
 
 		float radius; //!半径
 		float speed;  //!移動スピード
 		float m;      //!質量
-		float fa;     //!摩擦係数
-		int score_counter;
+		float fa;     //!動摩擦係数
+		int score_counter; //!加算するスコア数
 
 	}m_player_info_copy;
 
@@ -253,7 +247,7 @@ public:
  　　* @brief  プレイヤー操作可能判定関数
  　　* @detail 開始演出が終わってから操作できるようにSetterを用意
  　　*/
-	void SetPlayerMove(bool move_) { player_info.m_move = move_; }
+	void SetPlayerMove(bool move_) { player_info.m_is_movement = move_; }
 
 	/**
  　　* @brief  プレイヤーのスピードSetter

@@ -33,22 +33,15 @@ private:
 	ObjectInfo m_floor_info;  //!ステージ床情報
 
 	//!外部データ保存用構造体
-	struct ObjectInfoCopy
+	struct FloorExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y;  
-		float pos_z;  
-
+		float pos[3];
 		//!サイズ
-		float scale_x;
-		float scale_y;
-		float scale_z;
+		float scale[3];
 
 		//!回転角度
-		float rote_x; 
-		float rote_y; 
-		float rote_z; 
+		float rote[3];
 
 		float width;  //!横幅
 		float height; //!縦幅

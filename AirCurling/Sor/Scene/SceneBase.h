@@ -48,6 +48,11 @@ public:
 　　* @detail 各ステップ処理を管理する
 　　*/
 	virtual void Update();
+
+	/**
+	 * @brief  描画情報送信まとめ関数
+	 * @detail UIの描画情報送信処理を行う
+	 */
 	virtual void SetUpBuffer() {};
 
 	//!シーン移行フラグGetter

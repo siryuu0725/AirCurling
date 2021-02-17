@@ -87,6 +87,6 @@ public:
 private:
 	HelpUIInfo m_pose_ui_info;
 
-	UIInfoCopy m_pose_ui_info_copy[static_cast<int>(HelpUICategory::CategoryMax)];
+	UIExternalInfo m_pose_ui_info_copy[static_cast<int>(HelpUICategory::CategoryMax)];
 };
 #endif

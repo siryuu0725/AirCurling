@@ -8,7 +8,7 @@
 *@clss  タイトル用UIクラス
 */
 
-class TitleUI
+class TitleUI :public UIBase
 {
 public:
 	//!UIの種類
@@ -107,14 +107,6 @@ public:
 private:
 	SoundManager* sound_mgr = SoundManager::Instance();
 
-	int m_ui_num;
-
-	struct TitleUIInfoCopy
-	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
-	};
-
-	TitleUIInfoCopy m_titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
+	UIExternalInfo m_titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
 };
 #endif

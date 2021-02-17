@@ -33,17 +33,13 @@ public:
 private:
 	ObjectInfo m_skydome_info;
 
-	struct ObjectInfoCopy
+	struct SkyDomeExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y;  
-		float pos_z;   
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
+		float scale[3];
+
 	}m_skydome_info_copy;
 };
 
@@ -55,7 +51,9 @@ private:
 class SkyFloor :public ObjectBase
 {
 public:
-	SkyFloor();
+	SkyFloor() {}
+	~SkyFloor() {}
+
 
 	/**
 	 * @brief  初期化関数
@@ -69,6 +67,7 @@ public:
 	 */
 	void SetUpBuffer();
 
+
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
@@ -77,17 +76,12 @@ public:
 private:
 	ObjectInfo m_skyfloor_info;
 
-	struct ObjectInfoCopy
+	struct SkyFloorExternalInfo
 	{
 		//!座標
-		float pos_x; 
-		float pos_y;  
-		float pos_z;  
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
+		float scale[3];
 
 	}m_skyfloor_info_copy;
 };

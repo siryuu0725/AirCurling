@@ -33,7 +33,7 @@ void DebufController::Init(std::string stage_id_)
 		fread(&m_resetfloor_num, sizeof(m_resetfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&m_resetfloor_info_copy, sizeof(ResetFloorInfoCopy), m_resetfloor_num, fp);
+		fread(&m_resetfloor_info_copy, sizeof(ResetFloorExternalInfo), m_resetfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -42,9 +42,10 @@ void DebufController::Init(std::string stage_id_)
 	for (__int16 i = 0; i < m_resetfloor_num; i++)
 	{
 		//!読み込んだ数分追加
-		m_reset_floor.push_back(new ResetFloor(D3DXVECTOR3(m_resetfloor_info_copy[i].pos_x, m_resetfloor_info_copy[i].pos_y, m_resetfloor_info_copy[i].pos_z),
-			D3DXVECTOR3(m_resetfloor_info_copy[i].scale_x, m_resetfloor_info_copy[i].scale_y, m_resetfloor_info_copy[i].scale_z),
-			m_resetfloor_info_copy[i].radius, "reset"));
+		m_reset_floor.push_back(new ResetFloor
+		(D3DXVECTOR3(m_resetfloor_info_copy[i].pos[ARRAY_DATA::X], m_resetfloor_info_copy[i].pos[ARRAY_DATA::Y], m_resetfloor_info_copy[i].pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_resetfloor_info_copy[i].scale[ARRAY_DATA::X], m_resetfloor_info_copy[i].scale[ARRAY_DATA::Y], m_resetfloor_info_copy[i].scale[ARRAY_DATA::Z]),
+		 m_resetfloor_info_copy[i].radius, "reset"));
 	}
 
 	for (__int16 i = 0; i < m_resetfloor_num; i++)
@@ -67,7 +68,7 @@ void DebufController::Init(std::string stage_id_)
 		fread(&m_stopfloor_num, sizeof(m_stopfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&m_stopfloor_info_copy, sizeof(StopFloorInfoCopy), m_stopfloor_num, fp);
+		fread(&m_stopfloor_info_copy, sizeof(StopFloorExternalInfo), m_stopfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -76,10 +77,11 @@ void DebufController::Init(std::string stage_id_)
 	for (__int16 i = 0; i < m_stopfloor_num; i++)
 	{
 		//!読み込んだ数分追加
-		m_stop_floor.push_back(new StopFloor(D3DXVECTOR3(m_stopfloor_info_copy[i].pos_x, m_stopfloor_info_copy[i].pos_y, m_stopfloor_info_copy[i].pos_z),
-			D3DXVECTOR3(m_stopfloor_info_copy[i].scale_x, m_stopfloor_info_copy[i].scale_y, m_stopfloor_info_copy[i].scale_z),
-			D3DXVECTOR3(m_stopfloor_info_copy[i].rote_x, m_stopfloor_info_copy[i].rote_y, m_stopfloor_info_copy[i].rote_z),
-			m_stopfloor_info_copy[i].width, m_stopfloor_info_copy[i].height, "stop"));
+		m_stop_floor.push_back(new StopFloor
+		(D3DXVECTOR3(m_stopfloor_info_copy[i].pos[ARRAY_DATA::X], m_stopfloor_info_copy[i].pos[ARRAY_DATA::Y], m_stopfloor_info_copy[i].pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_stopfloor_info_copy[i].scale[ARRAY_DATA::X], m_stopfloor_info_copy[i].scale[ARRAY_DATA::Y], m_stopfloor_info_copy[i].scale[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_stopfloor_info_copy[i].rote[ARRAY_DATA::X], m_stopfloor_info_copy[i].rote[ARRAY_DATA::Y], m_stopfloor_info_copy[i].rote[ARRAY_DATA::Z]),
+		 m_stopfloor_info_copy[i].width, m_stopfloor_info_copy[i].height, "stop"));
 	}
 
 	for (__int16 i = 0; i < m_stopfloor_num; i++)

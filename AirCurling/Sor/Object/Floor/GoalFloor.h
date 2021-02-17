@@ -35,17 +35,12 @@ private:
 	ObjectInfo m_goal_info;//!ステージ床情報
 
 	//!外部データ保存用構造体
-	struct ObjectInfoCopy
+	struct GoalExternalInfo
 	{
 		//!座標
-		float pos_x;  
-		float pos_y;   
-		float pos_z;   
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
+		float scale[3];
 
 	}m_goal_info_copy;
 };

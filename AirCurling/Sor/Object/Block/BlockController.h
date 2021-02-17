@@ -50,48 +50,33 @@ private:
 	int m_circleblock_num;  //!円形ブロックデータ数
 
 	//!外部データ保存用構造体(矩形ブロック)
-	struct RectBlockInfoCopy
+	struct RectBlockExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y; 
-		float pos_z; 
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; //!サイズ
-		float scale_z; //!サイズ
-
+		float scale[3];
 		//!回転角度
-		float rote_x; 
-		float rote_y; 
-		float rote_z; 
+		float rote[3];
 
 		float width;  //!横幅
 		float height; //!縦幅
 	};
 
 	//!外部データ保存用構造体(円形ブロック)
-	struct CircleBlockInfoCopy
+	struct CircleBlockExternalInfo
 	{
 		//!座標
-		float pos_x;   
-		float pos_y;  
-		float pos_z; 
-
+		float pos[3];
 		//!サイズ
-		float scale_x; 
-		float scale_y; 
-		float scale_z; 
-
+		float scale[3];
 		//!半径
 		float radius;
-
 	};
 
 	//!外部データ保存用
-	CircleBlockInfoCopy m_circleblock_info_copy[CIRCLEBLOCK_MAX_NUM]; //!円形ブロック
-	RectBlockInfoCopy m_rectblock_info_copy[RECTBLOCK_MAX_NUM];	 //!矩形ブロック
+	CircleBlockExternalInfo m_circleblock_info_copy[CIRCLEBLOCK_MAX_NUM]; //!円形ブロック
+	RectBlockExternalInfo m_rectblock_info_copy[RECTBLOCK_MAX_NUM];	 //!矩形ブロック
 };
 
 

@@ -24,7 +24,7 @@ void Player::Init(std::string stage_id_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&m_player_info_copy, sizeof(ObjectInfoCopy), 1, fp);
+		fread(&m_player_info_copy, sizeof(PlayerExternalInfo), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -33,14 +33,13 @@ void Player::Init(std::string stage_id_)
 	player_info.m_key = "pac";  //!描画用キー
 	//player_info.pos = D3DXVECTOR3(-29.0f, 0.0f, -29.0f); //!座標
 
-	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos_x, m_player_info_copy.pos_y, m_player_info_copy.pos_z); //!座標
-	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.scale_x, m_player_info_copy.scale_y, m_player_info_copy.scale_z);	 //!描画サイズ
+	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], m_player_info_copy.pos[ARRAY_DATA::Y], m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
+	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.scale[ARRAY_DATA::X], m_player_info_copy.scale[ARRAY_DATA::Y], m_player_info_copy.scale[ARRAY_DATA::Z]);	 //!描画サイズ
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //!ワールド座標
-
-	player_info.m_m = m_player_info_copy.m;     //!質量
-	player_info.m_fa = m_player_info_copy.fa;   //!摩擦係数
-	player_info.m_a = -player_info.m_fa * 9.8f; //!摩擦係数
+	
+	player_info.m_friction = m_player_info_copy.fa;   //!動摩擦係数
+	player_info.m_acceleration = -player_info.m_friction * 9.8f; //!加速度
 
 
 	player_info.m_radius = m_player_info_copy.radius;    //!半径
@@ -49,12 +48,12 @@ void Player::Init(std::string stage_id_)
 	player_info.m_timer = 0;  //!経過時間
 	player_info.m_truncounter = 0;    //!進行ターン数
 	player_info.m_reflectcounter = 0; //!反射回数
-	player_info.m_turnend = false;    //!1ターン終了フラグ
+	player_info.m_is_turnend = false;    //!1ターン終了フラグ
 	player_info.m_goal = false;       //!ゴールフラグ
 	player_info.m_end = false;        //!ゲームエンドフラグ
 	player_info.m_score_counter = m_player_info_copy.score_counter;
 
-	player_info.m_move = false;
+	player_info.m_is_movement = false;
 
 	player_info.m_nor_speed.y = 0.0f;
 }
@@ -92,10 +91,10 @@ void Player::Update()
 //!移動関数
 void Player::Move()
 {
-	player_info.m_turnend = false;
+	player_info.m_is_turnend = false;
 	
 	//!プレイヤーが移動していない間
-	if (player_info.m_move == false)
+	if (player_info.m_is_movement == false)
 	{
 		//!カメラが向いている方向に方向ベクトルを合わせる
 		player_info.m_nor_speed.x = m_camera->GetObjInfo()->m_forward.x / Calculation::Length(m_camera->GetObjInfo()->m_forward.x, m_camera->GetObjInfo()->m_forward.z);
@@ -103,11 +102,11 @@ void Player::Move()
 	}
 
 	//!プレイヤーが移動している間
-	if (player_info.m_move == true)
+	if (player_info.m_is_movement == true)
 	{
 		player_info.m_timer += 0.001f;
 
-		player_info.m_speed = player_info.m_setspeed + player_info.m_a * player_info.m_timer;
+		player_info.m_speed = player_info.m_setspeed + player_info.m_acceleration * player_info.m_timer;
 
 		//player_info.m_timer++;
 		////!
@@ -121,8 +120,8 @@ void Player::Move()
 		if (player_info.m_speed <= 0.01f)
 		{
 			player_info.m_speed = 0.0f;  //!移動スピードを0に
-			player_info.m_turnend = true;  //!ターン終了
-			player_info.m_move = false;  //!移動終了
+			player_info.m_is_turnend = true;  //!ターン終了
+			player_info.m_is_movement = false;  //!移動終了
 			player_info.m_timer = 0;
 			player_info.m_truncounter++; //!ターン数加算
 		}
@@ -301,22 +300,22 @@ void Player::HitStop()
 			|| Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
 		{
 			//!摩擦係数を増やす
-			player_info.m_fa = 1.0f;
+			player_info.m_friction = 1.0f;
 		}
 		else
 		{
-			player_info.m_fa = 0.4f;
+			player_info.m_friction = 0.4f;
 		}
 	}
 
-	player_info.m_a = -player_info.m_fa * 9.8f; //!摩擦係数
+	player_info.m_acceleration = -player_info.m_friction * 9.8f; //!摩擦係数
 }
 
 //!ゴール当たり判定関数
 void Player::HitGoal()
 {
 	//!ターン終了時に当たっているかどうかを判定
-	if (player_info.m_turnend == true)
+	if (player_info.m_is_turnend == true)
 	{
 		//!スコアを更新
 		Score::Instance()->AddGameScore(player_info.m_score_counter);
@@ -533,7 +532,7 @@ void Player::ResetPos()
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos_x, -29.0f, m_player_info_copy.pos_z); //!座標
+		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], -29.0f, m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();

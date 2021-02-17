@@ -41,6 +41,7 @@ FBXMeshData FbxController::LoadFbxMesh(std::string key_, const char* pFilename_)
 		return m_MeshData[key_];
 	}
 	m_MeshData[key_] = m_Fbx->LoadFbx(pFilename_);
+
 	return m_MeshData[key_];
 }
 
@@ -61,7 +62,6 @@ void FbxController::LoadFbx()
 	LoadFbxMesh("circleblock", "Res/FBX/Circle/CircleBlock.fbx");
 
 	LoadFbxMesh("direction", "Res/FBX/Direction.fbx");
-
 }
 
 //!メッシュデータ解放関数

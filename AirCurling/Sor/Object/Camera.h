@@ -27,26 +27,21 @@ private:
 
 		float m_speed;   //!移動スピード
 
-		bool m_shotmode; //!打つモードかどうか
+		bool m_is_shotmode; //!打つモードかどうか
 
 		bool m_operation; //!操作可能フラグ
 
 	}m_camerainfo;
 
 	//!外部データ保存用構造体
-	struct ObjectInfoCopy
+	struct CameraExternalInfo
 	{
 		//!座標
-		float pos_x;  
-		float pos_y;   
-		float pos_z;   
-
+		float pos[3];
 		//!サイズ
-		float eye_pos_x; 
-		float eye_pos_y; 
-		float eye_pos_z; 
-
-		float packup;          //!パックの上にカメラを配置するよう
+		float eye_pos[3]; 
+		//!パックの上にカメラを配置するよう
+		float packup;          
 
 	}m_camera_info_copy;
 

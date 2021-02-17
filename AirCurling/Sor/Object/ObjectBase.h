@@ -7,6 +7,13 @@
 #include <vector>
 #include <string>
 
+enum ARRAY_DATA
+{
+	X,
+	Y,
+	Z
+};
+
 /**
 *@clss   オブジェクトベースクラス
 */

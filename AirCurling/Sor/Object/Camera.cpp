@@ -17,15 +17,15 @@ void Camera::Init(std::string stage_id_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&m_camera_info_copy, sizeof(ObjectInfoCopy), 1, fp);
+		fread(&m_camera_info_copy, sizeof(CameraExternalInfo), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
 	}
 
-	m_camerainfo.m_pos = D3DXVECTOR3(m_camera_info_copy.pos_x, m_camera_info_copy.pos_y, m_camera_info_copy.pos_z);   //!座標
+	m_camerainfo.m_pos = D3DXVECTOR3(m_camera_info_copy.pos[ARRAY_DATA::X], m_camera_info_copy.pos[ARRAY_DATA::Y], m_camera_info_copy.pos[ARRAY_DATA::Z]);   //!座標
 
-	m_camerainfo.m_eye_pos = D3DXVECTOR3(m_camera_info_copy.eye_pos_x, m_camera_info_copy.eye_pos_y, m_camera_info_copy.eye_pos_z); //!注視点
+	m_camerainfo.m_eye_pos = D3DXVECTOR3(m_camera_info_copy.eye_pos[ARRAY_DATA::X], m_camera_info_copy.eye_pos[ARRAY_DATA::Y], m_camera_info_copy.eye_pos[ARRAY_DATA::Z]); //!注視点
 
 	m_camerainfo.m_camera_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f); //!上向きベクトル
 
@@ -35,7 +35,7 @@ void Camera::Init(std::string stage_id_)
 
 	m_camerainfo.m_packup = m_camera_info_copy.packup; //!パックの位置からどれだけ離れているか
 
-	m_camerainfo.m_shotmode = false;  //!打つモードかどうか
+	m_camerainfo.m_is_shotmode = false;  //!打つモードかどうか
 
 	D3DXMatrixIdentity(&m_camerainfo.mat_view);
 }
@@ -98,7 +98,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 	ModeChange(player_pos_);
 
 	//!shotモード(打つ)時
-	if (m_camerainfo.m_shotmode == true)
+	if (m_camerainfo.m_is_shotmode == true)
 	{
 		//!座標更新(プレイヤーの上についてくる形)
 		m_camerainfo.m_pos.x = player_pos_.x;
@@ -162,16 +162,16 @@ void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 	//!切り替えキーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
 	{
-		if (m_camerainfo.m_shotmode == false)
+		if (m_camerainfo.m_is_shotmode == false)
 		{
-			m_camerainfo.m_shotmode = true;
+			m_camerainfo.m_is_shotmode = true;
 		}
 		else
 		{
-			m_camerainfo.m_shotmode = false;
+			m_camerainfo.m_is_shotmode = false;
 
 			m_camerainfo.m_pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
-			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_info_copy.eye_pos_y, player_pos_.z + 1.0f); //!注視点
+			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_info_copy.eye_pos[ARRAY_DATA::Y], player_pos_.z + 1.0f); //!注視点
 			m_camerainfo.m_eye_pos.y = -50.0f; //!真下を向くように設定
 
 		}

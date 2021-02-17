@@ -17,10 +17,10 @@ public:
 protected:
 	int m_ui_num;
 
-	struct UIInfoCopy
+	struct UIExternalInfo
 	{
-		float pos_x;   //!座標
-		float pos_y;   //!座標
+		float pos_x;  //!X座標
+		float pos_y;  //!Y座標
 	};
 };
 

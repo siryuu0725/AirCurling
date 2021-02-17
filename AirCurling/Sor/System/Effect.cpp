@@ -111,7 +111,7 @@ void Effect::EndEffect()
 void Effect::UpdateEffect(Camera* camera_)
 {
 	//!Shotモード時
-	if (camera_->GetObjInfo()->m_shotmode == true)
+	if (camera_->GetObjInfo()->m_is_shotmode == true)
 	{
 		e_camera_pos.X = camera_->GetObjInfo()->m_pos.x;
 		e_camera_pos.Y = camera_->GetObjInfo()->m_pos.y;

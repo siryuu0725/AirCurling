@@ -14,7 +14,7 @@ void GameUI::Init()
 		fread(&m_ui_num, sizeof(m_ui_num), 1, fp);
 
 		//!書き込む
-		fread(&m_gameui_info_copy, sizeof(UIInfoCopy), m_ui_num, fp);
+		fread(&m_gameui_info_copy, sizeof(UIExternalInfo), m_ui_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -51,7 +51,7 @@ void GameUI::Init()
 	m_game_ui_info.m_one_score = 0; //!スコア1の位保存用
 	m_game_ui_info.m_ten_score = 0; //!スコア10の位保存用
 
-	m_game_ui_info.m_shotmode = false; //!shot(打つ)モード切り替えフラグ
+	m_game_ui_info.m_is_shotmode = false; //!shot(打つ)モード切り替えフラグ
 
 	m_game_ui_info.m_stoptimer = 0; //!開始演出の文字が止まる演出時間
 
@@ -103,7 +103,7 @@ void GameUI::SetUpBuffer()
 	}
 
 	//!打つとき(shotモードの時)
-	if (m_game_ui_info.m_shotmode == true)
+	if (m_game_ui_info.m_is_shotmode == true)
 	{
 		Graphics::Instance()->DrawTexture(&m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGaugeFlame], m_game_ui_info.m_ui_pos[(int)GameUICategory::ShotGaugeFlame]);
 		Graphics::Instance()->DrawTexture(&m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGauge], m_game_ui_info.m_ui_pos[(int)GameUICategory::ShotGauge]);
@@ -174,7 +174,7 @@ void GameUI::GaugeStop(Player* player_)
 
 	//!スペースキーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::SPACE_KEY) && m_game_ui_info.m_gauge_stop == false
-		&& m_game_ui_info.m_shotmode == true)
+		&& m_game_ui_info.m_is_shotmode == true)
 	{
 		m_game_ui_info.m_gauge_speed = 0.0f; //!バーの移動スピードを0に
 		m_game_ui_info.m_add_speed = ADD_SPEED_POWER * m_game_ui_info.m_gauge_pos; //!プレイヤーの移動速度を設定
@@ -197,7 +197,7 @@ void GameUI::GaugeStop(Player* player_)
 void GameUI::UpdateTurn(Player* player_)
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->m_turnend == true)
+	if (player_->GetObjInfo()->m_is_turnend == true)
 	{
 		//!ターン数加算
 		m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] += 0.1f;
@@ -224,7 +224,7 @@ void GameUI::UpdateTurn(Player* player_)
 void GameUI::AddScore(Player* player_)
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->m_turnend == true)
+	if (player_->GetObjInfo()->m_is_turnend == true)
 	{
 		//!スコアの1の位を算出
 		m_game_ui_info.m_one_score = Score::Instance()->GetNowScore() % 10;
@@ -249,13 +249,13 @@ void GameUI::ModeChange()
 	//!モード切替キーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
 	{
-		if (m_game_ui_info.m_shotmode == false)
+		if (m_game_ui_info.m_is_shotmode == false)
 		{
-			m_game_ui_info.m_shotmode = true;
+			m_game_ui_info.m_is_shotmode = true;
 		}
 		else
 		{
-			m_game_ui_info.m_shotmode = false;
+			m_game_ui_info.m_is_shotmode = false;
 		}
 	}
 }

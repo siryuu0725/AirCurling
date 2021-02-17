@@ -28,7 +28,7 @@ void GameScene::SetUpBuffer()
 	m_gmae_ui->SetUpBuffer();
 
 	//!ポーズ中のみ
-	if (m_pose == true)
+	if (m_is_pose == true)
 	{
 		m_pose_ui->SetUpBuffer();
 	}
@@ -109,7 +109,7 @@ void GameScene::UpdateThreadStep()
 void GameScene::MainStep()
 {
 	//!ポーズ中出ない時
-	if (m_pose == false)
+	if (m_is_pose == false)
 	{
 		//!オブジェクトの更新
 		ObjectUpdate();
@@ -128,7 +128,7 @@ void GameScene::MainStep()
 		//!ポーズ中、「つづける」が押された場合
 		if (m_pose_ui->GetGameUIInfo()->m_continue == true)
 		{
-			m_pose = false;
+			m_is_pose = false;
 		}
 		//!ポーズ中、「おわる」が押された場合
 		else if (m_pose_ui->GetGameUIInfo()->m_end == true)
@@ -145,7 +145,7 @@ void GameScene::MainStep()
 		//!ポーズ中、「つづける」が押された場合
 		if (m_pose_ui->GetGameUIInfo()->m_help == false)
 		{
-			m_pose = (m_pose == true) ? false : true;
+			m_is_pose = (m_is_pose == true) ? false : true;
 		}
 		
 	}
