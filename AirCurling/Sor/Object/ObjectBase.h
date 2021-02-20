@@ -45,7 +45,7 @@ protected:
 		std::string m_key;  //!描画用キー
 
 		float m_width;    //!横幅
-		float m_height;	//!縦幅
+		float m_height;	 //!縦幅
 
 		float m_radius;   //!半径
 

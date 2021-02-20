@@ -72,7 +72,7 @@ void Camera::Update(D3DXVECTOR3 player_pos_)
 	Graphics::Instance()->GetD3DDevice()->SetTransform(D3DTS_PROJECTION, &matProj);
 	//!射影座標変換用の行列算出 endMove();
 
-	if (m_camerainfo.m_operation == true)
+	if (m_camerainfo.m_is_operation == true)
 	{
 		Move(player_pos_);
 	}

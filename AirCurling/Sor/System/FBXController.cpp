@@ -36,10 +36,6 @@ FbxController::~FbxController()
 //!Meshデータセット関数
 FBXMeshData FbxController::LoadFbxMesh(std::string key_, const char* pFilename_)
 {
-	if (HasKey(key_))
-	{
-		return m_MeshData[key_];
-	}
 	m_MeshData[key_] = m_Fbx->LoadFbx(pFilename_);
 
 	return m_MeshData[key_];
@@ -67,14 +63,19 @@ void FbxController::LoadFbx()
 //!メッシュデータ解放関数
 void FbxController::ReleaseFbxMesh(std::string key_)
 {
-	m_Fbx->ReleaseFbxMesh(&m_MeshData[key_]);
+	if (&m_MeshData[key_] == nullptr)return;
+
+	m_Fbx->ReleaseModel(&m_MeshData[key_].fbxinfo);
 }
 
 //!Fbfファイル描画関数
 void FbxController::DrawFbx(std::string key_, D3DXMATRIX& mat_world_)
 {
 	m_MeshData[key_].fbxinfo.world = mat_world_;
-	m_Fbx->RenderFbxMesh(&m_MeshData[key_]);
+
+	if (&m_MeshData[key_] == nullptr)return;
+
+	m_Fbx->DrawModel(&m_MeshData[key_].fbxinfo);
 }
 
 

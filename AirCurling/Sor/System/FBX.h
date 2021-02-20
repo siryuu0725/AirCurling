@@ -28,46 +28,34 @@ struct Bone
 	D3DXMATRIX	offset;
 	D3DXMATRIX	transform;
 };
-//マテリアルの情報
+//!マテリアルの情報
 struct MaterialData
 {
-	/* テクスチャ */
-	Graphics::TEXTURE_DATA textureData;
-
-	/* マテリアル */
-	D3DMATERIAL9 material;
+	Graphics::TEXTURE_DATA textureData; //!テクスチャ
+	D3DMATERIAL9 material;  //!マテリアル
 };
 
-//メッシュの情報
+//!メッシュの情報
 struct MeshData {
-	/* ポリゴンの数 */
-	int polygonCount;
+	int polygonCount; //!ポリゴンの数
 
-	/* 頂点の数 */
-	int vertexCount;
+	unsigned int vertexCount; //!頂点の数
 
-	/* 頂点インデックスの数 */
-	int indexCount;
+	int indexCount; //!頂点インデックスの数
 
-	/* 1頂点辺りのサイズ */
-	int vertexStride;
+	int vertexStride; //!1頂点辺りのサイズ
 
-	/* マテリアル番号 */
-	int materialIndex;
+	int materialIndex; //!マテリアル番号
 
-	int uvSetCount;
-	/* 頂点 */
-	VERTEX_3D* vertex;
+	VERTEX_3D* vertex; //!頂点
 
-	/* 頂点バッファ */
-	IDirect3DVertexBuffer9* pVB;
+	IDirect3DVertexBuffer9* pVB; //!頂点バッファ
 
-	/* インデックスバッファ */
-	IDirect3DIndexBuffer9* pIB;
+	IDirect3DIndexBuffer9* pIB; //!インデックスバッファ 
 };
 static const int BONE_MAX = 256;
 
-//	アニメーション
+//!アニメーション
 struct Motion
 {
 	Motion()
@@ -75,59 +63,36 @@ struct Motion
 		ZeroMemory(pKey, sizeof(pKey));
 	}
 
-	UINT		numFrame;		// フレーム数	
-	D3DXMATRIX* pKey[BONE_MAX];	// キーフレーム
+	UINT		numFrame;		//!フレーム数	
+	D3DXMATRIX* pKey[BONE_MAX];	//!キーフレーム
 };
 
 
 
-//FBXの情報
+//!FBXの情報
 struct FbxInfo {
-	/* メッシュ */
-	MeshData* pMesh;
+	MeshData* pMesh; //!メッシュ
 
-	/* メッシュの数 */
-	int meshcount;
+	unsigned int meshcount; //!メッシュの数 
 
-	/* マテリアル */
-	MaterialData* pMaterial;
+	MaterialData* pMaterial; //!マテリアル
 
-	/* マテリアルの数 */
-	int materialcount;
+	unsigned int materialcount; //!マテリアルの数
 
-	/* ボーン情報 */
-	Bone bone[BONE_MAX];
-	int bonecount;
+	Bone bone[BONE_MAX]; //!ボーン情報
+	unsigned int bonecount;
 
-	/* 開始フレーム */
-	int	startFrame;
+	int	startFrame; //!開始フレーム
 
-	/* モーション */
-	std::map<std::string, Motion>* pMotion;
+	std::map<std::string, Motion>* pMotion; //!モーション
 
-	/* ワールドマトリックス */
-	D3DXMATRIX	world;
+	D3DXMATRIX	world; //!ワールドマトリックス
 };
 
 struct FBXMeshData
 {
 	FbxInfo fbxinfo;
-
-	/* モーション名 */
-	char	motion[64];
-
-	/* フレーム */
-	float	frame;
 };
-
-
-
-enum class Object
-{
-	PLAYER,
-	MaxObject
-};
-
 
 /**
 *@clss  FBXファイルクラス
@@ -139,59 +104,79 @@ public:
 	Fbx() {}
 	~Fbx() {}
 
-	//FBX準備
-	// Keyで読み込むモデルを設定する
+	/**
+	 * @brief  FBXファイル読み込み関数
+	 * @param (file_name) ファイルパス
+	 * @detail 読み込んだファイルのメッシュデータを返す
+	 */
 	FBXMeshData LoadFbx(const char* file_name);
 
+	/**
+	 * @brief  メッシュデータ解析関数
+	 * @param (pMeshData_) メッシュデータ
+	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 * @detail 頂点、法線、UV情報などの解析を行う
+	 */
 	bool LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_);
 
-	void ReleaseFbxMesh(FBXMeshData* pData_);
-
+	/**
+	 * @brief  ポリゴン情報取得関数
+	 * @param (pMeshData_) メッシュデータ
+	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 */
 	void GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_);
-	//頂点情報取得
+
+	/**
+	 * @brief  頂点情報取得関数
+	 * @param (pMeshData_) メッシュデータ
+	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 */
 	void GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_);
-	//法線情報取得
+
+	/**
+	 * @brief 法線情報取得関数
+	 * @param (pMeshData_) メッシュデータ
+	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 */
 	void GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_);
-	//UV座標の取得
+	
+	/**
+	 * @brief  UV情報取得関数
+	 * @param (pMeshData_) メッシュデータ
+	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 */
 	void GetUV(MeshData* pMeshData_, FbxMesh* pMesh_);
-	//カラー取得
-	void GetColor(MeshData* pMeshData_, FbxMesh* pMesh_);
 
-	int FindBone(FbxInfo* pModel_, const char* pName_);
-
-	void GetBone(FbxInfo* pModel_, MeshData* pMeshData_, FbxMesh* pMesh_);
-
-	void GetKeyFrames(FbxInfo* pModel_, std::string name_, int bone_, FbxNode* pBoneNode_);
-
-	void Play(FBXMeshData* pData_, std::string name_);
-	//テクスチャ情報取得
+	/**
+	 * @brief テクスチャ情報取得
+	 * @param (stage_id_) 選択ステージ名(例"Stage1")
+	 */
 	void GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_);
-	//アニメーション無し
-	void RenderFbxMesh(FBXMeshData* pData_);
 
+	/**
+	 * @brief  FBXモデル描画関数
+	 * @param (pModel) 描画させるFBXモデル情報
+	 */
 	void DrawModel(FbxInfo* pModel);
 
-	void Skinning(FBXMeshData* pData_);
-
-	void MatrixInterporate(D3DXMATRIX& out_, D3DXMATRIX& A_, D3DXMATRIX B_, float rate_);
-
+	/**
+	 * @brief  メッシュデータ解放関数
+	 * @param (pModel) 解放するFBXモデル情報
+	 */
 	void ReleaseModel(FbxInfo* pModel);
 
-	void Animate(FBXMeshData* pData_, float sec_);
 
-	void ResetAnimate(FBXMeshData* pData_);
-
-	// 頂点バッファの生成
+	/**
+	 * @brief  頂点バッファの生成関数
+	 */
 	IDirect3DVertexBuffer9* CreateVertexBuffer(const void* pVertices_, UINT size_);
-	// インデックスバッファの生成
+
+	/**
+	 * @brief  インデックスバッファの生成関数
+	 */
 	IDirect3DIndexBuffer9* CreateIndexBuffer(const UINT16* pIndeces_, UINT size_);
 
-
 private:
-
-	D3DXVECTOR3 m_Pos;
-	D3DXVECTOR3 m_Scale;
-
 	char m_RootPath[MAX_PATH]; // ファイルのパス
 };
 

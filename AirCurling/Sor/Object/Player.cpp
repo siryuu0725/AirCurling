@@ -49,7 +49,7 @@ void Player::Init(std::string stage_id_)
 	player_info.m_truncounter = 0;    //!進行ターン数
 	player_info.m_reflectcounter = 0; //!反射回数
 	player_info.m_is_turnend = false;    //!1ターン終了フラグ
-	player_info.m_goal = false;       //!ゴールフラグ
+	player_info.m_is_goal = false;       //!ゴールフラグ
 	player_info.m_end = false;        //!ゲームエンドフラグ
 	player_info.m_score_counter = m_player_info_copy.score_counter;
 
@@ -336,7 +336,7 @@ void Player::HitGoal()
 			player_info.m_score_counter = -3;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
-			player_info.m_goal = true;
+			player_info.m_is_goal = true;
 
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
@@ -350,7 +350,7 @@ void Player::HitGoal()
 			player_info.m_score_counter = -2;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
-			player_info.m_goal = true;
+			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
@@ -363,14 +363,14 @@ void Player::HitGoal()
 			player_info.m_score_counter = -1;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
-			player_info.m_goal = true;
+			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
 		if (player_info.m_truncounter >= GAME_TRUN)
 		{
-			player_info.m_goal = true;
+			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
@@ -554,7 +554,7 @@ void Player::StartMove()
 {
 	//!プレイヤーが上からステージ床に当たるまで
 	if (player_info.m_pos.y > -29.0f
-		&& player_info.m_goal == false)
+		&& player_info.m_is_goal == false)
 	{
 		player_info.m_pos.y -= player_info.m_speed;
 

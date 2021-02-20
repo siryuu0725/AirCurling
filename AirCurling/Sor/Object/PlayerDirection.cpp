@@ -31,7 +31,7 @@ void PlayerDirection::Init()
 void PlayerDirection::Update()
 {
 	//!カメラが操作できるようなった時(ゲーム開始演出終了後)
-	if (m_camera->GetObjInfo()->m_operation == true)
+	if (m_camera->GetObjInfo()->m_is_operation == true)
 	{
 		//!モード切替判定
 		ModeChange();
@@ -74,11 +74,9 @@ void PlayerDirection::Rote()
 
 		m_direction_info.m_pos = Calculation::Rote(m_direction_info.m_old_pos, m_direction_info.m_player_pos, m_direction_info.m_pos_rote_r);
 
-
 		m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rote, 0.0f);
 		m_direction_info.m_mat_world = Calculation::Matrix(m_direction_info.m_pos, m_direction_info.m_scale, m_direction_info.m_angle);
 	}
-
 }
 
 //!モード切替関数

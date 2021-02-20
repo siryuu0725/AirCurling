@@ -44,8 +44,8 @@ private:
 			m_truncounter(0),
 			m_score_counter(0),
 			m_is_turnend(false),
-			m_start(false),
-			m_goal(false), 
+			m_is_start(false),
+			m_is_goal(false), 
 			m_end(false),
 			m_is_movement(false),
 			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
@@ -72,8 +72,8 @@ private:
 		__int16 m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
-		bool m_start; //!ゲームスタート
-		bool m_goal;	//!ゴール時
+		bool m_is_start; //!ゲームスタート
+		bool m_is_goal;	//!ゴール時
 		bool m_end;	//!ゲームエンドフラグ
 
 		bool m_is_movement;

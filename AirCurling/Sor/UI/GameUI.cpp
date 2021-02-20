@@ -145,7 +145,7 @@ void GameUI::Update(Player* player_, Camera* camera_)
 		AddScore(player_);    //!スコア更新
 
 		//!プレイヤーがゴールした場合
-		if (player_->GetObjInfo()->m_goal == true)
+		if (player_->GetObjInfo()->m_is_goal == true)
 		{
 			m_update_step = UpdateStep::EndProduction;
 			break;

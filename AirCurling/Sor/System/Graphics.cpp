@@ -62,8 +62,8 @@ bool Graphics::CreateGraphicsDevice(D3DPRESENT_PARAMETERS* present_param_)
 	present_param_->EnableAutoDepthStencil = true;
 	present_param_->MultiSampleType = D3DMULTISAMPLE_NONE;
 	present_param_->MultiSampleQuality = 0;
-	present_param_->BackBufferWidth = 1920.0f;
-	present_param_->BackBufferHeight = 1080.0f;
+	present_param_->BackBufferWidth = static_cast<UINT>(1920.0f);
+	present_param_->BackBufferHeight = static_cast<UINT>(1080.0f);
 	// デプスとステンシルバッファのフォーマット設定
 	present_param_->AutoDepthStencilFormat = D3DFMT_D24S8;
 

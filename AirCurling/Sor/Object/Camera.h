@@ -29,7 +29,7 @@ private:
 
 		bool m_is_shotmode; //!打つモードかどうか
 
-		bool m_operation; //!操作可能フラグ
+		bool m_is_operation; //!操作可能フラグ
 
 	}m_camerainfo;
 
@@ -87,7 +87,7 @@ public:
      * @detail カメラの操作フラグを切り替える
 	 * @detail UIの開始演出時に使用
      */
-	void SetCameraOperation(bool operation_) { m_camerainfo.m_operation = operation_; }
+	void SetCameraOperation(bool operation_) { m_camerainfo.m_is_operation = operation_; }
 
 	/**
  　　* @brief  オブジェクト情報Getter

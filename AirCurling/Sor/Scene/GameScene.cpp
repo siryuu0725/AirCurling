@@ -72,7 +72,6 @@ void GameScene::InitStep()
 	if (m_player == nullptr) { m_player = new Player(m_camera, m_block_controller, m_floor, m_debuf, m_goal); }
 	if (m_player_direction == nullptr) { m_player_direction = new PlayerDirection(m_player,m_camera, m_gmae_ui); }
 
-
 	//!オブジェクト初期化
 	ObjectInit();
 
