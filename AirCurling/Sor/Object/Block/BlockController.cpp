@@ -99,7 +99,7 @@ void BlockController::LoadCircleBlockExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void BlockController::SetUpBuffer()
+void BlockController::Draw()
 {
 	//!円形ブロック
 	for (__int16 i = 0; i < m_circle_block.size(); i++)

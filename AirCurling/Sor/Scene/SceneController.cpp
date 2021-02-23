@@ -54,16 +54,10 @@ void SceneController::Draw()
 		Graphics::Instance()->DrawStart();
 
 		//!描画情報送信関数
-		SetUpBuffer();
+		m_scene->Draw();
 
 		Graphics::Instance()->DrawEnd();
 	}
-}
-
-//!描画情報送信関数
-void SceneController::SetUpBuffer()
-{
-	m_scene->SetUpBuffer();
 }
 
 //!現在シーンSetter

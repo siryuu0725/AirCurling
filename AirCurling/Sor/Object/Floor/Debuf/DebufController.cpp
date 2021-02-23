@@ -99,18 +99,18 @@ void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void DebufController::SetUpBuffer()
+void DebufController::Draw()
 {
 	//!リセット床
 	for (__int16 i = 0; i < m_reset_floor.size(); i++)
 	{
-		m_reset_floor[i]->SetUpBuffer();
+		m_reset_floor[i]->Draw();
 	}
 
 	//!スピード減衰床
 	for (__int16 i = 0; i < m_stop_floor.size(); i++)
 	{
-		m_stop_floor[i]->SetUpBuffer();
+		m_stop_floor[i]->Draw();
 	}
 }
 

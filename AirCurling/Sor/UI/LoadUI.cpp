@@ -29,7 +29,7 @@ void LoadUI::LoadTex()
 }
 
 //!描画情報送信関数
-void LoadUI::SetUpBuffer()
+void LoadUI::Draw()
 {
 	Graphics::Instance()->DrawRoteTexture(&m_load_ui_info.m_ui_tex[(int)LoadUICategory::RoteTex], m_load_ui_info.left_top_pos, m_load_ui_info.right_top_pos, m_load_ui_info.left_down_pos, m_load_ui_info.right_down_pos);
 	Graphics::Instance()->DrawTexture(&m_load_ui_info.m_ui_tex[(int)LoadUICategory::NowLoad], m_load_ui_info.m_nowload_pos);

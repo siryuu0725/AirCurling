@@ -36,7 +36,7 @@ void SkyDome::LoadSkyDomeExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void SkyDome::SetUpBuffer()
+void SkyDome::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_skydome_info.m_key, m_skydome_info.m_mat_world);
 }
@@ -85,7 +85,7 @@ void SkyFloor::LoadSkyFloorExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void SkyFloor::SetUpBuffer()
+void SkyFloor::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_skyfloor_info.m_key, m_skyfloor_info.m_mat_world);
 }

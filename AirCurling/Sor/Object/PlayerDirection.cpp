@@ -42,7 +42,7 @@ void PlayerDirection::Update()
 }
 
 //!描画情報送信関数
-void PlayerDirection::SetUpBuffer()
+void PlayerDirection::Draw()
 {
 	if (m_ui->GetGameUIInfo()->m_gauge_stop == false
 		&& m_direction_info.m_is_shotmode == true)

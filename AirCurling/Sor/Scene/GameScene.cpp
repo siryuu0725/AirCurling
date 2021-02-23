@@ -12,25 +12,25 @@ GameScene::GameScene()
 }
 
 //!描画情報送信まとめ関数
-void GameScene::SetUpBuffer()
+void GameScene::Draw()
 {
 	//ロード画面描画
 	if (WaitForSingleObject(thread_h, 0) != WAIT_OBJECT_0)
 	{
-		m_load_ui->SetUpBuffer();
+		m_load_ui->Draw();
 		return;
 	}
 
 	//!オブジェクト
-	ObjectSetUpBuffer();
+	ObjectDraw();
 
 	//!ゲームUI
-	m_gmae_ui->SetUpBuffer();
+	m_gmae_ui->Draw();
 
 	//!ポーズ中のみ
 	if (m_is_pose == true)
 	{
-		m_pose_ui->SetUpBuffer();
+		m_pose_ui->Draw();
 	}
 
 	//!エフェクト描画開始
@@ -196,16 +196,16 @@ void GameScene::ObjectUpdate()
 }
 
 //!オブジェクト描画情報送信関数
-void GameScene::ObjectSetUpBuffer()
+void GameScene::ObjectDraw()
 {
-	m_block_controller->SetUpBuffer();
-	m_player->SetUpBuffer();
-	m_player_direction->SetUpBuffer();
-	m_sky_dome->SetUpBuffer();
-	m_sky_floor->SetUpBuffer();
-	m_floor->SetUpBuffer();
-	m_debuf->SetUpBuffer();
-	m_goal->SetUpBuffer();
+	m_block_controller->Draw();
+	m_player->Draw();
+	m_player_direction->Draw();
+	m_sky_dome->Draw();
+	m_sky_floor->Draw();
+	m_floor->Draw();
+	m_debuf->Draw();
+	m_goal->Draw();
 }
 
 //!オブジェクト解放関数

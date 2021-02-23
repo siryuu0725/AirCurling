@@ -59,7 +59,7 @@ void TitleUI::LoadTex()
 }
 
 //!描画情報送信関数
-void TitleUI::SetUpBuffer()
+void TitleUI::Draw()
 {
 	//!背景
 	Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::BG], m_title_ui_info.m_ui_pos[(int)TitleUICategory::BG]);

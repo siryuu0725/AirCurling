@@ -38,7 +38,7 @@ void Goal::LoadGoalExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void Goal::SetUpBuffer()
+void Goal::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_goal_info.m_key, m_goal_info.m_mat_world);
 }

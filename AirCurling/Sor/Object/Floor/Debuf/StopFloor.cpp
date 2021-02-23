@@ -16,7 +16,7 @@ StopFloor::StopFloor(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3 angle_, f
 }
 
 //!描画情報送信関数
-void StopFloor::SetUpBuffer()
+void StopFloor::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_stop_floor_info.m_key, m_stop_floor_info.m_mat_world);
 }

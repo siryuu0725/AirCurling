@@ -141,7 +141,7 @@ void PoseUI::LoadTex()
 }
 
 //!描画情報送信関数
-void PoseUI::SetUpBuffer()
+void PoseUI::Draw()
 {
 	Graphics::Instance()->DrawTexture(&m_pose_ui_info.m_ui_tex[(int)HelpUICategory::BG], m_pose_ui_info.m_ui_pos[(int)HelpUICategory::BG]);
 	Graphics::Instance()->DrawTexture(&m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Continue], m_pose_ui_info.m_ui_pos[(int)HelpUICategory::Continue]);

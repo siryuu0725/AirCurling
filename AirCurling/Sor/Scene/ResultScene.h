@@ -50,7 +50,7 @@ public:
 	 * @brief  描画情報送信まとめ関数
 	 * @detail UIの描画情報送信処理を行う
 	 */
-	virtual void SetUpBuffer()override;
+	virtual void Draw()override;
 
 	/**
 	 * @brief  インスタンス返還関数

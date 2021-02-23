@@ -35,7 +35,7 @@ public:
 	 * @brief  描画情報送信まとめ関数
 	 * @detail 各オブジェクト、エフェクトなどの描画情報送信処理を行う
 	 */
-	virtual void SetUpBuffer()override;
+	virtual void Draw()override;
 
 #pragma region 各ステップ処理
 
@@ -82,7 +82,7 @@ public:
  　　* @brief  オブジェクト描画情報送信関数
  　　* @detail 各オブジェクトの描画情報送信を行う
  　　*/
-	void ObjectSetUpBuffer();
+	void ObjectDraw();
 
 	/**
  　　* @brief  オブジェクト解放関数

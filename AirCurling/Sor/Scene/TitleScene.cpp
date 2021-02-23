@@ -72,9 +72,9 @@ void TitleScene::EndStep()
 }
 
 //!描画情報送信まとめ関数
-void TitleScene::SetUpBuffer()
+void TitleScene::Draw()
 {
-	m_ui->SetUpBuffer();
+	m_ui->Draw();
 }
 
 //!インスタンス返還関数

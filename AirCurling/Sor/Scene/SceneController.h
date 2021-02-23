@@ -42,12 +42,6 @@ public:
 	void Update();
 
 	/**
-     * @brief   描画情報送信関数
-     * @detail  Fbx管理クラスにオブジェクト情報を送る
-     */
-	void SetUpBuffer();
-
-	/**
 	 * @brief   描画関数
 	 */
 	void Draw();

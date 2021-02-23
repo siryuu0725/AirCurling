@@ -65,7 +65,7 @@ void Player::LoadPlayerExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void Player::SetUpBuffer()
+void Player::Draw()
 {
 	FbxController::Instance()->DrawFbx(player_info.m_key, player_info.m_mat_world);
 }

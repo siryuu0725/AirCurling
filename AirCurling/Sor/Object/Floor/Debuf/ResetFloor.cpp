@@ -17,7 +17,7 @@ ResetFloor::ResetFloor(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, float radius_, std:
 
 
 //!描画情報送信関数
-void ResetFloor::SetUpBuffer()
+void ResetFloor::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_reset_floor_info.m_key, m_reset_floor_info.m_mat_world);
 }

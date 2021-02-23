@@ -45,7 +45,7 @@ void ResultUI::LoadTex()
 }
 
 //!描画情報送信関数
-void ResultUI::SetUpBuffer()
+void ResultUI::Draw()
 {
 	Graphics::Instance()->DrawTexture(&m_result_ui_info.m_ui_tex[(int)ResultUICategory::BG], m_result_ui_info.m_ui_pos[(int)ResultUICategory::BG]);
 	Graphics::Instance()->DrawFont(750, 370, m_ranking.first, Graphics::FontSize::Large, Graphics::FontColor::Red);   //!1位

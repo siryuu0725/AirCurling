@@ -39,7 +39,7 @@ void Floor::LoadFloorExternalInfo(std::string stage_str_)
 }
 
 //!描画情報送信関数
-void Floor::SetUpBuffer()
+void Floor::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_floor_info.m_key, m_floor_info.m_mat_world);
 

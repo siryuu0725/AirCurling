@@ -52,7 +52,7 @@ public:
 	 * @brief   描画情報送信関数
 	 * @detail  Fbx管理クラスにオブジェクト情報を送る
 	 */
-	void SetUpBuffer();
+	void Draw();
 
 	/**
 	 * @brief   FBXモデル解放関数

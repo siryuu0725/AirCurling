@@ -92,7 +92,7 @@ void GameUI::LoadTex()
 }
 
 //!描画情報送信関数
-void GameUI::SetUpBuffer()
+void GameUI::Draw()
 {
 	//!開始演出時のみ
 	if (m_update_step == UpdateStep::StartProduction)

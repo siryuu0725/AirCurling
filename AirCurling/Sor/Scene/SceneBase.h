@@ -53,7 +53,7 @@ public:
 	 * @brief  描画情報送信まとめ関数
 	 * @detail UIの描画情報送信処理を行う
 	 */
-	virtual void SetUpBuffer() {};
+	virtual void Draw() {};
 
 	//!シーン移行フラグGetter
 	const bool GetChangeSceneFlg()const {return m_change_scene; }

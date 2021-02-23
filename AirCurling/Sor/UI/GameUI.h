@@ -106,7 +106,7 @@ public:
 	/**
 	 * @brief  描画情報送信関数
 	 */
-	void SetUpBuffer();
+	void Draw();
 
 	/**
 	 * @brief  更新関数

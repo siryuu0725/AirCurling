@@ -10,9 +10,9 @@ ResultScene::ResultScene()
 }
 
 //!描画情報送信まとめ関数
-void ResultScene::SetUpBuffer()
+void ResultScene::Draw()
 {
-	m_ui->SetUpBuffer();
+	m_ui->Draw();
 }
 
 //! 初期化ステップ関数
