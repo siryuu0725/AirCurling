@@ -5,6 +5,27 @@
 //!初期化関数
 void TitleUI::Init()
 {
+	//!外部データ読み込み
+	LoadTitleUIExternalInfo();
+
+	for (int i = 0; i < m_ui_num; i++)
+	{
+		m_title_ui_info.m_ui_pos[i] = D3DXVECTOR2(m_titleui_info_copy[i].pos_x, m_titleui_info_copy[i].pos_y);  //!背景
+	}
+
+	m_title_ui_info.startui_flg = false;  //!ゲームシーン移行フラグ
+	m_title_ui_info.endui_flg = false;	//!終了フラグ
+	m_title_ui_info.helpui_flg = false;	//!ヘルプシーン移行フラグ
+	m_title_ui_info.m_stage_1 = false;	//!ステージ1を選んだ場合
+	m_title_ui_info.m_stage_2 = false;	//!ステージ2を選んだ場合
+
+	//!テクスチャ読み込み
+	LoadTex();
+}
+
+//!外部データ読み込み関数
+void TitleUI::LoadTitleUIExternalInfo()
+{
 	FILE* fp = nullptr;
 
 	fopen_s(&fp, "Res/UIData/TitleUIData.dat", "rb");
@@ -19,20 +40,6 @@ void TitleUI::Init()
 		/* ファイルクローズ */
 		fclose(fp);
 	}
-
-	for (int i = 0; i < m_ui_num; i++)
-	{
-		m_title_ui_info.m_ui_pos[i] = D3DXVECTOR2(m_titleui_info_copy[i].pos_x, m_titleui_info_copy[i].pos_y);  //!背景
-	}
-
-
-	m_title_ui_info.startui_flg = false;  //!ゲームシーン移行フラグ
-	m_title_ui_info.endui_flg = false;	//!終了フラグ
-	m_title_ui_info.helpui_flg = false;	//!ヘルプシーン移行フラグ
-	m_title_ui_info.m_stage_1 = false;	//!ステージ1を選んだ場合
-	m_title_ui_info.m_stage_2 = false;	//!ステージ2を選んだ場合
-
-	LoadTex();
 }
 
 //!テクスチャ読み込み関数

@@ -19,7 +19,13 @@ public:
 	 * @param (stage_id_) 選択ステージ名(例"Stage1")
 	 * @detail オブジェクト情報初期化
 	 */
-	void Init(std::string stage_id_);
+	void Init(std::string stage_str_);
+
+	/**
+	 * @brief  外部データ読み込み関数
+	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 */
+	void LoadGoalExternalInfo(std::string stage_str_);
 
 	/**
 	 * @brief  描画情報送信関数

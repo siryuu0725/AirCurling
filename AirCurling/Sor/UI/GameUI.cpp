@@ -5,29 +5,15 @@
 //!初期化関数
 void GameUI::Init()
 {
-	FILE* fp = nullptr;
-
-	fopen_s(&fp, "Res/UIData/GameUIData.dat", "rb");
-
-	if (fp != nullptr)
-	{
-		fread(&m_ui_num, sizeof(m_ui_num), 1, fp);
-
-		//!書き込む
-		fread(&m_gameui_info_copy, sizeof(UIExternalInfo), m_ui_num, fp);
-
-		/* ファイルクローズ */
-		fclose(fp);
-	}
+	//!外部データ読み込み
+	LoadGameUIExternalInfo();
 
 	for (int i = 0; i < m_ui_num; i++)
 	{
 		m_game_ui_info.m_ui_pos[i] = D3DXVECTOR2(m_gameui_info_copy[i].pos_x, m_gameui_info_copy[i].pos_y);  //!背景
 	}
 
-#pragma region テクスチャ座標初期化
-	
-
+#pragma region テクスチャUV値初期化
 	m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] = 0.1f; //!ターン数のtu値
 	m_game_ui_info.m_ui_tv[(int)GameUICategory::TurnNumber] = 1.0f;	//!ターン数のtv値
 
@@ -36,7 +22,6 @@ void GameUI::Init()
 
 	m_game_ui_info.m_ui_tu[(int)GameUICategory::Ten_Score] = 0.0f; //!スコア数10の位のtu値
 	m_game_ui_info.m_ui_tv[(int)GameUICategory::Ten_Score] = 1.0f; //!スコア数10の位のtv値
-
 #pragma endregion
 
 	m_update_step = UpdateStep::StartProduction;
@@ -67,6 +52,25 @@ void GameUI::Init()
 	//!テクスチャ読み込み
 	LoadTex();
 
+}
+
+//!外部データ読み込み関数
+void GameUI::LoadGameUIExternalInfo()
+{
+	FILE* fp = nullptr;
+
+	fopen_s(&fp, "Res/UIData/GameUIData.dat", "rb");
+
+	if (fp != nullptr)
+	{
+		fread(&m_ui_num, sizeof(m_ui_num), 1, fp);
+
+		//!書き込む
+		fread(&m_gameui_info_copy, sizeof(UIExternalInfo), m_ui_num, fp);
+
+		/* ファイルクローズ */
+		fclose(fp);
+	}
 }
 
 //!テクスチャ読み込み関数

@@ -48,6 +48,12 @@ public:
 	void Init();
 
 	/**
+     * @brief  外部データ読み込み関数
+     * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+     */
+	void LoadPoseUIExternalInfo();
+
+	/**
      * @brief  更新関数
      * @detail ポーズ画面中の当たり判定などの処理をまとめる
      */

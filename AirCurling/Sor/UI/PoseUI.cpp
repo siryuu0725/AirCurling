@@ -5,6 +5,26 @@
 //!初期化関数
 void PoseUI::Init()
 {
+	//!外部データ読み込み
+	LoadPoseUIExternalInfo();
+
+	for (int i = 0; i < m_ui_num; i++)
+	{
+		m_pose_ui_info.m_ui_pos[i] = D3DXVECTOR2(m_pose_ui_info_copy[i].pos_x, m_pose_ui_info_copy[i].pos_y);  //!背景
+	}
+
+	m_pose_ui_info.m_select = false;
+	m_pose_ui_info.m_continue = false;
+	m_pose_ui_info.m_end = false;
+	m_pose_ui_info.m_help = false;
+
+	//!テクスチャ読み込み
+	LoadTex();
+}
+
+//!外部データ読み込み関数
+void PoseUI::LoadPoseUIExternalInfo()
+{
 	FILE* fp = NULL;
 
 	fopen_s(&fp, "Res/UIData/PoseUIData.dat", "rb");
@@ -19,19 +39,6 @@ void PoseUI::Init()
 		/* ファイルクローズ */
 		fclose(fp);
 	}
-
-	for (int i = 0; i < m_ui_num; i++)
-	{
-		m_pose_ui_info.m_ui_pos[i] = D3DXVECTOR2(m_pose_ui_info_copy[i].pos_x, m_pose_ui_info_copy[i].pos_y);  //!背景
-	}
-
-	m_pose_ui_info.m_select = false;
-	m_pose_ui_info.m_continue = false;
-	m_pose_ui_info.m_end = false;
-	m_pose_ui_info.m_help = false;
-
-	//!テクスチャ読み込み
-	LoadTex();
 }
 
 //!更新関数

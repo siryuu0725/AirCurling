@@ -23,6 +23,11 @@ class CSV
 private:
 	CSV() {}
 	~CSV() {}
+
+	CSV(const CSV&);
+	CSV& operator=(const CSV&) = delete;
+
+	CSV& operator=(const CSV&&) = delete;
 public:
 	static CSV* Instance();
 	/**
@@ -64,15 +69,6 @@ private:
 	*	@return	vector型を返す(string型を格納して)
 	*/
 	std::vector<std::string> Split(std::string& str_, char delimiter_);
-
-private:
-	CSV() {}
-	~CSV() {}
-
-	CSV(const CSV&);
-	CSV& operator=(const CSV&) = delete;
-
-	CSV& operator=(const CSV&&) = delete;
 
 private:
 	static CSV* p_instance;

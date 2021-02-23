@@ -5,23 +5,10 @@
 #include "../System/Window.h"
 
 //!初期化関数
-void Camera::Init(std::string stage_id_)
+void Camera::Init(std::string stage_str_)
 {
-	FILE* fp = nullptr;
-
-	std::string stage_id = "Res/ObjectData/" + stage_id_ + "CameraData.dat";
-
-	//!ファイル読み込み
-	fopen_s(&fp, stage_id.c_str(), "rb");
-
-	if (fp != nullptr)
-	{
-		//!書き込む
-		fread(&m_camera_info_copy, sizeof(CameraExternalInfo), 1, fp);
-
-		/* ファイルクローズ */
-		fclose(fp);
-	}
+	//!外部データ読み込み
+	LoadCameraExternalInfo(stage_str_);
 
 	m_camerainfo.m_pos = D3DXVECTOR3(m_camera_info_copy.pos[ARRAY_DATA::X], m_camera_info_copy.pos[ARRAY_DATA::Y], m_camera_info_copy.pos[ARRAY_DATA::Z]);   //!座標
 
@@ -38,6 +25,26 @@ void Camera::Init(std::string stage_id_)
 	m_camerainfo.m_is_shotmode = false;  //!打つモードかどうか
 
 	D3DXMatrixIdentity(&m_camerainfo.mat_view);
+}
+
+//!外部データ読み込み関数
+void Camera::LoadCameraExternalInfo(std::string stage_str_)
+{
+	FILE* fp = nullptr;
+
+	std::string stage_id = "Res/ObjectData/" + stage_str_ + "CameraData.dat";
+
+	//!ファイル読み込み
+	fopen_s(&fp, stage_id.c_str(), "rb");
+
+	if (fp != nullptr)
+	{
+		//!書き込む
+		fread(&m_camera_info_copy, sizeof(CameraExternalInfo), 1, fp);
+
+		/* ファイルクローズ */
+		fclose(fp);
+	}
 }
 
 void Camera::Update(D3DXVECTOR3 player_pos_)

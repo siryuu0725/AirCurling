@@ -61,6 +61,12 @@ public:
 	void Init();
 
 	/**
+	 * @brief  外部データ読み込み関数
+	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 */
+	void LoadTitleUIExternalInfo();
+
+	/**
 	 * @brief  テクスチャ読み込み関数
 	 */
 	void LoadTex();

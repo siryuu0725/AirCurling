@@ -12,23 +12,10 @@ Player::Player(Camera* camera_, BlockController* block_,
 }
 
 //!初期化関数
-void Player::Init(std::string stage_id_)
+void Player::Init(std::string stage_str_)
 {
-	FILE* fp = nullptr;
-
-	std::string stage_id = "Res/ObjectData/" + stage_id_ + "PlayerData.dat";
-
-	//!ファイル読み込み
-	fopen_s(&fp, stage_id.c_str(), "rb");
-
-	if (fp != nullptr)
-	{
-		//!書き込む
-		fread(&m_player_info_copy, sizeof(PlayerExternalInfo), 1, fp);
-
-		/* ファイルクローズ */
-		fclose(fp);
-	}
+	//!外部データ読み込み
+	LoadPlayerExternalInfo(stage_str_);
 
 	player_info.m_key = "pac";  //!描画用キー
 
@@ -55,6 +42,26 @@ void Player::Init(std::string stage_id_)
 	player_info.m_is_movement = false;
 
 	player_info.m_nor_speed.y = 0.0f;
+}
+
+//!外部データ読み込み関数
+void Player::LoadPlayerExternalInfo(std::string stage_str_)
+{
+	FILE* fp = nullptr;
+
+	std::string stage_id = "Res/ObjectData/" + stage_str_ + "PlayerData.dat";
+
+	//!ファイル読み込み
+	fopen_s(&fp, stage_id.c_str(), "rb");
+
+	if (fp != nullptr)
+	{
+		//!書き込む
+		fread(&m_player_info_copy, sizeof(PlayerExternalInfo), 1, fp);
+
+		/* ファイルクローズ */
+		fclose(fp);
+	}
 }
 
 //!描画情報送信関数

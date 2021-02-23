@@ -12,7 +12,7 @@
 class SoundManager
 {
 private:
-	SoundManager() {}
+	SoundManager();
 	~SoundManager() {}
 
 public:
