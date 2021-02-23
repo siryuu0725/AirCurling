@@ -25,7 +25,7 @@ void Player::Init(std::string stage_str_)
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //!ワールド座標
 	
 	player_info.m_friction = m_player_info_copy.fa;   //!動摩擦係数
-	player_info.m_acceleration = -player_info.m_friction * 9.8f; //!加速度
+	player_info.m_acceleration = -player_info.m_friction * Gravity; //!加速度
 
 
 	player_info.m_radius = m_player_info_copy.radius;    //!半径
@@ -116,7 +116,7 @@ void Player::Move()
 	//!プレイヤーが移動している間
 	if (player_info.m_is_movement == true)
 	{
-		player_info.m_timer += 0.001f;
+		player_info.m_timer += FrameTime;
 
 		player_info.m_speed = player_info.m_setspeed + player_info.m_acceleration * player_info.m_timer;
 
@@ -129,7 +129,7 @@ void Player::Move()
 		//}
 
 		//!移動スピードが0に等しくなった場合
-		if (player_info.m_speed <= 0.01f)
+		if (player_info.m_speed <= ZeroSpeed)
 		{
 			player_info.m_speed = 0.0f;  //!移動スピードを0に
 			player_info.m_is_turnend = true;  //!ターン終了
@@ -165,9 +165,9 @@ void Player::HitController()
 	HitGoal();	//!ゴール床との当たり判定
 
 	//!反射が5回以上の行われるたびにスコアを減らす
-	if (player_info.m_reflectcounter >= 5)
+	if (player_info.m_reflectcounter >= ReflectMax)
 	{
-		Score::Instance()->AddGameScore(-5);
+		Score::Instance()->AddGameScore(ReflectScore);
 		player_info.m_reflectcounter = 0;
 	}
 }
@@ -312,15 +312,15 @@ void Player::HitStop()
 			|| Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
 		{
 			//!摩擦係数を増やす
-			player_info.m_friction = 1.0f;
+			player_info.m_friction = StopFloorFriction;
 		}
 		else
 		{
-			player_info.m_friction = 0.4f;
+			player_info.m_friction = m_player_info_copy.fa;
 		}
 	}
 
-	player_info.m_acceleration = -player_info.m_friction * 9.8f; //!摩擦係数
+	player_info.m_acceleration = -player_info.m_friction * Gravity; //!摩擦係数
 }
 
 //!ゴール当たり判定関数
@@ -374,7 +374,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
-		if (player_info.m_truncounter >= GAME_TRUN)
+		if (player_info.m_truncounter >= GameTrun)
 		{
 			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
@@ -546,7 +546,7 @@ void Player::ResetPos()
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], -29.0f, m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
+		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], PlayerPosMin_Y, m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();
@@ -559,7 +559,7 @@ void Player::ResetPos()
 void Player::StartMove()
 {
 	//!プレイヤーが上からステージ床に当たるまで
-	if (player_info.m_pos.y > -29.0f
+	if (player_info.m_pos.y > PlayerPosMin_Y
 		&& player_info.m_is_goal == false)
 	{
 		player_info.m_pos.y -= player_info.m_speed;
@@ -570,7 +570,7 @@ void Player::StartMove()
 	else
 	{
 		//!座標を正確な位置に戻す
-		player_info.m_pos.y = -29.0f;
+		player_info.m_pos.y = PlayerPosMin_Y;
 		player_info.m_speed = 0.0f;
 		player_info.m_timer = 0;
 		//!更新ステップをゲーム本編へ
@@ -582,7 +582,7 @@ void Player::StartMove()
 void Player::EndMove()
 {
 	//!プレイヤーが上に上がっていく形にするためY座標を+
-	player_info.m_pos.y += 0.1f;
+	player_info.m_pos.y += PlayerUpSpeed;
 
 	//!ワールド座標更新
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);
@@ -595,9 +595,9 @@ void Player::HitEffectStart(D3DXVECTOR3 block_pos_)
 
 	D3DXVec3Normalize(&block_vec, &block_vec);
 
-	player_info.m_efk_pos = block_vec * 1.3f + player_info.m_pos;
+	player_info.m_efk_pos = block_vec * HitEffectPosLength + player_info.m_pos;
 
-	Effect::Instance()->PlayEffect(EffectType::HitEfc, player_info.m_efk_pos.x, -29.0f, player_info.m_efk_pos.z);
+	Effect::Instance()->PlayEffect(EffectType::HitEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
 }
 
 //!落下時エフェクト開始関数
@@ -605,7 +605,7 @@ void Player::FallEffectStart()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 
-	Effect::Instance()->PlayEffect(EffectType::FallEfc, player_info.m_efk_pos.x, -29.0f, player_info.m_efk_pos.z);
+	Effect::Instance()->PlayEffect(EffectType::FallEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
 }
 
 //!リセット時エフェクト開始関数
@@ -613,7 +613,7 @@ void Player::ResetEffectStart()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 
-	Effect::Instance()->PlayEffect(EffectType::ResetEfc, player_info.m_efk_pos.x, -29.0f, player_info.m_efk_pos.z);
+	Effect::Instance()->PlayEffect(EffectType::ResetEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
 }
 
 //!ゲーム終了時エフェクト開始関数
@@ -621,8 +621,8 @@ void Player::GoalEffectStart()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 
-	Effect::Instance()->PlayEffect(EffectType::GoalEfc, player_info.m_efk_pos.x, player_info.m_efk_pos.y + 4.0f, player_info.m_efk_pos.z);
-	Effect::Instance()->PlayEffect(EffectType::GoalEfc, player_info.m_efk_pos.x, player_info.m_efk_pos.y + 10.0f, player_info.m_efk_pos.z);
+	Effect::Instance()->PlayEffect(EffectType::GoalEfc, player_info.m_efk_pos.x, player_info.m_efk_pos.y + GoalEffect2PosHeight, player_info.m_efk_pos.z);
+	Effect::Instance()->PlayEffect(EffectType::GoalEfc, player_info.m_efk_pos.x, player_info.m_efk_pos.y + GoalEffect2PosHeight, player_info.m_efk_pos.z);
 }
 
 

@@ -3,6 +3,17 @@
 #include "../Object/ObjectBase.h"
 #include <d3dx9.h>
 
+
+constexpr float ShotModeEyePos = -27.8f; //!Viewモード時のカメラの注視点(Y軸)
+constexpr float ViewModeEyePos = -50.0f; //!Shotモード時のカメラの注視点(Y軸)
+constexpr __int8 AngleofView = 60;       //!画角
+constexpr float Near = 1.1f;             
+constexpr float Far = 20000000.0f;
+constexpr unsigned __int8 CameraSensitivity = 50;  //!カメラ感度
+
+
+
+
 /**
 *@clss   カメラクラス
 */

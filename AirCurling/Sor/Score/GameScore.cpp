@@ -24,13 +24,13 @@ void Score::AddGameScore(__int16 score_)
 {
 	m_score += score_;
 
-	if (m_score < 0)
+	if (m_score < ScoreMinValue)
 	{
-		m_score = 0;
+		m_score = ScoreMinValue;
 	}
 }
 
 void Score::Reset()
 {
-	m_score = 0;
+	m_score = ScoreMinValue;
 }

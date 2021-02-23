@@ -104,13 +104,13 @@ void BlockController::Draw()
 	//!円形ブロック
 	for (__int16 i = 0; i < m_circle_block.size(); i++)
 	{
-		m_circle_block[i]->SetUpDrawBuffer();
+		m_circle_block[i]->Draw();
 	}
 	
 	//!矩形ブロック
 	for (__int16 i = 0; i < m_rect_block.size(); i++)
 	{
-		m_rect_block[i]->SetUpDrawBuffer();
+		m_rect_block[i]->Draw();
 	}
 }
 

@@ -7,6 +7,11 @@
 #include "UIBase.h"
 
 #define ADD_SPEED_POWER 0.001f  //!プレイヤーに加える力
+constexpr float ShotGaugeMax = 10.0f; //!床から出すゴールエフェクトの高さ
+constexpr float ShotGaugeMin = 10.0f; //!床から出すゴールエフェクトの高さ
+constexpr float TrunTexUVAddValue = 0.1f; //!床から出すゴールエフェクトの高さ
+constexpr unsigned __int8 StartFontStopTime = 60; //!床から出すゴールエフェクトの高さ
+
 
 //!更新ステップ
 enum class UpdateStep

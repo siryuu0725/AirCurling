@@ -204,12 +204,12 @@ void GameUI::UpdateTurn(Player* player_)
 	if (player_->GetObjInfo()->m_is_turnend == true)
 	{
 		//!ターン数加算
-		m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] += 0.1f;
+		m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] += TrunTexUVAddValue;
 
 		
 		if (m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] > 1.0f)
 		{
-			m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] = 0.1f;
+			m_game_ui_info.m_ui_tu[(int)GameUICategory::TurnNumber] = TrunTexUVAddValue;
 		}
 
 		//!バー移動フラグ切り替え
@@ -236,8 +236,8 @@ void GameUI::AddScore(Player* player_)
 		m_game_ui_info.m_ten_score = Score::Instance()->GetNowScore() / 10;
 
 		//!スコア数分テクスチャのTU値設定
-		m_game_ui_info.m_ui_tu[(int)GameUICategory::One_Score] = 0.1f * m_game_ui_info.m_one_score;
-		m_game_ui_info.m_ui_tu[(int)GameUICategory::Ten_Score] = 0.1f * m_game_ui_info.m_ten_score;
+		m_game_ui_info.m_ui_tu[(int)GameUICategory::One_Score] = TrunTexUVAddValue * m_game_ui_info.m_one_score;
+		m_game_ui_info.m_ui_tu[(int)GameUICategory::Ten_Score] = TrunTexUVAddValue * m_game_ui_info.m_ten_score;
 
 		//!現在のスコアに加算
 		m_game_ui_info.m_now_score += Score::Instance()->GetNowScore();
@@ -287,7 +287,7 @@ void GameUI::StartProduction(Camera* camera_)
 	if (m_game_ui_info.m_movestop == true)
 	{
 		//!1秒程止める
-		if (m_game_ui_info.m_stoptimer <= 60)
+		if (m_game_ui_info.m_stoptimer <= StartFontStopTime)
 		{
 			m_game_ui_info.m_stoptimer++;
 		}

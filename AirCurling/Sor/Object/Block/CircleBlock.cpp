@@ -16,7 +16,7 @@ CircleBlock::CircleBlock(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, float radius_, st
 }
 
 //!描画情報送信関数
-void CircleBlock::SetUpDrawBuffer()
+void CircleBlock::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_circle_block_info.m_key, m_circle_block_info.m_mat_world);
 }

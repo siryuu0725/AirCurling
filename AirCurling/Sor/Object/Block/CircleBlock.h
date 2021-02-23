@@ -23,7 +23,7 @@ public:
 	/**
 	 * @brief  描画情報送信関数
 	 */
-	void SetUpDrawBuffer();
+	void Draw();
 
 	/**
      * @brief   FBXモデル解放関数

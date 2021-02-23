@@ -5,8 +5,9 @@
 #include <vector>
 
 //!ステージに置ける最大デバフ床数数 
-#define RESET_FLOOR_MAX_NUM 5  //!リセット床
-#define STOP_FLLOR_MAX_NUM 5   //!スピード減衰床
+constexpr unsigned __int8 ResetFloorMaxNum = 5; //!リセット床
+constexpr unsigned __int8 StopFloorMaxNum = 5;  //!スピード減衰床
+
 
 /**
 *@clss   デバフ床管理クラス
@@ -93,8 +94,8 @@ private:
 	};
 
 	//!外部データ保存用
-	ResetFloorExternalInfo m_resetfloor_info_copy[RESET_FLOOR_MAX_NUM];  //!リセット床
-	StopFloorExternalInfo m_stopfloor_info_copy[STOP_FLLOR_MAX_NUM];    //!スピード減衰床
+	ResetFloorExternalInfo m_resetfloor_info_copy[ResetFloorMaxNum];  //!リセット床
+	StopFloorExternalInfo m_stopfloor_info_copy[StopFloorMaxNum];    //!スピード減衰床
 
 };
 

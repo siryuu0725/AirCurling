@@ -7,6 +7,11 @@
 #include "Window.h"
 #include "../Object/Camera.h"
 
+constexpr unsigned __int16 SpriteNum = 2000;     //!最大描画スプライト数
+constexpr unsigned __int16 InstanceNum = 2000;   //!最大インスタンス数
+constexpr __int8 EffectCameraAngleofView = 60;   //!カメラの画角
+
+
 //!エフェクトの種類
 enum EffectType
 {

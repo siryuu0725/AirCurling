@@ -12,7 +12,20 @@
 #include "Floor/Debuf/DebufController.h"
 #include "Floor/GoalFloor.h"
 
-#define GAME_TRUN 9 //!ゲームの制限ターン
+constexpr unsigned __int8 GameTrun = 9;       //!ゲームの制限ターン
+constexpr float FrameTime = 0.001f;           //!1フレームで加算する時間
+constexpr float ZeroSpeed = 0.01f;            //!0に近い数字(摩擦によるプレイヤーの移動停止用)
+constexpr unsigned __int8 ReflectMax = 5;     //!反射によるスコア減算の反射回数
+constexpr unsigned __int8 ReflectScore = -5;  //!反射によるスコア減算数
+constexpr float StopFloorFriction = 1.0f;     //!スピード減衰床の上での摩擦係数
+constexpr float Gravity= 9.8f;                //!重力
+constexpr float PlayerPosMin_Y = -29.0;       //!プレイヤー座標の最低値(Y座標のみ)
+constexpr float PlayerUpSpeed = 0.1f;         //!プレイヤーの上に上がるスピード(終了演出用)
+constexpr float HitEffectPosLength = 1.3f;    //!衝突エフェクトをプレイヤーから離す距離の倍率
+//!ゴールエフェクトは良く見えるように2つ描画させる
+constexpr float GoalEffectPosHeight = 4.0f;   //!床から出すゴールエフェクトの高さ
+constexpr float GoalEffect2PosHeight = 10.0f; //!床から出すゴールエフェクトの高さ
+
 
 //!更新ステップ
 enum class PlayerUpdateStep

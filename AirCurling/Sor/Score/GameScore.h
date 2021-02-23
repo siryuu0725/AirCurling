@@ -1,6 +1,9 @@
 ﻿#ifndef GAME_SCORE_H_
 #define GAME_SCORE_H_
 
+constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
+
+
 /**
 *@clss   スコア管理クラス
 *@brief  ゲーム内で計算されたスコアをリザルトに持っていくためなどに使用

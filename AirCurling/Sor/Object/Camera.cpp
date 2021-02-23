@@ -72,10 +72,10 @@ void Camera::Update(D3DXVECTOR3 player_pos_)
 	//!視錐台の作成
 	D3DXMatrixPerspectiveFovLH(
 		&matProj,
-		D3DXToRadian(60),	//!画角
-		aspect,				//!アスペクト比
-		1.1f,				//!near
-		20000000.0f);	    //!far
+		D3DXToRadian(AngleofView),	//!画角
+		aspect,		//!アスペクト比
+		Near,		//!near
+		Far);	    //!far
 	Graphics::Instance()->GetD3DDevice()->SetTransform(D3DTS_PROJECTION, &matProj);
 	//!射影座標変換用の行列算出 endMove();
 
@@ -113,7 +113,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		m_camerainfo.m_pos.z = player_pos_.z;
 
 		//!注視点更新
-		m_camerainfo.m_eye_pos.y = -27.8f;
+		m_camerainfo.m_eye_pos.y = ShotModeEyePos;
 
 		//!注視点移動
 		EyePosRotate();
@@ -157,7 +157,7 @@ void Camera::EyePosRotate()
 	SetCursorPos(GetSystemMetrics(SM_CXSCREEN) / 2, GetSystemMetrics(SM_CYSCREEN) / 2);
 
 	//!ここでカメラ感度変更可能
-	m_camerainfo.m_yaw += (Inputter::Instance()->GetMousePos().X - (GetWindowSize().x / 2)) / GetWindowSize().x * 50;
+	m_camerainfo.m_yaw += (Inputter::Instance()->GetMousePos().X - (GetWindowSize().x / 2)) / GetWindowSize().x * CameraSensitivity;
 
 	m_camerainfo.m_eye_pos.x = m_camerainfo.m_pos.x + sinf(D3DXToRadian(m_camerainfo.m_yaw));
 	m_camerainfo.m_eye_pos.z = m_camerainfo.m_pos.z + cosf(D3DXToRadian(m_camerainfo.m_yaw));
@@ -179,7 +179,7 @@ void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 
 			m_camerainfo.m_pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
 			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_info_copy.eye_pos[ARRAY_DATA::Y], player_pos_.z + 1.0f); //!注視点
-			m_camerainfo.m_eye_pos.y = -50.0f; //!真下を向くように設定
+			m_camerainfo.m_eye_pos.y = ViewModeEyePos; //!真下を向くように設定
 
 		}
 	}

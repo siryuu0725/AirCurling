@@ -74,7 +74,6 @@ void SkyFloor::LoadSkyFloorExternalInfo(std::string stage_str_)
 
 	if (fp != nullptr)
 	{
-		//rectdata = new RectData[head_data.DataNum];
 
 		// 書き込む
 		fread(&m_skyfloor_info_copy, sizeof(SkyFloorExternalInfo), 1, fp);

@@ -18,7 +18,7 @@ RectBlock::RectBlock(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3 angle_, f
 }
 
 //!描画情報送信関数
-void RectBlock::SetUpDrawBuffer()
+void RectBlock::Draw()
 {
 	FbxController::Instance()->DrawFbx(m_rect_block_info.m_key, m_rect_block_info.m_mat_world);
 }

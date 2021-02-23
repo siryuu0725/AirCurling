@@ -26,10 +26,10 @@ void Effect::InitEffect()
 	window_size = GetWindowSize();
 
 	// 描画用インスタンスの生成
-	e_renderer = ::EffekseerRendererDX9::Renderer::Create(e_device, 2000);
+	e_renderer = ::EffekseerRendererDX9::Renderer::Create(e_device, SpriteNum);
 
 	// エフェクト管理用インスタンスの生成
-	e_manager = ::Effekseer::Manager::Create(2000);
+	e_manager = ::Effekseer::Manager::Create(InstanceNum);
 
 	// 描画用インスタンスから描画機能を設定
 	e_manager->SetSpriteRenderer(e_renderer->CreateSpriteRenderer());
@@ -135,7 +135,7 @@ void Effect::UpdateEffect(Camera* camera_)
 
 	e_camera_up = ::Effekseer::Vector3D(0.0f, 1.0f, 0.0f);
 
-	e_renderer->SetProjectionMatrix(::Effekseer::Matrix44().PerspectiveFovLH(D3DXToRadian(60), window_size.x / window_size.y, 1.0f, 20000.0f));
+	e_renderer->SetProjectionMatrix(::Effekseer::Matrix44().PerspectiveFovLH(D3DXToRadian(EffectCameraAngleofView), window_size.x / window_size.y, 1.0f, 20000.0f));
 	e_renderer->SetCameraMatrix(::Effekseer::Matrix44().LookAtLH(e_camera_pos, e_eye_pos, e_camera_up));
 
 	e_manager->Update();
