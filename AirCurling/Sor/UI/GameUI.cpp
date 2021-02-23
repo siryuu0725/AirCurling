@@ -72,18 +72,18 @@ void GameUI::Init()
 //!テクスチャ読み込み関数
 void GameUI::LoadTex()
 {
-	Graphics::Instance()->LoadTexture("Res/Tex/shot2.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGauge]);
-	Graphics::Instance()->LoadTexture("Res/Tex/shot_frame.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGaugeFlame]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ShotGauge.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGauge]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ShotFrame.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotGaugeFlame]);
 	Graphics::Instance()->LoadTexture("Res/Tex/ShotBar.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotBox]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_SHOT.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotMode]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_View.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ViewMode]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_math.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::TurnNumber]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Turn.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Turn]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Score.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::One_Score]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Score.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Ten_Score]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Center_Start.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Start]);
-	Graphics::Instance()->LoadTexture("Res/Tex/カッコ.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Kacco]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Center_Finish.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Finish]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ModeShot.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ShotMode]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ModeView.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::ViewMode]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Math.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::TurnNumber]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Turn.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Turn]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Score.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::One_Score]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Score.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Ten_Score]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Start.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Start]);
+	Graphics::Instance()->LoadTexture("Res/Tex/StartFrame.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Kacco]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Finish.png", &m_game_ui_info.m_ui_tex[(int)GameUICategory::Finish]);
 
 }
 

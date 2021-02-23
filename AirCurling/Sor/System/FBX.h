@@ -32,26 +32,26 @@ struct Bone
 struct MaterialData
 {
 	Graphics::TEXTURE_DATA textureData; //!テクスチャ
-	D3DMATERIAL9 material;  //!マテリアル
+	D3DMATERIAL9 material;              //!マテリアル
 };
 
 //!メッシュの情報
 struct MeshData {
-	int polygonCount; //!ポリゴンの数
+	int polygonCount;         //!ポリゴンの数
 
 	unsigned int vertexCount; //!頂点の数
 
-	int indexCount; //!頂点インデックスの数
+	int indexCount;           //!頂点インデックスの数
 
-	int vertexStride; //!1頂点辺りのサイズ
+	int vertexStride;         //!1頂点辺りのサイズ
 
-	int materialIndex; //!マテリアル番号
+	int materialIndex;        //!マテリアル番号
 
-	VERTEX_3D* vertex; //!頂点
+	VERTEX_3D* vertex;        //!頂点
 
 	IDirect3DVertexBuffer9* pVB; //!頂点バッファ
 
-	IDirect3DIndexBuffer9* pIB; //!インデックスバッファ 
+	IDirect3DIndexBuffer9* pIB;  //!インデックスバッファ 
 };
 static const int BONE_MAX = 256;
 
@@ -71,22 +71,22 @@ struct Motion
 
 //!FBXの情報
 struct FbxInfo {
-	MeshData* pMesh; //!メッシュ
-
-	unsigned int meshcount; //!メッシュの数 
-
-	MaterialData* pMaterial; //!マテリアル
+	MeshData* pMesh;            //!メッシュ
+							    
+	unsigned int meshcount;     //!メッシュの数 
+							    
+	MaterialData* pMaterial;    //!マテリアル
 
 	unsigned int materialcount; //!マテリアルの数
 
-	Bone bone[BONE_MAX]; //!ボーン情報
+	Bone bone[BONE_MAX];        //!ボーン情報
 	unsigned int bonecount;
 
-	int	startFrame; //!開始フレーム
+	int	startFrame;             //!開始フレーム
 
 	std::map<std::string, Motion>* pMotion; //!モーション
 
-	D3DXMATRIX	world; //!ワールドマトリックス
+	D3DXMATRIX	world;          //!ワールドマトリックス
 };
 
 struct FBXMeshData

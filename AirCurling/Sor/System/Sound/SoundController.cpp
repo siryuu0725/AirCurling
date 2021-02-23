@@ -15,9 +15,9 @@ SoundManager* SoundManager::Instance()
 void SoundManager::RegisterTitleSound()
 {
 	bgm_file = "Res/wav/BGM/Title.wav";
-	se1_file = "Res/wav/SE/選択音.wav";
-	click_se_file = "Res/wav/SE/決定音.wav";
-	cancel_file = "Res/wav/SE/リセット音.wav";
+	se1_file = "Res/wav/SE/Select.wav";
+	click_se_file = "Res/wav/SE/Decision.wav";
+	cancel_file = "Res/wav/SE/Reset.wav";
 	p_audio->LoadUI(bgm, bgm_file);
 	p_audio->LoadUI(select1_se, se1_file);
 	p_audio->LoadUI(click_se, click_se_file);
@@ -27,10 +27,10 @@ void SoundManager::RegisterTitleSound()
 void SoundManager::RegisterGameSound()
 {
 	bgm_file = "Res/wav/BGM/Game.wav";
-	shot_file = "Res/wav/SE/ショット音1.wav";
-	reflect_file = "Res/wav/SE/反射音.wav";
-	goal_file = "Res/wav/SE/ゴール時.wav";
-	friction_file = "Res/wav/SE/摩擦音.wav";
+	shot_file = "Res/wav/SE/Shot.wav";
+	reflect_file = "Res/wav/SE/Reflection.wav";
+	goal_file = "Res/wav/SE/Goal.wav";
+	friction_file = "Res/wav/SE/Stop.wav";
 	//m_fall_file= "Res/wav/SE/落ちたとき.wav";
 
 	p_audio->LoadUI(bgm, bgm_file);
@@ -157,11 +157,11 @@ SoundManager::SoundManager()
 	click_se = "ClickSE";
 	cancel_se = "CancelSE";
 
-	shot_se = "ショット音";
-	reflect_se = "反射音";
-	goal_se = "ゴール音";
-	friction_se = "摩擦音";
-	fall_se = "落下音";
+	shot_se = "ShotSE";
+	reflect_se = "ReflectionSE";
+	goal_se = "GoalSE";
+	friction_se = "StopSE";
+	fall_se = "FallSE";
 }
 
 

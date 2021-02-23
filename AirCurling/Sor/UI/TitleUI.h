@@ -19,12 +19,12 @@ public:
 		Start,		   //!文字「スタート」
 		End,		   //!文字「終わり」
 		Help,		   //!文字「ヘルプ」
-		NowSerect,	   //!現在選択枠
+		NowSelect,	   //!現在選択枠
 		HelpBG,	       //!ヘルプ画面用BG
-		SerectStage1,  //!文字「1」
-		SerectStage2,  //!文字「2」
-		NowSerectStage,//!現在選択ステージ枠
-		SerectStageFont,//!文字「ステージを選択」
+		SelectStage1,  //!文字「1」
+		SelectStage2,  //!文字「2」
+		NowSelectStage,//!現在選択ステージ枠
+		SelectStageFont,//!文字「ステージを選択」
 		CategoryMax,   //!UI数
 	};
 

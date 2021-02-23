@@ -24,8 +24,8 @@ void LoadUI::Init()
 //!テクスチャ読み込み関数
 void LoadUI::LoadTex()
 {
-	Graphics::Instance()->LoadTexture("Res/Tex/ローディング中のアイコン1.png", &m_load_ui_info.m_ui_tex[(int)LoadUICategory::RoteTex]);
-	Graphics::Instance()->LoadTexture("Res/Tex/文字「NowLoading」.png", &m_load_ui_info.m_ui_tex[(int)LoadUICategory::NowLoad]);
+	Graphics::Instance()->LoadTexture("Res/Tex/LoadingIcon.png", &m_load_ui_info.m_ui_tex[(int)LoadUICategory::RoteTex]);
+	Graphics::Instance()->LoadTexture("Res/Tex/NowLoading.png", &m_load_ui_info.m_ui_tex[(int)LoadUICategory::NowLoad]);
 }
 
 //!描画情報送信関数

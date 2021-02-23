@@ -40,7 +40,7 @@ void ResultUI::Init()
 //!テクスチャ読み込み関数
 void ResultUI::LoadTex()
 {
-	Graphics::Instance()->LoadTexture("Res/Tex/リザルト画面.png", &m_result_ui_info.m_ui_tex[(int)ResultUICategory::BG]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ResultBg.png", &m_result_ui_info.m_ui_tex[(int)ResultUICategory::BG]);
 
 }
 

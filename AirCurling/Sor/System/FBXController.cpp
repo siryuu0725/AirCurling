@@ -46,17 +46,13 @@ void FbxController::LoadFbx()
 {
 	LoadFbxMesh("skydome", "Res/FBX/sky_dome.fbx");
 	LoadFbxMesh("skyfloor", "Res/FBX/SkyFloor.fbx");
-
 	LoadFbxMesh("stage", "Res/FBX/StageFloor.fbx");
 	LoadFbxMesh("pac", "Res/FBX/pac.fbx");
 	LoadFbxMesh("reset", "Res/FBX/reset2.fbx");
 	LoadFbxMesh("stop", "Res/FBX/stop.fbx");
-
 	LoadFbxMesh("goal", "Res/FBX/goal.fbx");
-	LoadFbxMesh("rectblock", "Res/FBX/Box/RectBlock.fbx");
-
-	LoadFbxMesh("circleblock", "Res/FBX/Circle/CircleBlock.fbx");
-
+	LoadFbxMesh("rectblock", "Res/FBX/RectBlock.fbx");
+	LoadFbxMesh("circleblock", "Res/FBX/CircleBlock.fbx");
 	LoadFbxMesh("direction", "Res/FBX/Direction.fbx");
 }
 

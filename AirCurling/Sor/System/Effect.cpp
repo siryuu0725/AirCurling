@@ -49,10 +49,10 @@ void Effect::InitEffect()
 //!エフェクト読み込み関数
 void Effect::LoadEffect()
 {
-	hit_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/反射時(破片).efk");
-	fall_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/復活.efk");
-	reset_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/落ちたとき.efk");
-	goal_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/ゴール時2.efk");
+	hit_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/reflection.efk");
+	fall_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/respawn.efk");
+	reset_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/fall.efk");
+	goal_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/goal.efk");
 }
 
 //!描画関数

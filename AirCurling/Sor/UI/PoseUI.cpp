@@ -125,10 +125,10 @@ void PoseUI::HelpMode()
 void PoseUI::LoadTex()
 {
 	Graphics::Instance()->LoadTexture("Res/Tex/OptionBG.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::BG]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Optio_「つづける」.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Continue]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Optio_「おわる」.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::End]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Optio_「へるぷ」.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Help]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Optio_Select.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Select]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Tudukeru.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Continue]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Owaru.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::End]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Help.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Help]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_SelectFrame.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::Select]);
 	Graphics::Instance()->LoadTexture("Res/Tex/HelpBg.png", &m_pose_ui_info.m_ui_tex[(int)HelpUICategory::HelpBg]);
 
 }

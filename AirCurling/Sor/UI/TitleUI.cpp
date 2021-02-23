@@ -38,17 +38,17 @@ void TitleUI::Init()
 //!テクスチャ読み込み関数
 void TitleUI::LoadTex()
 {
-	Graphics::Instance()->LoadTexture("Res/Tex/タイトルBG.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::BG]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Title_Frame_In.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Name]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Start2.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Start]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_End.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::End]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Help.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Help]);
-	Graphics::Instance()->LoadTexture("Res/Tex/UI_Serect.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSerect]);
+	Graphics::Instance()->LoadTexture("Res/Tex/TitleBg.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::BG]);
+	Graphics::Instance()->LoadTexture("Res/Tex/GameTitle.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Name]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_Hazimeru.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Start]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_Owaru.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::End]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_Help.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::Help]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_SelectFrame.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSelect]);
 	Graphics::Instance()->LoadTexture("Res/Tex/HelpBg.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::HelpBG]);
-	Graphics::Instance()->LoadTexture("Res/Tex/ステージ選択「1」.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStage1]);
-	Graphics::Instance()->LoadTexture("Res/Tex/ステージ選択「2」.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStage2]);
-	Graphics::Instance()->LoadTexture("Res/Tex/ステージ選択枠.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSerectStage]);
-	Graphics::Instance()->LoadTexture("Res/Tex/文字「ステージを選択」.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStageFont]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Stage_1.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStage1]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Stage_2.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStage2]);
+	Graphics::Instance()->LoadTexture("Res/Tex/StageSelectFrame.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSelectStage]);
+	Graphics::Instance()->LoadTexture("Res/Tex/StageSelect.png", &m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStageFont]);
 }
 
 //!描画情報送信関数
@@ -64,14 +64,14 @@ void TitleUI::SetUpBuffer()
 		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::Start], m_title_ui_info.m_ui_pos[(int)TitleUICategory::Start]);
 		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::End], m_title_ui_info.m_ui_pos[(int)TitleUICategory::End]);
 		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::Help], m_title_ui_info.m_ui_pos[(int)TitleUICategory::Help]);
-		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSerect], m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect]);
+		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSelect], m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect]);
 	}
 	else
 	{
-		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStageFont], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStageFont]);
-		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStage1], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage1]);
-		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SerectStage2], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage2]);
-		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSerectStage], m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerectStage]);
+		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStageFont], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStageFont]);
+		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStage1], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage1]);
+		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::SelectStage2], m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage2]);
+		Graphics::Instance()->DrawTexture(&m_title_ui_info.m_ui_tex[(int)TitleUICategory::NowSelectStage], m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage]);
 	}
 
 	//!「ヘルプ」が押された場合(ヘルプ画面中)
@@ -114,8 +114,8 @@ void TitleUI::Select()
 		460.0f, 115.0f) == true)
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].x = 210.0f;
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].y = 400.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 400.0f;
 
 		sound_mgr->SoundSelectSE();
 
@@ -131,8 +131,8 @@ void TitleUI::Select()
 		340.0f, 115.0f) == true)
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].x = 210.0f;
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].y = 600.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 600.0f;
 
 		sound_mgr->SoundSelectSE();
 
@@ -148,8 +148,8 @@ void TitleUI::Select()
 		350.0f, 115.0f) == true)
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].x = 210.0f;
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].y = 800.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 800.0f;
 
 		sound_mgr->SoundSelectSE();
 
@@ -163,7 +163,7 @@ void TitleUI::Select()
 	else
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerect].y = -300.0f;
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = -300.0f;
 
 		sound_mgr->ResetSelectFlag();
 	}
@@ -188,11 +188,11 @@ void TitleUI::ReturnSelect()
 void TitleUI::SelectStage()
 {
 	//!文字「1」との当たり判定
-	if (Collision::RectToPoint(m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage1], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	if (Collision::RectToPoint(m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage1], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		316.0f, 400.0f) == true)
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerectStage] = m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage1];
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage1];
 		sound_mgr->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
@@ -203,11 +203,11 @@ void TitleUI::SelectStage()
 		}
 	}
 	//!文字「2」との当たり判定
-	else if (Collision::RectToPoint(m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage2], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	else if (Collision::RectToPoint(m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage2], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		316.0f, 400.0f) == true)
 	{
 		//!選択枠テクスチャの座標を代入
-		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSerectStage] = m_title_ui_info.m_ui_pos[(int)TitleUICategory::SerectStage2];
+		m_title_ui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_title_ui_info.m_ui_pos[(int)TitleUICategory::SelectStage2];
 		sound_mgr->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
