@@ -8,9 +8,11 @@
 
 class Score
 {
-public:
+private:
 	Score();
 	~Score() {}
+
+public:
 
 	/**
 　　* @brief  インスタンス化関数

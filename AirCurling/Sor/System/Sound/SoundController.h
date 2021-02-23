@@ -11,6 +11,10 @@
 
 class SoundManager
 {
+private:
+	SoundManager() {}
+	~SoundManager() {}
+
 public:
 	static SoundManager* Instance();
 
@@ -41,10 +45,6 @@ public:
 	void ReleaseSelectSound();
 	void ReleaseGameSound();
 	void ReleaseReselutSound();
-
-
-protected:
-	SoundManager();
 
 private:
 	static SoundManager* p_instance;

@@ -68,10 +68,11 @@ public:
 		FontSizeMax, //!サイズ数
 	};
 
-public:
+private:
 	Graphics() {}
 	~Graphics() {}
 
+public:
 	/**
 　　* @brief  インスタンス化関数
 　　*/

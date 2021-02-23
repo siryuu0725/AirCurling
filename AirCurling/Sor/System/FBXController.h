@@ -8,11 +8,12 @@
 
 class FbxController
 {
-public:
-	static FbxController* Instance();
-
+private:
 	FbxController();
 	~FbxController();
+
+public:
+	static FbxController* Instance();
 
 	/**
 	 * @brief  Meshデータセット関数

@@ -22,9 +22,11 @@ enum EffectType
 */
 class Effect
 {
-public:
+private:
 	Effect() {}
 	~Effect() {}
+
+public:
 
 	/**
 　　* @brief  インスタンス化関数

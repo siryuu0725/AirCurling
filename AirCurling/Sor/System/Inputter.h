@@ -51,10 +51,11 @@ public:
 		MAX_KEY_INFO,
 	};
 
-public:
+private:
 	Inputter() {}
 	~Inputter() {}
 
+public:
 	static Inputter* Instance();
 
 	/**

@@ -18,9 +18,10 @@ enum class SceneId
 */
 class SceneController
 {
-public:
+private:
 	SceneController() {};
 	~SceneController();
+public:
 
 	/**
 　　* @brief  インスタンス化関数

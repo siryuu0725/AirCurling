@@ -20,6 +20,9 @@ enum class RANK
 
 class CSV 
 {
+private:
+	CSV() {}
+	~CSV() {}
 public:
 	static CSV* Instance();
 	/**
