@@ -20,11 +20,11 @@ int g_KeyInfo[] = {
 };
 
 
-Inputter* Inputter::p_instance = 0;
+Inputter* Inputter::p_instance = nullptr;
 
 Inputter* Inputter::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new Inputter;
 	}

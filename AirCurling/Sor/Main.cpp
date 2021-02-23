@@ -45,7 +45,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 			SceneController::Instance()->Update();
 
-			SceneController::Instance()->SceneDraw();
+			SceneController::Instance()->Draw();
 
 		}
 	}

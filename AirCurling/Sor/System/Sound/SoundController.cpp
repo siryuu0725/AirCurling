@@ -1,10 +1,10 @@
 ﻿#include "SoundController.h"
 
-SoundManager* SoundManager::p_instance = 0;
+SoundManager* SoundManager::p_instance = nullptr;
 
 SoundManager* SoundManager::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new SoundManager;
 	}

@@ -3,12 +3,12 @@
 
 #include <d3dx9.h>
 
-Effect* Effect::p_instance = 0;
+Effect* Effect::p_instance = nullptr;
 
 //!インスタンス化関数
 Effect* Effect::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new Effect;
 	}

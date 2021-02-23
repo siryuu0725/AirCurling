@@ -20,11 +20,11 @@
 //	std::cout << fileName << "に書き込みました。" << std::endl;
 //	std::cin.get();
 //}
-CSV* CSV::p_instance = 0;
+CSV* CSV::p_instance = nullptr;
 
 CSV* CSV::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new CSV;
 	}

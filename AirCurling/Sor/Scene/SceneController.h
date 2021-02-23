@@ -50,7 +50,7 @@ public:
 	/**
 	 * @brief   描画関数
 	 */
-	void SceneDraw();
+	void Draw();
 
 
 	/**

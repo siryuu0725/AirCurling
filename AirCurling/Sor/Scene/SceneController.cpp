@@ -6,12 +6,12 @@
 #include"../System/Graphics.h"
 #include <thread>
 
-SceneController* SceneController::p_instance = 0;
+SceneController* SceneController::p_instance = nullptr;
 
 //!インスタンス化関数
 SceneController* SceneController::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new SceneController;
 	}
@@ -44,7 +44,7 @@ void SceneController::Update()
 }
 
 //!描画関数
-void SceneController::SceneDraw()
+void SceneController::Draw()
 {
 	//!各シーンで更新もしくはロードステップ中のみ描画
 	if (m_scene->NowStep() == SceneStep::ThreadStep ||

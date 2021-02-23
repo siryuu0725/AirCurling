@@ -2,11 +2,11 @@
 #include "Window.h"
 #include "FBX.h"
 
-Graphics* Graphics::p_instance = 0;
+Graphics* Graphics::p_instance = nullptr;
 
 Graphics* Graphics::Instance()
 {
-	if (p_instance == 0)
+	if (p_instance == nullptr)
 	{
 		p_instance = new Graphics;
 	}
