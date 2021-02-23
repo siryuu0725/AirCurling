@@ -45,7 +45,7 @@ bool Graphics::CreateGraphicsInterface()
 {
 	// インターフェース作成
 	g_interface = Direct3DCreate9(D3D_SDK_VERSION);
-	if (g_interface == NULL)
+	if (g_interface == nullptr)
 	{
 		return false;
 	}
@@ -135,7 +135,7 @@ void Graphics::SetRenderMode(bool enableAlpa_)
 
 void Graphics::DrawStart()
 {
-	g_device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0);
+	g_device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0);
 
 	g_device->BeginScene();
 }
@@ -143,7 +143,7 @@ void Graphics::DrawStart()
 void Graphics::DrawEnd()
 {
 	g_device->EndScene();
-	g_device->Present(NULL, NULL, NULL, NULL);
+	g_device->Present(nullptr, nullptr, nullptr, nullptr);
 }
 
 bool Graphics::LoadTexture(const char* file_name_, TEXTURE_DATA* texture_)
@@ -258,14 +258,14 @@ void Graphics::DrawRoteTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 lefttop_pos_,
 // テクスチャーの解放
 void Graphics::ReleaseTexture(TEXTURE_DATA* texture_data_)
 {
-	if (texture_data_ == NULL)
+	if (texture_data_ == nullptr)
 	{
 		return;
 	}
 	else
 	{
 		texture_data_->Texture->Release();
-		texture_data_->Texture = NULL;
+		texture_data_->Texture = nullptr;
 	}
 }
 
@@ -300,7 +300,7 @@ void Graphics::DrawFont(float pos_x_, float pos_y_, const char* text_, FontSize 
 	}
 
 	g_font_list[font_type_]->DrawTextA(
-		NULL,
+		nullptr,
 		text_,
 		-1,
 		&rect,
@@ -325,7 +325,7 @@ bool Graphics::CreateFontDevice()
 			size_list[i],
 			size_list[i] / 2,
 			FW_REGULAR,
-			NULL,
+			0,
 			FALSE,
 			DEFAULT_CHARSET,
 			OUT_DEFAULT_PRECIS,

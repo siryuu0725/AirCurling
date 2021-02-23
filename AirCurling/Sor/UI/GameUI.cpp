@@ -5,7 +5,7 @@
 //!初期化関数
 void GameUI::Init()
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	fopen_s(&fp, "Res/UIData/GameUIData.dat", "rb");
 

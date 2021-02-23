@@ -3,7 +3,7 @@
 //!初期化関数
 void Floor::Init(std::string stage_id_)
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "FloorData.dat";
 

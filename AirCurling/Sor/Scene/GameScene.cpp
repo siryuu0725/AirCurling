@@ -49,10 +49,10 @@ void GameScene::InitStep()
 {
 	//各読み込み関数をマルチ化
 	thread_h = CreateThread(
-		NULL,
+		nullptr,
 		0,
 		this->LoadResorse,
-		NULL,
+		nullptr,
 		0,
 		&thread_id);
 

@@ -93,7 +93,7 @@ bool Inputter::CreateInputInterface()
 		0x0800,
 		IID_IDirectInput8,
 		(void**)&Ip_interface,
-		NULL);
+		nullptr);
 	if (FAILED(hr))
 	{
 		return false;
@@ -151,7 +151,7 @@ bool Inputter::CreateMouseDevice()
 bool Inputter::CreateKeyboardDevice()
 {
 	// マウス用にデバイスオブジェクトを作成
-	if (FAILED(Ip_interface->CreateDevice(GUID_SysKeyboard, &key_device, NULL)))
+	if (FAILED(Ip_interface->CreateDevice(GUID_SysKeyboard, &key_device, nullptr)))
 	{
 		// デバイスの作成に失敗
 		return false;

@@ -4,7 +4,7 @@
 //!初期化関数
 void Goal::Init(std::string stage_id_)
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "GoalData.dat";
 

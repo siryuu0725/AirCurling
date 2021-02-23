@@ -14,7 +14,7 @@ Player::Player(Camera* camera_, BlockController* block_,
 //!初期化関数
 void Player::Init(std::string stage_id_)
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "PlayerData.dat";
 
@@ -31,7 +31,6 @@ void Player::Init(std::string stage_id_)
 	}
 
 	player_info.m_key = "pac";  //!描画用キー
-	//player_info.pos = D3DXVECTOR3(-29.0f, 0.0f, -29.0f); //!座標
 
 	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], m_player_info_copy.pos[ARRAY_DATA::Y], m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
 	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.scale[ARRAY_DATA::X], m_player_info_copy.scale[ARRAY_DATA::Y], m_player_info_copy.scale[ARRAY_DATA::Z]);	 //!描画サイズ

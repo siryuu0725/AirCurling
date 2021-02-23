@@ -23,7 +23,7 @@ BlockController::~BlockController()
 void BlockController::Init(std::string stage_id_)
 {
 #pragma region 円形ブロック
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "CircleBlockData.dat";
 
@@ -59,7 +59,7 @@ void BlockController::Init(std::string stage_id_)
 #pragma endregion
 
 #pragma region 矩形ブロック
-	fp = NULL;
+	fp = nullptr;
 
 	stage_id = "Res/ObjectData/" + stage_id_ + "RectBlockData.dat";
 

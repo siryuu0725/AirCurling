@@ -139,7 +139,7 @@ void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 
 	pMeshData_->polygonCount = (UINT)polyCount;
 	pMeshData_->indexCount = (UINT)(polyCount * 3);
-	pMeshData_->pIB = CreateIndexBuffer(NULL, size);
+	pMeshData_->pIB = CreateIndexBuffer(nullptr, size);
 
 	UINT16* pIndeces;
 	//!バッファをロックしてデータを書き込む
@@ -175,7 +175,7 @@ void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 	pMeshData_->vertexCount = (UINT)vertexCount;
 	pMeshData_->vertexStride = sizeof(VERTEX_3D);
-	pMeshData_->pVB = CreateVertexBuffer(NULL, size);
+	pMeshData_->pVB = CreateVertexBuffer(nullptr, size);
 
 	VERTEX_3D* pVertex;
 	//!バッファをロックしてデータを書き込む
@@ -268,7 +268,7 @@ void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 			FbxProperty prop = pMaterial->FindProperty(FbxSurfaceMaterial::sDiffuse);
 
 			//!テクスチャ読み込み
-			const char* filename = NULL;
+			const char* filename = nullptr;
 
 			//!テクスチャの数を取得する
 			int fileTextureCount = prop.GetSrcObjectCount<FbxFileTexture>();
@@ -291,7 +291,7 @@ void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 					filename = FileTex->GetFileName();
 				}
 			}
-			if (filename == NULL) return;
+			if (filename == nullptr) return;
 
 			char* pFileName;
 			size_t size = 0;
@@ -326,7 +326,7 @@ void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 //!FBXモデル描画関数
 void Fbx::DrawModel(FbxInfo* pModel)
 {
-	if (pModel == NULL) return;
+	if (pModel == nullptr) return;
 	if (pModel->materialcount == 0) return;
 
 	IDirect3DDevice9* pDevice = Graphics::Instance()->GetD3DDevice();
@@ -411,9 +411,9 @@ IDirect3DVertexBuffer9* Fbx::CreateVertexBuffer(const void* pVertices_, UINT siz
 	IDirect3DVertexBuffer9* pVertexBuffer;
 	IDirect3DDevice9* pDevice = Graphics::Instance()->GetD3DDevice();
 	// 指定したサイズの頂点バッファを作成
-	if (FAILED(pDevice->CreateVertexBuffer(size_, 0, 0, D3DPOOL_MANAGED, &pVertexBuffer, NULL)))
+	if (FAILED(pDevice->CreateVertexBuffer(size_, 0, 0, D3DPOOL_MANAGED, &pVertexBuffer, nullptr)))
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	if (pVertices_)
@@ -435,9 +435,9 @@ IDirect3DIndexBuffer9* Fbx::CreateIndexBuffer(const UINT16* pIndeces_, UINT size
 	IDirect3DIndexBuffer9* pIndexBuffer;
 	IDirect3DDevice9* pDevice = Graphics::Instance()->GetD3DDevice();
 	// 16byte型のインデックスバッファを作成
-	if (FAILED(pDevice->CreateIndexBuffer(size_, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &pIndexBuffer, NULL)))
+	if (FAILED(pDevice->CreateIndexBuffer(size_, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &pIndexBuffer, nullptr)))
 	{
-		return NULL;
+		return nullptr;
 	}
 	if (pIndeces_)
 	{

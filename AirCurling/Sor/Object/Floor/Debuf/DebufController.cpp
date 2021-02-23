@@ -22,7 +22,7 @@ DebufController::~DebufController()
 void DebufController::Init(std::string stage_id_)
 {
 #pragma region リセット床
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "ResetFloorData.dat";
 
@@ -58,7 +58,7 @@ void DebufController::Init(std::string stage_id_)
 #pragma endregion
 
 #pragma region スピード減衰床
-	fp = NULL;
+	fp = nullptr;
 
 	stage_id = "Res/ObjectData/" + stage_id_ + "StopFloorData.dat";
 

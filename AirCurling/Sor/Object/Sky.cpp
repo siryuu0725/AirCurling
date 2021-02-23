@@ -3,7 +3,7 @@
 //!初期化関数
 void SkyDome::Init(std::string stage_id_)
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "SkyDomeData.dat";
 
@@ -43,7 +43,7 @@ void SkyDome::ReleaseModel()
 //!初期化関数
 void SkyFloor::Init(std::string stage_id_)
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	std::string stage_id = "Res/ObjectData/" + stage_id_ + "SkyFloorData.dat";
 

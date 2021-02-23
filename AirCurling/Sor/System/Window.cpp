@@ -36,10 +36,10 @@ bool MakeWindow(int width_, int height_, const char* title_)
 		GetModuleHandle(nullptr),		// このプログラムのインスタンスハンドル
 		LoadIcon(NULL, IDI_APPLICATION),// アイコン画像
 		LoadCursor(NULL, IDC_ARROW),	// カーソル画像
-		NULL,							// 背景ブラシ(背景色)
-		NULL,							// メニュー名
+		nullptr,							// 背景ブラシ(背景色)
+		nullptr,							// メニュー名
 		WINDOW_CLASS_NAME,				// クラス名									
-		NULL							// 小さいアイコン
+		nullptr							// 小さいアイコン
 	};
 
 	// 構造体の登録
@@ -58,10 +58,10 @@ bool MakeWindow(int width_, int height_, const char* title_)
 		0,
 		width_,
 		height_,
-		NULL,
-		NULL,
+		nullptr,
+		nullptr,
 		GetModuleHandle(nullptr),
-		NULL);
+		nullptr);
 
 	if (hWnd == NULL)
 	{

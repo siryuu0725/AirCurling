@@ -5,7 +5,7 @@
 //!初期化関数
 void TitleUI::Init()
 {
-	FILE* fp = NULL;
+	FILE* fp = nullptr;
 
 	fopen_s(&fp, "Res/UIData/TitleUIData.dat", "rb");
 
