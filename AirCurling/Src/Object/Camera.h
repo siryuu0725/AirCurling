@@ -11,9 +11,6 @@ constexpr float Near = 1.1f;
 constexpr float Far = 20000000.0f;
 constexpr unsigned __int8 CameraSensitivity = 50;  //!カメラ感度
 
-
-
-
 /**
 *@class   カメラクラス
 */
@@ -48,13 +45,13 @@ private:
 	struct CameraExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_eye_pos[3]; 
+		D3DXVECTOR3 m_eye_pos;
 		//!パックの上にカメラを配置するよう
 		float m_packup;          
 
-	}m_camera_info_copy;
+	}m_camera_externalinfo;
 
 public:
 	Camera() {}

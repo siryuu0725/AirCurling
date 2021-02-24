@@ -76,7 +76,7 @@ private:
 
 	};
 
-	LoadInfo m_load_ui_info;
+	LoadInfo m_loadui_info;
 };
 
 #endif

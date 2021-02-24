@@ -63,7 +63,7 @@ private:
 
 	};
 
-	ResultUIInfo m_result_ui_info;
+	ResultUIInfo m_resultui_info;
 
 	Ranking m_ranking;
 };

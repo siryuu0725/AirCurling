@@ -19,17 +19,17 @@ void Player::Init(std::string stage_str_)
 
 	player_info.m_key = "pac";  //!描画用キー
 
-	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.m_pos[ARRAY_DATA::X], m_player_info_copy.m_pos[ARRAY_DATA::Y], m_player_info_copy.m_pos[ARRAY_DATA::Z]); //!座標
-	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.m_scale[ARRAY_DATA::X], m_player_info_copy.m_scale[ARRAY_DATA::Y], m_player_info_copy.m_scale[ARRAY_DATA::Z]);	 //!描画サイズ
+	player_info.m_pos = m_player_externalinfo.m_pos; //!座標
+	player_info.m_scale =  m_player_externalinfo.m_scale;	 //!描画サイズ
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //!ワールド座標
 	
-	player_info.m_friction = m_player_info_copy.fa;   //!動摩擦係数
+	player_info.m_friction = m_player_externalinfo.fa;   //!動摩擦係数
 	player_info.m_acceleration = -player_info.m_friction * Gravity; //!加速度
 
 
-	player_info.m_radius = m_player_info_copy.m_radius;    //!半径
-	player_info.m_speed = m_player_info_copy.speed;  //!移動スピード
+	player_info.m_radius = m_player_externalinfo.m_radius;    //!半径
+	player_info.m_speed = m_player_externalinfo.speed;  //!移動スピード
 
 	player_info.m_timer = 0;  //!経過時間
 	player_info.m_truncounter = 0;    //!進行ターン数
@@ -37,7 +37,7 @@ void Player::Init(std::string stage_str_)
 	player_info.m_is_turnend = false;    //!1ターン終了フラグ
 	player_info.m_is_goal = false;       //!ゴールフラグ
 	player_info.m_end = false;        //!ゲームエンドフラグ
-	player_info.m_score_counter = m_player_info_copy.score_counter;
+	player_info.m_score_counter = m_player_externalinfo.score_counter;
 
 	player_info.m_is_movement = false;
 
@@ -57,7 +57,7 @@ void Player::LoadPlayerExternalInfo(std::string stage_str_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&m_player_info_copy, sizeof(PlayerExternalInfo), 1, fp);
+		fread(&m_player_externalinfo, sizeof(PlayerExternalInfo), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -316,7 +316,7 @@ void Player::HitStop()
 		}
 		else
 		{
-			player_info.m_friction = m_player_info_copy.fa;
+			player_info.m_friction = m_player_externalinfo.fa;
 		}
 	}
 
@@ -546,7 +546,7 @@ void Player::ResetPos()
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.m_pos[ARRAY_DATA::X], PlayerPosMin_Y, m_player_info_copy.m_pos[ARRAY_DATA::Z]); //!座標
+		player_info.m_pos = m_player_externalinfo.m_pos; //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();

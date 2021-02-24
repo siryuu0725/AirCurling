@@ -10,9 +10,9 @@ void Camera::Init(std::string stage_str_)
 	//!外部データ読み込み
 	LoadCameraExternalInfo(stage_str_);
 
-	m_camerainfo.m_pos = D3DXVECTOR3(m_camera_info_copy.m_pos[ARRAY_DATA::X], m_camera_info_copy.m_pos[ARRAY_DATA::Y], m_camera_info_copy.m_pos[ARRAY_DATA::Z]);   //!座標
+	m_camerainfo.m_pos = m_camera_externalinfo.m_pos;   //!座標
 
-	m_camerainfo.m_eye_pos = D3DXVECTOR3(m_camera_info_copy.m_eye_pos[ARRAY_DATA::X], m_camera_info_copy.m_eye_pos[ARRAY_DATA::Y], m_camera_info_copy.m_eye_pos[ARRAY_DATA::Z]); //!注視点
+	m_camerainfo.m_eye_pos = m_camera_externalinfo.m_eye_pos; //!注視点
 
 	m_camerainfo.m_camera_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f); //!上向きベクトル
 
@@ -20,7 +20,7 @@ void Camera::Init(std::string stage_str_)
 
 	m_camerainfo.m_speed = 1.0f;
 
-	m_camerainfo.m_packup = m_camera_info_copy.m_packup; //!パックの位置からどれだけ離れているか
+	m_camerainfo.m_packup = m_camera_externalinfo.m_packup; //!パックの位置からどれだけ離れているか
 
 	m_camerainfo.m_is_shotmode = false;  //!打つモードかどうか
 
@@ -40,7 +40,7 @@ void Camera::LoadCameraExternalInfo(std::string stage_str_)
 	if (fp != nullptr)
 	{
 		//!書き込む
-		fread(&m_camera_info_copy, sizeof(CameraExternalInfo), 1, fp);
+		fread(&m_camera_externalinfo, sizeof(CameraExternalInfo), 1, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -178,7 +178,7 @@ void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 			m_camerainfo.m_is_shotmode = false;
 
 			m_camerainfo.m_pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
-			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_info_copy.m_eye_pos[ARRAY_DATA::Y], player_pos_.z + 1.0f); //!注視点
+			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_externalinfo.m_eye_pos.y, player_pos_.z + 1.0f); //!注視点
 			m_camerainfo.m_eye_pos.y = ViewModeEyePos; //!真下を向くように設定
 
 		}

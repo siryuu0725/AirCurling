@@ -70,11 +70,11 @@ private:
 	struct RectBlockExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 		//!回転角度
-		float m_rote[3];
+		D3DXVECTOR3 m_rote;
 
 		float m_width;  //!横幅
 		float m_height; //!縦幅
@@ -84,16 +84,16 @@ private:
 	struct CircleBlockExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 		//!半径
 		float m_radius;
 	};
 
 	//!外部データ保存用
-	CircleBlockExternalInfo m_circleblock_info_copy[RectBlockMaxNum]; //!円形ブロック
-	RectBlockExternalInfo m_rectblock_info_copy[CircleBlockMaxNum];	  //!矩形ブロック
+	CircleBlockExternalInfo m_circleblock_externalinfo[RectBlockMaxNum]; //!円形ブロック
+	RectBlockExternalInfo m_rectblock_externalinfo[CircleBlockMaxNum];	  //!矩形ブロック
 };
 
 

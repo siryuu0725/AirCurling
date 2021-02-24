@@ -5,7 +5,7 @@
 //!初期化関数
 void ResultUI::Init()
 {
-	m_result_ui_info.m_ui_pos[(int)ResultUICategory::BG] = D3DXVECTOR2(0.0f, 0.0f);  //!背景
+	m_resultui_info.m_ui_pos[(int)ResultUICategory::BG] = D3DXVECTOR2(0.0f, 0.0f);  //!背景
 
 	//!外部データ取得
 	m_ranking.score_table = *csv->Instance()->LoadFile("Res/RankingData.txt");
@@ -40,14 +40,14 @@ void ResultUI::Init()
 //!テクスチャ読み込み関数
 void ResultUI::LoadTex()
 {
-	Graphics::Instance()->LoadTexture("Res/Tex/ResultBg.png", &m_result_ui_info.m_ui_tex[(int)ResultUICategory::BG]);
+	Graphics::Instance()->LoadTexture("Res/Tex/ResultBg.png", &m_resultui_info.m_ui_tex[(int)ResultUICategory::BG]);
 
 }
 
 //!描画情報送信関数
 void ResultUI::Draw()
 {
-	Graphics::Instance()->DrawTexture(&m_result_ui_info.m_ui_tex[(int)ResultUICategory::BG], m_result_ui_info.m_ui_pos[(int)ResultUICategory::BG]);
+	Graphics::Instance()->DrawTexture(&m_resultui_info.m_ui_tex[(int)ResultUICategory::BG], m_resultui_info.m_ui_pos[(int)ResultUICategory::BG]);
 	Graphics::Instance()->DrawFont(750, 370, m_ranking.first, Graphics::FontSize::Large, Graphics::FontColor::Red);   //!1位
 	Graphics::Instance()->DrawFont(750, 540, m_ranking.second, Graphics::FontSize::Large, Graphics::FontColor::Red);  //!2位
 	Graphics::Instance()->DrawFont(750, 710, m_ranking.third, Graphics::FontSize::Large, Graphics::FontColor::Red);	  //!3位
@@ -58,10 +58,10 @@ void ResultUI::ReleaseTex()
 {
 	for (int i = 0; i < (int)ResultUICategory::CategoryMax; i++)
 	{
-		if (&m_result_ui_info.m_ui_tex[i] != nullptr)
+		if (&m_resultui_info.m_ui_tex[i] != nullptr)
 		{
-			m_result_ui_info.m_ui_tex[i].Texture->Release();
-			m_result_ui_info.m_ui_tex[i].Texture = nullptr;
+			m_resultui_info.m_ui_tex[i].Texture->Release();
+			m_resultui_info.m_ui_tex[i].Texture = nullptr;
 		}
 	}
 }

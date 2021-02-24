@@ -19,8 +19,7 @@ protected:
 
 	struct UIExternalInfo
 	{
-		float pos_x;  //!X座標
-		float pos_y;  //!Y座標
+		D3DXVECTOR2 m_pos;  //!座標
 	};
 };
 

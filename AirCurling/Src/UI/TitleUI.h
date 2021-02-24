@@ -47,7 +47,7 @@ private:
 		bool m_stage_1;   //!ステージ1を選んだ場合
 		bool m_stage_2;   //!ステージ2を選んだ場合
 
-	}m_title_ui_info;
+	}m_titleui_info;
 
 
 public:
@@ -108,11 +108,11 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const TitleUIInfo* GetTitleUIInfo() { return &m_title_ui_info; }
+	const TitleUIInfo* GetTitleUIInfo() { return &m_titleui_info; }
 
 private:
 	SoundManager* sound_mgr = SoundManager::Instance();
 
-	UIExternalInfo m_titleui_info_copy[static_cast<int>(TitleUICategory::CategoryMax)];
+	UIExternalInfo m_titleui_externalinfo[static_cast<int>(TitleUICategory::CategoryMax)];
 };
 #endif

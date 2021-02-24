@@ -86,7 +86,7 @@ private:
 		float t;		// 秒
 		float flame;	// 1フレーム当たりの時間
 
-	}m_game_ui_info;
+	}m_gameui_info;
 public:
 	GameUI() {}
 	~GameUI() {}
@@ -164,11 +164,11 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const GameUIInfo* GetGameUIInfo() { return &m_game_ui_info; }
+	const GameUIInfo* GetGameUIInfo() { return &m_gameui_info; }
 
 private:
 	UpdateStep m_update_step;  //!更新ステップ
 
-	UIExternalInfo m_gameui_info_copy[static_cast<int>(GameUICategory::CategoryMax)];
+	UIExternalInfo m_gameui_externalinfo[static_cast<int>(GameUICategory::CategoryMax)];
 };
 #endif

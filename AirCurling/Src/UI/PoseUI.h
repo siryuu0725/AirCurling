@@ -89,10 +89,10 @@ public:
 	/**
  　　* @brief  UI情報Getter
  　　*/
-	const HelpUIInfo* GetGameUIInfo() { return &m_pose_ui_info; }
+	const HelpUIInfo* GetGameUIInfo() { return &m_poseui_info; }
 private:
-	HelpUIInfo m_pose_ui_info;
+	HelpUIInfo m_poseui_info;
 
-	UIExternalInfo m_pose_ui_info_copy[static_cast<int>(HelpUICategory::CategoryMax)];
+	UIExternalInfo m_poseui_externalinfo[static_cast<int>(HelpUICategory::CategoryMax)];
 };
 #endif

@@ -98,9 +98,9 @@ private:
 	struct PlayerExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 
 		float m_radius; //!半径
 		float speed;  //!移動スピード
@@ -108,7 +108,7 @@ private:
 		float fa;     //!動摩擦係数
 		int score_counter; //!加算するスコア数
 
-	}m_player_info_copy;
+	}m_player_externalinfo;
 
 public:
 	/**

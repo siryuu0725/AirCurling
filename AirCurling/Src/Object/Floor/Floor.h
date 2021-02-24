@@ -47,18 +47,18 @@ private:
 	struct FloorExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 
 		//!回転角度
-		float m_rote[3];
+		D3DXVECTOR3 m_rote;
 
 		float m_width;  //!横幅
 		float m_height; //!縦幅
 
 
-	}m_floor_info_copy;
+	}m_floor_externalinfo;
 };
 
 

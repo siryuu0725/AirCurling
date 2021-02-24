@@ -49,10 +49,10 @@ private:
 	struct GoalExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 
-	}m_goal_info_copy;
+	}m_goal_externalinfo;
 };
 #endif

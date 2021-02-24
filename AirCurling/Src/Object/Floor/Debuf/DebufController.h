@@ -71,9 +71,9 @@ private:
 	struct ResetFloorExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 
 		float m_radius; //!半径
 	};
@@ -82,20 +82,20 @@ private:
 	struct StopFloorExternalInfo
 	{
 		//!座標
-		float m_pos[3];
+		D3DXVECTOR3 m_pos;
 		//!サイズ
-		float m_scale[3];
+		D3DXVECTOR3 m_scale;
 
 		//!回転角度
-		float m_rote[3];
+		D3DXVECTOR3 m_rote;
 
 		float m_width;  //!横幅 
 		float m_height; //!縦幅
 	};
 
 	//!外部データ保存用
-	ResetFloorExternalInfo m_resetfloor_info_copy[ResetFloorMaxNum];  //!リセット床
-	StopFloorExternalInfo m_stopfloor_info_copy[StopFloorMaxNum];    //!スピード減衰床
+	ResetFloorExternalInfo m_resetfloor_externalinfo[ResetFloorMaxNum];  //!リセット床
+	StopFloorExternalInfo m_stopfloor_externalinfo[StopFloorMaxNum];    //!スピード減衰床
 
 };
 

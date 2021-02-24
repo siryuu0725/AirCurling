@@ -7,22 +7,12 @@
 #include <vector>
 #include <string>
 
-//!外部データ保存用構造体の座標配列のマジックナンバー防止用
-enum ARRAY_DATA
-{
-	X,
-	Y,
-	Z
-};
-
 /**
 *@class   オブジェクトベースクラス
 */
-
 class ObjectBase
 {
 protected:
-
 	//!オブジェクト情報
 	struct ObjectInfo
 	{

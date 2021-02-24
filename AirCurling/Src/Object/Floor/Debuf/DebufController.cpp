@@ -30,9 +30,9 @@ void DebufController::Init(std::string stage_str_)
 	{
 		//!読み込んだ数分追加
 		m_resetfloors.push_back(new ResetFloor
-		(D3DXVECTOR3(m_resetfloor_info_copy[i].m_pos[ARRAY_DATA::X], m_resetfloor_info_copy[i].m_pos[ARRAY_DATA::Y], m_resetfloor_info_copy[i].m_pos[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_resetfloor_info_copy[i].m_scale[ARRAY_DATA::X], m_resetfloor_info_copy[i].m_scale[ARRAY_DATA::Y], m_resetfloor_info_copy[i].m_scale[ARRAY_DATA::Z]),
-		 m_resetfloor_info_copy[i].m_radius, "reset"));
+		(m_resetfloor_externalinfo[i].m_pos,
+		 m_resetfloor_externalinfo[i].m_scale,
+		 m_resetfloor_externalinfo[i].m_radius, "reset"));
 
 		//あたり判定用に追加
 		m_resetshapes.push_back(new CircleShape(m_resetfloors[i]->GetObjInfo()->m_pos, m_resetfloors[i]->GetObjInfo()->m_radius));
@@ -43,10 +43,10 @@ void DebufController::Init(std::string stage_str_)
 	{
 		//!読み込んだ数分追加
 		m_stopfloors.push_back(new StopFloor
-		(D3DXVECTOR3(m_stopfloor_info_copy[i].m_pos[ARRAY_DATA::X], m_stopfloor_info_copy[i].m_pos[ARRAY_DATA::Y], m_stopfloor_info_copy[i].m_pos[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_stopfloor_info_copy[i].m_scale[ARRAY_DATA::X], m_stopfloor_info_copy[i].m_scale[ARRAY_DATA::Y], m_stopfloor_info_copy[i].m_scale[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_stopfloor_info_copy[i].m_rote[ARRAY_DATA::X], m_stopfloor_info_copy[i].m_rote[ARRAY_DATA::Y], m_stopfloor_info_copy[i].m_rote[ARRAY_DATA::Z]),
-		 m_stopfloor_info_copy[i].m_width, m_stopfloor_info_copy[i].m_height, "stop"));
+		(m_stopfloor_externalinfo[i].m_pos,
+		 m_stopfloor_externalinfo[i].m_scale,
+		 m_stopfloor_externalinfo[i].m_rote,
+		 m_stopfloor_externalinfo[i].m_width, m_stopfloor_externalinfo[i].m_height, "stop"));
 
 		//あたり判定用に追加
 		m_stopshapes.push_back(new RectShape(m_stopfloors[i]->GetObjInfo()->m_pos, m_stopfloors[i]->GetObjInfo()->m_width, m_stopfloors[i]->GetObjInfo()->m_height, m_stopfloors[i]->GetObjInfo()->m_angle.y));
@@ -69,7 +69,7 @@ void DebufController::LoadResetFloorExternalInfo(std::string stage_str_)
 		fread(&m_resetfloor_num, sizeof(m_resetfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&m_resetfloor_info_copy, sizeof(ResetFloorExternalInfo), m_resetfloor_num, fp);
+		fread(&m_resetfloor_externalinfo, sizeof(ResetFloorExternalInfo), m_resetfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);
@@ -91,7 +91,7 @@ void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 		fread(&m_stopfloor_num, sizeof(m_stopfloor_num), 1, fp);
 
 		//!書き込む
-		fread(&m_stopfloor_info_copy, sizeof(StopFloorExternalInfo), m_stopfloor_num, fp);
+		fread(&m_stopfloor_externalinfo, sizeof(StopFloorExternalInfo), m_stopfloor_num, fp);
 
 		/* ファイルクローズ */
 		fclose(fp);

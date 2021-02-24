@@ -18,6 +18,7 @@ public:
  　　* @param (key_) 描画用キー
  　　*/
 	CircleBlock(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, float radius_, std::string key_);
+
 	~CircleBlock() {}
 
 	/**
