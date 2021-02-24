@@ -32,9 +32,9 @@ public:
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_stop_floor_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_stopfloor_info; }
 private:
-	ObjectInfo m_stop_floor_info;  //!スピード減衰床情報
+	ObjectInfo m_stopfloor_info;  //!スピード減衰床情報
 };
 
 #endif

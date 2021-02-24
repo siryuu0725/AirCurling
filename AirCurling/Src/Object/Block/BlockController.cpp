@@ -5,17 +5,17 @@
 BlockController::~BlockController()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circle_block.size(); i++)
+	for (__int16 i = 0; i < m_circleblocks.size(); i++)
 	{
-		delete m_circle_block[i];
-		m_circle_block[i] = nullptr;
+		delete m_circleblocks[i];
+		m_circleblocks[i] = nullptr;
 	}
 
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rect_block.size(); i++)
+	for (__int16 i = 0; i < m_rectblocks.size(); i++)
 	{
-		delete m_rect_block[i];
-		m_rect_block[i] = nullptr;
+		delete m_rectblocks[i];
+		m_rectblocks[i] = nullptr;
 	}
 }
 
@@ -30,27 +30,27 @@ void BlockController::Init(std::string stage_str_)
 	for (__int16 i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
-		m_circle_block.push_back(new CircleBlock
-		(D3DXVECTOR3(m_circleblock_info_copy[i].pos[ARRAY_DATA::X], m_circleblock_info_copy[i].pos[ARRAY_DATA::Y], m_circleblock_info_copy[i].pos[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_circleblock_info_copy[i].scale[ARRAY_DATA::X], m_circleblock_info_copy[i].scale[ARRAY_DATA::Y], m_circleblock_info_copy[i].scale[ARRAY_DATA::Z]),
-		 m_circleblock_info_copy[i].radius, "circleblock"));
+		m_circleblocks.push_back(new CircleBlock
+		(D3DXVECTOR3(m_circleblock_info_copy[i].m_pos[ARRAY_DATA::X], m_circleblock_info_copy[i].m_pos[ARRAY_DATA::Y], m_circleblock_info_copy[i].m_pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_circleblock_info_copy[i].m_scale[ARRAY_DATA::X], m_circleblock_info_copy[i].m_scale[ARRAY_DATA::Y], m_circleblock_info_copy[i].m_scale[ARRAY_DATA::Z]),
+		 m_circleblock_info_copy[i].m_radius, "circleblock"));
 
 		//あたり判定用に追加
-		m_circleshape.push_back(new CircleShape(m_circle_block[i]->GetObjInfo()->m_pos, m_circle_block[i]->GetObjInfo()->m_radius));
+		m_circleshapes.push_back(new CircleShape(m_circleblocks[i]->GetObjInfo()->m_pos, m_circleblocks[i]->GetObjInfo()->m_radius));
 	}
 
 	//!矩形ブロック
 	for (__int16 i = 0; i < m_rectblock_num; i++)
 	{
 		//読み込んだ数分追加
-		m_rect_block.push_back(new RectBlock
-		(D3DXVECTOR3(m_rectblock_info_copy[i].pos[ARRAY_DATA::X], m_rectblock_info_copy[i].pos[ARRAY_DATA::Y], m_rectblock_info_copy[i].pos[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_rectblock_info_copy[i].scale[ARRAY_DATA::X], m_rectblock_info_copy[i].scale[ARRAY_DATA::Y], m_rectblock_info_copy[i].scale[ARRAY_DATA::Z]),
-		 D3DXVECTOR3(m_rectblock_info_copy[i].rote[ARRAY_DATA::X], m_rectblock_info_copy[i].rote[ARRAY_DATA::Y], m_rectblock_info_copy[i].rote[ARRAY_DATA::Z]),
-		 m_rectblock_info_copy[i].width, m_rectblock_info_copy[i].height ,"rectblock"));
+		m_rectblocks.push_back(new RectBlock
+		(D3DXVECTOR3(m_rectblock_info_copy[i].m_pos[ARRAY_DATA::X], m_rectblock_info_copy[i].m_pos[ARRAY_DATA::Y], m_rectblock_info_copy[i].m_pos[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_rectblock_info_copy[i].m_scale[ARRAY_DATA::X], m_rectblock_info_copy[i].m_scale[ARRAY_DATA::Y], m_rectblock_info_copy[i].m_scale[ARRAY_DATA::Z]),
+		 D3DXVECTOR3(m_rectblock_info_copy[i].m_rote[ARRAY_DATA::X], m_rectblock_info_copy[i].m_rote[ARRAY_DATA::Y], m_rectblock_info_copy[i].m_rote[ARRAY_DATA::Z]),
+		 m_rectblock_info_copy[i].m_width, m_rectblock_info_copy[i].m_height ,"rectblock"));
 
 		//あたり判定用に追加
-		m_rect_shape.push_back(new RectShape(m_rect_block[i]->GetObjInfo()->m_pos, m_rect_block[i]->GetObjInfo()->m_width, m_rect_block[i]->GetObjInfo()->m_height, m_rect_block[i]->GetObjInfo()->m_angle.y));
+		m_rect_shapes.push_back(new RectShape(m_rectblocks[i]->GetObjInfo()->m_pos, m_rectblocks[i]->GetObjInfo()->m_width, m_rectblocks[i]->GetObjInfo()->m_height, m_rectblocks[i]->GetObjInfo()->m_angle.y));
 	}
 }
 
@@ -102,15 +102,15 @@ void BlockController::LoadCircleBlockExternalInfo(std::string stage_str_)
 void BlockController::Draw()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circle_block.size(); i++)
+	for (__int16 i = 0; i < m_circleblocks.size(); i++)
 	{
-		m_circle_block[i]->Draw();
+		m_circleblocks[i]->Draw();
 	}
 	
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rect_block.size(); i++)
+	for (__int16 i = 0; i < m_rectblocks.size(); i++)
 	{
-		m_rect_block[i]->Draw();
+		m_rectblocks[i]->Draw();
 	}
 }
 
@@ -118,14 +118,14 @@ void BlockController::Draw()
 void BlockController::ReleaseModel()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circle_block.size(); i++)
+	for (__int16 i = 0; i < m_circleblocks.size(); i++)
 	{
-		m_circle_block[i]->ReleaseModel();
+		m_circleblocks[i]->ReleaseModel();
 	}
 
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rect_block.size(); i++)
+	for (__int16 i = 0; i < m_rectblocks.size(); i++)
 	{
-		m_rect_block[i]->ReleaseModel();
+		m_rectblocks[i]->ReleaseModel();
 	}
 }

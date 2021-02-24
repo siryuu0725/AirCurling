@@ -97,7 +97,7 @@ public:
 	void ReleaseEffect();
 private:
 	static Effect* p_instance;
-	Camera* m_camera;
+	Camera* p_camera;
 
 	::Effekseer::Manager* e_manager = NULL;
 	::EffekseerRendererDX9::Renderer* e_renderer = NULL;

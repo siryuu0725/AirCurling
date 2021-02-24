@@ -17,7 +17,7 @@ private:
 		D3DXVECTOR3 m_left_down;   //!左下
 		D3DXVECTOR3 m_right_top;   //!右上
 		D3DXVECTOR3 m_right_down;  //!右下
-	}m_rect_block_info;
+	}m_rectblock_info;
 
 public:
 	/**
@@ -46,7 +46,7 @@ public:
  　　* @brief  オブジェクト情報Getter
      * @return RectBlockInfoの指定した変数の情報を返す
  　　*/
-	const RectBlockInfo* GetObjInfo()const { return &m_rect_block_info; }
+	const RectBlockInfo* GetObjInfo()const { return &m_rectblock_info; }
 };
 
 #endif

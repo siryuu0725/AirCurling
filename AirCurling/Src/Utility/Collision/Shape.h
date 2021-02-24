@@ -33,21 +33,21 @@ public:
 class RectShape : public Shape {
 public:
 	RectShape(D3DXVECTOR3 pos_, float width_, float height_, float rote_) :
-		pos(pos_), width(width_), height(height_), rote(rote_) {}
+		m_pos(pos_), m_width(width_), m_height(height_), m_rote(rote_) {}
 	~RectShape() {}
 
-	virtual D3DXVECTOR3 GetBoxPos()const override { return pos; }
+	virtual D3DXVECTOR3 GetBoxPos()const override { return m_pos; }
 
-	virtual float GetWidth()const override { return width; }
+	virtual float GetWidth()const override { return m_width; }
 
-	virtual float GetHeight()const override { return height; }
+	virtual float GetHeight()const override { return m_height; }
 
-	virtual float GetRote()const override { return rote; }
+	virtual float GetRote()const override { return m_rote; }
 private:
-	D3DXVECTOR3 pos;
-	float width, height;
+	D3DXVECTOR3 m_pos;
+	float m_width, m_height;
 
-	float rote;
+	float m_rote;
 };
 
 /**
@@ -57,16 +57,16 @@ class CircleShape :public Shape
 {
 public:
 	CircleShape(D3DXVECTOR3 pos_, float radius_) :
-		pos(pos_), radius(radius_) {}
+		m_pos(pos_), m_radius(radius_) {}
 	~CircleShape() {}
 
-	virtual D3DXVECTOR3 GetCirclePos()const override { return pos; }
+	virtual D3DXVECTOR3 GetCirclePos()const override { return m_pos; }
 
-	virtual float GetRadius()const override { return radius; }
+	virtual float GetRadius()const override { return m_radius; }
 
 private:
-	D3DXVECTOR3 pos;
-	float radius;
+	D3DXVECTOR3 m_pos;
+	float m_radius;
 };
 
 #endif

@@ -53,15 +53,15 @@ public:
 	 * @brief  各ブロック情報Getter関数
 	 * @return 各ブロック座標、サイズの情報を返す
 	 */
-	const std::vector<Shape*>* GetRectShape()const { return &m_rect_shape; }
-	const std::vector<Shape*>* GetCircleShape()const { return &m_circleshape; }
+	const std::vector<Shape*>* GetRectShape()const { return &m_rect_shapes; }
+	const std::vector<Shape*>* GetCircleShape()const { return &m_circleshapes; }
 
 private:
-	std::vector<CircleBlock*> m_circle_block;  //!円形ブロック
-	std::vector<RectBlock*> m_rect_block;	   //!矩形ブロック
+	std::vector<CircleBlock*> m_circleblocks;  //!円形ブロック
+	std::vector<RectBlock*> m_rectblocks;	   //!矩形ブロック
 
-	std::vector<Shape*> m_rect_shape;    //!矩形情報保存用(当たり判定用)
-	std::vector<Shape*> m_circleshape;	 //!円形情報保存用(当たり判定用)
+	std::vector<Shape*> m_rect_shapes;    //!矩形情報保存用(当たり判定用)
+	std::vector<Shape*> m_circleshapes;	 //!円形情報保存用(当たり判定用)
 
 	int m_rectblock_num;    //!矩形ブロックデータ数
 	int m_circleblock_num;  //!円形ブロックデータ数
@@ -70,30 +70,30 @@ private:
 	struct RectBlockExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 		//!回転角度
-		float rote[3];
+		float m_rote[3];
 
-		float width;  //!横幅
-		float height; //!縦幅
+		float m_width;  //!横幅
+		float m_height; //!縦幅
 	};
 
 	//!外部データ保存用構造体(円形ブロック)
 	struct CircleBlockExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 		//!半径
-		float radius;
+		float m_radius;
 	};
 
 	//!外部データ保存用
 	CircleBlockExternalInfo m_circleblock_info_copy[RectBlockMaxNum]; //!円形ブロック
-	RectBlockExternalInfo m_rectblock_info_copy[CircleBlockMaxNum];	 //!矩形ブロック
+	RectBlockExternalInfo m_rectblock_info_copy[CircleBlockMaxNum];	  //!矩形ブロック
 };
 
 

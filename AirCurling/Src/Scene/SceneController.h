@@ -68,7 +68,7 @@ public:
 	 * @brief  選択ステージGettr
 	 * @detail タイトルで選んだステージを取得
 	 */
-	std::string GetStageID() { return m_stage; }
+	std::string GetStageID() { return m_stagename; }
 
 	/**
 	 * @brief  各ゲーム管理クラスアドレス配列
@@ -78,11 +78,11 @@ public:
 
 private:
 	static SceneController* p_instance;
-	SceneBase* m_scene;
+	SceneBase* p_scene;
 
 	SceneId m_cur_scene_id;
 
-	std::string m_stage;
+	std::string m_stagename;
 };
 
 #endif // !SCENEMANAGER_H_

@@ -104,19 +104,19 @@ public:
      */
 	static SceneBase* InstanceGameScene();
 private:
-	Camera* m_camera;                    //!カメラオブジェクト
+	Camera* p_camera;                    //!カメラオブジェクト
 	BlockController* m_block_controller; //!ブロック管理オブジェクト
 	Player* m_player;                    //!プレイヤーオブジェクト
 	PlayerDirection* m_player_direction; //!プレイヤーの方向オブジェクト
 	SkyDome* m_sky_dome;                 //!背景オブジェクト
 	SkyFloor* m_sky_floor;               //!背景床オブジェクト
-	Floor* m_floor;                      //!ステージ床オブジェクト
-	DebufController* m_debuf;            //!リセットデバフオブジェクト
-	Goal* m_goal;                        //!ゴールオブジェクト
+	Floor* p_floor;                      //!ステージ床オブジェクト
+	DebufController* p_debuf;            //!リセットデバフオブジェクト
+	Goal* p_goal;                        //!ゴールオブジェクト
 
-	GameUI* m_gmae_ui; //!ゲーム用UI
-	LoadUI* m_load_ui; //!ロード画面用UI
-	PoseUI* m_pose_ui; //!ヘルプ画面用UI
+	GameUI* p_gmae_ui; //!ゲーム用UI
+	LoadUI* p_load_ui; //!ロード画面用UI
+	PoseUI* p_pose_ui; //!ヘルプ画面用UI
 
 
 	HANDLE thread_h;

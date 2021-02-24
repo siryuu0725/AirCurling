@@ -10,7 +10,7 @@
 
 //頂点の情報
 struct VERTEX_3D {
-	D3DXVECTOR3 pos;
+	D3DXVECTOR3 m_pos;
 	D3DXVECTOR3 nor;
 	D3DCOLOR    col;
 	float u, v;
@@ -60,18 +60,18 @@ struct Motion
 {
 	Motion()
 	{
-		ZeroMemory(pKey, sizeof(pKey));
+		ZeroMemory(p_Key, sizeof(p_Key));
 	}
 
 	UINT		numFrame;		//!フレーム数	
-	D3DXMATRIX* pKey[BONE_MAX];	//!キーフレーム
+	D3DXMATRIX* p_Key[BONE_MAX];	//!キーフレーム
 };
 
 
 
 //!FBXの情報
 struct FbxInfo {
-	MeshData* pMesh;            //!メッシュ
+	MeshData* p_Mesh;            //!メッシュ
 							    
 	unsigned int meshcount;     //!メッシュの数 
 							    

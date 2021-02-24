@@ -80,7 +80,7 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 
 	D3DXMatrixIdentity(&fbxMeshData.fbxinfo.world);
 	fbxMeshData.fbxinfo.meshcount = meshcount;
-	fbxMeshData.fbxinfo.pMesh = pMeshData;
+	fbxMeshData.fbxinfo.p_Mesh = pMeshData;
 	fbxMeshData.fbxinfo.materialcount = materialcount;
 	fbxMeshData.fbxinfo.pMaterial = pMaterialData;
 	fbxMeshData.fbxinfo.bonecount = 0;
@@ -91,10 +91,10 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 	for (int i = 0; i < meshcount; i++)
 	{
 		//i番目のメッシュを取得
-		FbxMesh* pMesh = m_scene->GetSrcObject<FbxMesh>(i);
+		FbxMesh* p_Mesh = m_scene->GetSrcObject<FbxMesh>(i);
 
-		LoadMesh(&pMeshData[i], pMesh);
-		GetTextureInfo(&pMaterialData[i], pMesh);
+		LoadMesh(&pMeshData[i], p_Mesh);
+		GetTextureInfo(&pMaterialData[i], p_Mesh);
 		pMeshData[i].materialIndex = i;
 	}
 
@@ -183,9 +183,9 @@ void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	int* pIndex = pMesh_->GetPolygonVertices();
 	for (int vIdx = 0; vIdx < vertexCount; vIdx++)
 	{
-		pVertex[vIdx].pos.x = static_cast<float>(-vtx[pIndex[vIdx]][0]);
-		pVertex[vIdx].pos.y = static_cast<float>(vtx[pIndex[vIdx]][1]);
-		pVertex[vIdx].pos.z = static_cast<float>(vtx[pIndex[vIdx]][2]);
+		pVertex[vIdx].m_pos.x = static_cast<float>(-vtx[pIndex[vIdx]][0]);
+		pVertex[vIdx].m_pos.y = static_cast<float>(vtx[pIndex[vIdx]][1]);
+		pVertex[vIdx].m_pos.z = static_cast<float>(vtx[pIndex[vIdx]][2]);
 		pVertex[vIdx].nor.x = 0.0f;
 		pVertex[vIdx].nor.y = 1.0f;
 		pVertex[vIdx].nor.z = 0.0f;
@@ -342,29 +342,29 @@ void Fbx::DrawModel(FbxInfo* pModel)
 
 		for (UINT meshIdx = 0; meshIdx < pModel->materialcount; meshIdx++)
 		{
-			MeshData* pMesh = &pModel->pMesh[meshIdx];
-			if (matIdx != pMesh->materialIndex)
+			MeshData* p_Mesh = &pModel->p_Mesh[meshIdx];
+			if (matIdx != p_Mesh->materialIndex)
 			{
 				continue;
 			}
 
 			//!頂点バッファの設定
-			pDevice->SetStreamSource(0, pMesh->pVB, 0, pMesh->vertexStride);
+			pDevice->SetStreamSource(0, p_Mesh->pVB, 0, p_Mesh->vertexStride);
 
 			//!頂点フォーマットの指定
 			pDevice->SetFVF(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1 | D3DFVF_DIFFUSE);
 
-			if (pMesh->pIB)
+			if (p_Mesh->pIB)
 			{
 				//!インデックスバッファの設定
-				pDevice->SetIndices(pMesh->pIB);
+				pDevice->SetIndices(p_Mesh->pIB);
 				//!描画
-				pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, pMesh->vertexCount, 0, pMesh->polygonCount);
+				pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, p_Mesh->vertexCount, 0, p_Mesh->polygonCount);
 			}
 			else
 			{
 				//!描画
-				pDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, pMesh->polygonCount);
+				pDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, p_Mesh->polygonCount);
 			}
 		}
 	}
@@ -377,9 +377,9 @@ void Fbx::ReleaseModel(FbxInfo* pModel)
 
 	for (UINT i = 0; i < pModel->meshcount; i++)
 	{
-		SAFE_RELEASE(pModel->pMesh[i].pVB);
-		SAFE_RELEASE(pModel->pMesh[i].pIB);
-		free(pModel->pMesh[i].vertex);
+		SAFE_RELEASE(pModel->p_Mesh[i].pVB);
+		SAFE_RELEASE(pModel->p_Mesh[i].pIB);
+		free(pModel->p_Mesh[i].vertex);
 	}
 	for (UINT i = 0; i < pModel->materialcount; i++)
 	{
@@ -392,15 +392,15 @@ void Fbx::ReleaseModel(FbxInfo* pModel)
 		{
 			for (int i = 0; i < 256; i++)
 			{
-				if (it->second.pKey[i])
+				if (it->second.p_Key[i])
 				{
-					free(it->second.pKey[i]);
+					free(it->second.p_Key[i]);
 				}
 			}
 		}
 		delete pModel->pMotion;
 	}
-	free(pModel->pMesh);
+	free(pModel->p_Mesh);
 	free(pModel->pMaterial);
 
 	ZeroMemory(pModel, sizeof(FbxInfo));

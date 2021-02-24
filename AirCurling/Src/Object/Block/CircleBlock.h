@@ -34,10 +34,10 @@ public:
  　　* @brief  オブジェクト情報Getter
      * @return ObjectInfoの指定した変数の情報を返す
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_circle_block_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_circleblock_info; }
 
 private:
-	ObjectInfo m_circle_block_info;  //!円型ブロック情報
+	ObjectInfo m_circleblock_info;  //!円型ブロック情報
 };
 
 #endif

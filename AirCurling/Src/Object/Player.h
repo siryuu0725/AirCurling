@@ -68,15 +68,15 @@ private:
 
 		D3DXVECTOR3 m_nor_speed; //!方向ベクトル
 
-		float m_speed;  //!移動スピード
+		float m_speed;     //!移動スピード
 		float m_setspeed;  //!移動スピード
 
 		float m_change_radian; //!回転角度
 
 		/* 摩擦用 */
-		float m_mass;  //!質量
-		float m_friction;    //!動摩擦係数
-		float m_acceleration;     //!加速度
+		float m_mass;         //!質量
+		float m_friction;     //!動摩擦係数
+		float m_acceleration; //!加速度
 
 		float m_timer;  //!経過時間
 
@@ -86,8 +86,8 @@ private:
 
 		/* 操作可能判定 */
 		bool m_is_start; //!ゲームスタート
-		bool m_is_goal;	//!ゴール時
-		bool m_end;	//!ゲームエンドフラグ
+		bool m_is_goal;	 //!ゴール時
+		bool m_end;	     //!ゲームエンドフラグ
 
 		bool m_is_movement;
 		bool m_is_turnend;       //!1ターン終了フラグ
@@ -98,11 +98,11 @@ private:
 	struct PlayerExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
-		float radius; //!半径
+		float m_radius; //!半径
 		float speed;  //!移動スピード
 		float m;      //!質量
 		float fa;     //!動摩擦係数
@@ -289,11 +289,11 @@ public:
 	const PlayerInfo* GetObjInfo()const { return &player_info; }
 private:
 
-	Camera* m_camera;         //!カメラアドレス保存用
-	BlockController* m_block; //!ブロック管理アドレス保存用
-	Floor* m_floor;			  //!ステージ床アドレス保存用
-	DebufController* m_debuf; //!デバフ床アドレス保存用
-	Goal* m_goal;			  //!ゴールアドレス保存用
+	Camera* p_camera;         //!カメラアドレス保存用
+	BlockController* p_block; //!ブロック管理アドレス保存用
+	Floor* p_floor;			  //!ステージ床アドレス保存用
+	DebufController* p_debuf; //!デバフ床アドレス保存用
+	Goal* p_goal;			  //!ゴールアドレス保存用
 
 	PlayerUpdateStep m_update_step; //!更新ステップ
 };

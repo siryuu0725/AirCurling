@@ -76,8 +76,8 @@ public:
 
 private:
 	Player* m_player;  //!プレイヤーアドレス保存用
-	Camera* m_camera;  //!カメラアドレス保存用
-	GameUI* m_ui;	   //!ゲーム用UIアドレス保存用
+	Camera* p_camera;  //!カメラアドレス保存用
+	GameUI* p_ui;	   //!ゲーム用UIアドレス保存用
 };
 
 #endif

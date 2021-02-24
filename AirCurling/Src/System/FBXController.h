@@ -51,7 +51,7 @@ public:
 private:
 	static FbxController* p_instance;
 
-	Fbx* m_Fbx;
+	Fbx* p_Fbx;
 
 	std::map<std::string, FBXMeshData> m_MeshData;
 

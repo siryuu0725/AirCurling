@@ -47,9 +47,9 @@ private:
 	struct SkyDomeExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
 	}m_skydome_info_copy;
 };
@@ -100,9 +100,9 @@ private:
 	struct SkyFloorExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
 	}m_skyfloor_info_copy;
 };

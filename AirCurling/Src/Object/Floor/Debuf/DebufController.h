@@ -54,15 +54,15 @@ public:
 	* @brief  各デバフ床情報Getter関数
 	* @return 各デバフ床の座標、サイズの情報を返す
 	*/
-	const std::vector<Shape*>* GetResetShape()const { return &m_reset_shape; }
-	const std::vector<Shape*>* GetStopShape()const { return &m_stop_shape; }
+	const std::vector<Shape*>* GetResetShape()const { return &m_resetshapes; }
+	const std::vector<Shape*>* GetStopShape()const { return &m_stopshapes; }
 
 private:
-	std::vector<ResetFloor*> m_reset_floor;  //!リセット床情報保存用
-	std::vector<StopFloor*> m_stop_floor;	 //!スピード減衰床情報保存用
+	std::vector<ResetFloor*> m_resetfloors;  //!リセット床情報保存用
+	std::vector<StopFloor*> m_stopfloors;	 //!スピード減衰床情報保存用
 
-	std::vector<Shape*> m_reset_shape;  //!リセット床情報保存用
-	std::vector<Shape*> m_stop_shape;   //!スピード減衰床情報保存用
+	std::vector<Shape*> m_resetshapes;  //!リセット床情報保存用
+	std::vector<Shape*> m_stopshapes;   //!スピード減衰床情報保存用
 
 	int m_resetfloor_num;  //!リセット床数
 	int m_stopfloor_num;   //!スピード減衰床数
@@ -71,26 +71,26 @@ private:
 	struct ResetFloorExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
-		float radius; //!半径
+		float m_radius; //!半径
 	};
 
 	//!外部データ保存用構造体(スピード減衰床)
 	struct StopFloorExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
 		//!回転角度
-		float rote[3];
+		float m_rote[3];
 
-		float width;  //!横幅 
-		float height; //!縦幅
+		float m_width;  //!横幅 
+		float m_height; //!縦幅
 	};
 
 	//!外部データ保存用

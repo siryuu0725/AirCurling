@@ -5,8 +5,8 @@
 PlayerDirection::PlayerDirection(Player* player_, Camera* camera_, GameUI* ui_)
 {
 	m_player = player_;  //!プレイヤーアドレス
-	m_camera = camera_;  //!カメラアドレス
-	m_ui = ui_;          //!ゲーム用UIアドレス
+	p_camera = camera_;  //!カメラアドレス
+	p_ui = ui_;          //!ゲーム用UIアドレス
 }
 
 //!初期化関数
@@ -31,7 +31,7 @@ void PlayerDirection::Init()
 void PlayerDirection::Update()
 {
 	//!カメラが操作できるようなった時(ゲーム開始演出終了後)
-	if (m_camera->GetObjInfo()->m_is_operation == true)
+	if (p_camera->GetObjInfo()->m_is_operation == true)
 	{
 		//!モード切替判定
 		ModeChange();
@@ -44,7 +44,7 @@ void PlayerDirection::Update()
 //!描画情報送信関数
 void PlayerDirection::Draw()
 {
-	if (m_ui->GetGameUIInfo()->m_gauge_stop == false
+	if (p_ui->GetGameUIInfo()->m_gauge_stop == false
 		&& m_direction_info.m_is_shotmode == true)
 	{
 		FbxController::Instance()->DrawFbx(m_direction_info.m_key, m_direction_info.m_mat_world);
@@ -60,14 +60,14 @@ void PlayerDirection::ReleaseModel()
 //!矢印回転関数
 void PlayerDirection::Rote()
 {
-	if (m_ui->GetGameUIInfo()->m_gauge_stop == false)
+	if (p_ui->GetGameUIInfo()->m_gauge_stop == false)
 	{
 		m_direction_info.m_player_pos = m_player->GetObjInfo()->m_pos;
 		m_direction_info.m_pos = m_player->GetObjInfo()->m_pos;
 		m_direction_info.m_pos.z = m_player->GetObjInfo()->m_pos.z + m_direction_info.m_add_zpos;
 		m_direction_info.m_old_pos = m_direction_info.m_pos;
 
-		m_direction_info.m_dir_vec = m_camera->GetObjInfo()->m_forward;
+		m_direction_info.m_dir_vec = p_camera->GetObjInfo()->m_forward;
 
 		m_direction_info.m_pos_rote_r = D3DXToDegree (-atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
 		m_direction_info.m_rote = D3DXToDegree(atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));

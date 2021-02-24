@@ -13,19 +13,19 @@ FbxController* FbxController::Instance()
 //!コンストラクタ
 FbxController::FbxController()
 {
-	if (m_Fbx == nullptr)
+	if (p_Fbx == nullptr)
 	{
-		m_Fbx = new Fbx();
+		p_Fbx = new Fbx();
 	}
 }
 
 //!デスクトラクタ
 FbxController::~FbxController()
 {
-	if (m_Fbx != nullptr)
+	if (p_Fbx != nullptr)
 	{
-		delete m_Fbx;
-		m_Fbx = nullptr;
+		delete p_Fbx;
+		p_Fbx = nullptr;
 	}
 }
 
@@ -33,7 +33,7 @@ FbxController::~FbxController()
 //!Meshデータセット関数
 FBXMeshData FbxController::LoadFbxMesh(std::string key_, const char* pFilename_)
 {
-	m_MeshData[key_] = m_Fbx->LoadFbx(pFilename_);
+	m_MeshData[key_] = p_Fbx->LoadFbx(pFilename_);
 
 	return m_MeshData[key_];
 }
@@ -58,7 +58,7 @@ void FbxController::ReleaseFbxMesh(std::string key_)
 {
 	if (&m_MeshData[key_] == nullptr)return;
 
-	m_Fbx->ReleaseModel(&m_MeshData[key_].fbxinfo);
+	p_Fbx->ReleaseModel(&m_MeshData[key_].fbxinfo);
 }
 
 //!Fbfファイル描画関数
@@ -68,7 +68,7 @@ void FbxController::DrawFbx(std::string key_, D3DXMATRIX& mat_world_)
 
 	if (&m_MeshData[key_] == nullptr)return;
 
-	m_Fbx->DrawModel(&m_MeshData[key_].fbxinfo);
+	p_Fbx->DrawModel(&m_MeshData[key_].fbxinfo);
 }
 
 

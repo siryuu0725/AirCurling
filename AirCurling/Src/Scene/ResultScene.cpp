@@ -6,36 +6,36 @@
 //!コンストラクタ
 ResultScene::ResultScene()
 {
-	cur_step_step = SceneStep::InitStep;	
+	m_cur_step = SceneStep::InitStep;	
 }
 
 //!描画情報送信まとめ関数
 void ResultScene::Draw()
 {
-	m_ui->Draw();
+	p_ui->Draw();
 }
 
 //! 初期化ステップ関数
 void ResultScene::InitStep()
 {
 	//!UIインスタンス化
-	if (m_ui == nullptr) { m_ui = new ResultUI(); }
+	if (p_ui == nullptr) { p_ui = new ResultUI(); }
 
 	//!UI初期化
-	m_ui->Init();
+	p_ui->Init();
 
 	SoundManager::Instance()->RegisterResultSound();
 	SoundManager::Instance()->SoundBGM(-300);
 
 	//!次のステップへ
-	cur_step_step = SceneStep::ThreadStep;
+	m_cur_step = SceneStep::ThreadStep;
 }
 
 //!スレッド更新ステップ関数
 void ResultScene::UpdateThreadStep()
 {
 	//!次のステップへ
-	cur_step_step = SceneStep::MainStep;
+	m_cur_step = SceneStep::MainStep;
 }
 
 //!更新ステップ関数
@@ -44,7 +44,7 @@ void ResultScene::MainStep()
 	if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 	{
 		//!次のステップへ
-		cur_step_step = SceneStep::EndStep;
+		m_cur_step = SceneStep::EndStep;
 	}
 }
 
@@ -52,9 +52,9 @@ void ResultScene::MainStep()
 void ResultScene::EndStep()
 {
 	//!UI解放
-	m_ui->ReleaseTex();
-	delete m_ui;
-	m_ui = nullptr;
+	p_ui->ReleaseTex();
+	delete p_ui;
+	p_ui = nullptr;
 
 	//!スコア初期化
 	Score::Instance()->Reset();

@@ -55,7 +55,7 @@ public:
 	static SceneBase* InstanceTitleScene();
 
 private:
-	TitleUI* m_ui; //!タイトル用UI
+	TitleUI* p_ui; //!タイトル用UI
 };
 
 #endif

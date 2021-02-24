@@ -59,10 +59,10 @@ public:
 	const bool GetChangeSceneFlg()const {return m_change_scene; }
 
 	//!現在のシーンステップGetter
-	const SceneStep NowStep()const { return cur_step_step; }
+	const SceneStep NowStep()const { return m_cur_step; }
 
 protected:
-	SceneStep cur_step_step;  //!現在のシーンステップ
+	SceneStep m_cur_step;  //!現在のシーンステップ
 	bool m_change_scene;      //!シーン移行フラグ
 };
 

@@ -3,7 +3,7 @@
 
 void SceneBase::Update()
 {
-	switch (cur_step_step)
+	switch (m_cur_step)
 	{
 	case SceneStep::InitStep:
 		InitStep();

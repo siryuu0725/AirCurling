@@ -49,9 +49,9 @@ private:
 	struct GoalExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
 	}m_goal_info_copy;
 };

@@ -35,9 +35,9 @@ public:
  　　* @brief  オブジェクト情報Getter
 	 * @return ObjectInfoの指定した変数の情報を返す
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_reset_floor_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_resetfloor_info; }
 private:
-	ObjectInfo m_reset_floor_info; //!リセット床情報
+	ObjectInfo m_resetfloor_info; //!リセット床情報
 };
 
 #endif

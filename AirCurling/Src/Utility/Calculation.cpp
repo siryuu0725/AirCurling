@@ -9,18 +9,18 @@ D3DXMATRIX Calculation::Matrix(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3
 	D3DXMATRIX world;
 	D3DXMATRIX mat_trans, mat_scale, mat_rot, mat_rot_x, mat_rot_y, mat_rot_z;
 
-	D3DXVECTOR3 pos;
-	D3DXVECTOR3 scale;
+	D3DXVECTOR3 m_pos;
+	D3DXVECTOR3 m_scale;
 	D3DXVECTOR3 angle;
 
 	D3DXMatrixIdentity(&world);
 
-	pos = pos_;
-	scale = scale_;
+	m_pos = pos_;
+	m_scale = scale_;
 	angle = angle_;
 
-	D3DXMatrixTranslation(&mat_trans, pos.x, pos.y, pos.z);
-	D3DXMatrixScaling(&mat_scale, scale.x, scale.y, scale.z);
+	D3DXMatrixTranslation(&mat_trans, m_pos.x, m_pos.y, m_pos.z);
+	D3DXMatrixScaling(&mat_scale, m_scale.x, m_scale.y, m_scale.z);
 	D3DXMatrixRotationX(&mat_rot_x, D3DXToRadian(angle.x));
 	D3DXMatrixRotationY(&mat_rot_y, D3DXToRadian(angle.y));
 	D3DXMatrixRotationZ(&mat_rot_z, D3DXToRadian(angle.z));

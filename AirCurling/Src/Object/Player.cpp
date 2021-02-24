@@ -6,7 +6,7 @@
 //!コンストラクタ
 Player::Player(Camera* camera_, BlockController* block_, 
 	Floor* floor_, DebufController* debuf_, Goal* goal_) :
-	m_camera(camera_), m_block(block_), m_floor(floor_), m_debuf(debuf_), m_goal(goal_)
+	p_camera(camera_), p_block(block_), p_floor(floor_), p_debuf(debuf_), p_goal(goal_)
 {
 	m_update_step = PlayerUpdateStep::StartProduction;  //!更新ステップを開始演出で初期化
 }
@@ -19,8 +19,8 @@ void Player::Init(std::string stage_str_)
 
 	player_info.m_key = "pac";  //!描画用キー
 
-	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], m_player_info_copy.pos[ARRAY_DATA::Y], m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
-	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.scale[ARRAY_DATA::X], m_player_info_copy.scale[ARRAY_DATA::Y], m_player_info_copy.scale[ARRAY_DATA::Z]);	 //!描画サイズ
+	player_info.m_pos = D3DXVECTOR3(m_player_info_copy.m_pos[ARRAY_DATA::X], m_player_info_copy.m_pos[ARRAY_DATA::Y], m_player_info_copy.m_pos[ARRAY_DATA::Z]); //!座標
+	player_info.m_scale = D3DXVECTOR3(m_player_info_copy.m_scale[ARRAY_DATA::X], m_player_info_copy.m_scale[ARRAY_DATA::Y], m_player_info_copy.m_scale[ARRAY_DATA::Z]);	 //!描画サイズ
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //!ワールド座標
 	
@@ -28,7 +28,7 @@ void Player::Init(std::string stage_str_)
 	player_info.m_acceleration = -player_info.m_friction * Gravity; //!加速度
 
 
-	player_info.m_radius = m_player_info_copy.radius;    //!半径
+	player_info.m_radius = m_player_info_copy.m_radius;    //!半径
 	player_info.m_speed = m_player_info_copy.speed;  //!移動スピード
 
 	player_info.m_timer = 0;  //!経過時間
@@ -109,8 +109,8 @@ void Player::Move()
 	if (player_info.m_is_movement == false)
 	{
 		//!カメラが向いている方向に方向ベクトルを合わせる
-		player_info.m_nor_speed.x = m_camera->GetObjInfo()->m_forward.x / Calculation::Length(m_camera->GetObjInfo()->m_forward.x, m_camera->GetObjInfo()->m_forward.z);
-		player_info.m_nor_speed.z = m_camera->GetObjInfo()->m_forward.z / Calculation::Length(m_camera->GetObjInfo()->m_forward.x, m_camera->GetObjInfo()->m_forward.z);
+		player_info.m_nor_speed.x = p_camera->GetObjInfo()->m_forward.x / Calculation::Length(p_camera->GetObjInfo()->m_forward.x, p_camera->GetObjInfo()->m_forward.z);
+		player_info.m_nor_speed.z = p_camera->GetObjInfo()->m_forward.z / Calculation::Length(p_camera->GetObjInfo()->m_forward.x, p_camera->GetObjInfo()->m_forward.z);
 	}
 
 	//!プレイヤーが移動している間
@@ -175,7 +175,7 @@ void Player::HitController()
 //!矩形型ブロック当たり判定関数
 void Player::HitRectBlock()
 {
-	for (const auto& itr : *m_block->GetRectShape())
+	for (const auto& itr : *p_block->GetRectShape())
 	{
 		//!矩形型ブロックの上下との当たり判定
 		if (Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -260,7 +260,7 @@ void Player::HitRectBlock()
 //!円形型ブロック当たり判定関数
 void Player::HitCircleBlock()
 {
-	for (const auto& itr : *m_block->GetCircleShape())
+	for (const auto& itr : *p_block->GetCircleShape())
 	{
 		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
 		{
@@ -282,7 +282,7 @@ void Player::HitCircleBlock()
 //!リセットデバフ当たり判定関数
 void Player::HitReset()
 {
-	for (const auto& itr : *m_debuf->GetResetShape())
+	for (const auto& itr : *p_debuf->GetResetShape())
 	{
 		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
 		{
@@ -305,7 +305,7 @@ void Player::HitReset()
 //!停止デバフ当たり判定関数
 void Player::HitStop()
 {
-	for (const auto& itr : *m_debuf->GetStopShape())
+	for (const auto& itr : *p_debuf->GetStopShape())
 	{
 		//!矩形のため上下左右の当たり判定を取る
 		if (Collision::RectLeftToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true
@@ -333,7 +333,7 @@ void Player::HitGoal()
 		Score::Instance()->AddGameScore(player_info.m_score_counter);
 
 		//!赤の円に当たっていた場合
-		if (Collision::CircleToCircle(player_info.m_pos, m_goal->GetObjInfo()->m_pos, 1, 1) == true)
+		if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 1) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
@@ -348,7 +348,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!黄の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, m_goal->GetObjInfo()->m_pos, 1, 3) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 3) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
@@ -361,7 +361,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!緑の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, m_goal->GetObjInfo()->m_pos, 1, 7) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 7) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
@@ -539,14 +539,14 @@ D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, floa
 void Player::ResetPos()
 {
 	//!ステージから落ちた場合
-	if (player_info.m_pos.x <= m_floor->GetObjInfo()->m_pos.x - m_floor->GetObjInfo()->m_width
-		|| player_info.m_pos.x >= m_floor->GetObjInfo()->m_pos.x + m_floor->GetObjInfo()->m_width
-		|| player_info.m_pos.z <= m_floor->GetObjInfo()->m_pos.z - m_floor->GetObjInfo()->m_height
-		|| player_info.m_pos.z >= m_floor->GetObjInfo()->m_pos.z + m_floor->GetObjInfo()->m_height)
+	if (player_info.m_pos.x <= p_floor->GetObjInfo()->m_pos.x - p_floor->GetObjInfo()->m_width
+		|| player_info.m_pos.x >= p_floor->GetObjInfo()->m_pos.x + p_floor->GetObjInfo()->m_width
+		|| player_info.m_pos.z <= p_floor->GetObjInfo()->m_pos.z - p_floor->GetObjInfo()->m_height
+		|| player_info.m_pos.z >= p_floor->GetObjInfo()->m_pos.z + p_floor->GetObjInfo()->m_height)
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.pos[ARRAY_DATA::X], PlayerPosMin_Y, m_player_info_copy.pos[ARRAY_DATA::Z]); //!座標
+		player_info.m_pos = D3DXVECTOR3(m_player_info_copy.m_pos[ARRAY_DATA::X], PlayerPosMin_Y, m_player_info_copy.m_pos[ARRAY_DATA::Z]); //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();

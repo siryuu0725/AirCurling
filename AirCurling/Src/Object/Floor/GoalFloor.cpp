@@ -9,8 +9,8 @@ void Goal::Init(std::string stage_str_)
 
 	m_goal_info.m_key = "goal";  //!描画用キー
 
-	m_goal_info.m_pos = D3DXVECTOR3(m_goal_info_copy.pos[ARRAY_DATA::X], m_goal_info_copy.pos[ARRAY_DATA::Y], m_goal_info_copy.pos[ARRAY_DATA::Z]);          //!座標
-	m_goal_info.m_scale = D3DXVECTOR3(m_goal_info_copy.scale[ARRAY_DATA::X], m_goal_info_copy.scale[ARRAY_DATA::Y], m_goal_info_copy.scale[ARRAY_DATA::Z]);  //!描画サイズ
+	m_goal_info.m_pos = D3DXVECTOR3(m_goal_info_copy.m_pos[ARRAY_DATA::X], m_goal_info_copy.m_pos[ARRAY_DATA::Y], m_goal_info_copy.m_pos[ARRAY_DATA::Z]);          //!座標
+	m_goal_info.m_scale = D3DXVECTOR3(m_goal_info_copy.m_scale[ARRAY_DATA::X], m_goal_info_copy.m_scale[ARRAY_DATA::Y], m_goal_info_copy.m_scale[ARRAY_DATA::Z]);  //!描画サイズ
 	m_goal_info.m_angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f);   //!回転角度
 
 	m_goal_info.m_mat_world = Calculation::Matrix(m_goal_info.m_pos, m_goal_info.m_scale, m_goal_info.m_angle); //!ワールド座標

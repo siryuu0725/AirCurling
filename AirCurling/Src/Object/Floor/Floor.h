@@ -47,15 +47,15 @@ private:
 	struct FloorExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float scale[3];
+		float m_scale[3];
 
 		//!回転角度
-		float rote[3];
+		float m_rote[3];
 
-		float width;  //!横幅
-		float height; //!縦幅
+		float m_width;  //!横幅
+		float m_height; //!縦幅
 
 
 	}m_floor_info_copy;

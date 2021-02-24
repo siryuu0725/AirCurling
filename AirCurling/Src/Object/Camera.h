@@ -48,11 +48,11 @@ private:
 	struct CameraExternalInfo
 	{
 		//!座標
-		float pos[3];
+		float m_pos[3];
 		//!サイズ
-		float eye_pos[3]; 
+		float m_eye_pos[3]; 
 		//!パックの上にカメラを配置するよう
-		float packup;          
+		float m_packup;          
 
 	}m_camera_info_copy;
 
