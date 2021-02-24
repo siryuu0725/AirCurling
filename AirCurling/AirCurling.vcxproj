@@ -144,301 +144,301 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sor\Main.cpp">
+    <ClCompile Include="Src\Main.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Block\BlockController.cpp">
+    <ClCompile Include="Src\Object\Block\BlockController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Block\CircleBlock.cpp">
+    <ClCompile Include="Src\Object\Block\CircleBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Block\RectBlock.cpp">
+    <ClCompile Include="Src\Object\Block\RectBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Camera.cpp">
+    <ClCompile Include="Src\Object\Camera.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Floor\Debuf\DebufController.cpp">
+    <ClCompile Include="Src\Object\Floor\Debuf\DebufController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Floor\Debuf\ResetFloor.cpp" />
-    <ClCompile Include="Sor\Object\Floor\Debuf\StopFloor.cpp" />
-    <ClCompile Include="Sor\Object\Floor\Floor.cpp">
+    <ClCompile Include="Src\Object\Floor\Debuf\ResetFloor.cpp" />
+    <ClCompile Include="Src\Object\Floor\Debuf\StopFloor.cpp" />
+    <ClCompile Include="Src\Object\Floor\Floor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Floor\GoalFloor.cpp">
+    <ClCompile Include="Src\Object\Floor\GoalFloor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Player.cpp">
+    <ClCompile Include="Src\Object\Player.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\PlayerDirection.cpp">
+    <ClCompile Include="Src\Object\PlayerDirection.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Object\Sky.cpp">
+    <ClCompile Include="Src\Object\Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\GameScene.cpp">
+    <ClCompile Include="Src\Scene\GameScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\ResultScene.cpp">
+    <ClCompile Include="Src\Scene\ResultScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\SceneBase.cpp">
+    <ClCompile Include="Src\Scene\SceneBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\SceneController.cpp">
+    <ClCompile Include="Src\Scene\SceneController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Scene\TitleScene.cpp">
+    <ClCompile Include="Src\Scene\TitleScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Score\CSV.cpp">
+    <ClCompile Include="Src\Score\CSV.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Score\GameScore.cpp">
+    <ClCompile Include="Src\Score\GameScore.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Effect.cpp">
+    <ClCompile Include="Src\System\Effect.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\FBX.cpp">
+    <ClCompile Include="Src\System\FBX.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\FBXController.cpp">
+    <ClCompile Include="Src\System\FBXController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Graphics.cpp">
+    <ClCompile Include="Src\System\Graphics.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Inputter.cpp">
+    <ClCompile Include="Src\System\Inputter.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Sound\AudioPlayer.cpp">
+    <ClCompile Include="Src\System\Sound\AudioPlayer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Sound\DirectSound.cpp">
+    <ClCompile Include="Src\System\Sound\DirectSound.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Sound\SoundController.cpp">
+    <ClCompile Include="Src\System\Sound\SoundController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\SystemController.cpp">
+    <ClCompile Include="Src\System\SystemController.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\System\Window.cpp">
+    <ClCompile Include="Src\System\Window.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\UI\GameUI.cpp">
+    <ClCompile Include="Src\UI\GameUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\UI\PoseUI.cpp">
+    <ClCompile Include="Src\UI\PoseUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\UI\LoadUI.cpp">
+    <ClCompile Include="Src\UI\LoadUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\UI\ResultUI.cpp">
+    <ClCompile Include="Src\UI\ResultUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\UI\TitleUI.cpp">
+    <ClCompile Include="Src\UI\TitleUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Utility\Calculation.cpp">
+    <ClCompile Include="Src\Utility\Calculation.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Sor\Utility\Collision\Collision.cpp">
+    <ClCompile Include="Src\Utility\Collision\Collision.cpp">
       <SubType>
       </SubType>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sor\Object\Block\BlockController.h">
+    <ClInclude Include="Src\Object\Block\BlockController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Block\CircleBlock.h">
+    <ClInclude Include="Src\Object\Block\CircleBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Block\RectBlock.h">
+    <ClInclude Include="Src\Object\Block\RectBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Camera.h">
+    <ClInclude Include="Src\Object\Camera.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Floor\Debuf\DebufController.h">
+    <ClInclude Include="Src\Object\Floor\Debuf\DebufController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Floor\Debuf\ResetFloor.h" />
-    <ClInclude Include="Sor\Object\Floor\Debuf\StopFloor.h" />
-    <ClInclude Include="Sor\Object\Floor\Floor.h">
+    <ClInclude Include="Src\Object\Floor\Debuf\ResetFloor.h" />
+    <ClInclude Include="Src\Object\Floor\Debuf\StopFloor.h" />
+    <ClInclude Include="Src\Object\Floor\Floor.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Floor\GoalFloor.h">
+    <ClInclude Include="Src\Object\Floor\GoalFloor.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\ObjectBase.h">
+    <ClInclude Include="Src\Object\ObjectBase.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Player.h">
+    <ClInclude Include="Src\Object\Player.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\PlayerDirection.h">
+    <ClInclude Include="Src\Object\PlayerDirection.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Object\Sky.h">
+    <ClInclude Include="Src\Object\Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\GameScene.h">
+    <ClInclude Include="Src\Scene\GameScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\ResultScene.h">
+    <ClInclude Include="Src\Scene\ResultScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\SceneBase.h">
+    <ClInclude Include="Src\Scene\SceneBase.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\SceneController.h">
+    <ClInclude Include="Src\Scene\SceneController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Scene\TitleScene.h">
+    <ClInclude Include="Src\Scene\TitleScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Score\CSV.h">
+    <ClInclude Include="Src\Score\CSV.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Score\GameScore.h">
+    <ClInclude Include="Src\Score\GameScore.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Effect.h">
+    <ClInclude Include="Src\System\Effect.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\FBX.h">
+    <ClInclude Include="Src\System\FBX.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\FBXController.h">
+    <ClInclude Include="Src\System\FBXController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Graphics.h">
+    <ClInclude Include="Src\System\Graphics.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Inputter.h">
+    <ClInclude Include="Src\System\Inputter.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Sound\AudioPlayer.h">
+    <ClInclude Include="Src\System\Sound\AudioPlayer.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Sound\DirectSound.h">
+    <ClInclude Include="Src\System\Sound\DirectSound.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Sound\SoundController.h">
+    <ClInclude Include="Src\System\Sound\SoundController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\SystemController.h">
+    <ClInclude Include="Src\System\SystemController.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\System\Window.h">
+    <ClInclude Include="Src\System\Window.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\GameUI.h">
+    <ClInclude Include="Src\UI\GameUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\PoseUI.h">
+    <ClInclude Include="Src\UI\PoseUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\LoadUI.h">
+    <ClInclude Include="Src\UI\LoadUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\ResultUI.h">
+    <ClInclude Include="Src\UI\ResultUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\TitleUI.h">
+    <ClInclude Include="Src\UI\TitleUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\UI\UIBase.h">
+    <ClInclude Include="Src\UI\UIBase.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Utility\Calculation.h">
+    <ClInclude Include="Src\Utility\Calculation.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Utility\Collision\Collision.h">
+    <ClInclude Include="Src\Utility\Collision\Collision.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Utility\Collision\Shape.h">
+    <ClInclude Include="Src\Utility\Collision\Shape.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Sor\Utility\Vec.h">
+    <ClInclude Include="Src\Utility\Vec.h">
       <SubType>
       </SubType>
     </ClInclude>
