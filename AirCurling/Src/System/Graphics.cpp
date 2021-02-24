@@ -6,10 +6,7 @@ Graphics* Graphics::p_instance = nullptr;
 
 Graphics* Graphics::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new Graphics;
-	}
+	if (p_instance == nullptr) { p_instance = new Graphics; }
 
 	return p_instance;
 }

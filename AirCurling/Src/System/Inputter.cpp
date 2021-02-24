@@ -24,10 +24,7 @@ Inputter* Inputter::p_instance = nullptr;
 
 Inputter* Inputter::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new Inputter;
-	}
+	if (p_instance == nullptr) { p_instance = new Inputter; }
 
 	return p_instance;
 }

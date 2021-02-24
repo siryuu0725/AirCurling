@@ -8,10 +8,7 @@ Effect* Effect::p_instance = nullptr;
 //!インスタンス化関数
 Effect* Effect::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new Effect;
-	}
+	if (p_instance == nullptr) { p_instance = new Effect; }
 
 	return p_instance;
 }

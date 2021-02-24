@@ -11,10 +11,7 @@ SceneController* SceneController::p_instance = nullptr;
 //!インスタンス化関数
 SceneController* SceneController::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new SceneController;
-	}
+	if (p_instance == nullptr) { p_instance = new SceneController; }
 
 	return p_instance;
 }

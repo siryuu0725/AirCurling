@@ -5,10 +5,7 @@ FbxController* FbxController::p_instance = nullptr;
 
 FbxController* FbxController::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new FbxController();
-	}
+	if (p_instance == nullptr) { p_instance = new FbxController(); }
 
 	return p_instance;
 }

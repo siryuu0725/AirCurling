@@ -11,10 +11,7 @@ Score::Score() :
 //!インスタンス化関数
 Score* Score::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new Score;
-	}
+	if (p_instance == nullptr) { p_instance = new Score; }
 
 	return p_instance;
 }

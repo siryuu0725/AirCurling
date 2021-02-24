@@ -24,10 +24,7 @@ CSV* CSV::p_instance = nullptr;
 
 CSV* CSV::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new CSV;
-	}
+	if (p_instance == nullptr) { p_instance = new CSV; }
 
 	return p_instance;
 }

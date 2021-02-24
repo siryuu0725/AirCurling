@@ -4,10 +4,7 @@ SoundManager* SoundManager::p_instance = nullptr;
 
 SoundManager* SoundManager::Instance()
 {
-	if (p_instance == nullptr)
-	{
-		p_instance = new SoundManager;
-	}
+	if (p_instance == nullptr) { p_instance = new SoundManager; }
 
 	return p_instance;
 }
