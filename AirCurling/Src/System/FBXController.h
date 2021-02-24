@@ -3,7 +3,7 @@
 #include "FBX.h"
 
 /**
-*@clss  FBX管理クラス
+*@class  FBX管理クラス
 */
 
 class FbxController

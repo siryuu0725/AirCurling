@@ -4,7 +4,7 @@
 #include "../UI/TitleUI.h"
 
 /**
-*@clss  タイトルシーンクラス
+*@class  タイトルシーンクラス
 */
 
 class TitleScene :public SceneBase

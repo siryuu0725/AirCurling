@@ -8,7 +8,7 @@
 #include <string>
 
 /**
-*@clss  計算機クラス
+*@class  計算機クラス
 */
 
 class Calculation

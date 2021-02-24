@@ -6,7 +6,7 @@
 #include "UIBase.h"
 
 /**
-*@clss  ポーズ画面用UIクラス
+*@class  ポーズ画面用UIクラス
 */
 
 class PoseUI :public UIBase

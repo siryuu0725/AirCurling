@@ -16,7 +16,7 @@ enum ARRAY_DATA
 };
 
 /**
-*@clss   オブジェクトベースクラス
+*@class   オブジェクトベースクラス
 */
 
 class ObjectBase

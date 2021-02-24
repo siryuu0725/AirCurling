@@ -14,7 +14,7 @@ enum class SceneId
 };
 
 /**
-*@clss  シーン管理クラス
+*@class  シーン管理クラス
 */
 class SceneController
 {

@@ -5,7 +5,7 @@
 #include <d3dx9.h>
 
 /**
-*@clss  UIベースクラス
+*@class  UIベースクラス
 */
 
 class UIBase

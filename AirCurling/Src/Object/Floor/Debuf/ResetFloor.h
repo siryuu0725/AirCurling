@@ -3,7 +3,7 @@
 #include "../../ObjectBase.h"
 
 /**
-*@clss   リセットデバフ床クラス
+*@class   リセットデバフ床クラス
 */
 
 class ResetFloor :public ObjectBase

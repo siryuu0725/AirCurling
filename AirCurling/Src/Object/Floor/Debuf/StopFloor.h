@@ -3,7 +3,7 @@
 #include "../../ObjectBase.h"
 
 /**
-*@clss   摩擦上昇デバフ床クラス
+*@class   摩擦上昇デバフ床クラス
 */
 
 class StopFloor :public ObjectBase

@@ -8,7 +8,7 @@
 #include "../UI/ResultUI.h"
 
 /**
-*@clss  リザルトシーンクラス
+*@class  リザルトシーンクラス
 */
 
 class ResultScene :public SceneBase

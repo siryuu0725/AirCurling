@@ -22,7 +22,7 @@
 #include "../Object/PlayerDirection.h"
 
 /**
-*@clss  ゲームシーンクラス
+*@class  ゲームシーンクラス
 */
 
 class GameScene :public SceneBase

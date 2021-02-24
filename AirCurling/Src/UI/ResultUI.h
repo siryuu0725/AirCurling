@@ -5,7 +5,7 @@
 #include "../Score/CSV.h"
 
 /**
-*@clss  リザルト用UIクラス
+*@class  リザルト用UIクラス
 */
 
 class ResultUI

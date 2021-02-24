@@ -10,7 +10,7 @@
 #define MOUSE_ON_VALUE (0x80)		// オン状態の値
 
 /**
-*@clss  入力クラス
+*@class  入力クラス
 */
 
 class Inputter

@@ -15,7 +15,7 @@ constexpr unsigned __int8 CameraSensitivity = 50;  //!カメラ感度
 
 
 /**
-*@clss   カメラクラス
+*@class   カメラクラス
 */
 
 class Camera : public ObjectBase

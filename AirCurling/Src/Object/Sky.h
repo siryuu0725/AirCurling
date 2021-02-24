@@ -3,10 +3,9 @@
 #include "ObjectBase.h"
 
 /**
-*@clss  空オブジェクトクラス
+*@class  空(上空)オブジェクトクラス
 */
 
-//空(上空)
 class SkyDome :public ObjectBase
 {
 public:
@@ -56,10 +55,9 @@ private:
 };
 
 /**
-*@clss  背景床クラス
+*@class  空(床)クラス
 */
 
-//空(床)
 class SkyFloor :public ObjectBase
 {
 public:

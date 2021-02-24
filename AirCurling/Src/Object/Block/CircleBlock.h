@@ -3,7 +3,7 @@
 #include "../ObjectBase.h"
 
 /**
-*@clss   円形ブロッククラス
+*@class   円形ブロッククラス
 *@brief  円形ブロックの情報を持つ
 */
 

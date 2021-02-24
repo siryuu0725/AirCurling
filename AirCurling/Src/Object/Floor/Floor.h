@@ -3,7 +3,7 @@
 #include "../ObjectBase.h"
 
 /**
-*@clss   ステージ床クラス
+*@class   ステージ床クラス
 */
 
 class Floor :public ObjectBase

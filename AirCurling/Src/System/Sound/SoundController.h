@@ -6,7 +6,7 @@
 
 
 /**
-*@clss  サウンド管理クラス
+*@class  サウンド管理クラス
 */
 
 class SoundManager

@@ -3,7 +3,7 @@
 #include "../ObjectBase.h"
 
 /**
-*@clss   矩形型ブロック
+*@class   矩形型ブロック
 *@brief  矩形型ブロックの情報を持つ
 */
 

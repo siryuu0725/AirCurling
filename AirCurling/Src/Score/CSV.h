@@ -15,7 +15,7 @@ enum class RANK
 };
 
 /**
-*@clss  CSVファイル取り扱いクラス
+*@class  CSVファイル取り扱いクラス
 */
 
 class CSV 
