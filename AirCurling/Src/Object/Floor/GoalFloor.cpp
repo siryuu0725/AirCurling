@@ -21,14 +21,13 @@ void Goal::LoadGoalExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 
-	std::string stage_id = "Res/ObjectData/" + stage_str_ + "GoalData.dat";
+	std::string file_name = "Res/ObjectData/" + stage_str_ + "GoalData.dat";
 
 	//!ファイル読み込み
-	fopen_s(&fp, stage_id.c_str(), "rb");
+	fopen_s(&fp, file_name.c_str(), "rb");
 
 	if (fp != nullptr)
 	{
-
 		//!書き込む
 		fread(&m_goal_externalinfo, sizeof(GoalExternalInfo), 1, fp);
 
