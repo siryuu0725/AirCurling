@@ -80,7 +80,7 @@ private:
 	static SceneController* p_instance;
 	SceneBase* p_scene;
 
-	SceneId m_cur_scene_id;
+	SceneId m_scene_id;
 
 	std::string m_stagename;
 };

@@ -60,7 +60,7 @@ void SceneController::Draw()
 //!現在シーンSetter
 void SceneController::SetSceneId(SceneId sceneid_)
 {
-	m_cur_scene_id = sceneid_;
+	m_scene_id = sceneid_;
 }
 
 //!シーン切り替え判定関数
@@ -72,7 +72,7 @@ void SceneController::ChangeScene()
 	{
 		delete p_scene;
 		//!指定のゲームの管理クラスに切り替える
-		p_scene = s_controller_array[static_cast<int>(m_cur_scene_id)]();
+		p_scene = s_controller_array[static_cast<int>(m_scene_id)]();
 	}
 }
 
