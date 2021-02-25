@@ -129,7 +129,7 @@ void Player::Move()
 		//}
 
 		//!移動スピードが0に等しくなった場合
-		if (player_info.m_speed <= ZeroSpeed)
+		if (player_info.m_speed <= StopSpeed)
 		{
 			player_info.m_speed = 0.0f;  //!移動スピードを0に
 			player_info.m_is_turnend = true;  //!ターン終了
@@ -333,13 +333,13 @@ void Player::HitGoal()
 		Score::Instance()->AddGameScore(player_info.m_score_counter);
 
 		//!赤の円に当たっていた場合
-		if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 1) == true)
+		if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_red_radius) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
 
 			//!スコアを減算するため-
-			player_info.m_score_counter = -3;
+			player_info.m_score_counter = RedGoalScore;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
 			player_info.m_is_goal = true;
@@ -348,12 +348,12 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!黄の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 3) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_yellow_radius) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
 			//!スコアを減算するため-
-			player_info.m_score_counter = -2;
+			player_info.m_score_counter = YellowGoalScore;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
 			player_info.m_is_goal = true;
@@ -361,12 +361,12 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!緑の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, 1, 7) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_green_radius) == true)
 		{
 			//!エフェクト再生
 			GoalEffectStart();
 			//!スコアを減算するため-
-			player_info.m_score_counter = -1;
+			player_info.m_score_counter = GreenGoalScore;
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
 			player_info.m_is_goal = true;
@@ -546,7 +546,7 @@ void Player::ResetPos()
 	{
 
 		ResetEffectStart();
-		player_info.m_pos = m_player_externalinfo.m_pos; //!座標
+		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z); //!座標
 		player_info.m_setspeed = 0.0f;
 
 		FallEffectStart();

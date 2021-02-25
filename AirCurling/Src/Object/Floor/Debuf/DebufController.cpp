@@ -4,14 +4,14 @@
 DebufController::~DebufController()
 {
 	//!リセット床
-	for (__int16 i = 0; i < m_resetfloors.size(); i++)
+	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		delete m_resetfloors[i];
 		m_resetfloors[i] = nullptr;
 	}
 
 	//!スピード減衰床
-	for (__int16 i = 0; i < m_stopfloors.size(); i++)
+	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		delete m_stopfloors[i];
 		m_stopfloors[i] = nullptr;
@@ -26,7 +26,7 @@ void DebufController::Init(std::string stage_str_)
 	LoadStopFloorExternalInfo(stage_str_);
 
 	//!リセット床
-	for (__int16 i = 0; i < m_resetfloor_num; i++)
+	for (__int8 i = 0; i < m_resetfloor_num; i++)
 	{
 		//!読み込んだ数分追加
 		m_resetfloors.push_back(new ResetFloor
@@ -39,7 +39,7 @@ void DebufController::Init(std::string stage_str_)
 	}
 
 	//!スピード減衰床
-	for (__int16 i = 0; i < m_stopfloor_num; i++)
+	for (__int8 i = 0; i < m_stopfloor_num; i++)
 	{
 		//!読み込んだ数分追加
 		m_stopfloors.push_back(new StopFloor
@@ -102,13 +102,13 @@ void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 void DebufController::Draw()
 {
 	//!リセット床
-	for (__int16 i = 0; i < m_resetfloors.size(); i++)
+	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		m_resetfloors[i]->Draw();
 	}
 
 	//!スピード減衰床
-	for (__int16 i = 0; i < m_stopfloors.size(); i++)
+	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		m_stopfloors[i]->Draw();
 	}
@@ -118,13 +118,13 @@ void DebufController::Draw()
 void DebufController::ReleaseModel()
 {
 	//!リセット床
-	for (__int16 i = 0; i < m_resetfloors.size(); i++)
+	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		m_resetfloors[i]->ReleaseModel();
 	}
 
 	//!スピード減衰床
-	for (__int16 i = 0; i < m_stopfloors.size(); i++)
+	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		m_stopfloors[i]->ReleaseModel();
 	}

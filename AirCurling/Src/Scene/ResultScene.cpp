@@ -25,7 +25,7 @@ void ResultScene::InitStep()
 	p_ui->Init();
 
 	SoundManager::Instance()->RegisterResultSound();
-	SoundManager::Instance()->SoundBGM(-300);
+	SoundManager::Instance()->SoundBGM(ResultBGMVolume);
 
 	//!次のステップへ
 	m_cur_step = SceneStep::ThreadStep;

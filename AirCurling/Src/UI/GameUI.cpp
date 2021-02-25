@@ -181,7 +181,7 @@ void GameUI::GaugeStop(Player* player_)
 		&& m_gameui_info.m_is_shotmode == true)
 	{
 		m_gameui_info.m_gauge_speed = 0.0f; //!バーの移動スピードを0に
-		m_gameui_info.m_add_speed = ADD_SPEED_POWER * m_gameui_info.m_gauge_pos; //!プレイヤーの移動速度を設定
+		m_gameui_info.m_add_speed = AddSpeedPower * m_gameui_info.m_gauge_pos; //!プレイヤーの移動速度を設定
 		m_gameui_info.m_gauge_stop = true;  //!ゲージバー移動
 		//!移動スピードをUIのバーが止まったとこらから加算
 		player_->SetAddSpeed(m_gameui_info.m_add_speed);
@@ -191,7 +191,9 @@ void GameUI::GaugeStop(Player* player_)
 	}
 
 	//!バーがゲージの最大値or最小値に達した時
-	if (m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y > 860.0f || m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y < 200.0f)
+	if (m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y + m_gameui_info.m_ui_tex[(int)GameUICategory::ShotBox].Height >
+		m_gameui_info.m_ui_pos[(int)GameUICategory::ShotGauge].y + m_gameui_info.m_ui_tex[(int)GameUICategory::ShotGauge].Height
+		|| m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y < m_gameui_info.m_ui_pos[(int)GameUICategory::ShotGauge].y)
 	{
 		m_gameui_info.m_gauge_speed = -m_gameui_info.m_gauge_speed;
 	}
@@ -207,7 +209,7 @@ void GameUI::UpdateTurn(Player* player_)
 		m_gameui_info.m_ui_tu[(int)GameUICategory::TurnNumber] += TrunTexUVAddValue;
 
 		
-		if (m_gameui_info.m_ui_tu[(int)GameUICategory::TurnNumber] > 1.0f)
+		if (m_gameui_info.m_ui_tu[(int)GameUICategory::TurnNumber] > TrunTexUVMax)
 		{
 			m_gameui_info.m_ui_tu[(int)GameUICategory::TurnNumber] = TrunTexUVAddValue;
 		}
@@ -215,7 +217,7 @@ void GameUI::UpdateTurn(Player* player_)
 		//!バー移動フラグ切り替え
 		m_gameui_info.m_gauge_stop = false;
 		//!バーの位置を初期位置に
-		m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y = 860.0f;
+		m_gameui_info.m_ui_pos[(int)GameUICategory::ShotBox].y = m_gameui_info.m_ui_pos[(int)GameUICategory::ShotGauge].y + m_gameui_info.m_ui_tex[(int)GameUICategory::ShotGauge].Height - m_gameui_info.m_ui_tex[(int)GameUICategory::ShotBox].Height;
 		m_gameui_info.m_gauge_pos = 0.0f;
 
 		m_gameui_info.m_gauge_speed = 7.0f;
@@ -299,7 +301,7 @@ void GameUI::StartProduction(Camera* camera_)
 	}
 	
 	//!再移動後、画面外にテクスチャが出た時
-	if (m_gameui_info.m_remove == true && m_gameui_info.m_ui_pos[(int)GameUICategory::Kacco].x >= 1900.0f)
+	if (m_gameui_info.m_remove == true && m_gameui_info.m_ui_pos[(int)GameUICategory::Kacco].x >= StartFontEndPosX)
 	{
 		m_update_step = UpdateStep::GameMain; //!更新ステップをゲーム本編へ
 		camera_->SetCameraOperation(true);
@@ -311,9 +313,9 @@ void GameUI::StartProduction(Camera* camera_)
 void GameUI::EndProduction()
 {
 	//!テクスチャが画面内にある時
-	if (m_gameui_info.m_ui_pos[(int)GameUICategory::Finish].y >= -500.0f)
+	if (m_gameui_info.m_ui_pos[(int)GameUICategory::Finish].y >= FinishFontEndPosX)
 	{
-		m_gameui_info.m_ui_pos[(int)GameUICategory::Finish].y += 8.0f * m_gameui_info.t + ((-9.8f) * (m_gameui_info.t * m_gameui_info.t)) / 2.0f;
+		m_gameui_info.m_ui_pos[(int)GameUICategory::Finish].y += Buoyancy * m_gameui_info.t + ((-Gravity) * (m_gameui_info.t * m_gameui_info.t)) / 2.0f;
 
 		m_gameui_info.t += m_gameui_info.flame;
 	}

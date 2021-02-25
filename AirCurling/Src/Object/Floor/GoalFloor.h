@@ -37,13 +37,15 @@ public:
 	 */
 	void ReleaseModel();
 
-	/**
- 　　* @brief  オブジェクト情報Getter
- 　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_goal_info; }
-
 private:
-	ObjectInfo m_goal_info;//!ステージ床情報
+	struct GoalInfo :public ObjectInfo
+	{
+		float m_red_radius;    //!赤色のゴール枠の半径
+		float m_yellow_radius; //!黄色のゴール枠の半径
+		float m_green_radius;  //!緑色のゴール枠の半径
+	};
+
+	GoalInfo m_goal_info;//!ステージ床情報
 
 	//!外部データ保存用構造体
 	struct GoalExternalInfo
@@ -53,6 +55,17 @@ private:
 		//!サイズ
 		D3DXVECTOR3 m_scale;
 
-	}m_goal_externalinfo;
+		float m_red_radius;    //!赤色のゴール枠の半径
+		float m_yellow_radius; //!黄色のゴール枠の半径
+		float m_green_radius;  //!緑色のゴール枠の半径
+
+	};
+
+	GoalExternalInfo m_goal_externalinfo;
+public:
+	/**
+ 　　* @brief  オブジェクト情報Getter
+ 　　*/
+	const GoalInfo* GetObjInfo()const { return &m_goal_info; }
 };
 #endif

@@ -14,9 +14,13 @@
 
 constexpr unsigned __int8 GameTrun = 9;       //!ゲームの制限ターン
 constexpr float FrameTime = 0.001f;           //!1フレームで加算する時間
-constexpr float ZeroSpeed = 0.01f;            //!0に近い数字(摩擦によるプレイヤーの移動停止用)
+constexpr float StopSpeed = 0.01f;            //!0に近い数字(摩擦によるプレイヤーの移動停止用)
 constexpr unsigned __int8 ReflectMax = 5;     //!反射によるスコア減算の反射回数
 constexpr unsigned __int8 ReflectScore = -5;  //!反射によるスコア減算数
+constexpr unsigned __int8 RedGoalScore = -3;    //!赤色のゴール地点のスコア減算数
+constexpr unsigned __int8 YellowGoalScore = -2; //!黄色のゴール地点のスコア減算数
+constexpr unsigned __int8 GreenGoalScore = -1;  //!緑色のゴール地点のスコア減算数
+
 constexpr float StopFloorFriction = 1.0f;     //!スピード減衰床の上での摩擦係数
 constexpr float Gravity= 9.8f;                //!重力
 constexpr float PlayerPosMin_Y = -29.0;       //!プレイヤー座標の最低値(Y座標のみ)
@@ -82,7 +86,7 @@ private:
 
 		int m_reflectcounter; //!反射回数
 		int m_truncounter;    //!進行ターン数
-		__int16 m_score_counter;  //!加算するスコア数
+		__int8 m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
 		bool m_is_start; //!ゲームスタート

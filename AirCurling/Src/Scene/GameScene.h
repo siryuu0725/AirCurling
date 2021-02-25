@@ -21,6 +21,9 @@
 #include <Windows.h>
 #include "../Object/PlayerDirection.h"
 
+constexpr __int16 GameBGMVolume = -300;   //!ゲームシーンのBGM音量
+
+
 /**
 *@class  ゲームシーンクラス
 */

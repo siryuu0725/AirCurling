@@ -171,7 +171,7 @@ public:
 	* @param (font_type_)  描画サイズ
 	* @param (color_)  描画カラー
 　　*/
-	void DrawFont(float pos_x_, float pos_y_, const char* text_, FontSize font_type_, FontColor color_);
+	void DrawFont(D3DXVECTOR2 pos_, const char* text_, FontSize font_type_, FontColor color_);
 
 	/**
 　　* @brief  文字描画用デバイス作成関数

@@ -59,14 +59,14 @@ void SoundManager::SoundBGM(int volume_)
 
 void SoundManager::SoundSelectBGM()
 {
-	p_audio->Play(bgm, 0, true);
+	p_audio->Play(bgm, SoundVolumeMax, true);
 }
 
 void SoundManager::SoundSelectSE()
 {
 	if (m_select1_flag == false)
 	{
-		p_audio->Play(select1_se, -1000, false);
+		p_audio->Play(select1_se, SoundVolumeMin, false);
 		m_select1_flag = true;
 		m_cancel_flag = false;
 	}
@@ -76,7 +76,7 @@ void SoundManager::SoundCancelSE()
 {
 	if (m_cancel_flag == false)
 	{
-		p_audio->Play(cancel_se, -1000, false);
+		p_audio->Play(cancel_se, SoundVolumeMin, false);
 		m_select1_flag = false;
 		m_cancel_flag = true;
 	}
@@ -84,32 +84,32 @@ void SoundManager::SoundCancelSE()
 
 void SoundManager::SoundClickSE()
 {
-	p_audio->Play(click_se, 0, false);
+	p_audio->Play(click_se, SoundVolumeMax, false);
 }
 
 void SoundManager::SoundShotSE()
 {
-	p_audio->Play(shot_se, 0, false);
+	p_audio->Play(shot_se, SoundVolumeMax, false);
 }
 
 void SoundManager::SoundReflectSE()
 {
-	p_audio->Play(reflect_se, 0, false);
+	p_audio->Play(reflect_se, SoundVolumeMax, false);
 }
 
 void SoundManager::SoundGoalSE()
 {
-	p_audio->Play(goal_se, 0, false);
+	p_audio->Play(goal_se, SoundVolumeMax, false);
 }
 
 void SoundManager::SoundFrictionSE()
 {
-	p_audio->Play(friction_se, 0, false);
+	p_audio->Play(friction_se, SoundVolumeMax, false);
 }
 
 void SoundManager::SoundFallSE()
 {
-	p_audio->Play(fall_se, 0, false);
+	p_audio->Play(fall_se, SoundVolumeMax, false);
 }
 
 

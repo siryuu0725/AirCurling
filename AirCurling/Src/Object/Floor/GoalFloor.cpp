@@ -14,6 +14,11 @@ void Goal::Init(std::string stage_str_)
 	m_goal_info.m_angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f); //!回転角度
 
 	m_goal_info.m_mat_world = Calculation::Matrix(m_goal_info.m_pos, m_goal_info.m_scale, m_goal_info.m_angle); //!ワールド座標
+
+	m_goal_info.m_red_radius = m_goal_externalinfo.m_red_radius;
+	m_goal_info.m_yellow_radius = m_goal_externalinfo.m_yellow_radius;
+	m_goal_info.m_green_radius = m_goal_externalinfo.m_green_radius;
+
 }
 
 //!外部データ読み込み関数

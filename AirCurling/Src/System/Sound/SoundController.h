@@ -5,6 +5,10 @@
 #include <string>
 
 
+constexpr __int16 SoundVolumeMax = 0;      //!各音量の最大値
+constexpr __int16 SoundVolumeMin = -1000;  //!各音量の最小値
+
+
 /**
 *@class  サウンド管理クラス
 */

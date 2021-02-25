@@ -6,11 +6,16 @@
 #include "../Object/Player.h"
 #include "UIBase.h"
 
-#define ADD_SPEED_POWER 0.001f  //!プレイヤーに加える力
-constexpr float ShotGaugeMax = 10.0f; //!床から出すゴールエフェクトの高さ
-constexpr float ShotGaugeMin = 10.0f; //!床から出すゴールエフェクトの高さ
-constexpr float TrunTexUVAddValue = 0.1f; //!床から出すゴールエフェクトの高さ
-constexpr unsigned __int8 StartFontStopTime = 60; //!床から出すゴールエフェクトの高さ
+constexpr float AddSpeedPower = 0.001f;   //!プレイヤーに加える力
+constexpr float TrunTexUVAddValue = 0.1f; //!テクスチャのUV値に加算する値(ターン数用)
+constexpr float TrunTexUVMax = 1.0f;      //!テクスチャの最大UV値
+constexpr unsigned __int8 StartFontStopTime = 60; //!開始演出の文字を止める時間
+
+constexpr float StartFontEndPosX = 1900.0f;  //!開始演出の終了座標
+constexpr float FinishFontEndPosX = -500.0f; //!開始演出の終了座標
+constexpr float Buoyancy = 8.0f; //!浮力(終了演出で使用)
+
+
 
 
 //!更新ステップ

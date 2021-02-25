@@ -267,14 +267,14 @@ void Graphics::ReleaseTexture(TEXTURE_DATA* texture_data_)
 }
 
 //文字描画
-void Graphics::DrawFont(float pos_x_, float pos_y_, const char* text_, FontSize font_type_, FontColor color_)
+void Graphics::DrawFont(D3DXVECTOR2 pos_, const char* text_, FontSize font_type_, FontColor color_)
 {
 	RECT rect =
 	{
-		(long)pos_x_,
-		(long)pos_y_,
-		(long)pos_x_ + 400,
-		(long)pos_y_ + 200,
+		(long)pos_.x,
+		(long)pos_.y,
+		(long)pos_.x + 400,
+		(long)pos_.y + 200,
 	};
 
 	int r, g, b;

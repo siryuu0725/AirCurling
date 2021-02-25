@@ -61,6 +61,11 @@ private:
 
 		D3DXVECTOR2  m_ui_pos[(int)ResultUICategory::CategoryMax];
 
+		D3DXVECTOR2  m_firstui_pos;
+		D3DXVECTOR2  m_secondui_pos;
+		D3DXVECTOR2  m_thirdui_pos;
+
+
 	};
 
 	ResultUIInfo m_resultui_info;

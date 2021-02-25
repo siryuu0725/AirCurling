@@ -85,7 +85,7 @@ void GameScene::InitStep()
 
 	//!サウンド初期化
 	SoundManager::Instance()->RegisterGameSound();
-	SoundManager::Instance()->SoundBGM(-300);
+	SoundManager::Instance()->SoundBGM(GameBGMVolume);
 
 	//!スレッドステップへ
 	m_cur_step = SceneStep::ThreadStep;

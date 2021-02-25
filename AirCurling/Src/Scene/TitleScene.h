@@ -3,6 +3,9 @@
 #include"SceneBase.h"
 #include "../UI/TitleUI.h"
 
+constexpr __int16 TitleBGMVolume = -300;   //!ゲームシーンのBGM音量
+
+
 /**
 *@class  タイトルシーンクラス
 */

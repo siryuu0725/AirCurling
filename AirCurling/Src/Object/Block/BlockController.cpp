@@ -5,14 +5,14 @@
 BlockController::~BlockController()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circleblocks.size(); i++)
+	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		delete m_circleblocks[i];
 		m_circleblocks[i] = nullptr;
 	}
 
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rectblocks.size(); i++)
+	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		delete m_rectblocks[i];
 		m_rectblocks[i] = nullptr;
@@ -27,7 +27,7 @@ void BlockController::Init(std::string stage_str_)
 	LoadRectBlockExternalInfo(stage_str_);
 
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circleblock_num; i++)
+	for (__int8 i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
 		m_circleblocks.push_back(new CircleBlock
@@ -40,7 +40,7 @@ void BlockController::Init(std::string stage_str_)
 	}
 
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rectblock_num; i++)
+	for (__int8 i = 0; i < m_rectblock_num; i++)
 	{
 		//読み込んだ数分追加
 		m_rectblocks.push_back(new RectBlock
@@ -102,13 +102,13 @@ void BlockController::LoadCircleBlockExternalInfo(std::string stage_str_)
 void BlockController::Draw()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circleblocks.size(); i++)
+	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		m_circleblocks[i]->Draw();
 	}
 	
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rectblocks.size(); i++)
+	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		m_rectblocks[i]->Draw();
 	}
@@ -118,13 +118,13 @@ void BlockController::Draw()
 void BlockController::ReleaseModel()
 {
 	//!円形ブロック
-	for (__int16 i = 0; i < m_circleblocks.size(); i++)
+	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		m_circleblocks[i]->ReleaseModel();
 	}
 
 	//!矩形ブロック
-	for (__int16 i = 0; i < m_rectblocks.size(); i++)
+	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		m_rectblocks[i]->ReleaseModel();
 	}

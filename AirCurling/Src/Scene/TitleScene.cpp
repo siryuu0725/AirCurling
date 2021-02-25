@@ -11,7 +11,7 @@ void TitleScene::InitStep()
 
 	//!サウンド初期化
 	SoundManager::Instance()->RegisterTitleSound();
-	SoundManager::Instance()->SoundBGM(-300);
+	SoundManager::Instance()->SoundBGM(TitleBGMVolume);
 
 	m_cur_step = SceneStep::MainStep;
 }
