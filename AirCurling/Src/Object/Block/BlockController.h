@@ -69,6 +69,14 @@ private:
 	//!外部データ保存用構造体(矩形ブロック)
 	struct RectBlockExternalInfo
 	{
+		RectBlockExternalInfo():
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_rote(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_width(0.0f),
+			m_height(0.0f)
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ
@@ -83,6 +91,12 @@ private:
 	//!外部データ保存用構造体(円形ブロック)
 	struct CircleBlockExternalInfo
 	{
+		CircleBlockExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_radius(0.0f)
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ

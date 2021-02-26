@@ -23,7 +23,6 @@
 
 constexpr __int16 GameBGMVolume = -300;   //!ゲームシーンのBGM音量
 
-
 /**
 *@class  ゲームシーンクラス
 */
@@ -108,7 +107,7 @@ public:
 	static SceneBase* InstanceGameScene();
 private:
 	Camera* p_camera;                    //!カメラオブジェクト
-	BlockController* m_block_controller; //!ブロック管理オブジェクト
+	BlockController* p_block_controller; //!ブロック管理オブジェクト
 	Player* m_player;                    //!プレイヤーオブジェクト
 	PlayerDirection* m_player_direction; //!プレイヤーの方向オブジェクト
 	SkyDome* m_sky_dome;                 //!背景オブジェクト

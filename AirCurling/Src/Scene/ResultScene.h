@@ -20,8 +20,6 @@ public:
 	ResultScene();
 	~ResultScene() {}
 
-	
-
 #pragma region 各ステップ処理
 	/**
  　　* @brief  初期化ステップ関数

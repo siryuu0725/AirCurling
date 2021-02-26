@@ -46,6 +46,11 @@ private:
 
 	struct SkyDomeExternalInfo
 	{
+		SkyDomeExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ
@@ -99,6 +104,11 @@ private:
 
 	struct SkyFloorExternalInfo
 	{
+		SkyFloorExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ

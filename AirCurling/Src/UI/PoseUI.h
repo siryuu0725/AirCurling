@@ -27,6 +27,14 @@ private:
 	//!ヘルプ画面UI情報
 	struct HelpUIInfo
 	{
+		HelpUIInfo() :
+			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
+			m_select(false),
+			m_continue(false),
+			m_end(false),
+			m_help(false)
+		{}
+
 		Graphics::TEXTURE_DATA m_ui_tex[(int)HelpUICategory::CategoryMax];  //!テクスチャ情報構造体
 
 		D3DXVECTOR2  m_ui_pos[(int)HelpUICategory::CategoryMax];  //!テクスチャ座標

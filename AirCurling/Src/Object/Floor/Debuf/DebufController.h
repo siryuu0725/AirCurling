@@ -70,6 +70,12 @@ private:
 	//!外部データ保存用構造体(リセット床)
 	struct ResetFloorExternalInfo
 	{
+		ResetFloorExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_radius(0.0f)
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ
@@ -81,6 +87,14 @@ private:
 	//!外部データ保存用構造体(スピード減衰床)
 	struct StopFloorExternalInfo
 	{
+		StopFloorExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_rote(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_width(0.0f),
+			m_height(0.0f)
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ

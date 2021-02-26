@@ -11,7 +11,7 @@
 class UIBase
 {
 public:
-	UIBase() {}
+	UIBase() :m_ui_num(0) {}
 	~UIBase() {}
 
 protected:
@@ -19,6 +19,10 @@ protected:
 
 	struct UIExternalInfo
 	{
+		UIExternalInfo() :
+			m_pos(D3DXVECTOR2(0.0f, 0.0f))
+		{}
+
 		D3DXVECTOR2 m_pos;  //!座標
 	};
 };

@@ -32,12 +32,18 @@ private:
 	//!タイトル画面UI情報
 	struct TitleUIInfo
 	{
+		TitleUIInfo() :
+			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
+			startui_flg(false),
+			endui_flg(false),
+			helpui_flg(false),
+			m_stage_1(false),
+			m_stage_2(false)
+		{}
+
 		Graphics::TEXTURE_DATA m_ui_tex[(int)TitleUICategory::CategoryMax];  
 
 		D3DXVECTOR2  m_ui_pos[(int)TitleUICategory::CategoryMax];
-
-		float m_ui_width[(int)TitleUICategory::CategoryMax];  //!テクスチャの横幅
-		float m_ui_height[(int)TitleUICategory::CategoryMax]; //!テクスチャの縦幅
 
 		/* 各Sceneへ飛ぶ判定 */
 		bool startui_flg;  //!「はじめる」を押した時

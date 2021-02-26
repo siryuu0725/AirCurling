@@ -34,6 +34,12 @@ public:
 	//!テクスチャ情報
 	struct TEXTURE_DATA
 	{
+		TEXTURE_DATA():
+			Texture(nullptr),
+			Width(0.0f),
+			Height(0.0f)
+		{}
+
 		LPDIRECT3DTEXTURE9 Texture; //!テクスチャデータ
 		float Width;  //!横幅
 		float Height; //!縦幅
@@ -42,6 +48,15 @@ public:
 	//!テクスチャ頂点情報
 	struct CUSTOM_VERTEX
 	{
+		CUSTOM_VERTEX():
+			x(0.0f),
+			y(0.0f),
+			z(0.0f),
+			rhw(0.0f),
+			tu(0.0f),
+			tv(0.0f)
+		{}
+
 		float x;
 		float y;
 		float z;

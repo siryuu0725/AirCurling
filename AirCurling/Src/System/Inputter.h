@@ -138,7 +138,7 @@ private:
 
 	DIMOUSESTATE prev_mouse_state;			//!マウスの１フレーム前の入力情報
 	DIMOUSESTATE current_mouse_state;		//!マウスの現在の入力情報
-	Vec2 mouse_pos;  //!マウスの座標
+	Vec2 mouse_pos;                         //!マウスの座標
 
 	INPUT_STATE g_InputState[Inputter::KEY_INFO::MAX_KEY_INFO]; //!キーの状態を保持する変数
 

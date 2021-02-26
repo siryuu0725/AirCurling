@@ -3,9 +3,6 @@
 #include "../Object/ObjectBase.h"
 #include <d3dx9.h>
 
-
-constexpr float ShotModeEyePos = -27.8f; //!Viewモード時のカメラの注視点(Y軸)
-constexpr float ViewModeEyePos = -50.0f; //!Shotモード時のカメラの注視点(Y軸)
 constexpr __int8 AngleofView = 60;       //!画角
 constexpr float Near = 1.1f;             
 constexpr float Far = 20000000.0f;
@@ -19,8 +16,21 @@ class Camera : public ObjectBase
 {
 private:
 	//!オブジェクト情報
-	struct CAMERA_INFO :public ObjectInfo
+	struct Camera_Info :public ObjectInfo
 	{
+		Camera_Info() :
+			m_eye_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_camera_up(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_forward(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_packup(0.0f),
+			m_yaw(0.0f),
+			m_speed(0.0f),
+			m_is_shotmode(false),
+			m_is_operation(false)
+		{
+			D3DXMatrixIdentity(&mat_view);
+		}
+
 		D3DXVECTOR3 m_eye_pos;   //!注視点
 
 		D3DXVECTOR3 m_camera_up; //!カメラの上向きのベクトル
@@ -44,6 +54,12 @@ private:
 	//!外部データ保存用構造体
 	struct CameraExternalInfo
 	{
+		CameraExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_eye_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_packup(0.0f)
+		{}
+
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ
@@ -105,7 +121,7 @@ public:
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
-	const CAMERA_INFO* GetObjInfo()const { return &m_camerainfo; }
+	const Camera_Info* GetObjInfo()const { return &m_camerainfo; }
 
 };
 

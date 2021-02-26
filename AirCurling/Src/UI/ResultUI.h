@@ -47,6 +47,13 @@ private:
 	//!スコアランキング情報
 	struct  Ranking
 	{
+		Ranking() :
+			first(""),
+			second(""),
+			third(""),
+			score_table{ "" }
+		{}
+
 		char first[6];   //!1位スコア表示用
 		char second[6];	 //!2位スコア表示用
 		char third[6];	 //!3位スコア表示用
@@ -57,6 +64,13 @@ private:
 	//!結果画面UI情報
 	struct ResultUIInfo
 	{
+		ResultUIInfo() :
+			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
+			m_firstui_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			m_secondui_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			m_thirdui_pos(D3DXVECTOR2(0.0f, 0.0f))
+		{}
+
 		Graphics::TEXTURE_DATA m_ui_tex[(int)ResultUICategory::CategoryMax];
 
 		D3DXVECTOR2  m_ui_pos[(int)ResultUICategory::CategoryMax];
@@ -64,8 +78,6 @@ private:
 		D3DXVECTOR2  m_firstui_pos;
 		D3DXVECTOR2  m_secondui_pos;
 		D3DXVECTOR2  m_thirdui_pos;
-
-
 	};
 
 	ResultUIInfo m_resultui_info;

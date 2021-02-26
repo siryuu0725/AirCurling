@@ -4,7 +4,8 @@
 #include "../Score/GameScore.h"
 
 //!コンストラクタ
-ResultScene::ResultScene()
+ResultScene::ResultScene():
+	p_ui(nullptr)
 {
 	m_cur_step = SceneStep::InitStep;	
 }

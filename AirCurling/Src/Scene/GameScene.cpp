@@ -6,7 +6,20 @@
 #include <thread>
 
 //!コンストラクタ
-GameScene::GameScene()
+GameScene::GameScene() :
+	p_camera(nullptr),
+	p_block_controller(nullptr), 
+	m_player(nullptr), 
+	m_player_direction(nullptr), 
+	m_sky_dome(nullptr),
+	m_sky_floor(nullptr),
+	p_floor(nullptr),
+	p_debuf(nullptr),
+	p_goal(nullptr),
+	p_gmae_ui(nullptr),
+	p_load_ui(nullptr),
+	p_pose_ui(nullptr),
+	m_is_pose(false)
 {
 	m_cur_step = SceneStep::InitStep;
 }
@@ -62,14 +75,14 @@ void GameScene::InitStep()
 	if (p_pose_ui == nullptr) { p_pose_ui = new PoseUI(); }
 
 	//!オブジェクトインスタンス化
-	if (m_block_controller == nullptr) { m_block_controller = new BlockController; }
+	if (p_block_controller == nullptr) { p_block_controller = new BlockController; }
 	if (m_sky_dome == nullptr) { m_sky_dome = new SkyDome; }
 	if (m_sky_floor == nullptr) { m_sky_floor = new SkyFloor; }
 	if (p_floor == nullptr) { p_floor = new Floor; }
 	if (p_debuf == nullptr) { p_debuf = new DebufController; }
 	if (p_goal == nullptr) { p_goal = new Goal; }
 	if (p_camera == nullptr) { p_camera = new Camera(); }
-	if (m_player == nullptr) { m_player = new Player(p_camera, m_block_controller, p_floor, p_debuf, p_goal); }
+	if (m_player == nullptr) { m_player = new Player(p_camera, p_block_controller, p_floor, p_debuf, p_goal); }
 	if (m_player_direction == nullptr) { m_player_direction = new PlayerDirection(m_player,p_camera, p_gmae_ui); }
 
 	//!オブジェクト初期化
@@ -177,7 +190,7 @@ void GameScene::EndStep()
 void GameScene::ObjectInit()
 {
 	p_camera->Init(SceneController::Instance()->GetStageID());
-	m_block_controller->Init(SceneController::Instance()->GetStageID());
+	p_block_controller->Init(SceneController::Instance()->GetStageID());
 	m_player->Init(SceneController::Instance()->GetStageID());
 	m_sky_dome->Init(SceneController::Instance()->GetStageID());
 	m_sky_floor->Init(SceneController::Instance()->GetStageID());
@@ -198,7 +211,7 @@ void GameScene::ObjectUpdate()
 //!オブジェクト描画情報送信関数
 void GameScene::ObjectDraw()
 {
-	m_block_controller->Draw();
+	p_block_controller->Draw();
 	m_player->Draw();
 	m_player_direction->Draw();
 	m_sky_dome->Draw();
@@ -216,9 +229,9 @@ void GameScene::ObjectDelete()
 	p_camera = nullptr;
 
 	//!ブロック
-	m_block_controller->ReleaseModel();
-	delete m_block_controller;
-	m_block_controller = nullptr;
+	p_block_controller->ReleaseModel();
+	delete p_block_controller;
+	p_block_controller = nullptr;
 
 	//!プレイヤー
 	m_player->ReleaseModel();

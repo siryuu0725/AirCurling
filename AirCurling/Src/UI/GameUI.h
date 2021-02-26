@@ -55,6 +55,28 @@ private:
 	//!ゲーム画面UI情報
 	struct GameUIInfo
 	{
+		GameUIInfo() :
+			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
+			m_ui_tu{ 0.0f },
+			m_ui_tv{ 0.0f },
+			m_gauge_speed(0.0f),
+			m_gauge_pos(0.0f),
+			m_gauge_stop(false),
+			m_add_speed(0.0f),
+			m_now_score(0),
+			m_one_score(0),
+			m_ten_score(0),
+			m_score(""),
+			m_is_shotmode(false),
+			m_movestop(false),
+			m_remove(false),
+			m_end_game(false),
+			m_stoptimer(0),
+			m_movespeed(0.0f),
+			t(0.0f),
+			flame(0.0f)
+		{}
+
 		Graphics::TEXTURE_DATA m_ui_tex[(int)GameUICategory::CategoryMax];  //!テクスチャ
 
 		D3DXVECTOR2  m_ui_pos[(int)GameUICategory::CategoryMax]; //!座標
@@ -68,10 +90,10 @@ private:
 
 		float m_add_speed;  //!プレイヤーの移動スピード
 
-		int m_now_score; //!総合スコア 
+		__int8 m_now_score; //!総合スコア 
 
-		__int16 m_one_score;  //!スコア1の位保存用
-		__int16 m_ten_score;  //!スコア10の位保存用
+		__int8 m_one_score;  //!スコア1の位保存用
+		__int8 m_ten_score;  //!スコア10の位保存用
 
 
 		char m_score[20];//!スコア描画用

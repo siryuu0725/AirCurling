@@ -13,7 +13,7 @@ constexpr __int16 TitleBGMVolume = -300;   //!ゲームシーンのBGM音量
 class TitleScene :public SceneBase
 {
 public:
-	TitleScene() {}
+	TitleScene() :p_ui(nullptr) {}
 	~TitleScene() {}
 
 

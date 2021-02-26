@@ -58,6 +58,17 @@ private:
 	//!ロード画面UI情報
 	struct LoadInfo
 	{
+		LoadInfo():
+			left_top_pos(D3DXVECTOR2(0.0f,0.0f)),
+			left_down_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			right_top_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			right_down_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			m_center_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			m_nowload_pos(D3DXVECTOR2(0.0f, 0.0f)),
+			m_rote_angle(0.0f),
+			m_rote_timer(0)
+		{}
+
 		Graphics::TEXTURE_DATA m_ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
 
 		/* 回転用に各頂点のposを用意 */
@@ -72,7 +83,7 @@ private:
 
 		float m_rote_angle; //!テクスチャ回転角度
 
-		int m_rote_timer;   //!テクスチャ回転スピード
+		__int8 m_rote_timer;   //!テクスチャ回転スピード
 
 	};
 

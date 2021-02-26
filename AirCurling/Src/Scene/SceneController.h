@@ -19,7 +19,7 @@ enum class SceneId
 class SceneController
 {
 private:
-	SceneController() {};
+	SceneController() :p_scene(nullptr) {}
 	~SceneController();
 public:
 

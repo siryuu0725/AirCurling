@@ -14,6 +14,16 @@ class PlayerDirection :public ObjectBase
 public:
 	struct DirectionInfo :public ObjectInfo
 	{
+		DirectionInfo() :
+			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_player_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_dir_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_add_zpos(0.0f),
+			m_rote(0.0f),
+			m_pos_rote_r(0.0f),
+			m_is_shotmode(false)
+		{}
+
 		D3DXVECTOR3 m_old_pos;     //!回転用oldpos
 
 		D3DXVECTOR3 m_player_pos;  //!プレイヤーpos保存用
