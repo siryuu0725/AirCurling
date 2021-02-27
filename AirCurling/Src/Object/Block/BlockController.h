@@ -7,11 +7,11 @@
 //!ステージに置ける最大ブロック数 
 constexpr unsigned __int8 RectBlockMaxNum = 20;
 constexpr unsigned __int8 CircleBlockMaxNum = 20;
-
 /**
-*@class   ブロック管理クラス
-*@brief  各ブロックの処理を管理する
-*/
+ * ブロック管理クラス
+ *
+ * 各ブロックの処理を管理する
+ */
 class BlockController
 {
 public:
