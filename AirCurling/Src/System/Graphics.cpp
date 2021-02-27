@@ -143,7 +143,7 @@ void Graphics::DrawEnd()
 	g_device->Present(nullptr, nullptr, nullptr, nullptr);
 }
 
-bool Graphics::LoadTexture(const char* file_name_, TEXTURE_DATA* texture_)
+bool Graphics::LoadTexture(const char* file_name_, TextureData* texture_)
 {
 	D3DXIMAGE_INFO info;
 
@@ -182,9 +182,9 @@ bool Graphics::LoadTexture(const char* file_name_, TEXTURE_DATA* texture_)
 	return true;
 }
 
-void Graphics::DrawTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_)
+void Graphics::DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_)
 {
-	CUSTOM_VERTEX bg[4] =
+	CustomVertex bg[4] =
 	{
 		// 左上頂点
 		{ pos_.x, pos_.y, 0.0f, 1.0f, 0.0f, 0.0f },
@@ -200,16 +200,16 @@ void Graphics::DrawTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_)
 
 	g_device->SetTexture(0, texture_->Texture);
 
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, bg, sizeof(CUSTOM_VERTEX));
+	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, bg, sizeof(CustomVertex));
 }
 
 //UV用
-void Graphics::DrawUVTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_)
+void Graphics::DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_)
 {
 	float Ttu = sprite_width_ / texture_->Width;
 	float Ttv = sprite_height_ / texture_->Height;
 
-	CUSTOM_VERTEX effect[4] =
+	CustomVertex effect[4] =
 	{
 		{ pos_.x, pos_.y, 0.0f, 1.0f, tu_, tv_ },
 		{ pos_.x + sprite_width_, pos_.y, 0.0f, 1.0f, tu_ + Ttu , tv_ },
@@ -222,14 +222,14 @@ void Graphics::DrawUVTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_, float spr
 
 	g_device->SetTexture(0, texture_->Texture);
 
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, effect, sizeof(CUSTOM_VERTEX));
+	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, effect, sizeof(CustomVertex));
 
 }
 
-void Graphics::DrawRoteTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
+void Graphics::DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
 {
 
-	CUSTOM_VERTEX bg2[4] =
+	CustomVertex bg2[4] =
 	{
 		// 左上頂点
 		{ lefttop_pos_.x, lefttop_pos_.y, 0.0f, 1.0f, 0.0f, 0.0f },
@@ -248,12 +248,12 @@ void Graphics::DrawRoteTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 lefttop_pos_,
 
 	g_device->SetTexture(0, texture_->Texture);
 
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, bg2, sizeof(CUSTOM_VERTEX));
+	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, bg2, sizeof(CustomVertex));
 
 }
 
 // テクスチャーの解放
-void Graphics::ReleaseTexture(TEXTURE_DATA* texture_data_)
+void Graphics::ReleaseTexture(TextureData* texture_data_)
 {
 	if (texture_data_ == nullptr)
 	{

@@ -77,7 +77,7 @@ private:
 			flame(0.0f)
 		{}
 
-		Graphics::TEXTURE_DATA m_ui_tex[(int)GameUICategory::CategoryMax];  //!テクスチャ
+		Graphics::TextureData m_ui_tex[(int)GameUICategory::CategoryMax];  //!テクスチャ
 
 		D3DXVECTOR2  m_ui_pos[(int)GameUICategory::CategoryMax]; //!座標
 

@@ -35,7 +35,7 @@ private:
 			m_help(false)
 		{}
 
-		Graphics::TEXTURE_DATA m_ui_tex[(int)HelpUICategory::CategoryMax];  //!テクスチャ情報構造体
+		Graphics::TextureData m_ui_tex[(int)HelpUICategory::CategoryMax];  //!テクスチャ情報構造体
 
 		D3DXVECTOR2  m_ui_pos[(int)HelpUICategory::CategoryMax];  //!テクスチャ座標
 

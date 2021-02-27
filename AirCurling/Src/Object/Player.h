@@ -97,7 +97,7 @@ private:
 		bool m_is_turnend;       //!1ターン終了フラグ
 
 		D3DXVECTOR3 m_efk_pos;      //!エフェクト表示座標保存用
-	}player_info;
+	};
 
 	struct PlayerExternalInfo
 	{
@@ -112,7 +112,10 @@ private:
 		float fa;     //!動摩擦係数
 		int score_counter; //!加算するスコア数
 
-	}m_player_externalinfo;
+	};
+
+	PlayerInfo player_info;
+	PlayerExternalInfo m_player_externalinfo;
 
 public:
 	/**

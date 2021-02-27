@@ -16,9 +16,9 @@ class Camera : public ObjectBase
 {
 private:
 	//!オブジェクト情報
-	struct Camera_Info :public ObjectInfo
+	struct CameraInfo :public ObjectInfo
 	{
-		Camera_Info() :
+		CameraInfo() :
 			m_eye_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_camera_up(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_forward(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
@@ -49,7 +49,7 @@ private:
 
 		bool m_is_operation; //!操作可能フラグ
 
-	}m_camerainfo;
+	};
 
 	//!外部データ保存用構造体
 	struct CameraExternalInfo
@@ -67,7 +67,10 @@ private:
 		//!パックの上にカメラを配置するよう
 		float m_packup;          
 
-	}m_camera_externalinfo;
+	};
+
+	CameraInfo m_camerainfo;
+	CameraExternalInfo m_camera_externalinfo;
 
 public:
 	Camera() {}
@@ -121,7 +124,7 @@ public:
 	/**
  　　* @brief  オブジェクト情報Getter
  　　*/
-	const Camera_Info* GetObjInfo()const { return &m_camerainfo; }
+	const CameraInfo* GetObjInfo()const { return &m_camerainfo; }
 
 };
 

@@ -177,7 +177,7 @@ void GameUI::GaugeStop(Player* player_)
 	}
 
 	//!スペースキーが押された場合
-	if (Inputter::Instance()->GetKeyDown(Inputter::SPACE_KEY) && m_gameui_info.m_gauge_stop == false
+	if (Inputter::Instance()->GetKeyDown(Inputter::SpaceKey) && m_gameui_info.m_gauge_stop == false
 		&& m_gameui_info.m_is_shotmode == true)
 	{
 		m_gameui_info.m_gauge_speed = 0.0f; //!バーの移動スピードを0に
@@ -253,7 +253,7 @@ void GameUI::AddScore(Player* player_)
 void GameUI::ModeChange()
 {
 	//!モード切替キーが押された場合
-	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
+	if (Inputter::Instance()->GetKeyDown(Inputter::FKey))
 	{
 		if (m_gameui_info.m_is_shotmode == false)
 		{

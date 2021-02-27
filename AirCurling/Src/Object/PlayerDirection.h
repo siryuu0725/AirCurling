@@ -38,7 +38,7 @@ public:
 
 		bool m_is_shotmode;    //!打つモードかどうか
 
-	}m_direction_info;
+	};
 public:
 	/**
  　　* @brief  コンストラクタ
@@ -85,6 +85,8 @@ public:
 	void ModeChange();
 
 private:
+	DirectionInfo m_direction_info;
+
 	Player* m_player;  //!プレイヤーアドレス保存用
 	Camera* p_camera;  //!カメラアドレス保存用
 	GameUI* p_ui;	   //!ゲーム用UIアドレス保存用

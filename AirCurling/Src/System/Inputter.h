@@ -17,12 +17,12 @@ class Inputter
 {
 public:
 	//!入力状態の種類
-	enum INPUT_STATE
+	enum InputState
 	{
-		NOT_PUSH,		//!押されていない間
-		PUSH_DOWN,		//!押された瞬間
-		PUSH,			//!押されている間
-		PUSH_UP,		//!離した瞬間
+		NotPush,		//!押されていない間
+		PushDown,		//!押された瞬間
+		Push,			//!押されている間
+		PushUp,		//!離した瞬間
 	};
 
 	//!マウスボタンの種類
@@ -34,21 +34,21 @@ public:
 	};
 
 	//!キーの種類
-	enum KEY_INFO
+	enum KeyInfo
 	{
-		ESC_KEY,       
-		SPACE_KEY,	   
-		A_KEY,		   
-		W_KEY,		   
-		S_KEY,		   
-		D_KEY,		   
-		F_KEY,		   
-		E_KEY,		   
-		Q_KEY,		   
-		T_KEY,		   
-		Y_KEY,
-		RETURN_KEY,
-		MAX_KEY_INFO,
+		ESCKey,       
+		SpaceKey,	   
+		AKey,		   
+		WKey,		   
+		SKey,		   
+		DKey,		   
+		FKey,		   
+		EKey,		   
+		QKey,		   
+		TKey,		   
+		YKey,
+		ReturnKey,
+		MaxKeyInfo,
 	};
 
 private:
@@ -102,14 +102,14 @@ public:
   　* @detail キーボードの押されている間trueを返す判定を行う
     * @param (key_)  押されたキーの種類
 　　*/
-	bool GetKey(KEY_INFO key_);
+	bool GetKey(KeyInfo key_);
 
 	/**
 　　* @brief  キーボードの入力判定関数(押された瞬間)
   　* @detail キーボードの押された瞬間trueを返す判定を行う
 	* @param (key_)  押されたキーの種類
 　　*/
-	bool GetKeyDown(KEY_INFO key_);
+	bool GetKeyDown(KeyInfo key_);
 
 	/**
 　　* @brief  マウスの入力情報更新関数
@@ -140,7 +140,7 @@ private:
 	DIMOUSESTATE current_mouse_state;		//!マウスの現在の入力情報
 	Vec2 mouse_pos;                         //!マウスの座標
 
-	INPUT_STATE g_InputState[Inputter::KEY_INFO::MAX_KEY_INFO]; //!キーの状態を保持する変数
+	InputState g_InputState[Inputter::KeyInfo::MaxKeyInfo]; //!キーの状態を保持する変数
 
 };
 

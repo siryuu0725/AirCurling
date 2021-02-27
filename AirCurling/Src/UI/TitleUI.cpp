@@ -98,7 +98,7 @@ void TitleUI::Update()
 		//!UI当たり判定関数
 		SelectStage();
 
-		if (Inputter::Instance()->GetKeyDown(Inputter::ESC_KEY))
+		if (Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 		{
 			m_titleui_info.startui_flg = false;
 		}
@@ -125,7 +125,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 400.0f;
 
-		sound_mgr->SoundSelectSE();
+		SoundManager::Instance()->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -143,7 +143,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 600.0f;
 
-		sound_mgr->SoundSelectSE();
+		SoundManager::Instance()->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -161,7 +161,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 800.0f;
 
-		sound_mgr->SoundSelectSE();
+		SoundManager::Instance()->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -175,7 +175,7 @@ void TitleUI::Select()
 		//!選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = -300.0f;
 
-		sound_mgr->ResetSelectFlag();
+		SoundManager::Instance()->ResetSelectFlag();
 	}
 }
 
@@ -186,7 +186,7 @@ void TitleUI::ReturnSelect()
 	if (m_titleui_info.startui_flg == true || m_titleui_info.helpui_flg == true)
 	{
 		//!ESCキーが押された場合
-		if (Inputter::Instance()->GetKeyDown(Inputter::ESC_KEY))
+		if (Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 		{
 			m_titleui_info.startui_flg = false;
 			m_titleui_info.helpui_flg = false;
@@ -204,7 +204,7 @@ void TitleUI::SelectStage()
 	{
 		//!選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage1];
-		sound_mgr->SoundSelectSE();
+		SoundManager::Instance()->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -220,7 +220,7 @@ void TitleUI::SelectStage()
 	{
 		//!選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage2];
-		sound_mgr->SoundSelectSE();
+		SoundManager::Instance()->SoundSelectSE();
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))

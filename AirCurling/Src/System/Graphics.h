@@ -32,9 +32,9 @@ class Graphics
 {
 public:
 	//!テクスチャ情報
-	struct TEXTURE_DATA
+	struct TextureData
 	{
-		TEXTURE_DATA():
+		TextureData():
 			Texture(nullptr),
 			Width(0.0f),
 			Height(0.0f)
@@ -46,17 +46,8 @@ public:
 	};
 
 	//!テクスチャ頂点情報
-	struct CUSTOM_VERTEX
+	struct CustomVertex
 	{
-		CUSTOM_VERTEX():
-			x(0.0f),
-			y(0.0f),
-			z(0.0f),
-			rhw(0.0f),
-			tu(0.0f),
-			tv(0.0f)
-		{}
-
 		float x;
 		float y;
 		float z;
@@ -142,7 +133,7 @@ public:
   　* @param (texture_)  テクスチャ情報構造体
     * @param (pos_)      ファイルパス
 　　*/
-	void DrawTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_);
+	void DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_);
 
 	/**
 　　* @brief  テクスチャ描画関数(UV指定用)
@@ -153,7 +144,7 @@ public:
 	* @param (tu_)  指定TU値
 	* @param (tv_)  指定TV値
 　　*/
-	void DrawUVTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_);
+	void DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_);
 	
 	/**
 　　* @brief  テクスチャ描画関数(テクスチャ回転用)
@@ -163,20 +154,20 @@ public:
 	* @param (leftdown_pos_)  テクスチャの左下頂点座標
 	* @param (rightdown_pos_) テクスチャの右下頂点座標
 　　*/
-	void DrawRoteTexture(TEXTURE_DATA* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_);
+	void DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_);
 
 	/**
 　　* @brief  テクスチャ読み込み関数
 　　* @param (file_name_)  ファイルパス
 　　* @param (texture_)    テクスチャ情報構造体
 　　*/
-	bool LoadTexture(const char* file_name_, TEXTURE_DATA* texture_);
+	bool LoadTexture(const char* file_name_, TextureData* texture_);
 
 	/**
 　　* @brief  テクスチャ解放関数
 　　* @param (texture_)  テクスチャ情報構造体
 　　*/
-	void ReleaseTexture(TEXTURE_DATA* texture_data_);
+	void ReleaseTexture(TextureData* texture_data_);
 
 	/**
 　　* @brief  文字描画関数

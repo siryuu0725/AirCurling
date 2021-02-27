@@ -41,8 +41,6 @@ public:
 	const ObjectInfo* GetObjInfo()const { return &m_floor_info; }
 
 private:
-	ObjectInfo m_floor_info;  //!ステージ床情報
-
 	//!外部データ保存用構造体
 	struct FloorExternalInfo
 	{
@@ -66,7 +64,10 @@ private:
 		float m_height; //!縦幅
 
 
-	}m_floor_externalinfo;
+	};
+
+	ObjectInfo m_floor_info;  //!ステージ床情報
+	FloorExternalInfo m_floor_externalinfo;
 };
 
 

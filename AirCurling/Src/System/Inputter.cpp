@@ -201,43 +201,43 @@ void Inputter::KeyStateUpdate()
 		return;
 	}
 
-	for (int i = 0; i < MAX_KEY_INFO; i++)
+	for (int i = 0; i < MaxKeyInfo; i++)
 	{
 		if (Key[g_KeyInfo[i]] & 0x80)
 		{
-			if (g_InputState[i] == INPUT_STATE::NOT_PUSH || g_InputState[i] == INPUT_STATE::PUSH_UP)
+			if (g_InputState[i] == InputState::NotPush || g_InputState[i] == InputState::PushUp)
 			{
-				g_InputState[i] = INPUT_STATE::PUSH_DOWN;
+				g_InputState[i] = InputState::PushDown;
 			}
 			else
 			{
-				g_InputState[i] = INPUT_STATE::PUSH;
+				g_InputState[i] = InputState::Push;
 			}
 		}
 		else
 		{
-			if (g_InputState[i] == INPUT_STATE::PUSH || g_InputState[i] == INPUT_STATE::PUSH_DOWN)
+			if (g_InputState[i] == InputState::Push || g_InputState[i] == InputState::PushDown)
 			{
-				g_InputState[i] = INPUT_STATE::PUSH_UP;
+				g_InputState[i] = InputState::PushUp;
 			}
 			else
 			{
-				g_InputState[i] = INPUT_STATE::NOT_PUSH;
+				g_InputState[i] = InputState::NotPush;
 			}
 		}
 	}
 }
 
 //!キーボードの入力判定関数(押されている間)
-bool Inputter::GetKey(KEY_INFO key_)
+bool Inputter::GetKey(KeyInfo key_)
 {
-	return (g_InputState[key_] == INPUT_STATE::PUSH);
+	return (g_InputState[key_] == InputState::Push);
 }
 
 //!キーボードの入力判定関数(押された瞬間)
-bool Inputter::GetKeyDown(KEY_INFO key_)
+bool Inputter::GetKeyDown(KeyInfo key_)
 {
-	return (g_InputState[key_] == INPUT_STATE::PUSH_DOWN);
+	return (g_InputState[key_] == InputState::PushDown);
 }
 
 //!入力情報の更新関数

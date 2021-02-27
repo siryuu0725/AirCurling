@@ -152,7 +152,7 @@ void GameScene::MainStep()
 	
 
 	//!ポーズ画面切り替え
-	if(Inputter::Instance()->GetKeyDown(Inputter::ESC_KEY))
+	if(Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 	{
 		//!ポーズ中、「つづける」が押された場合
 		if (p_pose_ui->GetGameUIInfo()->m_help == false)
@@ -168,7 +168,7 @@ void GameScene::MainStep()
 		m_cur_step = SceneStep::EndStep;
 	}
 
-	if (Inputter::Instance()->GetKeyDown(Inputter::E_KEY))
+	if (Inputter::Instance()->GetKeyDown(Inputter::EKey))
 	{
 		PostQuitMessage(0);
 	}

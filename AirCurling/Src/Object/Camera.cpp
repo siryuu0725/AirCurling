@@ -113,7 +113,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		m_camerainfo.m_pos.z = player_pos_.z;
 
 		//!注視点更新
-		m_camerainfo.m_eye_pos.y = ShotModeEyePos;
+		m_camerainfo.m_eye_pos.y = -27.8f;
 
 		//!注視点移動
 		EyePosRotate();
@@ -123,25 +123,25 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 	else
 	{
 		//!左移動
-		if (Inputter::Instance()->GetKey(Inputter::A_KEY))
+		if (Inputter::Instance()->GetKey(Inputter::AKey))
 		{
 			m_camerainfo.m_pos.x -= m_camerainfo.m_speed;
 			m_camerainfo.m_eye_pos.x -= m_camerainfo.m_speed;
 		}
 		//!右移動
-		else if (Inputter::Instance()->GetKey(Inputter::D_KEY))
+		else if (Inputter::Instance()->GetKey(Inputter::DKey))
 		{
 			m_camerainfo.m_pos.x += m_camerainfo.m_speed;
 			m_camerainfo.m_eye_pos.x += m_camerainfo.m_speed;
 		}
 		//!上移動
-		else if (Inputter::Instance()->GetKey(Inputter::W_KEY))
+		else if (Inputter::Instance()->GetKey(Inputter::WKey))
 		{
 			m_camerainfo.m_pos.z += m_camerainfo.m_speed;
 			m_camerainfo.m_eye_pos.z += m_camerainfo.m_speed;
 		}
 		//!下移動
-		else if (Inputter::Instance()->GetKey(Inputter::S_KEY))
+		else if (Inputter::Instance()->GetKey(Inputter::SKey))
 		{
 			m_camerainfo.m_pos.z -= m_camerainfo.m_speed;
 			m_camerainfo.m_eye_pos.z -= m_camerainfo.m_speed;
@@ -167,7 +167,7 @@ void Camera::EyePosRotate()
 void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 {
 	//!切り替えキーが押された場合
-	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
+	if (Inputter::Instance()->GetKeyDown(Inputter::FKey))
 	{
 		if (m_camerainfo.m_is_shotmode == false)
 		{
@@ -179,7 +179,7 @@ void Camera::ModeChange(D3DXVECTOR3 player_pos_)
 
 			m_camerainfo.m_pos.y = 30.0f;  //!カメラの位置をプレイヤーから上空に移動
 			m_camerainfo.m_eye_pos = D3DXVECTOR3(player_pos_.x, m_camera_externalinfo.m_eye_pos.y, player_pos_.z + 1.0f); //!注視点
-			m_camerainfo.m_eye_pos.y = ViewModeEyePos; //!真下を向くように設定
+			m_camerainfo.m_eye_pos.y = -50.0f; //!真下を向くように設定
 
 		}
 	}

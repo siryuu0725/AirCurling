@@ -2,7 +2,6 @@
 #define BLOCK_CONTROLLER_H_
 #include "CircleBlock.h"
 #include "RectBlock.h"
-#include "../../System/FBXController.h"
 #include <vector>
 
 //!ステージに置ける最大ブロック数 

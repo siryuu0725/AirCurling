@@ -31,7 +31,7 @@ struct Bone
 //!マテリアルの情報
 struct MaterialData
 {
-	Graphics::TEXTURE_DATA textureData; //!テクスチャ
+	Graphics::TextureData textureData; //!テクスチャ
 	D3DMATERIAL9 material;              //!マテリアル
 };
 

@@ -41,7 +41,7 @@ private:
 			m_stage_2(false)
 		{}
 
-		Graphics::TEXTURE_DATA m_ui_tex[(int)TitleUICategory::CategoryMax];  
+		Graphics::TextureData m_ui_tex[(int)TitleUICategory::CategoryMax];  
 
 		D3DXVECTOR2  m_ui_pos[(int)TitleUICategory::CategoryMax];
 
@@ -117,8 +117,6 @@ public:
 	const TitleUIInfo* GetTitleUIInfo() { return &m_titleui_info; }
 
 private:
-	SoundManager* sound_mgr = SoundManager::Instance();
-
 	UIExternalInfo m_titleui_externalinfo[static_cast<int>(TitleUICategory::CategoryMax)];
 };
 #endif

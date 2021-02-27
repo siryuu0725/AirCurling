@@ -9,6 +9,7 @@
 #include "../Object/Block/BlockController.h"
 #include "../Object/Camera.h"
 #include "../Object/Player.h"
+#include "../Object/PlayerDirection.h"
 #include "../Object/Sky.h"
 #include "../Object/Floor/Floor.h"
 #include "../Object/Floor/GoalFloor.h"
@@ -17,9 +18,7 @@
 #include "../UI/LoadUI.h"
 #include "../UI/PoseUI.h"
 
-
 #include <Windows.h>
-#include "../Object/PlayerDirection.h"
 
 constexpr __int16 GameBGMVolume = -300;   //!ゲームシーンのBGM音量
 

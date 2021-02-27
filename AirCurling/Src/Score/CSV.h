@@ -5,15 +5,6 @@
 #include <vector>
 #include <map>
 
-enum class RANK
-{
-	FIRST,
-	SECOND,
-	THIRD,
-
-	MAX
-};
-
 /**
 *@class  CSVファイル取り扱いクラス
 */

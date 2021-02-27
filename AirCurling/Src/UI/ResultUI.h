@@ -71,7 +71,7 @@ private:
 			m_thirdui_pos(D3DXVECTOR2(0.0f, 0.0f))
 		{}
 
-		Graphics::TEXTURE_DATA m_ui_tex[(int)ResultUICategory::CategoryMax];
+		Graphics::TextureData m_ui_tex[(int)ResultUICategory::CategoryMax];
 
 		D3DXVECTOR2  m_ui_pos[(int)ResultUICategory::CategoryMax];
 

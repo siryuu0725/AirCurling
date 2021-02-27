@@ -69,7 +69,7 @@ private:
 			m_rote_timer(0)
 		{}
 
-		Graphics::TEXTURE_DATA m_ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
+		Graphics::TextureData m_ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
 
 		/* 回転用に各頂点のposを用意 */
 		D3DXVECTOR2 left_top_pos;    //!左上

@@ -42,8 +42,7 @@ public:
  　　*/
 	const ObjectInfo* GetObjInfo()const { return &m_skydome_info; }
 private:
-	ObjectInfo m_skydome_info;
-
+	//!外部データ保存用構造体
 	struct SkyDomeExternalInfo
 	{
 		SkyDomeExternalInfo() :
@@ -56,7 +55,11 @@ private:
 		//!サイズ
 		D3DXVECTOR3 m_scale;
 
-	}m_skydome_externalinfo;
+	};
+
+	ObjectInfo m_skydome_info;
+	SkyDomeExternalInfo m_skydome_externalinfo;
+
 };
 
 /**
@@ -100,8 +103,7 @@ public:
 	const ObjectInfo* GetObjInfo()const { return &m_skyfloor_info; }
 
 private:
-	ObjectInfo m_skyfloor_info;
-
+	//!外部データ保存用構造体
 	struct SkyFloorExternalInfo
 	{
 		SkyFloorExternalInfo() :
@@ -114,6 +116,9 @@ private:
 		//!サイズ
 		D3DXVECTOR3 m_scale;
 
-	}m_skyfloor_externalinfo;
+	};
+
+	ObjectInfo m_skyfloor_info;
+	SkyFloorExternalInfo m_skyfloor_externalinfo;
 };
 #endif

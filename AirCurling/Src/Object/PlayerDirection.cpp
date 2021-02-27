@@ -82,7 +82,7 @@ void PlayerDirection::Rote()
 //!モード切替関数
 void PlayerDirection::ModeChange()
 {
-	if (Inputter::Instance()->GetKeyDown(Inputter::F_KEY))
+	if (Inputter::Instance()->GetKeyDown(Inputter::FKey))
 	{
 		if (m_direction_info.m_is_shotmode == false)
 		{
