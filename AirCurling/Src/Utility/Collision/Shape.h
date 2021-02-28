@@ -3,7 +3,7 @@
 #include <d3dx9.h>
 
 /**
-*@class  型基底クラス
+* 型基底クラス
 */
 
 class Shape

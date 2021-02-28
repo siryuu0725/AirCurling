@@ -95,7 +95,7 @@ struct FBXMeshData
 };
 
 /**
-*@class  FBXファイルクラス
+* FBXファイルクラス
 */
 
 class Fbx

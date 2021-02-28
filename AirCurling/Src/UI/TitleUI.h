@@ -5,7 +5,7 @@
 #include "../System/Sound/SoundController.h"
 
 /**
-*@class  タイトル用UIクラス
+* タイトル用UIクラス
 */
 
 class TitleUI :public UIBase

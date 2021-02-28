@@ -40,7 +40,7 @@ enum class PlayerUpdateStep
 };
 
 /**
-*@class   プレイヤー(パック)クラス
+* プレイヤー(パック)クラス
 */
 
 class Player :public ObjectBase

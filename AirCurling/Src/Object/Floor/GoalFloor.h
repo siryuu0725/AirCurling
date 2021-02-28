@@ -4,7 +4,8 @@
 #include "../ObjectBase.h"
 
 /**
-*@class   ゴール床クラス
+* ゴール床クラス
+* ゴール床の情報を持つ
 */
 
 class Goal :public ObjectBase

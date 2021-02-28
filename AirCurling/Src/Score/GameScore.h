@@ -5,8 +5,8 @@ constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
 
 
 /**
-*@class   スコア管理クラス
-*@brief  ゲーム内で計算されたスコアをリザルトに持っていくためなどに使用
+* スコア管理クラス
+* ゲーム内で計算されたスコアをリザルトに持っていくためなどに使用
 */
 
 class Score

@@ -4,7 +4,7 @@
 #include <string>
 
 /**
-*@class  DXサウンドクラス
+* DXサウンドクラス
 */
 
 class DirectSound {

@@ -1,4 +1,10 @@
-﻿#ifndef BLOCK_CONTROLLER_H_
+﻿/**
+ * @file BlockController.h
+
+ * @brief ステージに配置されているブロックオブジェクトを管理している
+**/
+
+#ifndef BLOCK_CONTROLLER_H_
 #define BLOCK_CONTROLLER_H_
 #include "CircleBlock.h"
 #include "RectBlock.h"
@@ -7,9 +13,9 @@
 //!ステージに置ける最大ブロック数 
 constexpr unsigned __int8 RectBlockMaxNum = 20;
 constexpr unsigned __int8 CircleBlockMaxNum = 20;
+
 /**
  * ブロック管理クラス
- *
  * 各ブロックの処理を管理する
  */
 class BlockController

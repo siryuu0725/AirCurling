@@ -10,8 +10,8 @@ constexpr unsigned __int8 StopFloorMaxNum = 5;  //!スピード減衰床
 
 
 /**
-*@class   デバフ床管理クラス
-*@brief  各デバフの床の処理を管理する
+* デバフ床管理クラス
+* 各デバフの床の処理を管理する
 */
 
 class DebufController

@@ -5,7 +5,7 @@
 #include "../Calculation.h"
 
 /**
-*@class  当たり判定クラス
+* 当たり判定クラス
 */
 
 class Collision

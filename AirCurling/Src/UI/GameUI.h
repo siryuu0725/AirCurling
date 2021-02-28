@@ -27,7 +27,7 @@ enum class UpdateStep
 };
 
 /**
-*@class  ゲーム用UIクラス
+* ゲーム用UIクラス
 */
 
 class GameUI :public UIBase

@@ -3,7 +3,7 @@
 #include "ObjectBase.h"
 
 /**
-*@class  空(上空)オブジェクトクラス
+* 空(上空)オブジェクトクラス
 */
 
 class SkyDome :public ObjectBase
@@ -63,7 +63,7 @@ private:
 };
 
 /**
-*@class  空(床)クラス
+* 空(床)クラス
 */
 
 class SkyFloor :public ObjectBase

@@ -23,7 +23,7 @@ enum EffectType
 };
 
 /**
-*@class  エフェクトクラス
+* エフェクトクラス
 */
 class Effect
 {

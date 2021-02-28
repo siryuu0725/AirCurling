@@ -9,7 +9,8 @@ constexpr float Far = 20000000.0f;
 constexpr unsigned __int8 CameraSensitivity = 50;  //!カメラ感度
 
 /**
-*@class   カメラクラス
+* カメラクラス
+* ゴール床の情報を持つ
 */
 
 class Camera : public ObjectBase

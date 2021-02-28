@@ -6,7 +6,7 @@
 #include <map>
 
 /**
-*@class  CSVファイル取り扱いクラス
+* CSVファイル取り扱いクラス
 */
 
 class CSV 

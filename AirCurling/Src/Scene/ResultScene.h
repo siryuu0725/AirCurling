@@ -10,7 +10,7 @@
 constexpr __int16 ResultBGMVolume = -300;   //!ゲームシーンのBGM音量
 
 /**
-*@class  リザルトシーンクラス
+* リザルトシーンクラス
 */
 
 class ResultScene :public SceneBase

@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 /**
-*@class  オーディオプレイヤークラス
+* オーディオプレイヤークラス
 */
 
 class AudioPlayer {

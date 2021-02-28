@@ -4,7 +4,7 @@
 #include "../System/Graphics.h"
 
 /**
-*@class  ロード用UIクラス
+* ロード用UIクラス
 */
 
 class LoadUI

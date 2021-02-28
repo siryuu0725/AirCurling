@@ -10,7 +10,7 @@ constexpr __int16 SoundVolumeMin = -1000;  //!各音量の最小値
 
 
 /**
-*@class  サウンド管理クラス
+* サウンド管理クラス
 */
 
 class SoundManager

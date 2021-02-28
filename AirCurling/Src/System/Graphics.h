@@ -25,7 +25,7 @@ constexpr int	TEXTURE_MAX(1000);
 
 
 /**
-*@class  2D描画クラス
+* 2D描画クラス
 */
 
 class Graphics

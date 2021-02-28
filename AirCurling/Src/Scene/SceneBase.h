@@ -11,7 +11,7 @@ enum class SceneStep
 };
 
 /**
-*@class  シーンベースクラス
+* シーンベースクラス
 */
 class SceneBase
 {

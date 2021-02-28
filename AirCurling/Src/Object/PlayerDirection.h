@@ -6,7 +6,7 @@
 #include "../UI/GameUI.h"
 
 /**
-*@class   プレイヤーの矢印(向いている方向)クラス
+* プレイヤーの矢印(向いている方向)クラス
 */
 
 class PlayerDirection :public ObjectBase
