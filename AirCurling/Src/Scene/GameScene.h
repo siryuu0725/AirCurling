@@ -1,4 +1,10 @@
-﻿#ifndef GAMESCENE_H_
+﻿/**
+ * @file GameScene.h
+ * @brief ゲームシーンを管理する
+ * @details 中身：ゲームシーンクラス
+**/
+
+#ifndef GAMESCENE_H_
 #define GAMESCENE_H_
 
 #include "SceneBase.h"
@@ -25,7 +31,6 @@ constexpr __int16 GameBGMVolume = -300;   //!ゲームシーンのBGM音量
 /**
 * ゲームシーンクラス
 */
-
 class GameScene :public SceneBase
 {
 public:

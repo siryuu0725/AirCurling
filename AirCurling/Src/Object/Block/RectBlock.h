@@ -1,12 +1,15 @@
-﻿#ifndef RECT_BLOCK_H_
+﻿/**
+ * @file RectBlock.h
+ * @brief 立方体(上から見て矩形)のブロックオブジェクト
+ * @details　中身：矩形型ブロッククラス
+**/
+#ifndef RECT_BLOCK_H_
 #define RECT_BLOCK_H_
 #include "../ObjectBase.h"
 
 /**
-* 矩形型ブロック
-* 矩形型ブロックの情報を持つ
+* 矩形型ブロッククラス
 */
-
 class RectBlock :public ObjectBase
 {
 private:

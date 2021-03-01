@@ -1,4 +1,9 @@
-﻿#ifndef TITLE_H_
+﻿/**
+ * @file TitleUI.h
+ * @brief タイトルシーン画面でのUIを扱う
+ * @details 中身：タイトル用UIクラス
+**/
+#ifndef TITLE_H_
 #define TITLE_H_
 
 #include "UIBase.h"

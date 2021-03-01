@@ -1,4 +1,9 @@
-﻿#ifndef OBJBASE_H_
+﻿/**
+ * @file ObjectBase.h
+ * @brief 各オブジェクトの共通部分を扱う
+**/
+
+#ifndef OBJBASE_H_
 #define OBJBASE_H_
 #include"../System/FBXController.h"
 #include "../Utility/Collision/Shape.h"

@@ -1,4 +1,9 @@
-﻿#ifndef SCENEMANAGER_H_
+﻿/**
+ * @file SceneController.h
+ * @brief 各シーン管理を管理する
+ * @details 中身：シーン管理クラス、シーンID列挙体
+**/
+#ifndef SCENEMANAGER_H_
 #define SCENEMANAGER_H_
 #include"SceneBase.h"
 #include<vector>

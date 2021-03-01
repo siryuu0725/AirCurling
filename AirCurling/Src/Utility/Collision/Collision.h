@@ -1,4 +1,9 @@
-﻿#ifndef SHOTUI_H_
+﻿/**
+ * @file Collision.h
+ * @brief 当たり判定を行う
+ * @details 中身：当たり判定クラス
+**/
+#ifndef SHOTUI_H_
 #define SHOTUI_H_
 #include "Shape.h"
 #include "../Vec.h"

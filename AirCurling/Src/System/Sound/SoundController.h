@@ -1,4 +1,9 @@
-﻿#ifndef SOUNDMANAGER_H_
+﻿/**
+ * @file SoundManager.h
+ * @brief サウンド全体を管理する
+ * @details 中身：サウンド管理クラス
+**/
+#ifndef SOUNDMANAGER_H_
 #define SOUNDMANAGER_H_
 #include "../Sound/AudioPlayer.h"
 #include"../../System/Window.h"

@@ -1,4 +1,9 @@
-﻿#ifndef CALCULATION_H
+﻿/**
+ * @file Calculation.h
+ * @brief よく使う計算式などをまとめたもの
+ * @details 中身：計算機クラス
+**/
+#ifndef CALCULATION_H
 #define CALCULATION_H
 
 #include <d3d9.h>

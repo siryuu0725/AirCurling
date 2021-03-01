@@ -4,13 +4,13 @@
 //!デストラクタ
 BlockController::~BlockController()
 {
-	//!円形ブロック
+	// 円形ブロック
 	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		delete m_circleblocks[i];
 		m_circleblocks[i] = nullptr;
 	}
-
+	
 	//!矩形ブロック
 	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{

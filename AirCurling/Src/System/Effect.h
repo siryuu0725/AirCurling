@@ -1,4 +1,9 @@
-﻿#ifndef EFFECT_H_
+﻿/**
+ * @file Effect.h
+ * @brief エフェクトを管理する
+ * @details 中身：エフェクトクラス、エフェクトの種類列挙体
+**/
+#ifndef EFFECT_H_
 #define EFFECT_H_
 #include <Effekseer.h>
 #include <EffekseerRendererDX9.h>

@@ -1,4 +1,9 @@
-﻿#ifndef DIRECTSOUND_H_
+﻿/**
+ * @file DirectSound.h
+ * @brief DXサウンドを管理する
+ * @details 中身：DXサウンドクラス
+**/
+#ifndef DIRECTSOUND_H_
 #define DIRECTSOUND_H_
 #include <dsound.h>
 #include <string>
@@ -6,7 +11,6 @@
 /**
 * DXサウンドクラス
 */
-
 class DirectSound {
 
 public:

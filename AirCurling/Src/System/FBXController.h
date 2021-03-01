@@ -1,11 +1,15 @@
-﻿#ifndef FBXCONTROLLER_H_
+﻿/**
+ * @file FbxController.h
+ * @brief FBXファイルの読み込み描画等を管理する
+ * @details 中身：FBX管理クラス
+**/
+#ifndef FBXCONTROLLER_H_
 #define FBXCONTROLLER_H_
 #include "FBX.h"
 
 /**
 * FBX管理クラス
 */
-
 class FbxController
 {
 private:

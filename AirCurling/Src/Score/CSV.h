@@ -1,4 +1,9 @@
-﻿#ifndef CSV_H_
+﻿/**
+ * @file CSV.h
+ * @brief ランキング保存用csvファイル管理
+ * @details 中身：CSVファイル取り扱いクラス
+**/
+#ifndef CSV_H_
 #define CSV_H_
 #include "../Utility/Calculation.h"
 #include <string>
@@ -8,7 +13,6 @@
 /**
 * CSVファイル取り扱いクラス
 */
-
 class CSV 
 {
 private:

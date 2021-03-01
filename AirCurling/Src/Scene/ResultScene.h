@@ -1,4 +1,10 @@
-﻿#ifndef RESULT_SCENE_H_
+﻿/**
+ * @file GameScene.h
+ * @brief リザルトシーン(エンドシーン)を管理する
+ * @details 中身：リザルトシーンクラス
+**/
+
+#ifndef RESULT_SCENE_H_
 #define RESULT_SCENE_H_
 #include"SceneBase.h"
 #include "../System/FBX.h"
@@ -12,7 +18,6 @@ constexpr __int16 ResultBGMVolume = -300;   //!ゲームシーンのBGM音量
 /**
 * リザルトシーンクラス
 */
-
 class ResultScene :public SceneBase
 {
 public:

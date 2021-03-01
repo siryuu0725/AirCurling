@@ -1,4 +1,8 @@
-﻿#ifndef WINDOW
+﻿/**
+ * @file Window.h
+ * @brief Window作成を行う
+**/
+#ifndef WINDOW
 #define WINDOW
 
 #include<Windows.h>

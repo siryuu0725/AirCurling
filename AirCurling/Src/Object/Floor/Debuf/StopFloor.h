@@ -1,12 +1,16 @@
-﻿#ifndef STOP_FLOOR_H
+﻿/**
+ * @file StopFloor.h
+ * @brief 触れるとスピードが減少するデバフ床オブジェクト
+ * @details　中身：摩擦上昇デバフ床クラス
+**/
+
+#ifndef STOP_FLOOR_H
 #define STOP_FLOOR_H_
 #include "../../ObjectBase.h"
 
 /**
 * 摩擦上昇デバフ床クラス
-* 摩擦上昇デバフ床の情報を持つ
 */
-
 class StopFloor :public ObjectBase
 {
 public:

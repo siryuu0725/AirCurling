@@ -1,4 +1,9 @@
-﻿#ifndef SHAPE_H_
+﻿/**
+ * @file Shape.h
+ * @brief 各オブジェクト用の型を保存する
+ * @details 中身：型基底クラス
+**/
+#ifndef SHAPE_H_
 #define SHAPE_H_
 #include <d3dx9.h>
 

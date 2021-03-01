@@ -1,4 +1,9 @@
-﻿#ifndef BASESCENE_H_
+﻿/**
+ * @file SceneBase.h
+ * @brief 各シーンの元となるクラス
+ * @details 中身：シーンベースクラス、シーンステップ列挙体
+**/
+#ifndef BASESCENE_H_
 #define BASESCENE_H_
 
 //!シーンステップ

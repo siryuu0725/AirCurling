@@ -1,12 +1,15 @@
-﻿#ifndef FLOOR_H_
+﻿/**
+ * @file Floor.h
+ * @brief ステージの土台となる床オブジェクト
+ * @details　中身：ステージ床クラス
+**/
+#ifndef FLOOR_H_
 #define FLOOR_H_
 #include "../ObjectBase.h"
 
 /**
 * ステージ床クラス
-* ステージ床の情報を持つ
 */
-
 class Floor :public ObjectBase
 {
 public:

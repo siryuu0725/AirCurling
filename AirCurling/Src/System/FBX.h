@@ -1,4 +1,10 @@
-﻿#ifndef FBX_H
+﻿/**
+ * @file Fbx.h
+ * @brief Fbxファイルが扱えるようにする
+ * @details 中身：FBXクラス、頂点の情報構造体、ボーン情報構造体、マテリアルの情報構造体
+ * メッシュの情報構造体、FBXの情報構造体
+**/
+#ifndef FBX_H
 #define FBX_H
 #include <d3dx9.h>
 #include <string>
@@ -53,6 +59,7 @@ struct MeshData {
 
 	IDirect3DIndexBuffer9* pIB;  //!インデックスバッファ 
 };
+
 static const int BONE_MAX = 256;
 
 //!アニメーション
@@ -66,8 +73,6 @@ struct Motion
 	UINT		numFrame;		//!フレーム数	
 	D3DXMATRIX* p_Key[BONE_MAX];	//!キーフレーム
 };
-
-
 
 //!FBXの情報
 struct FbxInfo {
@@ -84,8 +89,6 @@ struct FbxInfo {
 
 	int	startFrame;             //!開始フレーム
 
-	std::map<std::string, Motion>* pMotion; //!モーション
-
 	D3DXMATRIX	world;          //!ワールドマトリックス
 };
 
@@ -97,7 +100,6 @@ struct FBXMeshData
 /**
 * FBXファイルクラス
 */
-
 class Fbx
 {
 public:

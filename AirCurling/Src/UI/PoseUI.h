@@ -1,4 +1,9 @@
-﻿#ifndef HELP_UI_H_
+﻿/**
+ * @file PoseUI.h
+ * @brief ゲームシーン中のポーズ画面でのUIを扱う
+ * @details 中身：ポーズ画面用UIクラス
+**/
+#ifndef HELP_UI_H_
 #define HELP_UI_H_
 
 #include "UIBase.h"

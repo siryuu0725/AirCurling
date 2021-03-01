@@ -1,4 +1,9 @@
-﻿#ifndef DIRECTION_H_
+﻿/**
+ * @file PlayerDirection.h
+ * @brief プレイヤーが向いている方向に向く矢印オブジェクト
+ * @details 中身：プレイヤーの矢印(向いている方向)クラス
+**/
+#ifndef DIRECTION_H_
 #define DIRECTION_H_
 
 #include "ObjectBase.h"
@@ -8,7 +13,6 @@
 /**
 * プレイヤーの矢印(向いている方向)クラス
 */
-
 class PlayerDirection :public ObjectBase
 {
 public:

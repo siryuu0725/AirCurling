@@ -1,4 +1,9 @@
-﻿#ifndef RESULTUI_H_
+﻿/**
+ * @file ResultUI.h
+ * @brief リザルトシーン画面でのUIを扱う
+ * @details 中身：リザルト用UIクラス
+**/
+#ifndef RESULTUI_H_
 #define RESULTUI_H_
 
 #include "UIBase.h"
@@ -7,7 +12,6 @@
 /**
 * リザルト用UIクラス
 */
-
 class ResultUI
 {
 public:

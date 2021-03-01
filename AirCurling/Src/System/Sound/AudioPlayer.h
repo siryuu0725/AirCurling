@@ -1,4 +1,9 @@
-﻿#ifndef AUDIOPLAYER_H_
+﻿/**
+ * @file AudioPlayer.h
+ * @brief サウンドプレーヤー
+ * @details 中身：オーディオプレイヤークラス
+**/
+#ifndef AUDIOPLAYER_H_
 #define AUDIOPLAYER_H_
 
 #include "DirectSound.h"
@@ -9,7 +14,6 @@
 /**
 * オーディオプレイヤークラス
 */
-
 class AudioPlayer {
 
 public:

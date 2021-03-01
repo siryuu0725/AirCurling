@@ -1,4 +1,9 @@
-﻿#ifndef DEBUF_CONTROLLER_H_
+﻿/**
+ * @file DebufController.h
+ * @brief ステージに配置されているデバフ効果の床オブジェクトを管理している
+ * @details　中身：デバフ床管理クラス
+**/
+#ifndef DEBUF_CONTROLLER_H_
 #define DEBUF_CONTROLLER_H_
 #include "ResetFloor.h"
 #include "StopFloor.h"
@@ -11,9 +16,7 @@ constexpr unsigned __int8 StopFloorMaxNum = 5;  //!スピード減衰床
 
 /**
 * デバフ床管理クラス
-* 各デバフの床の処理を管理する
 */
-
 class DebufController
 {
 public:

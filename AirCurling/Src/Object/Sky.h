@@ -1,11 +1,15 @@
-﻿#ifndef SKY_H_
+﻿/**
+ * @file Sky.h
+ * @brief ゲームの背景を構成するオブジェクト
+ * @details 中身：空(上空)オブジェクトクラス、空(床)クラス
+**/
+#ifndef SKY_H_
 #define SKY_H_
 #include "ObjectBase.h"
 
 /**
 * 空(上空)オブジェクトクラス
 */
-
 class SkyDome :public ObjectBase
 {
 public:

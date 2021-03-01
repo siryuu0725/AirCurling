@@ -1,4 +1,9 @@
-﻿#ifndef UIBASE_H_
+﻿/**
+ * @file UIBase.h
+ * @brief 各UIの共通部分を扱う
+ * @details 中身：UIベースクラス
+**/
+#ifndef UIBASE_H_
 #define UIBASE_H_
 #include "../System/Graphics.h"
 #include <d3d9.h>
@@ -7,7 +12,6 @@
 /**
 * UIベースクラス
 */
-
 class UIBase
 {
 public:

@@ -1,4 +1,9 @@
-﻿#ifndef TITLESCENE_H_
+﻿/**
+ * @file TitleScene.h
+ * @brief タイトルシーンを管理する
+ * @details 中身：タイトルシーンクラス
+**/
+#ifndef TITLESCENE_H_
 #define TITLESCENE_H_
 #include"SceneBase.h"
 #include "../UI/TitleUI.h"

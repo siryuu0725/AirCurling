@@ -1,14 +1,16 @@
-﻿#ifndef GAME_SCORE_H_
+﻿/**
+ * @file GameScore.h
+ * @brief ゲーム内で計算されたスコアを管理する
+ * @details 中身：スコアクラス
+**/
+#ifndef GAME_SCORE_H_
 #define GAME_SCORE_H_
 
 constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
 
-
 /**
 * スコア管理クラス
-* ゲーム内で計算されたスコアをリザルトに持っていくためなどに使用
 */
-
 class Score
 {
 private:

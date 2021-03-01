@@ -1,4 +1,9 @@
-﻿#ifndef INPUT_H_
+﻿/**
+ * @file Inputter.h
+ * @brief キーやマウスの入力関係を扱う
+ * @details 中身：入力クラス
+**/
+#ifndef INPUT_H_
 #define INPUT_H_
 #include <Windows.h>
 #include <dinput.h>
@@ -12,7 +17,6 @@
 /**
 * 入力クラス
 */
-
 class Inputter
 {
 public:

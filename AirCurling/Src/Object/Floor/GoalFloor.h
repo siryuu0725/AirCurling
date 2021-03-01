@@ -1,13 +1,16 @@
-﻿#ifndef GOAL_H_
+﻿/**
+ * @file Goal.h
+ * @brief ゴールとなる床オブジェクト
+ * @details　中身：ゴール床クラス
+**/
+#ifndef GOAL_H_
 #define GOAL_H_
 
 #include "../ObjectBase.h"
 
 /**
 * ゴール床クラス
-* ゴール床の情報を持つ
 */
-
 class Goal :public ObjectBase
 {
 private:

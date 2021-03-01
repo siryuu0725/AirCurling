@@ -1,4 +1,9 @@
-﻿#ifndef PLAYER_H_
+﻿/**
+ * @file Player.h
+ * @brief ゲームで操作するプレイヤーを扱う
+ * @details 中身：プレイヤー(パック)クラス、更新ステップ列挙体
+**/
+#ifndef PLAYER_H_
 #define PLAYER_H_
 #include "ObjectBase.h"
 #include "../System/Inputter.h"
@@ -42,7 +47,6 @@ enum class PlayerUpdateStep
 /**
 * プレイヤー(パック)クラス
 */
-
 class Player :public ObjectBase
 {
 private:

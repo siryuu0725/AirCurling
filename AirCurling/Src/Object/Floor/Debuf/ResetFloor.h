@@ -1,12 +1,16 @@
-﻿#ifndef RESET_FLOOR_H
+﻿/**
+ * @file ResetFloor.h
+ * @brief 触れると初期位置に戻されるデバフ床オブジェクト
+ * @details　中身：リセットデバフ床クラス
+**/
+
+#ifndef RESET_FLOOR_H
 #define RESET_FLOOR_H_
 #include "../../ObjectBase.h"
 
 /**
 * リセットデバフ床クラス
-* リセットデバフ床の情報を持つ
 */
-
 class ResetFloor :public ObjectBase
 {
 public:

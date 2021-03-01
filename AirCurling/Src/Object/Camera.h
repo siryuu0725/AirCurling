@@ -1,4 +1,9 @@
-﻿#ifndef CAMERA_H_
+﻿/**
+ * @file Camera.h
+ * @brief カメラオブジェクト
+ * @details　中身：カメラクラス
+**/
+#ifndef CAMERA_H_
 #define CAMERA_H_
 #include "../Object/ObjectBase.h"
 #include <d3dx9.h>

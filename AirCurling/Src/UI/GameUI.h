@@ -1,4 +1,9 @@
-﻿#ifndef SHOTUI_H
+﻿/**
+ * @file GameUI.h
+ * @brief ゲームシーン中のUIを扱う
+ * @details 中身：ゲーム用UIクラス、更新ステップ列挙体
+**/
+#ifndef SHOTUI_H
 #define SHOTUI_H
 #include "UIBase.h"
 #include "../System/Graphics.h"
