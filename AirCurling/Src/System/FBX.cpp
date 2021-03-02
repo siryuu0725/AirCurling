@@ -385,21 +385,7 @@ void Fbx::ReleaseModel(FbxInfo* pModel)
 	{
 		Graphics::Instance()->ReleaseTexture(&pModel->pMaterial[i].textureData);
 	}
-	if (pModel->pMotion)
-	{
-		std::map<std::string, Motion>::iterator it;
-		for (it = pModel->pMotion->begin(); it != pModel->pMotion->end(); it++)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				if (it->second.p_Key[i])
-				{
-					free(it->second.p_Key[i]);
-				}
-			}
-		}
-		delete pModel->pMotion;
-	}
+
 	free(pModel->p_Mesh);
 	free(pModel->pMaterial);
 
