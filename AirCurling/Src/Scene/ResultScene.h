@@ -64,7 +64,7 @@ public:
 	static SceneBase* InstanceResultScene();
 
 private:
-	ResultUI* p_ui; //!リザルト画面用UI
+	ResultUI* mp_ui; //!リザルト画面用UI
 };
 
 #endif

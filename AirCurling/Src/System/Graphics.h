@@ -196,7 +196,7 @@ public:
 　　*/
 	void SetLight();
 private:
-	static Graphics* p_instance;
+	static Graphics* mp_instance;
 
 	LPDIRECT3D9 g_interface;
 	LPDIRECT3DDEVICE9 g_device;

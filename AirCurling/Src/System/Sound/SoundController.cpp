@@ -1,12 +1,12 @@
 ﻿#include "SoundController.h"
 
-SoundManager* SoundManager::p_instance = nullptr;
+SoundManager* SoundManager::mp_instance = nullptr;
 
 SoundManager* SoundManager::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new SoundManager; }
+	if (mp_instance == nullptr) { mp_instance = new SoundManager; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 void SoundManager::RegisterTitleSound()

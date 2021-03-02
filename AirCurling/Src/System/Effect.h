@@ -101,8 +101,8 @@ public:
 　　*/
 	void ReleaseEffect();
 private:
-	static Effect* p_instance;
-	Camera* p_camera;
+	static Effect* mp_instance;
+	Camera* mp_camera;
 
 	::Effekseer::Manager* e_manager = nullptr;
 	::EffekseerRendererDX9::Renderer* e_renderer = nullptr;

@@ -24,7 +24,7 @@ enum class SceneId
 class SceneController
 {
 private:
-	SceneController() :p_scene(nullptr) {}
+	SceneController() :mp_scene(nullptr) {}
 	~SceneController();
 public:
 
@@ -82,8 +82,8 @@ public:
 	static SceneBase* (*s_controller_array[static_cast<int>(SceneId::Max)])();
 
 private:
-	static SceneController* p_instance;
-	SceneBase* p_scene;
+	static SceneController* mp_instance;
+	SceneBase* mp_scene;
 
 	SceneId m_scene_id;
 

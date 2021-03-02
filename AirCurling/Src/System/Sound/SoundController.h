@@ -56,7 +56,7 @@ public:
 	void ReleaseReselutSound();
 
 private:
-	static SoundManager* p_instance;
+	static SoundManager* mp_instance;
 
 	// selectSEをループさせないためのフラグ
 	bool m_select1_flag;

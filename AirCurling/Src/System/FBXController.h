@@ -53,7 +53,7 @@ public:
 	 */
 	FBXMeshData GetMeshData(std::string key_) { return m_MeshData[key_]; }
 private:
-	static FbxController* p_instance;
+	static FbxController* mp_instance;
 
 	Fbx* p_Fbx;
 

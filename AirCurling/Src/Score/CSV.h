@@ -66,7 +66,7 @@ private:
 	std::vector<std::string> Split(std::string& str_, char delimiter_);
 
 private:
-	static CSV* p_instance;
+	static CSV* mp_instance;
 
 	std::vector<std::string> m_ranking_data;
 

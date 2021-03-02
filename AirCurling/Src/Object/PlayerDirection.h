@@ -91,9 +91,9 @@ private:
 
 	DirectionInfo m_direction_info;
 
-	Player* m_player;  //!プレイヤー保存用
-	Camera* p_camera;  //!カメラ保存用
-	GameUI* p_ui;	   //!ゲーム用UI保存用
+	Player* mp_player;  //!プレイヤー保存用
+	Camera* mp_camera;  //!カメラ保存用
+	GameUI* mp_ui;	   //!ゲーム用UI保存用
 };
 
 #endif

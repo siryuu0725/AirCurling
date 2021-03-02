@@ -4,9 +4,9 @@
 //!コンストラクタ
 PlayerDirection::PlayerDirection(Player* player_, Camera* camera_, GameUI* ui_)
 {
-	m_player = player_;  //!プレイヤーアドレス
-	p_camera = camera_;  //!カメラアドレス
-	p_ui = ui_;          //!ゲーム用UIアドレス
+	mp_player = player_;  //!プレイヤーアドレス
+	mp_camera = camera_;  //!カメラアドレス
+	mp_ui = ui_;          //!ゲーム用UIアドレス
 }
 
 //!初期化関数
@@ -18,7 +18,7 @@ void PlayerDirection::Init()
 
 	Player::PlayerInfo player_info;
 
-	m_player->GetPlayerInfo(player_info);
+	mp_player->GetPlayerInfo(player_info);
 
 	m_direction_info.m_pos = player_info.m_pos;  //!座標
 	m_direction_info.m_scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f); //!サイズ
@@ -36,7 +36,7 @@ void PlayerDirection::Update()
 {
 	Camera::CameraInfo camera_info;
 
-	p_camera->GetCameraInfo(camera_info);
+	mp_camera->GetCameraInfo(camera_info);
 
 	//!カメラが操作できるようなった時(ゲーム開始演出終了後)
 	if (camera_info.m_is_operation == true)
@@ -54,7 +54,7 @@ void PlayerDirection::Draw()
 {
 	GameUI::GameUIInfo ui_info;
 
-	p_ui->GetGameUIInfo(ui_info);
+	mp_ui->GetGameUIInfo(ui_info);
 
 	if (ui_info.m_gauge_stop == false
 		&& m_direction_info.m_is_shotmode == true)
@@ -74,14 +74,14 @@ void PlayerDirection::Rote()
 {
 	GameUI::GameUIInfo ui_info;
 
-	p_ui->GetGameUIInfo(ui_info);
+	mp_ui->GetGameUIInfo(ui_info);
 
 	if (ui_info.m_gauge_stop == false)
 	{
 		Player::PlayerInfo player_info;
 		Camera::CameraInfo camera_info;
-		m_player->GetPlayerInfo(player_info);
-		p_camera->GetCameraInfo(camera_info);
+		mp_player->GetPlayerInfo(player_info);
+		mp_camera->GetCameraInfo(camera_info);
 
 		m_direction_info.m_player_pos = player_info.m_pos;
 		m_direction_info.m_pos = player_info.m_pos;

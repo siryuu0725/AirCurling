@@ -3,14 +3,14 @@
 
 #include <d3dx9.h>
 
-Effect* Effect::p_instance = nullptr;
+Effect* Effect::mp_instance = nullptr;
 
 //!インスタンス化関数
 Effect* Effect::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new Effect; }
+	if (mp_instance == nullptr) { mp_instance = new Effect; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 //!初期化関数

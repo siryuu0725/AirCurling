@@ -6,19 +6,19 @@
 #include"../System/Graphics.h"
 #include <thread>
 
-SceneController* SceneController::p_instance = nullptr;
+SceneController* SceneController::mp_instance = nullptr;
 
 //!インスタンス化関数
 SceneController* SceneController::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new SceneController; }
+	if (mp_instance == nullptr) { mp_instance = new SceneController; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 void SceneController::Init()
 {
-	p_scene = nullptr;
+	mp_scene = nullptr;
 
 	Graphics::Instance()->SetRenderMode(true);
 
@@ -37,21 +37,21 @@ void SceneController::Update()
 	ChangeScene();
 
 	//!各シーン更新
-	p_scene->Update();
+	mp_scene->Update();
 }
 
 //!描画関数
 void SceneController::Draw()
 {
 	//!各シーンで更新もしくはロードステップ中のみ描画
-	if (p_scene->NowStep() == SceneStep::ThreadStep ||
-		p_scene->NowStep() == SceneStep::MainStep)
+	if (mp_scene->NowStep() == SceneStep::ThreadStep ||
+		mp_scene->NowStep() == SceneStep::MainStep)
 	{
 		//!描画開始
 		Graphics::Instance()->DrawStart();
 
 		//!描画情報送信関数
-		p_scene->Draw();
+		mp_scene->Draw();
 
 		Graphics::Instance()->DrawEnd();
 	}
@@ -66,13 +66,13 @@ void SceneController::SetSceneId(SceneId sceneid_)
 //!シーン切り替え判定関数
 void SceneController::ChangeScene()
 {
-	if (p_scene == nullptr) { p_scene = new TitleScene; }
+	if (mp_scene == nullptr) { mp_scene = new TitleScene; }
 
-	if (p_scene->GetChangeSceneFlg() == true)
+	if (mp_scene->GetChangeSceneFlg() == true)
 	{
-		delete p_scene;
+		delete mp_scene;
 		//!指定のゲームの管理クラスに切り替える
-		p_scene = s_controller_array[static_cast<int>(m_scene_id)]();
+		mp_scene = s_controller_array[static_cast<int>(m_scene_id)]();
 	}
 }
 
@@ -92,7 +92,7 @@ SceneBase* (*SceneController::s_controller_array[static_cast<int>(SceneId::Max)]
 //!デストラクタ
 SceneController::~SceneController()
 {
-	delete p_scene;
-	p_scene = nullptr;
+	delete mp_scene;
+	mp_scene = nullptr;
 
 }

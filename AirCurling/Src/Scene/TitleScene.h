@@ -18,7 +18,7 @@ constexpr __int16 TitleBGMVolume = -300;   //!ゲームシーンのBGM音量
 class TitleScene :public SceneBase
 {
 public:
-	TitleScene() :p_ui(nullptr) {}
+	TitleScene() :mp_ui(nullptr) {}
 	~TitleScene() {}
 
 
@@ -63,7 +63,7 @@ public:
 	static SceneBase* InstanceTitleScene();
 
 private:
-	TitleUI* p_ui; //!タイトル用UI
+	TitleUI* mp_ui; //!タイトル用UI
 };
 
 #endif

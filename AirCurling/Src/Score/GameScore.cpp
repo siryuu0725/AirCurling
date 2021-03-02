@@ -1,6 +1,6 @@
 ﻿#include "GameScore.h"
 
-Score* Score::p_instance = nullptr;
+Score* Score::mp_instance = nullptr;
 
 //!コンストラクタ
 Score::Score() :
@@ -11,9 +11,9 @@ Score::Score() :
 //!インスタンス化関数
 Score* Score::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new Score; }
+	if (mp_instance == nullptr) { mp_instance = new Score; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 //!スコア加算関数

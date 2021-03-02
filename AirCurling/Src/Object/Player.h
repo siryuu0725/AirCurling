@@ -310,14 +310,11 @@ private:
 
 	PlayerExternalInfo m_player_externalinfo;
 
-	Camera* p_camera;         //!カメラ保存用
-	BlockController* p_block; //!ブロック管理保存用
-	Floor* p_floor;			  //!ステージ床保存用
-	DebufController* p_debuf; //!デバフ床保存用
-	Goal* p_goal;			  //!ゴール保存用
-
-
-
+	Camera* mp_camera;         //!カメラ保存用
+	BlockController* mp_block; //!ブロック管理保存用
+	Floor* mp_floor;			  //!ステージ床保存用
+	DebufController* mp_debuf; //!デバフ床保存用
+	Goal* mp_goal;			  //!ゴール保存用
 
 	PlayerUpdateStep m_update_step; //!更新ステップ
 

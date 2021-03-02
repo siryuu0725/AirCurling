@@ -5,9 +5,9 @@
 //!初期化ステップ関数
 void TitleScene::InitStep()
 {
-	if (p_ui == nullptr) { p_ui = new TitleUI; }
+	if (mp_ui == nullptr) { mp_ui = new TitleUI; }
 
-	p_ui->Init(); //!UI初期化
+	mp_ui->Init(); //!UI初期化
 
 	//!サウンド初期化
 	SoundManager::Instance()->RegisterTitleSound();
@@ -28,9 +28,9 @@ void TitleScene::MainStep()
 	TitleUI::TitleUIInfo ui_info;
 
 	//!UI更新
-	p_ui->Update();
+	mp_ui->Update();
 
-	p_ui->GetTitleUIInfo(ui_info);
+	mp_ui->GetTitleUIInfo(ui_info);
 
 	//!ステージ選択が終わった場合
 	if (ui_info.m_stage_1 == true || ui_info.m_stage_2 == true)
@@ -50,10 +50,10 @@ void TitleScene::EndStep()
 {
 	TitleUI::TitleUIInfo ui_info;
 
-	p_ui->GetTitleUIInfo(ui_info);
+	mp_ui->GetTitleUIInfo(ui_info);
 
 	//!UI解放
-	p_ui->ReleaseTex();
+	mp_ui->ReleaseTex();
 
 	//!サウンド解放
 	SoundManager::Instance()->ReleaseTitleSound();
@@ -82,7 +82,7 @@ void TitleScene::EndStep()
 //!描画情報送信まとめ関数
 void TitleScene::Draw()
 {
-	p_ui->Draw();
+	mp_ui->Draw();
 }
 
 //!インスタンス返還関数

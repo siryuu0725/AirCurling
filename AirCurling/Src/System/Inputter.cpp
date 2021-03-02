@@ -20,13 +20,13 @@ int g_KeyInfo[] = {
 };
 
 
-Inputter* Inputter::p_instance = nullptr;
+Inputter* Inputter::mp_instance = nullptr;
 
 Inputter* Inputter::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new Inputter; }
+	if (mp_instance == nullptr) { mp_instance = new Inputter; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 //!入力情報初期化まとめ関数
@@ -51,8 +51,8 @@ bool Inputter::InitInput()
 		return false;
 	}
 
-	ZeroMemory(&current_mouse_state, sizeof(DIMOUSESTATE));
-	ZeroMemory(&prev_mouse_state, sizeof(DIMOUSESTATE));
+	ZeroMemory(&m_current_mouse_state, sizeof(DIMOUSESTATE));
+	ZeroMemory(&m_prev_mouse_state, sizeof(DIMOUSESTATE));
 
 	return true;
 }
@@ -68,17 +68,17 @@ void Inputter::EndInput()
 	}
 
 	//!マウス用デバイス
-	if (mouse_device != nullptr)
+	if (m_mouse_device != nullptr)
 	{
-		mouse_device->Release();
-		mouse_device = nullptr;
+		m_mouse_device->Release();
+		m_mouse_device = nullptr;
 	}
 
 	//!キーボード用デバイス
-	if (key_device != nullptr)
+	if (m_key_device != nullptr)
 	{
-		key_device->Release();
-		key_device = nullptr;
+		m_key_device->Release();
+		m_key_device = nullptr;
 	}
 }
 
@@ -102,21 +102,21 @@ bool Inputter::CreateInputInterface()
 bool Inputter::CreateMouseDevice()
 {
 	// マウス用にデバイスオブジェクトを作成
-	if (FAILED(Ip_interface->CreateDevice(GUID_SysMouse, &mouse_device, NULL)))
+	if (FAILED(Ip_interface->CreateDevice(GUID_SysMouse, &m_mouse_device, NULL)))
 	{
 		// デバイスの作成に失敗
 		return false;
 	}
 
 	// データフォーマットを設定
-	if (FAILED(mouse_device->SetDataFormat(&c_dfDIMouse)))
+	if (FAILED(m_mouse_device->SetDataFormat(&c_dfDIMouse)))
 	{
 		// データフォーマットに失敗
 		return false;
 	}
 
 	// モードを設定（フォアグラウンド＆非排他モード）
-	if (FAILED(mouse_device->SetCooperativeLevel(
+	if (FAILED(m_mouse_device->SetCooperativeLevel(
 		FindWindowA(WINDOW_CLASS_NAME, nullptr),
 		DISCL_BACKGROUND | DISCL_NONEXCLUSIVE)))
 	{
@@ -132,14 +132,14 @@ bool Inputter::CreateMouseDevice()
 	diprop.diph.dwHow = DIPH_DEVICE;
 	diprop.dwData = DIPROPAXISMODE_REL;	// 相対値モードで設定（絶対値はDIPROPAXISMODE_ABS）
 
-	if (FAILED(mouse_device->SetProperty(DIPROP_AXISMODE, &diprop.diph)))
+	if (FAILED(m_mouse_device->SetProperty(DIPROP_AXISMODE, &diprop.diph)))
 	{
 		// デバイスの設定に失敗
 		return false;
 	}
 
 	// 入力制御開始
-	mouse_device->Acquire();
+	m_mouse_device->Acquire();
 
 	return true;
 }
@@ -148,21 +148,21 @@ bool Inputter::CreateMouseDevice()
 bool Inputter::CreateKeyboardDevice()
 {
 	// マウス用にデバイスオブジェクトを作成
-	if (FAILED(Ip_interface->CreateDevice(GUID_SysKeyboard, &key_device, nullptr)))
+	if (FAILED(Ip_interface->CreateDevice(GUID_SysKeyboard, &m_key_device, nullptr)))
 	{
 		// デバイスの作成に失敗
 		return false;
 	}
 
 	// データフォーマットを設定
-	if (FAILED(key_device->SetDataFormat(&c_dfDIKeyboard)))
+	if (FAILED(m_key_device->SetDataFormat(&c_dfDIKeyboard)))
 	{
 		// データフォーマットに失敗
 		return false;
 	}
 
 	// モードを設定（フォアグラウンド＆非排他モード）
-	if (FAILED(key_device->SetCooperativeLevel(
+	if (FAILED(m_key_device->SetCooperativeLevel(
 		FindWindowA(WINDOW_CLASS_NAME, nullptr),
 		DISCL_BACKGROUND | DISCL_NONEXCLUSIVE)))
 	{
@@ -178,14 +178,14 @@ bool Inputter::CreateKeyboardDevice()
 	diprop.diph.dwHow = DIPH_DEVICE;
 	diprop.dwData = DIPROPAXISMODE_REL;	// 相対値モードで設定（絶対値はDIPROPAXISMODE_ABS）
 
-	if (FAILED(key_device->SetProperty(DIPROP_AXISMODE, &diprop.diph)))
+	if (FAILED(m_key_device->SetProperty(DIPROP_AXISMODE, &diprop.diph)))
 	{
 		// デバイスの設定に失敗
 		return false;
 	}
 
 	// 入力制御開始
-	key_device->Acquire();
+	m_key_device->Acquire();
 
 	return true;
 }
@@ -194,7 +194,7 @@ bool Inputter::CreateKeyboardDevice()
 void Inputter::KeyStateUpdate()
 {
 	BYTE Key[256];
-	HRESULT hr = key_device->GetDeviceState(256, Key);
+	HRESULT hr = m_key_device->GetDeviceState(256, Key);
 
 	if (FAILED(hr))
 	{
@@ -246,21 +246,21 @@ void Inputter::UpdateInput()
 	UpdateMouse();
 	KeyStateUpdate();
 
-	prev_mouse_state = current_mouse_state;
+	m_prev_mouse_state = m_current_mouse_state;
 	// マウスの状態を取得します
-	HRESULT	hr = mouse_device->GetDeviceState(sizeof(DIMOUSESTATE), &current_mouse_state);
+	HRESULT	hr = m_mouse_device->GetDeviceState(sizeof(DIMOUSESTATE), &m_current_mouse_state);
 	if (FAILED(hr))
 	{
-		mouse_device->Acquire();
-		hr = mouse_device->GetDeviceState(sizeof(DIMOUSESTATE), &current_mouse_state);
+		m_mouse_device->Acquire();
+		hr = m_mouse_device->GetDeviceState(sizeof(DIMOUSESTATE), &m_current_mouse_state);
 	}
 }
 
 //!マウスの入力判定関数
 bool Inputter::OnMouseDown(MouseButton button_type_)
 {
-	if (!(prev_mouse_state.rgbButtons[button_type_] & MOUSE_ON_VALUE) &&
-		current_mouse_state.rgbButtons[button_type_] & MOUSE_ON_VALUE)
+	if (!(m_prev_mouse_state.rgbButtons[button_type_] & MOUSE_ON_VALUE) &&
+		m_current_mouse_state.rgbButtons[button_type_] & MOUSE_ON_VALUE)
 	{
 		return true;
 	}
@@ -271,7 +271,7 @@ bool Inputter::OnMouseDown(MouseButton button_type_)
 //!マウスの入力情報更新関数
 void Inputter::UpdateMouse()
 {
-	Vec2 prev = mouse_pos;
+	Vec2 prev = m_mouse_pos;
 	POINT p;
 	GetCursorPos(&p);
 	//ScreenToClient(FindWindowA(TEXT("Window"), nullptr), &p);
@@ -281,6 +281,6 @@ void Inputter::UpdateMouse()
 	p.x /= horizon;
 	p.y /= vertical;*/
 
-	mouse_pos.X = (float)p.x;
-	mouse_pos.Y = (float)p.y;
+	m_mouse_pos.X = (float)p.x;
+	m_mouse_pos.Y = (float)p.y;
 }

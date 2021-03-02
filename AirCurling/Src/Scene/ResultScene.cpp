@@ -5,7 +5,7 @@
 
 //!コンストラクタ
 ResultScene::ResultScene():
-	p_ui(nullptr)
+	mp_ui(nullptr)
 {
 	m_cur_step = SceneStep::InitStep;	
 }
@@ -13,17 +13,17 @@ ResultScene::ResultScene():
 //!描画情報送信まとめ関数
 void ResultScene::Draw()
 {
-	p_ui->Draw();
+	mp_ui->Draw();
 }
 
 //! 初期化ステップ関数
 void ResultScene::InitStep()
 {
 	//!UIインスタンス化
-	if (p_ui == nullptr) { p_ui = new ResultUI(); }
+	if (mp_ui == nullptr) { mp_ui = new ResultUI(); }
 
 	//!UI初期化
-	p_ui->Init();
+	mp_ui->Init();
 
 	SoundManager::Instance()->RegisterResultSound();
 	SoundManager::Instance()->SoundBGM(ResultBGMVolume);
@@ -53,9 +53,9 @@ void ResultScene::MainStep()
 void ResultScene::EndStep()
 {
 	//!UI解放
-	p_ui->ReleaseTex();
-	delete p_ui;
-	p_ui = nullptr;
+	mp_ui->ReleaseTex();
+	delete mp_ui;
+	mp_ui = nullptr;
 
 	//!スコア初期化
 	Score::Instance()->Reset();

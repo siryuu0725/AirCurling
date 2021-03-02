@@ -6,7 +6,7 @@
 //!コンストラクタ
 Player::Player(Camera* camera_, BlockController* block_, 
 	Floor* floor_, DebufController* debuf_, Goal* goal_) :
-	p_camera(camera_), p_block(block_), p_floor(floor_), p_debuf(debuf_), p_goal(goal_)
+	mp_camera(camera_), mp_block(block_), mp_floor(floor_), mp_debuf(debuf_), mp_goal(goal_)
 {
 	m_update_step = PlayerUpdateStep::StartProduction;  //!更新ステップを開始演出で初期化
 }
@@ -115,7 +115,7 @@ void Player::Move()
 	//!プレイヤーが移動していない間
 	if (player_info.m_is_movement == false)
 	{
-		p_camera->GetCameraInfo(camera_info);
+		mp_camera->GetCameraInfo(camera_info);
 
 		//!カメラが向いている方向に方向ベクトルを合わせる
 		player_info.m_nor_vec.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
@@ -184,7 +184,7 @@ void Player::HitController()
 //!矩形型ブロック当たり判定関数
 void Player::HitRectBlock()
 {
-	for (const auto& itr : *p_block->GetRectShape())
+	for (const auto& itr : *mp_block->GetRectShape())
 	{
 		//!矩形型ブロックの上下との当たり判定
 		if (Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -269,7 +269,7 @@ void Player::HitRectBlock()
 //!円形型ブロック当たり判定関数
 void Player::HitCircleBlock()
 {
-	for (const auto& itr : *p_block->GetCircleShape())
+	for (const auto& itr : *mp_block->GetCircleShape())
 	{
 		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
 		{
@@ -291,7 +291,7 @@ void Player::HitCircleBlock()
 //!リセットデバフ当たり判定関数
 void Player::HitReset()
 {
-	for (const auto& itr : *p_debuf->GetResetShape())
+	for (const auto& itr : *mp_debuf->GetResetShape())
 	{
 		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
 		{
@@ -314,7 +314,7 @@ void Player::HitReset()
 //!停止デバフ当たり判定関数
 void Player::HitStop()
 {
-	for (const auto& itr : *p_debuf->GetStopShape())
+	for (const auto& itr : *mp_debuf->GetStopShape())
 	{
 		//!矩形のため上下左右の当たり判定を取る
 		if (Collision::RectLeftToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true
@@ -343,7 +343,7 @@ void Player::HitGoal()
 
 		Goal::GoalInfo m_goal_infocopy;
 
-		p_goal->GetGoalInfo(m_goal_infocopy);
+		mp_goal->GetGoalInfo(m_goal_infocopy);
 
 		//!赤の円に当たっていた場合
 		if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_red_radius) == true)
@@ -553,7 +553,7 @@ void Player::ResetPos()
 {
 	Floor::ObjectInfo m_floor_infocopy;
 
-	p_floor->GetFloorInfo(m_floor_infocopy);
+	mp_floor->GetFloorInfo(m_floor_infocopy);
 
 	//!ステージから落ちた場合
 	if (player_info.m_pos.x <= m_floor_infocopy.m_pos.x - m_floor_infocopy.m_width

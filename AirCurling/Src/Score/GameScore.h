@@ -41,7 +41,7 @@ public:
 	const __int16 GetNowScore()const { return m_score; }
 
 private:
-	static Score* p_instance;
+	static Score* mp_instance;
 
 	__int16 m_score;  //!スコア保存用
 };

@@ -2,13 +2,13 @@
 #include "Window.h"
 #include "FBX.h"
 
-Graphics* Graphics::p_instance = nullptr;
+Graphics* Graphics::mp_instance = nullptr;
 
 Graphics* Graphics::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new Graphics; }
+	if (mp_instance == nullptr) { mp_instance = new Graphics; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 bool Graphics::InitGraphics()

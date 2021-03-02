@@ -1,13 +1,13 @@
 ﻿#include "FBXController.h"
 
 
-FbxController* FbxController::p_instance = nullptr;
+FbxController* FbxController::mp_instance = nullptr;
 
 FbxController* FbxController::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new FbxController(); }
+	if (mp_instance == nullptr) { mp_instance = new FbxController(); }
 
-	return p_instance;
+	return mp_instance;
 }
 
 //!コンストラクタ

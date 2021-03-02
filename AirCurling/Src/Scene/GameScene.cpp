@@ -7,18 +7,18 @@
 
 //!コンストラクタ
 GameScene::GameScene() :
-	p_camera(nullptr),
-	p_block_controller(nullptr), 
-	m_player(nullptr), 
-	m_player_direction(nullptr), 
-	m_sky_dome(nullptr),
-	m_sky_floor(nullptr),
-	p_floor(nullptr),
-	p_debuf(nullptr),
-	p_goal(nullptr),
-	p_gmae_ui(nullptr),
-	p_load_ui(nullptr),
-	p_pose_ui(nullptr),
+	mp_camera(nullptr),
+	mp_block(nullptr), 
+	mp_player(nullptr), 
+	mp_player_direction(nullptr), 
+	mp_sky_dome(nullptr),
+	mp_sky_floor(nullptr),
+	mp_floor(nullptr),
+	mp_debuf(nullptr),
+	mp_goal(nullptr),
+	mp_gmae_ui(nullptr),
+	mp_load_ui(nullptr),
+	mp_pose_ui(nullptr),
 	m_is_pose(false)
 {
 	m_cur_step = SceneStep::InitStep;
@@ -30,7 +30,7 @@ void GameScene::Draw()
 	//ロード画面描画
 	if (WaitForSingleObject(thread_h, 0) != WAIT_OBJECT_0)
 	{
-		p_load_ui->Draw();
+		mp_load_ui->Draw();
 		return;
 	}
 
@@ -38,12 +38,12 @@ void GameScene::Draw()
 	ObjectDraw();
 
 	//!ゲームUI
-	p_gmae_ui->Draw();
+	mp_gmae_ui->Draw();
 
 	//!ポーズ中のみ
 	if (m_is_pose == true)
 	{
-		p_pose_ui->Draw();
+		mp_pose_ui->Draw();
 	}
 
 	//!エフェクト描画開始
@@ -70,28 +70,28 @@ void GameScene::InitStep()
 		&thread_id);
 
 	//!UIインスタンス化
-	if (p_gmae_ui == nullptr) { p_gmae_ui = new GameUI(); }
-	if (p_load_ui == nullptr) { p_load_ui = new LoadUI(); }
-	if (p_pose_ui == nullptr) { p_pose_ui = new PoseUI(); }
+	if (mp_gmae_ui == nullptr) { mp_gmae_ui = new GameUI(); }
+	if (mp_load_ui == nullptr) { mp_load_ui = new LoadUI(); }
+	if (mp_pose_ui == nullptr) { mp_pose_ui = new PoseUI(); }
 
 	//!オブジェクトインスタンス化
-	if (p_block_controller == nullptr) { p_block_controller = new BlockController; }
-	if (m_sky_dome == nullptr) { m_sky_dome = new SkyDome; }
-	if (m_sky_floor == nullptr) { m_sky_floor = new SkyFloor; }
-	if (p_floor == nullptr) { p_floor = new Floor; }
-	if (p_debuf == nullptr) { p_debuf = new DebufController; }
-	if (p_goal == nullptr) { p_goal = new Goal; }
-	if (p_camera == nullptr) { p_camera = new Camera(); }
-	if (m_player == nullptr) { m_player = new Player(p_camera, p_block_controller, p_floor, p_debuf, p_goal); }
-	if (m_player_direction == nullptr) { m_player_direction = new PlayerDirection(m_player,p_camera, p_gmae_ui); }
+	if (mp_block == nullptr) { mp_block = new BlockController; }
+	if (mp_sky_dome == nullptr) { mp_sky_dome = new SkyDome; }
+	if (mp_sky_floor == nullptr) { mp_sky_floor = new SkyFloor; }
+	if (mp_floor == nullptr) { mp_floor = new Floor; }
+	if (mp_debuf == nullptr) { mp_debuf = new DebufController; }
+	if (mp_goal == nullptr) { mp_goal = new Goal; }
+	if (mp_camera == nullptr) { mp_camera = new Camera(); }
+	if (mp_player == nullptr) { mp_player = new Player(mp_camera, mp_block, mp_floor, mp_debuf, mp_goal); }
+	if (mp_player_direction == nullptr) { mp_player_direction = new PlayerDirection(mp_player,mp_camera, mp_gmae_ui); }
 
 	//!オブジェクト初期化
 	ObjectInit();
 
 	//!UI初期化
-	p_gmae_ui->Init();
-	p_load_ui->Init();
-	p_pose_ui->Init();
+	mp_gmae_ui->Init();
+	mp_load_ui->Init();
+	mp_pose_ui->Init();
 
 	//!エフェクト初期化
 	Effect::Instance()->InitEffect();
@@ -110,7 +110,7 @@ void GameScene::UpdateThreadStep()
 	//ロード画面演出用
 	if (WaitForSingleObject(thread_h, 0) != WAIT_OBJECT_0)
 	{
-		p_load_ui->Update();
+		mp_load_ui->Update();
 		return;
 	}
 
@@ -121,10 +121,10 @@ void GameScene::UpdateThreadStep()
 void GameScene::MainStep()
 {
 	PoseUI::HelpUIInfo pose_ui_infocopy;
-	p_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
+	mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
 	GameUI::GameUIInfo game_ui_infocopy;
-	p_gmae_ui->GetGameUIInfo(game_ui_infocopy);
+	mp_gmae_ui->GetGameUIInfo(game_ui_infocopy);
 
 	//!ポーズ中出ない時
 	if (m_is_pose == false)
@@ -133,19 +133,19 @@ void GameScene::MainStep()
 		ObjectUpdate();
 
 		//!UIの更新
-		p_gmae_ui->Update(m_player, p_camera);
+		mp_gmae_ui->Update(mp_player, mp_camera);
 
 		//!エフェクト更新
-		Effect::Instance()->UpdateEffect(p_camera);
+		Effect::Instance()->UpdateEffect(mp_camera);
 	}
 	else
 	{
 		PoseUI::HelpUIInfo pose_ui_infocopy;
 
 		//!ポーズ中UI更新
-		p_pose_ui->Update();
+		mp_pose_ui->Update();
 
-		p_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
+		mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
 		//!ポーズ中、「つづける」が押された場合
 		if (pose_ui_infocopy.m_continue == true)
@@ -199,106 +199,106 @@ void GameScene::EndStep()
 //!オブジェクト初期化関数
 void GameScene::ObjectInit()
 {
-	p_camera->Init(SceneController::Instance()->GetStageID());
-	p_block_controller->Init(SceneController::Instance()->GetStageID());
-	m_player->Init(SceneController::Instance()->GetStageID());
-	m_sky_dome->Init(SceneController::Instance()->GetStageID());
-	m_sky_floor->Init(SceneController::Instance()->GetStageID());
-	p_floor->Init(SceneController::Instance()->GetStageID());
-	p_debuf->Init(SceneController::Instance()->GetStageID());
-	p_goal->Init(SceneController::Instance()->GetStageID());
-	m_player_direction->Init();
+	mp_camera->Init(SceneController::Instance()->GetStageID());
+	mp_block->Init(SceneController::Instance()->GetStageID());
+	mp_player->Init(SceneController::Instance()->GetStageID());
+	mp_sky_dome->Init(SceneController::Instance()->GetStageID());
+	mp_sky_floor->Init(SceneController::Instance()->GetStageID());
+	mp_floor->Init(SceneController::Instance()->GetStageID());
+	mp_debuf->Init(SceneController::Instance()->GetStageID());
+	mp_goal->Init(SceneController::Instance()->GetStageID());
+	mp_player_direction->Init();
 }
 
 //!オブジェクト更新関数
 void GameScene::ObjectUpdate()
 {
 	Player::PlayerInfo player_info;
-	m_player->GetPlayerInfo(player_info);
+	mp_player->GetPlayerInfo(player_info);
 
-	m_player->Update();
-	p_camera->Update(player_info.m_pos);
-	m_player_direction->Update();
+	mp_player->Update();
+	mp_camera->Update(player_info.m_pos);
+	mp_player_direction->Update();
 }
 
 //!オブジェクト描画情報送信関数
 void GameScene::ObjectDraw()
 {
-	p_block_controller->Draw();
-	m_player->Draw();
-	m_player_direction->Draw();
-	m_sky_dome->Draw();
-	m_sky_floor->Draw();
-	p_floor->Draw();
-	p_debuf->Draw();
-	p_goal->Draw();
+	mp_block->Draw();
+	mp_player->Draw();
+	mp_player_direction->Draw();
+	mp_sky_dome->Draw();
+	mp_sky_floor->Draw();
+	mp_floor->Draw();
+	mp_debuf->Draw();
+	mp_goal->Draw();
 }
 
 //!オブジェクト解放関数
 void GameScene::ObjectDelete()
 {
 	//!カメラ
-	delete p_camera;
-	p_camera = nullptr;
+	delete mp_camera;
+	mp_camera = nullptr;
 
 	//!ブロック
-	p_block_controller->ReleaseModel();
-	delete p_block_controller;
-	p_block_controller = nullptr;
+	mp_block->ReleaseModel();
+	delete mp_block;
+	mp_block = nullptr;
 
 	//!プレイヤー
-	m_player->ReleaseModel();
-	delete m_player;
-	m_player = nullptr;
+	mp_player->ReleaseModel();
+	delete mp_player;
+	mp_player = nullptr;
 
 	//!プレイヤー矢印
-	m_player_direction->ReleaseModel();
-	delete m_player_direction;
-	m_player_direction = nullptr;
+	mp_player_direction->ReleaseModel();
+	delete mp_player_direction;
+	mp_player_direction = nullptr;
 
 	//!背景
-	m_sky_dome->ReleaseModel();
-	delete m_sky_dome;
-	m_sky_dome = nullptr;
+	mp_sky_dome->ReleaseModel();
+	delete mp_sky_dome;
+	mp_sky_dome = nullptr;
 
 	//!背景床
-	m_sky_floor->ReleaseModel();
-	delete m_sky_floor;
-	m_sky_floor = nullptr;
+	mp_sky_floor->ReleaseModel();
+	delete mp_sky_floor;
+	mp_sky_floor = nullptr;
 
 	//!ステージ床
-	p_floor->ReleaseModel();
-	delete p_floor;
-	p_floor = nullptr;
+	mp_floor->ReleaseModel();
+	delete mp_floor;
+	mp_floor = nullptr;
 
 	//!デバフ床
-	p_debuf->ReleaseModel();
-	delete p_debuf;
-	p_debuf = nullptr;
+	mp_debuf->ReleaseModel();
+	delete mp_debuf;
+	mp_debuf = nullptr;
 
 	//!ゴール床
-	p_goal->ReleaseModel();
-	delete p_goal;
-	p_goal = nullptr;
+	mp_goal->ReleaseModel();
+	delete mp_goal;
+	mp_goal = nullptr;
 }
 
 //!UI解放関数
 void GameScene::UIDelete()
 {
 	//!ゲーム本編用UI
-	p_gmae_ui->ReleaseTex();
-	delete p_gmae_ui;
-	p_gmae_ui = nullptr;
+	mp_gmae_ui->ReleaseTex();
+	delete mp_gmae_ui;
+	mp_gmae_ui = nullptr;
 
 	//!ロード画面用UI
-	p_load_ui->ReleaseTex();
-	delete p_load_ui;
-	p_load_ui = nullptr;
+	mp_load_ui->ReleaseTex();
+	delete mp_load_ui;
+	mp_load_ui = nullptr;
 
 	//!ポーズ画面用UI
-	p_pose_ui->ReleaseTex();
-	delete p_pose_ui;
-	p_pose_ui = nullptr;
+	mp_pose_ui->ReleaseTex();
+	delete mp_pose_ui;
+	mp_pose_ui = nullptr;
 }
 
 //!インスタンス返還関数

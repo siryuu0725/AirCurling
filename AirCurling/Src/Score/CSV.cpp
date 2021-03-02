@@ -20,13 +20,13 @@
 //	std::cout << fileName << "に書き込みました。" << std::endl;
 //	std::cin.get();
 //}
-CSV* CSV::p_instance = nullptr;
+CSV* CSV::mp_instance = nullptr;
 
 CSV* CSV::Instance()
 {
-	if (p_instance == nullptr) { p_instance = new CSV; }
+	if (mp_instance == nullptr) { mp_instance = new CSV; }
 
-	return p_instance;
+	return mp_instance;
 }
 
 //!ファイル読み込み関数
