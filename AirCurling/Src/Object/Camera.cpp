@@ -72,6 +72,12 @@ void Camera::CreateFrustum()
 
 void Camera::Update(D3DXVECTOR3 player_pos_)
 {
+	//!操作可能判定
+	if (m_camerainfo.m_is_operation == true)
+	{
+		Move(player_pos_);
+	}
+
 	//!ビュー座標変換用の行列算出 start
 	D3DXVECTOR3 camera_pos(m_camerainfo.m_pos.x, m_camerainfo.m_pos.y, m_camerainfo.m_pos.z);	                  //!カメラ位置
 	D3DXVECTOR3 m_eye_pos(m_camerainfo.m_eye_pos.x, m_camerainfo.m_eye_pos.y, m_camerainfo.m_eye_pos.z);		  //!注視点
@@ -86,10 +92,6 @@ void Camera::Update(D3DXVECTOR3 player_pos_)
 
 	//!射影座標変換用の行列算出 endMove();
 
-	if (m_camerainfo.m_is_operation == true)
-	{
-		Move(player_pos_);
-	}
 
 }
 
