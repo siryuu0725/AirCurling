@@ -55,14 +55,14 @@ public:
 		//!初期化
 		PlayerInfo() :
 			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_nor_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
 			m_mass(0.0f),
 			m_friction(0.0f),
 			m_timer(0),
-			m_reflectcounter(0),
-			m_truncounter(0),
+			m_reflect_counter(0),
+			m_trun_counter(0),
 			m_score_counter(0),
 			m_is_turnend(false),
 			m_is_start(false),
@@ -74,7 +74,7 @@ public:
 
 		D3DXVECTOR3 m_old_pos;  //!移動前座標(回転用)
 
-		D3DXVECTOR3 m_nor_speed; //!方向ベクトル
+		D3DXVECTOR3 m_nor_vec; //!方向ベクトル
 
 		float m_speed;     //!移動スピード
 		float m_setspeed;  //!移動スピード
@@ -88,8 +88,8 @@ public:
 
 		float m_timer;  //!経過時間
 
-		int m_reflectcounter; //!反射回数
-		int m_truncounter;    //!進行ターン数
+		int m_reflect_counter; //!反射回数
+		int m_trun_counter;    //!進行ターン数
 		__int8 m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */

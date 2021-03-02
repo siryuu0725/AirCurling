@@ -32,8 +32,8 @@ void Player::Init(std::string stage_str_)
 	player_info.m_speed = m_player_externalinfo.speed;  //!移動スピード
 
 	player_info.m_timer = 0;  //!経過時間
-	player_info.m_truncounter = 0;    //!進行ターン数
-	player_info.m_reflectcounter = 0; //!反射回数
+	player_info.m_trun_counter = 0;    //!進行ターン数
+	player_info.m_reflect_counter = 0; //!反射回数
 	player_info.m_is_turnend = false;    //!1ターン終了フラグ
 	player_info.m_is_goal = false;       //!ゴールフラグ
 	player_info.m_end = false;        //!ゲームエンドフラグ
@@ -41,7 +41,7 @@ void Player::Init(std::string stage_str_)
 
 	player_info.m_is_movement = false;
 
-	player_info.m_nor_speed.y = 0.0f;
+	player_info.m_nor_vec.y = 0.0f;
 }
 
 //他オブジェクト情報取得関数
@@ -118,8 +118,8 @@ void Player::Move()
 		p_camera->GetCameraInfo(camera_info);
 
 		//!カメラが向いている方向に方向ベクトルを合わせる
-		player_info.m_nor_speed.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
-		player_info.m_nor_speed.z = camera_info.m_forward.z / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
+		player_info.m_nor_vec.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
+		player_info.m_nor_vec.z = camera_info.m_forward.z / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
 	}
 
 	//!プレイヤーが移動している間
@@ -144,7 +144,7 @@ void Player::Move()
 			player_info.m_is_turnend = true;  //!ターン終了
 			player_info.m_is_movement = false;  //!移動終了
 			player_info.m_timer = 0;
-			player_info.m_truncounter++; //!ターン数加算
+			player_info.m_trun_counter++; //!ターン数加算
 		}
 	}
 
@@ -152,11 +152,11 @@ void Player::Move()
 	player_info.m_old_pos = player_info.m_pos;
 
 	//!方向ベクトル正規化
-	D3DXVec3Normalize(&player_info.m_nor_speed, &player_info.m_nor_speed);
+	D3DXVec3Normalize(&player_info.m_nor_vec, &player_info.m_nor_vec);
 
 	//!プレイヤー座標に移動スピード加算
-	player_info.m_pos.x += player_info.m_nor_speed.x * player_info.m_speed;
-	player_info.m_pos.z += player_info.m_nor_speed.z * player_info.m_speed;
+	player_info.m_pos.x += player_info.m_nor_vec.x * player_info.m_speed;
+	player_info.m_pos.z += player_info.m_nor_vec.z * player_info.m_speed;
 
 	//!ワールド座標更新
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);
@@ -174,10 +174,10 @@ void Player::HitController()
 	HitGoal();	//!ゴール床との当たり判定
 
 	//!反射が5回以上の行われるたびにスコアを減らす
-	if (player_info.m_reflectcounter >= ReflectMax)
+	if (player_info.m_reflect_counter >= ReflectMax)
 	{
 		Score::Instance()->AddGameScore(ReflectScore);
-		player_info.m_reflectcounter = 0;
+		player_info.m_reflect_counter = 0;
 	}
 }
 
@@ -193,11 +193,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionRect("Top", itr->GetRote());
+			player_info.m_nor_vec = ReflectionRect("Top", itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 		//!矩形型ブロックの左右との当たり判定
 		else if (Collision::RectLeftToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -206,11 +206,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionRect("Left", itr->GetRote());
+			player_info.m_nor_vec = ReflectionRect("Left", itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 		//!矩形型ブロックの左上との当たり判定
 		else if (Collision::RectVertexToCircle("LeftTop", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -219,11 +219,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionVertex("LeftTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_vec = ReflectionVertex("LeftTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 		//!矩形型ブロックの左下との当たり判定
 		else if (Collision::RectVertexToCircle("LeftDown", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -232,11 +232,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionVertex("LeftDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_vec = ReflectionVertex("LeftDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 		//!矩形型ブロックの右上との当たり判定
 		else if (Collision::RectVertexToCircle("RightTop", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -245,11 +245,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionVertex("RightTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_vec = ReflectionVertex("RightTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 		//!矩形型ブロックの右下との当たり判定
 		else if (Collision::RectVertexToCircle("RightDown", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
@@ -257,11 +257,11 @@ void Player::HitRectBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = ReflectionVertex("RightDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_vec = ReflectionVertex("RightDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 	}
 }
@@ -277,11 +277,11 @@ void Player::HitCircleBlock()
 			//!エフェクト再生
 			StartHitEffect(itr->GetCirclePos());
 			//!反射
-			player_info.m_nor_speed = ReflectionCircle(itr->GetCirclePos());
+			player_info.m_nor_vec = ReflectionCircle(itr->GetCirclePos());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
-			player_info.m_reflectcounter++;
+			player_info.m_reflect_counter++;
 		}
 	}
 	
@@ -387,7 +387,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
-		if (player_info.m_truncounter >= GameTrun)
+		if (player_info.m_trun_counter >= GameTrun)
 		{
 			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
@@ -401,7 +401,7 @@ void Player::HitGoal()
 //!矩形型ブロック反射方向計算関数
 D3DXVECTOR3 Player::ReflectionRect(std::string type_,float rad_)
 {
-	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
+	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
 	float m_change_radian;
 
 	/*
@@ -429,7 +429,7 @@ D3DXVECTOR3 Player::ReflectionRect(std::string type_,float rad_)
 D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 {
 	//!値初期化
-	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
+	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
 
 	//!方向ベクトルを反転
 	old_direction.x = -old_direction.x;
@@ -476,7 +476,7 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 D3DXVECTOR3 Player::ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
 {
 	//!値初期化
-	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
+	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
 	D3DXVECTOR3 vec;
 
 	D3DXVECTOR3 player_lotepos = Calculation::Rote(player_info.m_pos, r_pos_, rad_);
