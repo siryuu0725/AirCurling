@@ -20,9 +20,6 @@ constexpr float StartFontEndPosX = 1900.0f;  //!開始演出の終了座標
 constexpr float FinishFontEndPosX = -500.0f; //!開始演出の終了座標
 constexpr float Buoyancy = 8.0f; //!浮力(終了演出で使用)
 
-
-
-
 //!更新ステップ
 enum class UpdateStep
 {
@@ -31,6 +28,25 @@ enum class UpdateStep
 	EndProduction,	  //!終了演出
 };
 
+//!UIの種類
+enum class GameUICategory :int
+{
+	ShotGauge,       //!打つ威力ゲージ
+	ShotGaugeFlame,	 //!打つ威力ゲージ枠
+	ShotBox,		 //!打つ威力決定バー
+	Turn,			 //!文字「ターン」
+	TurnNumber,		 //!ターン数
+	ViewMode,		 //!文字「View」
+	ShotMode,		 //!文字「shot」
+	One_Score,		 //!スコア数1の位
+	Ten_Score,		 //!スコア数10の位
+	Start,			 //!文字「スタート」
+	Kacco,			 //!文字「=」
+	Finish,          //!文字「フィニッシュ」
+	CategoryMax,	 //!UI数
+};
+
+
 /**
 * ゲーム用UIクラス
 */
@@ -38,25 +54,6 @@ enum class UpdateStep
 class GameUI :public UIBase
 {
 public:
-	//!UIの種類
-	enum class GameUICategory :int
-	{
-		ShotGauge,       //!打つ威力ゲージ
-		ShotGaugeFlame,	 //!打つ威力ゲージ枠
-		ShotBox,		 //!打つ威力決定バー
-		Turn,			 //!文字「ターン」
-		TurnNumber,		 //!ターン数
-		ViewMode,		 //!文字「View」
-		ShotMode,		 //!文字「shot」
-		One_Score,		 //!スコア数1の位
-		Ten_Score,		 //!スコア数10の位
-		Start,			 //!文字「スタート」
-		Kacco,			 //!文字「=」
-		Finish,          //!文字「フィニッシュ」
-		CategoryMax,	 //!UI数
-	};
-
-private:
 	//!ゲーム画面UI情報
 	struct GameUIInfo
 	{
@@ -118,7 +115,10 @@ private:
 		float t;		// 秒
 		float flame;	// 1フレーム当たりの時間
 
-	}m_gameui_info;
+	};
+private:
+	GameUIInfo m_gameui_info;
+
 public:
 	GameUI() {}
 	~GameUI() {}

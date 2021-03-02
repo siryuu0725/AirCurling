@@ -13,11 +13,9 @@ constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
 */
 class Score
 {
-private:
+public:
 	Score();
 	~Score() {}
-
-public:
 
 	/**
 　　* @brief  インスタンス化関数

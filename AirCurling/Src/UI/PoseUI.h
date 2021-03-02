@@ -9,25 +9,24 @@
 #include "UIBase.h"
 #include "../Score/CSV.h"
 
+//!UIの種類
+enum class HelpUICategory :int
+{
+	BG,          //!背景
+	Continue,    //!文字「つづける」
+	End,         //!文字「おわる」
+	Help,        //!文字「へるぷ」
+	Select,      //!選択中
+	HelpBg,      //!ヘルプ画面背景
+	CategoryMax,
+};
+
 /**
 * ポーズ画面用UIクラス
 */
-
 class PoseUI :public UIBase
 {
-private:
-	//!UIの種類
-	enum class HelpUICategory :int
-	{
-		BG,          //!背景
-		Continue,    //!文字「つづける」
-		End,         //!文字「おわる」
-		Help,        //!文字「へるぷ」
-		Select,      //!選択中
-		HelpBg,      //!ヘルプ画面背景
-		CategoryMax, 
-	};
-
+public:
 	//!ヘルプ画面UI情報
 	struct HelpUIInfo
 	{
@@ -48,6 +47,10 @@ private:
 		bool m_end;		  //!「おわる」選択フラグ
 		bool m_help;	  //!「へるぷ」選択フラグ
 	};
+
+private:
+	HelpUIInfo m_poseui_info;
+
 	
 public:
 	PoseUI() {}
@@ -102,9 +105,8 @@ public:
  　　* @brief  UI情報Getter
  　　*/
 	const HelpUIInfo* GetGameUIInfo() { return &m_poseui_info; }
-private:
-	HelpUIInfo m_poseui_info;
 
+private:
 	UIExternalInfo m_poseui_externalinfo[static_cast<int>(HelpUICategory::CategoryMax)];
 };
 #endif

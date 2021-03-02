@@ -13,38 +13,13 @@
 */
 class Goal :public ObjectBase
 {
-private:
+public:
 	struct GoalInfo :public ObjectInfo
 	{
 		float m_red_radius;    //!赤色のゴール枠の半径
 		float m_yellow_radius; //!黄色のゴール枠の半径
 		float m_green_radius;  //!緑色のゴール枠の半径
 	};
-
-	//!外部データ保存用構造体
-	struct GoalExternalInfo
-	{
-		GoalExternalInfo() :
-			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_red_radius(0.0f),
-			m_yellow_radius(0.0f),
-			m_green_radius(0.0f)
-		{}
-
-		//!座標
-		D3DXVECTOR3 m_pos;
-		//!サイズ
-		D3DXVECTOR3 m_scale;
-
-		float m_red_radius;    //!赤色のゴール枠の半径
-		float m_yellow_radius; //!黄色のゴール枠の半径
-		float m_green_radius;  //!緑色のゴール枠の半径
-
-	};
-
-	GoalInfo m_goal_info;//!ステージ床情報
-	GoalExternalInfo m_goal_externalinfo;
 
 public:
 	Goal() {}
@@ -78,5 +53,33 @@ public:
  　　* @brief  オブジェクト情報Getter
  　　*/
 	const GoalInfo* GetObjInfo()const { return &m_goal_info; }
+
+private:
+	//!外部データ保存用構造体
+	struct GoalExternalInfo
+	{
+		GoalExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_red_radius(0.0f),
+			m_yellow_radius(0.0f),
+			m_green_radius(0.0f)
+		{}
+
+		//!座標
+		D3DXVECTOR3 m_pos;
+		//!サイズ
+		D3DXVECTOR3 m_scale;
+
+		float m_red_radius;    //!赤色のゴール枠の半径
+		float m_yellow_radius; //!黄色のゴール枠の半径
+		float m_green_radius;  //!緑色のゴール枠の半径
+
+	};
+
+	GoalInfo m_goal_info;//!ステージ床情報
+
+	GoalExternalInfo m_goal_externalinfo;
+
 };
 #endif

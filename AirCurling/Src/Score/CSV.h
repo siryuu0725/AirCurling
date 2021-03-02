@@ -15,7 +15,7 @@
 */
 class CSV 
 {
-private:
+public:
 	CSV() {}
 	~CSV() {}
 
@@ -23,7 +23,7 @@ private:
 	CSV& operator=(const CSV&) = delete;
 
 	CSV& operator=(const CSV&&) = delete;
-public:
+
 	static CSV* Instance();
 	/**
 	*	@brief<Get> 指定されたキーの中のパラメータ取得する関数

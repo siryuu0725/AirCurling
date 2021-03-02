@@ -9,6 +9,24 @@
 #include "UIBase.h"
 #include "../System/Sound/SoundController.h"
 
+//!UIの種類
+enum class TitleUICategory :int
+{
+	BG,            //!背景
+	Name,		   //!タイトル名
+	Start,		   //!文字「スタート」
+	End,		   //!文字「終わり」
+	Help,		   //!文字「ヘルプ」
+	NowSelect,	   //!現在選択枠
+	HelpBG,	       //!ヘルプ画面用BG
+	SelectStage1,  //!文字「1」
+	SelectStage2,  //!文字「2」
+	NowSelectStage,//!現在選択ステージ枠
+	SelectStageFont,//!文字「ステージを選択」
+	CategoryMax,   //!UI数
+};
+
+
 /**
 * タイトル用UIクラス
 */
@@ -16,24 +34,6 @@
 class TitleUI :public UIBase
 {
 public:
-	//!UIの種類
-	enum class TitleUICategory :int
-	{
-		BG,            //!背景
-		Name,		   //!タイトル名
-		Start,		   //!文字「スタート」
-		End,		   //!文字「終わり」
-		Help,		   //!文字「ヘルプ」
-		NowSelect,	   //!現在選択枠
-		HelpBG,	       //!ヘルプ画面用BG
-		SelectStage1,  //!文字「1」
-		SelectStage2,  //!文字「2」
-		NowSelectStage,//!現在選択ステージ枠
-		SelectStageFont,//!文字「ステージを選択」
-		CategoryMax,   //!UI数
-	};
-
-private:
 	//!タイトル画面UI情報
 	struct TitleUIInfo
 	{
@@ -58,8 +58,10 @@ private:
 		bool m_stage_1;   //!ステージ1を選んだ場合
 		bool m_stage_2;   //!ステージ2を選んだ場合
 
-	}m_titleui_info;
+	};
 
+private:
+	TitleUIInfo m_titleui_info;
 
 public:
 	TitleUI() {}

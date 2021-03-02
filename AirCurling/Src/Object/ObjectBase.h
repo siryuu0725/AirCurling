@@ -17,7 +17,7 @@
 */
 class ObjectBase
 {
-protected:
+public:
 	//!オブジェクト情報
 	struct ObjectInfo
 	{
@@ -25,7 +25,7 @@ protected:
 			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_angle(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_width(0.0f), 
+			m_width(0.0f),
 			m_height(0.0f),
 			m_radius(0.0f),
 			m_rote(0.0f)
@@ -48,7 +48,6 @@ protected:
 
 	};
 
-public:
 	ObjectBase() {}
 	~ObjectBase() {}
 };

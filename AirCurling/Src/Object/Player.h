@@ -49,7 +49,7 @@ enum class PlayerUpdateStep
 */
 class Player :public ObjectBase
 {
-private:
+public:
 	struct PlayerInfo :public ObjectInfo
 	{
 		//!初期化
@@ -58,7 +58,7 @@ private:
 			m_nor_speed(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
-			m_mass(0.0f), 
+			m_mass(0.0f),
 			m_friction(0.0f),
 			m_timer(0),
 			m_reflectcounter(0),
@@ -66,7 +66,7 @@ private:
 			m_score_counter(0),
 			m_is_turnend(false),
 			m_is_start(false),
-			m_is_goal(false), 
+			m_is_goal(false),
 			m_end(false),
 			m_is_movement(false),
 			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
@@ -103,23 +103,8 @@ private:
 		D3DXVECTOR3 m_efk_pos;      //!エフェクト表示座標保存用
 	};
 
-	struct PlayerExternalInfo
-	{
-		//!座標
-		D3DXVECTOR3 m_pos;
-		//!サイズ
-		D3DXVECTOR3 m_scale;
-
-		float m_radius; //!半径
-		float speed;  //!移動スピード
-		float m;      //!質量
-		float fa;     //!動摩擦係数
-		int score_counter; //!加算するスコア数
-
-	};
-
+private:
 	PlayerInfo player_info;
-	PlayerExternalInfo m_player_externalinfo;
 
 public:
 	/**
@@ -298,7 +283,24 @@ public:
  　　* @brief  オブジェクト情報Getter
  　　*/
 	const PlayerInfo* GetObjInfo()const { return &player_info; }
+
 private:
+	struct PlayerExternalInfo
+	{
+		//!座標
+		D3DXVECTOR3 m_pos;
+		//!サイズ
+		D3DXVECTOR3 m_scale;
+
+		float m_radius; //!半径
+		float speed;  //!移動スピード
+		float m;      //!質量
+		float fa;     //!動摩擦係数
+		int score_counter; //!加算するスコア数
+
+	};
+
+	PlayerExternalInfo m_player_externalinfo;
 
 	Camera* p_camera;         //!カメラアドレス保存用
 	BlockController* p_block; //!ブロック管理アドレス保存用
@@ -307,6 +309,7 @@ private:
 	Goal* p_goal;			  //!ゴールアドレス保存用
 
 	PlayerUpdateStep m_update_step; //!更新ステップ
+
 };
 
 

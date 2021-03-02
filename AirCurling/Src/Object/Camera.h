@@ -20,7 +20,7 @@ constexpr unsigned __int8 CameraSensitivity = 50;  //!カメラ感度
 
 class Camera : public ObjectBase
 {
-private:
+public:
 	//!オブジェクト情報
 	struct CameraInfo :public ObjectInfo
 	{
@@ -57,26 +57,8 @@ private:
 
 	};
 
-	//!外部データ保存用構造体
-	struct CameraExternalInfo
-	{
-		CameraExternalInfo() :
-			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_eye_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_packup(0.0f)
-		{}
-
-		//!座標
-		D3DXVECTOR3 m_pos;
-		//!サイズ
-		D3DXVECTOR3 m_eye_pos;
-		//!パックの上にカメラを配置するよう
-		float m_packup;          
-
-	};
-
+private:
 	CameraInfo m_camerainfo;
-	CameraExternalInfo m_camera_externalinfo;
 
 public:
 	Camera() {}
@@ -138,6 +120,26 @@ public:
  　　*/
 	const CameraInfo* GetObjInfo()const { return &m_camerainfo; }
 
+private:
+	//!外部データ保存用構造体
+	struct CameraExternalInfo
+	{
+		CameraExternalInfo() :
+			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_eye_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_packup(0.0f)
+		{}
+
+		//!座標
+		D3DXVECTOR3 m_pos;
+		//!サイズ
+		D3DXVECTOR3 m_eye_pos;
+		//!パックの上にカメラを配置するよう
+		float m_packup;
+
+	};
+
+	CameraExternalInfo m_camera_externalinfo;
 };
 
 #endif

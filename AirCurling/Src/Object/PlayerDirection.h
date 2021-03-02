@@ -16,34 +16,6 @@
 class PlayerDirection :public ObjectBase
 {
 public:
-	struct DirectionInfo :public ObjectInfo
-	{
-		DirectionInfo() :
-			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_player_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_dir_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_add_zpos(0.0f),
-			m_rote(0.0f),
-			m_pos_rote_r(0.0f),
-			m_is_shotmode(false)
-		{}
-
-		D3DXVECTOR3 m_old_pos;     //!回転用oldpos
-
-		D3DXVECTOR3 m_player_pos;  //!プレイヤーpos保存用
-
-		D3DXVECTOR3 m_dir_vec; //!カメラの方向Vec保存用
-
-		float m_add_zpos;   //!プレイヤーの前にくるように足す値
-
-		float m_rote;       //!モデル回転角度
-
-		float m_pos_rote_r; //!pos回転角度
-
-		bool m_is_shotmode;    //!打つモードかどうか
-
-	};
-public:
 	/**
  　　* @brief  コンストラクタ
      * @param (player_) プレイヤーアドレス
@@ -89,6 +61,34 @@ public:
 	void ModeChange();
 
 private:
+	struct DirectionInfo :public ObjectInfo
+	{
+		DirectionInfo() :
+			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_player_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_dir_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_add_zpos(0.0f),
+			m_rote(0.0f),
+			m_pos_rote_r(0.0f),
+			m_is_shotmode(false)
+		{}
+
+		D3DXVECTOR3 m_old_pos;     //!回転用oldpos
+
+		D3DXVECTOR3 m_player_pos;  //!プレイヤーpos保存用
+
+		D3DXVECTOR3 m_dir_vec; //!カメラの方向Vec保存用
+
+		float m_add_zpos;   //!プレイヤーの前にくるように足す値
+
+		float m_rote;       //!モデル回転角度
+
+		float m_pos_rote_r; //!pos回転角度
+
+		bool m_is_shotmode;    //!打つモードかどうか
+
+	};
+
 	DirectionInfo m_direction_info;
 
 	Player* m_player;  //!プレイヤーアドレス保存用

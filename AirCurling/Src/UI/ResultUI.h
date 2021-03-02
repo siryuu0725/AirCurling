@@ -9,18 +9,18 @@
 #include "UIBase.h"
 #include "../Score/CSV.h"
 
+//!UIの種類
+enum class ResultUICategory :int
+{
+	BG,
+	CategoryMax,
+};
+
 /**
 * リザルト用UIクラス
 */
 class ResultUI
 {
-public:
-	//!UIの種類
-	enum class ResultUICategory :int
-	{
-		BG,
-		CategoryMax,
-	};
 public:
 	ResultUI() {}
 	~ResultUI() {}
@@ -45,6 +45,7 @@ public:
 	 * @brief  テクスチャ解放関数
 	 */
 	void ReleaseTex();
+
 private:
 	CSV* csv;
 

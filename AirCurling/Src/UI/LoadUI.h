@@ -8,20 +8,19 @@
 #include "../UI/UIBase.h"
 #include "../System/Graphics.h"
 
+//!UIの種類
+enum class LoadUICategory :int
+{
+	NowLoad, //!文字「NowLoad」
+	RoteTex, //!回転テクスチャ
+	CategoryMax,
+};
+
 /**
 * ロード用UIクラス
 */
-
 class LoadUI
 {
-public:
-	//!UIの種類
-	enum class LoadUICategory :int
-	{
-		NowLoad, //!文字「NowLoad」
-		RoteTex, //!回転テクスチャ
-		CategoryMax,
-	};
 public:
 	LoadUI() {}
 	~LoadUI() {}

@@ -12,17 +12,8 @@
 */
 class RectBlock :public ObjectBase
 {
-private:
-	//!矩形型ブロック情報(頂点情報)
-	struct RectBlockInfo :public ObjectInfo
-	{
-		D3DXVECTOR3 m_left_top;    //!左上
-		D3DXVECTOR3 m_left_down;   //!左下
-		D3DXVECTOR3 m_right_top;   //!右上
-		D3DXVECTOR3 m_right_down;  //!右下
-	}m_rectblock_info;
-
 public:
+
 	/**
  　　* @brief  コンストラクタ
  　　* @param (pos_)   座標
@@ -45,11 +36,16 @@ public:
 	 */
 	void ReleaseModel();
 
+private:
+	//!矩形型ブロック情報(頂点情報)
+	ObjectInfo m_rectblock_info;
+
+public:
 	/**
  　　* @brief  オブジェクト情報Getter
      * @return RectBlockInfoの指定した変数の情報を返す
  　　*/
-	const RectBlockInfo* GetObjInfo()const { return &m_rectblock_info; }
+	const ObjectInfo* GetObjInfo()const { return &m_rectblock_info; }
 };
 
 #endif
