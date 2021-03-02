@@ -96,6 +96,12 @@ public:
 	void LoadCameraExternalInfo(std::string stage_str_);
 
 	/**
+     * @brief  視錐台作成関数
+     * @detail 視錐台作成
+     */
+	void CreateFrustum();
+
+	/**
 	 * @brief  更新関数
 	 * @detail 更新処理まとめ関数
 	 */

@@ -25,6 +25,8 @@ void Camera::Init(std::string stage_str_)
 	m_camerainfo.m_is_shotmode = false;  //!打つモードかどうか
 
 	D3DXMatrixIdentity(&m_camerainfo.mat_view);
+
+	CreateFrustum(); //視錐台関数
 }
 
 //!外部データ読み込み関数
@@ -47,20 +49,9 @@ void Camera::LoadCameraExternalInfo(std::string stage_str_)
 	}
 }
 
-void Camera::Update(D3DXVECTOR3 player_pos_)
+//視錐台関数
+void Camera::CreateFrustum()
 {
-	//!ビュー座標変換用の行列算出 start
-	D3DXVECTOR3 camera_pos(m_camerainfo.m_pos.x, m_camerainfo.m_pos.y, m_camerainfo.m_pos.z);	                  //!カメラ位置
-	D3DXVECTOR3 m_eye_pos(m_camerainfo.m_eye_pos.x, m_camerainfo.m_eye_pos.y, m_camerainfo.m_eye_pos.z);		  //!注視点
-	D3DXVECTOR3 up_vector(m_camerainfo.m_camera_up.x, m_camerainfo.m_camera_up.y, m_camerainfo.m_camera_up.z);  //!カメラの向き;
-	D3DXMatrixLookAtLH(&m_camerainfo.mat_view,
-		&camera_pos,				//!カメラ座標
-		&m_eye_pos,					//!注視点座標
-		&up_vector);				//!カメラの上の向きのベクトル
-
-	Graphics::Instance()->GetD3DDevice()->SetTransform(D3DTS_VIEW, &m_camerainfo.mat_view);
-	//!ビュー座標変換用の行列算出 end
-
 	D3DXMATRIX matProj;
 	D3DXMatrixIdentity(&matProj);
 
@@ -77,6 +68,22 @@ void Camera::Update(D3DXVECTOR3 player_pos_)
 		Near,		//!near
 		Far);	    //!far
 	Graphics::Instance()->GetD3DDevice()->SetTransform(D3DTS_PROJECTION, &matProj);
+}
+
+void Camera::Update(D3DXVECTOR3 player_pos_)
+{
+	//!ビュー座標変換用の行列算出 start
+	D3DXVECTOR3 camera_pos(m_camerainfo.m_pos.x, m_camerainfo.m_pos.y, m_camerainfo.m_pos.z);	                  //!カメラ位置
+	D3DXVECTOR3 m_eye_pos(m_camerainfo.m_eye_pos.x, m_camerainfo.m_eye_pos.y, m_camerainfo.m_eye_pos.z);		  //!注視点
+	D3DXVECTOR3 up_vector(m_camerainfo.m_camera_up.x, m_camerainfo.m_camera_up.y, m_camerainfo.m_camera_up.z);  //!カメラの向き;
+	D3DXMatrixLookAtLH(&m_camerainfo.mat_view,
+		&camera_pos,				//!カメラ座標
+		&m_eye_pos,					//!注視点座標
+		&up_vector);				//!カメラの上の向きのベクトル
+
+	Graphics::Instance()->GetD3DDevice()->SetTransform(D3DTS_VIEW, &m_camerainfo.mat_view);
+	//!ビュー座標変換用の行列算出 end
+
 	//!射影座標変換用の行列算出 endMove();
 
 	if (m_camerainfo.m_is_operation == true)
