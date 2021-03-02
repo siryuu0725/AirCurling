@@ -107,27 +107,31 @@ void Effect::EndEffect()
 //!エフェクト更新関数
 void Effect::UpdateEffect(Camera* camera_)
 {
-	//!Shotモード時
-	if (camera_->GetObjInfo()->m_is_shotmode == true)
-	{
-		e_camera_pos.X = camera_->GetObjInfo()->m_pos.x;
-		e_camera_pos.Y = camera_->GetObjInfo()->m_pos.y;
-		e_camera_pos.Z = camera_->GetObjInfo()->m_pos.z;
+	Camera::CameraInfo camera_info;
 
-		e_eye_pos.X = camera_->GetObjInfo()->m_eye_pos.x;
-		e_eye_pos.Y = camera_->GetObjInfo()->m_eye_pos.y;
-		e_eye_pos.Z = camera_->GetObjInfo()->m_eye_pos.z;
+	camera_->GetCameraInfo(camera_info);
+
+	//!Shotモード時
+	if (camera_info.m_is_shotmode == true)
+	{
+		e_camera_pos.X = camera_info.m_pos.x;
+		e_camera_pos.Y = camera_info.m_pos.y;
+		e_camera_pos.Z = camera_info.m_pos.z;
+
+		e_eye_pos.X = camera_info.m_eye_pos.x;
+		e_eye_pos.Y = camera_info.m_eye_pos.y;
+		e_eye_pos.Z = camera_info.m_eye_pos.z;
 	}
 	//!Viewモード時
 	else
 	{
-		e_camera_pos.X = camera_->GetObjInfo()->m_pos.x;
-		e_camera_pos.Y = camera_->GetObjInfo()->m_pos.y;
-		e_camera_pos.Z = camera_->GetObjInfo()->m_pos.z;
+		e_camera_pos.X = camera_info.m_pos.x;
+		e_camera_pos.Y = camera_info.m_pos.y;
+		e_camera_pos.Z = camera_info.m_pos.z;
 
-		e_eye_pos.X = camera_->GetObjInfo()->m_eye_pos.x;
-		e_eye_pos.Y = camera_->GetObjInfo()->m_eye_pos.y;
-		e_eye_pos.Z = camera_->GetObjInfo()->m_eye_pos.z;
+		e_eye_pos.X = camera_info.m_eye_pos.x;
+		e_eye_pos.Y = camera_info.m_eye_pos.y;
+		e_eye_pos.Z = camera_info.m_eye_pos.z;
 	}
 
 	e_camera_up = ::Effekseer::Vector3D(0.0f, 1.0f, 0.0f);

@@ -22,6 +22,8 @@ BlockController::~BlockController()
 //!初期化関数
 void BlockController::Init(std::string stage_str_)
 {
+	ObjectBase::ObjectInfo block_info;
+
 	//!外部データ読み込み
 	LoadCircleBlockExternalInfo(stage_str_);
 	LoadRectBlockExternalInfo(stage_str_);
@@ -35,8 +37,11 @@ void BlockController::Init(std::string stage_str_)
 		 m_circleblock_externalinfo[i].m_scale,
 		 m_circleblock_externalinfo[i].m_radius, "circleblock"));
 
+		m_circleblocks[i]->GetCircleBlockInfo(block_info);
+
+
 		//あたり判定用に追加
-		m_circleshapes.push_back(new CircleShape(m_circleblocks[i]->GetObjInfo()->m_pos, m_circleblocks[i]->GetObjInfo()->m_radius));
+		m_circleshapes.push_back(new CircleShape(block_info.m_pos, block_info.m_radius));
 	}
 
 	//!矩形ブロック
@@ -49,8 +54,10 @@ void BlockController::Init(std::string stage_str_)
 		 m_rectblock_externalinfo[i].m_rote,
 		 m_rectblock_externalinfo[i].m_width, m_rectblock_externalinfo[i].m_height ,"rectblock"));
 
+		m_rectblocks[i]->GetRectBlockInfo(block_info);
+
 		//あたり判定用に追加
-		m_rect_shapes.push_back(new RectShape(m_rectblocks[i]->GetObjInfo()->m_pos, m_rectblocks[i]->GetObjInfo()->m_width, m_rectblocks[i]->GetObjInfo()->m_height, m_rectblocks[i]->GetObjInfo()->m_angle.y));
+		m_rect_shapes.push_back(new RectShape(block_info.m_pos, block_info.m_width, block_info.m_height, block_info.m_angle.y));
 	}
 }
 

@@ -102,9 +102,11 @@ public:
 	void ReleaseTex();
 
 	/**
- 　　* @brief  UI情報Getter
- 　　*/
-	const HelpUIInfo* GetGameUIInfo() { return &m_poseui_info; }
+　　* @brief  UI情報Getter
+	* @param (copy_info_) 保存用UI情報構造体
+	* @details 引数にUIの情報を渡す
+　　*/
+	void GetHelpUIInfo(HelpUIInfo& copy_info_) { copy_info_ = m_poseui_info; }
 
 private:
 	UIExternalInfo m_poseui_externalinfo[static_cast<int>(HelpUICategory::CategoryMax)];

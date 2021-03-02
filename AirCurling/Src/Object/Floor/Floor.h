@@ -40,9 +40,11 @@ public:
 	void ReleaseModel();
 
 	/**
- 　　* @brief  オブジェクト情報Getter
- 　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_floor_info; }
+　　* @brief  オブジェクト情報Getter
+	* @param (copy_info_) 保存用オブジェクト構造体
+	* @details 引数にオブジェクトの情報を渡す
+　　*/
+	void GetFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_floor_info; }
 
 private:
 	//!外部データ保存用構造体

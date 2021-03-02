@@ -136,6 +136,8 @@ void GameUI::Draw()
 //!更新関数
 void GameUI::Update(Player* player_, Camera* camera_)
 {
+	player_->GetPlayerInfo(m_player_infocopy);
+
 	switch (m_update_step)
 	{
 	case UpdateStep::StartProduction:  //!開始演出ステップ
@@ -146,16 +148,16 @@ void GameUI::Update(Player* player_, Camera* camera_)
 
 		StopGauge(player_);   //!スピードゲージ更新
 
-		AddScore(player_);    //!スコア更新
+		AddScore();    //!スコア更新
 
 		//!プレイヤーがゴールした場合
-		if (player_->GetObjInfo()->m_is_goal == true)
+		if (m_player_infocopy.m_is_goal == true)
 		{
 			m_update_step = UpdateStep::EndProduction;
 			break;
 		}
 
-		UpdateTurn(player_);  //!ターン数更新
+		UpdateTurn();  //!ターン数更新
 		break;
 	case UpdateStep::EndProduction: //!終了演出ステップ
 		EndProduction();
@@ -200,10 +202,10 @@ void GameUI::StopGauge(Player* player_)
 }
 
 //!ターン終了時初期化関数
-void GameUI::UpdateTurn(Player* player_)
+void GameUI::UpdateTurn()
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->m_is_turnend == true)
+	if (m_player_infocopy.m_is_turnend == true)
 	{
 		//!ターン数加算
 		m_gameui_info.m_ui_tu[(int)GameUICategory::TurnNumber] += TrunTexUVAddValue;
@@ -227,10 +229,10 @@ void GameUI::UpdateTurn(Player* player_)
 }
 
 //!スコア加算関数
-void GameUI::AddScore(Player* player_)
+void GameUI::AddScore()
 {
 	//!1ターン終了時(プレイヤーが移動し終わった時)
-	if (player_->GetObjInfo()->m_is_turnend == true)
+	if (m_player_infocopy.m_is_turnend == true)
 	{
 		//!スコアの1の位を算出
 		m_gameui_info.m_one_score = Score::Instance()->GetNowScore() % 10;

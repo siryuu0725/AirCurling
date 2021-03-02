@@ -128,6 +128,12 @@ public:
 	void Init(std::string stage_str_);
 
 	/**
+	 * @brief  他オブジェクト情報取得関数
+	 * @detail 当たり判定等で使用するほかのオブジェクト情報を取得
+	 */
+	void SetOtherObjeInfo();
+
+	/**
 	 * @brief  外部データ読み込み関数
 	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
@@ -280,9 +286,11 @@ public:
 	void SetAddSpeed(float speed_) { player_info.m_setspeed = speed_; }
 
 	/**
- 　　* @brief  オブジェクト情報Getter
- 　　*/
-	const PlayerInfo* GetObjInfo()const { return &player_info; }
+　　* @brief  オブジェクト情報Getter
+	* @param (copy_info_) 保存用オブジェクト構造体
+	* @details 引数にオブジェクトの情報を渡す
+　　*/
+	void GetPlayerInfo(PlayerInfo& copy_info_) { copy_info_ = player_info; }
 
 private:
 	struct PlayerExternalInfo
@@ -307,6 +315,9 @@ private:
 	Floor* p_floor;			  //!ステージ床アドレス保存用
 	DebufController* p_debuf; //!デバフ床アドレス保存用
 	Goal* p_goal;			  //!ゴールアドレス保存用
+
+
+
 
 	PlayerUpdateStep m_update_step; //!更新ステップ
 

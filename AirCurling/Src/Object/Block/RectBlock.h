@@ -41,11 +41,12 @@ private:
 	ObjectInfo m_rectblock_info;
 
 public:
-	/**
+    /**
  　　* @brief  オブジェクト情報Getter
-     * @return RectBlockInfoの指定した変数の情報を返す
+     * @param (copy_info_) 保存用オブジェクト構造体
+	 * @details 引数にオブジェクトの情報を渡す
  　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_rectblock_info; }
+	void GetRectBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_rectblock_info; }
 };
 
 #endif

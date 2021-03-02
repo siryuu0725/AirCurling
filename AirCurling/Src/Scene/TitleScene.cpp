@@ -25,17 +25,21 @@ void TitleScene::UpdateThreadStep()
 //!更新ステップ関数
 void TitleScene::MainStep()
 {
+	TitleUI::TitleUIInfo ui_info;
+
 	//!UI更新
 	p_ui->Update();
 
+	p_ui->GetTitleUIInfo(ui_info);
+
 	//!ステージ選択が終わった場合
-	if (p_ui->GetTitleUIInfo()->m_stage_1 == true || p_ui->GetTitleUIInfo()->m_stage_2 == true)
+	if (ui_info.m_stage_1 == true || ui_info.m_stage_2 == true)
 	{
 		//m_sound_manager->SoundClickSE();
 		m_cur_step = SceneStep::EndStep;
 	}
 	//!「おわる」が選択された場合
-	else if (p_ui->GetTitleUIInfo()->endui_flg == true)
+	else if (ui_info.endui_flg == true)
 	{
 		PostQuitMessage(0);
 	}
@@ -44,6 +48,10 @@ void TitleScene::MainStep()
 //!終了ステップ関数
 void TitleScene::EndStep()
 {
+	TitleUI::TitleUIInfo ui_info;
+
+	p_ui->GetTitleUIInfo(ui_info);
+
 	//!UI解放
 	p_ui->ReleaseTex();
 
@@ -57,12 +65,12 @@ void TitleScene::EndStep()
 	m_cur_step = SceneStep::InitStep;
 
 	//!ステージ1が選ばれた場合
-	if (p_ui->GetTitleUIInfo()->m_stage_1 == true)
+	if (ui_info.m_stage_1 == true)
 	{
 		SceneController::Instance()->SetStageID("Stage1");
 	}
 	//!ステージ2が選ばれた場合
-	else if(p_ui->GetTitleUIInfo()->m_stage_2 == true)
+	else if(ui_info.m_stage_2 == true)
 	{
 		SceneController::Instance()->SetStageID("Stage2");
 	}

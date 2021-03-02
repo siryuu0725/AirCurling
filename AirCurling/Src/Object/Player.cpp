@@ -44,6 +44,11 @@ void Player::Init(std::string stage_str_)
 	player_info.m_nor_speed.y = 0.0f;
 }
 
+//他オブジェクト情報取得関数
+void Player::SetOtherObjeInfo()
+{
+}
+
 //!外部データ読み込み関数
 void Player::LoadPlayerExternalInfo(std::string stage_str_)
 {
@@ -103,14 +108,18 @@ void Player::Update()
 //!移動関数
 void Player::Move()
 {
+	Camera::CameraInfo camera_info;
+
 	player_info.m_is_turnend = false;
 	
 	//!プレイヤーが移動していない間
 	if (player_info.m_is_movement == false)
 	{
+		p_camera->GetCameraInfo(camera_info);
+
 		//!カメラが向いている方向に方向ベクトルを合わせる
-		player_info.m_nor_speed.x = p_camera->GetObjInfo()->m_forward.x / Calculation::Length(p_camera->GetObjInfo()->m_forward.x, p_camera->GetObjInfo()->m_forward.z);
-		player_info.m_nor_speed.z = p_camera->GetObjInfo()->m_forward.z / Calculation::Length(p_camera->GetObjInfo()->m_forward.x, p_camera->GetObjInfo()->m_forward.z);
+		player_info.m_nor_speed.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
+		player_info.m_nor_speed.z = camera_info.m_forward.z / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
 	}
 
 	//!プレイヤーが移動している間
@@ -332,8 +341,12 @@ void Player::HitGoal()
 		//!スコアを更新
 		Score::Instance()->AddGameScore(player_info.m_score_counter);
 
+		Goal::GoalInfo m_goal_infocopy;
+
+		p_goal->GetGoalInfo(m_goal_infocopy);
+
 		//!赤の円に当たっていた場合
-		if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_red_radius) == true)
+		if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_red_radius) == true)
 		{
 			//!エフェクト再生
 			StartGoalEffect();
@@ -348,7 +361,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!黄の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_yellow_radius) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_yellow_radius) == true)
 		{
 			//!エフェクト再生
 			StartGoalEffect();
@@ -361,7 +374,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 		//!緑の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_green_radius) == true)
+		else if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_green_radius) == true)
 		{
 			//!エフェクト再生
 			StartGoalEffect();
@@ -538,11 +551,15 @@ D3DXVECTOR3 Player::ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, floa
 //!初期位置移動関数
 void Player::ResetPos()
 {
+	Floor::ObjectInfo m_floor_infocopy;
+
+	p_floor->GetFloorInfo(m_floor_infocopy);
+
 	//!ステージから落ちた場合
-	if (player_info.m_pos.x <= p_floor->GetObjInfo()->m_pos.x - p_floor->GetObjInfo()->m_width
-		|| player_info.m_pos.x >= p_floor->GetObjInfo()->m_pos.x + p_floor->GetObjInfo()->m_width
-		|| player_info.m_pos.z <= p_floor->GetObjInfo()->m_pos.z - p_floor->GetObjInfo()->m_height
-		|| player_info.m_pos.z >= p_floor->GetObjInfo()->m_pos.z + p_floor->GetObjInfo()->m_height)
+	if (player_info.m_pos.x <= m_floor_infocopy.m_pos.x - m_floor_infocopy.m_width
+		|| player_info.m_pos.x >= m_floor_infocopy.m_pos.x + m_floor_infocopy.m_width
+		|| player_info.m_pos.z <= m_floor_infocopy.m_pos.z - m_floor_infocopy.m_height
+		|| player_info.m_pos.z >= m_floor_infocopy.m_pos.z + m_floor_infocopy.m_height)
 	{
 
 		StartResetEffect();

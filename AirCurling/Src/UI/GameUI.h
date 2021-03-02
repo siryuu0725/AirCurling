@@ -166,13 +166,13 @@ public:
 	 * @brief  ターン終了時初期化関数
 	 * @detail 1ターン終了するたびターン経過とゲージの数値の初期化を行う
 	 */
-	void UpdateTurn(Player* player_);
+	void UpdateTurn();
 
 	/**
 	 * @brief  スコア加算関数
 	 * @detail 1ターン終了時にターン経過によるスコア加算を行う
 	 */
-	void AddScore(Player* player_);
+	void AddScore();
 
 	/**
 	 * @brief  モード切替判定関数
@@ -192,15 +192,18 @@ public:
 	 */
 	void EndProduction();
 
-
 	/**
- 　　* @brief  UI情報Getter
- 　　*/
-	const GameUIInfo* GetGameUIInfo() { return &m_gameui_info; }
+　　* @brief  UI情報Getter
+	* @param (copy_info_) 保存用UI情報構造体
+	* @details 引数にUIの情報を渡す
+　　*/
+	void GetGameUIInfo(GameUIInfo& copy_info_) { copy_info_ = m_gameui_info; }
 
 private:
 	UpdateStep m_update_step;  //!更新ステップ
 
 	UIExternalInfo m_gameui_externalinfo[static_cast<int>(GameUICategory::CategoryMax)];
+
+	Player::PlayerInfo m_player_infocopy;
 };
 #endif

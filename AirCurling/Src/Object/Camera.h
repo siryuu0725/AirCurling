@@ -116,9 +116,11 @@ public:
 	void SetCameraOperation(bool operation_) { m_camerainfo.m_is_operation = operation_; }
 
 	/**
- 　　* @brief  オブジェクト情報Getter
- 　　*/
-	const CameraInfo* GetObjInfo()const { return &m_camerainfo; }
+　　* @brief  オブジェクト情報Getter
+	* @param (copy_info_) 保存用オブジェクト構造体
+	* @details 引数にオブジェクトの情報を渡す
+　　*/
+	void GetCameraInfo(CameraInfo& copy_info_) { copy_info_ = m_camerainfo; }
 
 private:
 	//!外部データ保存用構造体

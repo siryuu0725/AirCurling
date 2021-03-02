@@ -63,7 +63,7 @@ private:
 	std::vector<CircleBlock*> m_circleblocks;  //!円形ブロック
 	std::vector<RectBlock*> m_rectblocks;	   //!矩形ブロック
 
-	std::vector<Shape*> m_rect_shapes;    //!矩形情報保存用(当たり判定用)
+	std::vector<Shape*> m_rect_shapes;   //!矩形情報保存用(当たり判定用)
 	std::vector<Shape*> m_circleshapes;	 //!円形情報保存用(当たり判定用)
 
 	int m_rectblock_num;    //!矩形ブロックデータ数

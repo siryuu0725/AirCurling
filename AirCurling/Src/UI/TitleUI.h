@@ -119,9 +119,11 @@ public:
 	void SelectStage();
 
 	/**
- 　　* @brief  UI情報Getter
- 　　*/
-	const TitleUIInfo* GetTitleUIInfo() { return &m_titleui_info; }
+　　* @brief  UI情報Getter
+	* @param (copy_info_) 保存用UI情報構造体
+	* @details 引数にUIの情報を渡す
+　　*/
+	void GetTitleUIInfo(TitleUIInfo& copy_info_) { copy_info_ = m_titleui_info; }
 
 private:
 	UIExternalInfo m_titleui_externalinfo[static_cast<int>(TitleUICategory::CategoryMax)];

@@ -35,9 +35,11 @@ public:
 	void ReleaseModel();
 
 	/**
- 　　* @brief  オブジェクト情報Getter
- 　　*/
-	const ObjectInfo* GetObjInfo()const { return &m_stopfloor_info; }
+　　* @brief  オブジェクト情報Getter
+	* @param (copy_info_) 保存用オブジェクト構造体
+	* @details 引数にオブジェクトの情報を渡す
+　　*/
+	void GetStopFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_stopfloor_info; }
 private:
 	ObjectInfo m_stopfloor_info;  //!スピード減衰床情報
 };

@@ -120,6 +120,12 @@ void GameScene::UpdateThreadStep()
 //!更新ステップ関数
 void GameScene::MainStep()
 {
+	PoseUI::HelpUIInfo pose_ui_infocopy;
+	p_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
+
+	GameUI::GameUIInfo game_ui_infocopy;
+	p_gmae_ui->GetGameUIInfo(game_ui_infocopy);
+
 	//!ポーズ中出ない時
 	if (m_is_pose == false)
 	{
@@ -134,16 +140,20 @@ void GameScene::MainStep()
 	}
 	else
 	{
+		PoseUI::HelpUIInfo pose_ui_infocopy;
+
 		//!ポーズ中UI更新
 		p_pose_ui->Update();
 
+		p_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
+
 		//!ポーズ中、「つづける」が押された場合
-		if (p_pose_ui->GetGameUIInfo()->m_continue == true)
+		if (pose_ui_infocopy.m_continue == true)
 		{
 			m_is_pose = false;
 		}
 		//!ポーズ中、「おわる」が押された場合
-		else if (p_pose_ui->GetGameUIInfo()->m_end == true)
+		else if (pose_ui_infocopy.m_end == true)
 		{
 			PostQuitMessage(0);
 		}
@@ -155,7 +165,7 @@ void GameScene::MainStep()
 	if(Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 	{
 		//!ポーズ中、「つづける」が押された場合
-		if (p_pose_ui->GetGameUIInfo()->m_help == false)
+		if (pose_ui_infocopy.m_help == false)
 		{
 			m_is_pose = (m_is_pose == true) ? false : true;
 		}
@@ -163,7 +173,7 @@ void GameScene::MainStep()
 	}
 
 	//!ゴール、もしくはターン制限を超えた時
-	if (p_gmae_ui->GetGameUIInfo()->m_end_game == true)
+	if (game_ui_infocopy.m_end_game == true)
 	{
 		m_cur_step = SceneStep::EndStep;
 	}
@@ -203,8 +213,11 @@ void GameScene::ObjectInit()
 //!オブジェクト更新関数
 void GameScene::ObjectUpdate()
 {
+	Player::PlayerInfo player_info;
+	m_player->GetPlayerInfo(player_info);
+
 	m_player->Update();
-	p_camera->Update(m_player->GetObjInfo()->m_pos);
+	p_camera->Update(player_info.m_pos);
 	m_player_direction->Update();
 }
 
