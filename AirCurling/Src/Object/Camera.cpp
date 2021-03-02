@@ -116,7 +116,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 		m_camerainfo.m_eye_pos.y = -27.8f;
 
 		//!注視点移動
-		EyePosRotate();
+		RoteEyePos();
 
 	}
 	//!viewモード(見る)時
@@ -152,7 +152,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 }
 
 //!カメラ回転関数
-void Camera::EyePosRotate()
+void Camera::RoteEyePos()
 {
 	SetCursorPos(GetSystemMetrics(SM_CXSCREEN) / 2, GetSystemMetrics(SM_CYSCREEN) / 2);
 
