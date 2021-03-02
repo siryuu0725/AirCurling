@@ -3,8 +3,8 @@
  * @brief ゲームシーン中移行中のロード画面を扱う
  * @details 中身：ロード用UIクラス
 **/
-#ifndef LOAD_H_
-#define LOAD_H_
+#ifndef LOADUI_H_
+#define LOADUI_H_
 #include "../UI/UIBase.h"
 #include "../System/Graphics.h"
 
