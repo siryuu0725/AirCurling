@@ -76,18 +76,18 @@ private:
 		Graphics::TextureData m_ui_tex[(int)LoadUICategory::CategoryMax];  //!テクスチャ
 
 		/* 回転用に各頂点のposを用意 */
-		D3DXVECTOR2 left_top_pos;    //!左上
-		D3DXVECTOR2 left_down_pos;	 //!左下
-		D3DXVECTOR2 right_top_pos;	 //!右上
-		D3DXVECTOR2 right_down_pos;	 //!右下
+		D3DXVECTOR2 left_top_pos;   //!左上
+		D3DXVECTOR2 left_down_pos;	//!左下
+		D3DXVECTOR2 right_top_pos;	//!右上
+		D3DXVECTOR2 right_down_pos;	//!右下
 
 		D3DXVECTOR2 m_center_pos;   //!回転用軸pos
 
 		D3DXVECTOR2 m_nowload_pos;  //!「NowLoading」文字座標
 
-		float m_rote_angle; //!テクスチャ回転角度
+		float m_rote_angle;         //!テクスチャ回転角度
 
-		__int8 m_rote_timer;   //!テクスチャ回転スピード
+		__int8 m_rote_timer;        //!テクスチャ回転スピード
 
 	};
 

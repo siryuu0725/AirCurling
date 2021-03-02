@@ -77,23 +77,23 @@ private:
 
 		D3DXVECTOR3 m_player_pos;  //!プレイヤーpos保存用
 
-		D3DXVECTOR3 m_dir_vec; //!カメラの方向Vec保存用
+		D3DXVECTOR3 m_dir_vec;     //!カメラの方向Vec保存用
 
-		float m_add_zpos;   //!プレイヤーの前にくるように足す値
+		float m_add_zpos;          //!プレイヤーの前にくるように足す値
+							       
+		float m_rote;              //!モデル回転角度
+							       
+		float m_pos_rote_r;        //!pos回転角度
 
-		float m_rote;       //!モデル回転角度
-
-		float m_pos_rote_r; //!pos回転角度
-
-		bool m_is_shotmode;    //!打つモードかどうか
+		bool m_is_shotmode;        //!打つモードかどうか
 
 	};
 
 	DirectionInfo m_direction_info;
 
-	Player* m_player;  //!プレイヤーアドレス保存用
-	Camera* p_camera;  //!カメラアドレス保存用
-	GameUI* p_ui;	   //!ゲーム用UIアドレス保存用
+	Player* m_player;  //!プレイヤー保存用
+	Camera* p_camera;  //!カメラ保存用
+	GameUI* p_ui;	   //!ゲーム用UI保存用
 };
 
 #endif

@@ -300,21 +300,21 @@ private:
 		//!サイズ
 		D3DXVECTOR3 m_scale;
 
-		float m_radius; //!半径
-		float speed;  //!移動スピード
-		float m;      //!質量
-		float fa;     //!動摩擦係数
-		int score_counter; //!加算するスコア数
+		float m_radius;     //!半径
+		float speed;        //!移動スピード
+		float m;            //!質量
+		float fa;           //!動摩擦係数
+		int score_counter;  //!加算するスコア数
 
 	};
 
 	PlayerExternalInfo m_player_externalinfo;
 
-	Camera* p_camera;         //!カメラアドレス保存用
-	BlockController* p_block; //!ブロック管理アドレス保存用
-	Floor* p_floor;			  //!ステージ床アドレス保存用
-	DebufController* p_debuf; //!デバフ床アドレス保存用
-	Goal* p_goal;			  //!ゴールアドレス保存用
+	Camera* p_camera;         //!カメラ保存用
+	BlockController* p_block; //!ブロック管理保存用
+	Floor* p_floor;			  //!ステージ床保存用
+	DebufController* p_debuf; //!デバフ床保存用
+	Goal* p_goal;			  //!ゴール保存用
 
 
 
