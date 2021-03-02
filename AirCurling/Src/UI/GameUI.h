@@ -160,7 +160,7 @@ public:
      * @brief  スピードゲージ停止関数
      * @detail プレイヤーに加えるスピードを決定する
      */
-	void GaugeStop(Player* player_);
+	void StopGauge(Player* player_);
 
 	/**
 	 * @brief  ターン終了時初期化関数

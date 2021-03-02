@@ -154,13 +154,13 @@ public:
  　　* @brief  開始演出関数
  　　* @detail ゲーム開始時にプレイヤーが上から降ってくるような演出を行う
  　　*/
-	void StartMove();
+	void StartProduction();
 
 	/**
  　　* @brief  終了演出関数
  　　* @detail ゴール時、またはターン制限を超えたときにプレイヤーが上に上がっていく演出を行う
  　　*/
-	void EndMove();
+	void EndProduction();
 
 	/**
  　　* @brief  移動関数
@@ -215,25 +215,25 @@ public:
  　　* @brief  衝突時エフェクト開始関数
  　　* @detail プレイヤーとブロックが衝突したときにeffectにエフェクトを表示するように問い合わせる
  　　*/
-	void HitEffectStart(D3DXVECTOR3 block_pos_);
+	void StartHitEffect(D3DXVECTOR3 block_pos_);
 
 	/**
  　　* @brief  落下時エフェクト開始関数
  　　* @detail プレイヤーが床から落ちたときにeffectにエフェクトを表示するように問い合わせる
  　　*/
-	void FallEffectStart();
+	void StartFallEffect();
 
 	/**
  　　* @brief  リセット時エフェクト開始関数
  　　* @detail プレイヤーとリセットデバフと衝突したときにeffectにエフェクトを表示するように問い合わせる
  　　*/
-	void ResetEffectStart();
+	void StartResetEffect();
 
 	/**
  　　* @brief  ゲーム終了時エフェクト開始関数
  　　* @detail ゴール、またはターン制限を超えたときにeffectにエフェクトを表示するように問い合わせる
  　　*/
-	void GoalEffectStart();
+	void StartGoalEffect();
 
 	/**
  　　* @brief  矩形型ブロック反射方向計算関数
@@ -241,14 +241,14 @@ public:
 	 * @param (rad_)   衝突対象の回転角度
  　　* @detail 反射後の方向ベクトルを算出する
  　　*/
-	D3DXVECTOR3 RectReflection(std::string type_, float rad_);
+	D3DXVECTOR3 ReflectionRect(std::string type_, float rad_);
 
 	/**
 　　* @brief  円形型ブロック反射方向計算関数
 	* @param (circle_pos_)  衝突対象の座標
 　　* @detail 反射後の方向ベクトルを算出する
 　　*/
-	D3DXVECTOR3 CircleReflection(D3DXVECTOR3 circle_pos_);
+	D3DXVECTOR3 ReflectionCircle(D3DXVECTOR3 circle_pos_);
 
 	/**
 　　* @brief  矩形型ブロック頂点反射方向計算関数
@@ -259,7 +259,7 @@ public:
 	* @param (rad_)    衝突対象の回転角度
 　　* @detail 反射後の方向ベクトルを算出する
 　　*/
-	D3DXVECTOR3 VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_);
+	D3DXVECTOR3 ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_);
 
 	/**
  　　* @brief  初期位置移動関数
@@ -271,7 +271,7 @@ public:
  　　* @brief  プレイヤー操作可能判定関数
  　　* @detail 開始演出が終わってから操作できるようにSetterを用意
  　　*/
-	void SetPlayerMove(bool move_) { player_info.m_is_movement = move_; }
+	void SetIsMovePlayer(bool move_) { player_info.m_is_movement = move_; }
 
 	/**
  　　* @brief  プレイヤーのスピードSetter

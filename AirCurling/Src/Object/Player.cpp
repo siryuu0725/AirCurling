@@ -82,7 +82,7 @@ void Player::Update()
 	switch (m_update_step)
 	{
 	case PlayerUpdateStep::StartProduction: //!開始演出
-		StartMove();
+		StartProduction();
 		break;
 	case PlayerUpdateStep::GameMain:  //!ゲーム本編
 		Move();  //!移動
@@ -92,7 +92,7 @@ void Player::Update()
 		ResetPos();
 		break;
 	case PlayerUpdateStep::EndProduction:  //!終了演出
-		EndMove();
+		EndProduction();
 		break;
 	default:
 		break;
@@ -182,9 +182,9 @@ void Player::HitRectBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = RectReflection("Top", itr->GetRote());
+			player_info.m_nor_speed = ReflectionRect("Top", itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -195,9 +195,9 @@ void Player::HitRectBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = RectReflection("Left", itr->GetRote());
+			player_info.m_nor_speed = ReflectionRect("Left", itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -208,9 +208,9 @@ void Player::HitRectBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = VertexReflection("LeftTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_speed = ReflectionVertex("LeftTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -221,9 +221,9 @@ void Player::HitRectBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = VertexReflection("LeftDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_speed = ReflectionVertex("LeftDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -234,9 +234,9 @@ void Player::HitRectBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = VertexReflection("RightTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_speed = ReflectionVertex("RightTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -246,9 +246,9 @@ void Player::HitRectBlock()
 		else if (Collision::RectVertexToCircle("RightDown", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
 		{
 			//!エフェクト再生
-			HitEffectStart(itr->GetBoxPos());
+			StartHitEffect(itr->GetBoxPos());
 			//!反射
-			player_info.m_nor_speed = VertexReflection("RightDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
+			player_info.m_nor_speed = ReflectionVertex("RightDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -266,9 +266,9 @@ void Player::HitCircleBlock()
 		{
 			player_info.m_pos = player_info.m_old_pos;
 			//!エフェクト再生
-			HitEffectStart(itr->GetCirclePos());
+			StartHitEffect(itr->GetCirclePos());
 			//!反射
-			player_info.m_nor_speed = CircleReflection(itr->GetCirclePos());
+			player_info.m_nor_speed = ReflectionCircle(itr->GetCirclePos());
 			//!サウンド再生
 			SoundManager::Instance()->SoundReflectSE();
 			//!反射回数加算
@@ -287,7 +287,7 @@ void Player::HitReset()
 		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
 		{
 			//!エフェクト再生
-			ResetEffectStart();
+			StartResetEffect();
 
 			//!座標を初期位置に戻す
 			//player_info.pos = D3DXVECTOR3(-29.0f, -29.0f, -29.0f);
@@ -336,7 +336,7 @@ void Player::HitGoal()
 		if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_red_radius) == true)
 		{
 			//!エフェクト再生
-			GoalEffectStart();
+			StartGoalEffect();
 
 			//!スコアを減算するため-
 			player_info.m_score_counter = RedGoalScore;
@@ -351,7 +351,7 @@ void Player::HitGoal()
 		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_yellow_radius) == true)
 		{
 			//!エフェクト再生
-			GoalEffectStart();
+			StartGoalEffect();
 			//!スコアを減算するため-
 			player_info.m_score_counter = YellowGoalScore;
 			//!スコアを更新
@@ -364,7 +364,7 @@ void Player::HitGoal()
 		else if (Collision::CircleToCircle(player_info.m_pos, p_goal->GetObjInfo()->m_pos, player_info.m_radius, p_goal->GetObjInfo()->m_green_radius) == true)
 		{
 			//!エフェクト再生
-			GoalEffectStart();
+			StartGoalEffect();
 			//!スコアを減算するため-
 			player_info.m_score_counter = GreenGoalScore;
 			//!スコアを更新
@@ -386,7 +386,7 @@ void Player::HitGoal()
 }
 
 //!矩形型ブロック反射方向計算関数
-D3DXVECTOR3 Player::RectReflection(std::string type_,float rad_)
+D3DXVECTOR3 Player::ReflectionRect(std::string type_,float rad_)
 {
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
 	float m_change_radian;
@@ -413,7 +413,7 @@ D3DXVECTOR3 Player::RectReflection(std::string type_,float rad_)
 }
 
 //!円形型ブロック反射方向計算関数
-D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
+D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 {
 	//!値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
@@ -460,7 +460,7 @@ D3DXVECTOR3 Player::CircleReflection(D3DXVECTOR3 circle_pos_)
 }
 
 //!矩形型ブロック頂点反射方向計算関数
-D3DXVECTOR3 Player::VertexReflection(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
+D3DXVECTOR3 Player::ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
 {
 	//!値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_speed;
@@ -545,18 +545,18 @@ void Player::ResetPos()
 		|| player_info.m_pos.z >= p_floor->GetObjInfo()->m_pos.z + p_floor->GetObjInfo()->m_height)
 	{
 
-		ResetEffectStart();
+		StartResetEffect();
 		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z); //!座標
 		player_info.m_setspeed = 0.0f;
 
-		FallEffectStart();
+		StartFallEffect();
 		SoundManager::Instance()->SoundFallSE();
 	}
 }
 
 
 //!開始演出関数
-void Player::StartMove()
+void Player::StartProduction()
 {
 	//!プレイヤーが上からステージ床に当たるまで
 	if (player_info.m_pos.y > PlayerPosMin_Y
@@ -579,7 +579,7 @@ void Player::StartMove()
 }
 
 //!終了演出関数
-void Player::EndMove()
+void Player::EndProduction()
 {
 	//!プレイヤーが上に上がっていく形にするためY座標を+
 	player_info.m_pos.y += PlayerUpSpeed;
@@ -589,7 +589,7 @@ void Player::EndMove()
 }
 
 //!衝突時エフェクト開始関数
-void Player::HitEffectStart(D3DXVECTOR3 block_pos_)
+void Player::StartHitEffect(D3DXVECTOR3 block_pos_)
 {
 	D3DXVECTOR3 block_vec = block_pos_ - player_info.m_pos;
 
@@ -601,7 +601,7 @@ void Player::HitEffectStart(D3DXVECTOR3 block_pos_)
 }
 
 //!落下時エフェクト開始関数
-void Player::FallEffectStart()
+void Player::StartFallEffect()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 
@@ -609,7 +609,7 @@ void Player::FallEffectStart()
 }
 
 //!リセット時エフェクト開始関数
-void Player::ResetEffectStart()
+void Player::StartResetEffect()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 
@@ -617,7 +617,7 @@ void Player::ResetEffectStart()
 }
 
 //!ゲーム終了時エフェクト開始関数
-void Player::GoalEffectStart()
+void Player::StartGoalEffect()
 {
 	player_info.m_efk_pos = player_info.m_pos;
 

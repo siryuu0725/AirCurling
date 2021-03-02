@@ -144,7 +144,7 @@ void GameUI::Update(Player* player_, Camera* camera_)
 	case UpdateStep::GameMain:
 		ModeChange();  //!モード切り替え判定
 
-		GaugeStop(player_);   //!スピードゲージ更新
+		StopGauge(player_);   //!スピードゲージ更新
 
 		AddScore(player_);    //!スコア更新
 
@@ -165,7 +165,7 @@ void GameUI::Update(Player* player_, Camera* camera_)
 }
 
 //!スピードゲージ停止関数
-void GameUI::GaugeStop(Player* player_)
+void GameUI::StopGauge(Player* player_)
 {
 	//!バーを止めるキーが押されていない間
 	if (m_gameui_info.m_gauge_stop == false)
@@ -185,7 +185,7 @@ void GameUI::GaugeStop(Player* player_)
 		m_gameui_info.m_gauge_stop = true;  //!ゲージバー移動
 		//!移動スピードをUIのバーが止まったとこらから加算
 		player_->SetAddSpeed(m_gameui_info.m_add_speed);
-		player_->SetPlayerMove(true);
+		player_->SetIsMovePlayer(true);
 		//!サウンド再生
 		SoundManager::Instance()->SoundShotSE();
 	}
