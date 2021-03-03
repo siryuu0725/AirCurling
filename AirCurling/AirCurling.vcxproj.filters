@@ -148,6 +148,9 @@
     <ClCompile Include="Src\UI\PoseUI.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Utility\Collision\ObjectCollision.cpp">
+      <Filter>Utility\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\System\FBX.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="Src\UI\PoseUI.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utility\Collision\ObjectCollision.h">
+      <Filter>Utility\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

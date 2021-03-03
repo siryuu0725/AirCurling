@@ -247,7 +247,7 @@ public:
 	 * @param (rad_)   衝突対象の回転角度
  　　* @detail 反射後の方向ベクトルを算出する
  　　*/
-	D3DXVECTOR3 ReflectionRect(std::string type_, float rad_);
+	D3DXVECTOR3 ReflectionRect(HitRectPoint type_, float rad_);
 
 	/**
 　　* @brief  円形型ブロック反射方向計算関数
@@ -265,7 +265,7 @@ public:
 	* @param (rad_)    衝突対象の回転角度
 　　* @detail 反射後の方向ベクトルを算出する
 　　*/
-	D3DXVECTOR3 ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_);
+	D3DXVECTOR3 ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_);
 
 	/**
  　　* @brief  初期位置移動関数

@@ -9,6 +9,17 @@
 #include "../Vec.h"
 #include "../Calculation.h"
 
+enum class HitRectPoint
+{
+	TopOrUnder,
+	LeftOrRight,
+	LeftTop,
+	RightTop,
+	LeftUnder,
+	RightUnder,
+	PointMax
+};
+
 /**
 * 当たり判定クラス
 */
@@ -52,7 +63,7 @@ public:
 	 * @param (radius_) 円の半径
 	 * @param (rad_) 矩形の回転角度
 　   */
-	static bool RectVertexToCircle(std::string type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
+	static bool RectVertexToCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
 
 #pragma endregion
 

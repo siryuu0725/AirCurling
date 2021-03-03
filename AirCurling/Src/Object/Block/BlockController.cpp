@@ -1,5 +1,6 @@
 ﻿#include "BlockController.h"
 #include "../../System/FBXController.h"
+#include "../../Utility/Collision/ObjectCollision.h"
 
 //!デストラクタ
 BlockController::~BlockController()
@@ -59,6 +60,8 @@ void BlockController::Init(std::string stage_str_)
 		//あたり判定用に追加
 		m_rect_shapes.push_back(new RectShape(block_info.m_pos, block_info.m_width, block_info.m_height, block_info.m_angle.y));
 	}
+
+	SetCollisionInfo();
 }
 
 //!外部データ読み込み関数(矩形ブロック)
@@ -135,4 +138,37 @@ void BlockController::ReleaseModel()
 	{
 		m_rectblocks[i]->ReleaseModel();
 	}
+}
+
+void BlockController::SetCollisionInfo()
+{
+	//!矩形ブロック
+	for (__int8 i = 0; i < m_rectblock_num; i++)
+	{
+		RectBlock::ObjectInfo rectblock_info;
+
+		m_rectblocks[i]->GetRectBlockInfo(rectblock_info);
+
+		ObjectCollision::Instance()->SetRectBlockInfo(rectblock_info);
+	}
+
+	//!矩形ブロック
+	for (__int8 i = 0; i < m_circleblock_num; i++)
+	{
+		CircleBlock::ObjectInfo circleblock_info;
+
+		m_circleblocks[i]->GetCircleBlockInfo(circleblock_info);
+
+		ObjectCollision::Instance()->SetCircleBlockInfo(circleblock_info);
+	}
+}
+
+void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_)
+{
+	m_circleblocks[id_]->GetCircleBlockInfo(copy_info_);
+}
+
+void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_)
+{
+	m_rectblocks[id_]->GetRectBlockInfo(copy_info_);
 }

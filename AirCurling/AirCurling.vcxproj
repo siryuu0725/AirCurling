@@ -286,6 +286,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Src\Utility\Collision\ObjectCollision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Object\Block\BlockController.h">
@@ -431,6 +435,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Src\Utility\Collision\Collision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\Utility\Collision\ObjectCollision.h">
       <SubType>
       </SubType>
     </ClInclude>

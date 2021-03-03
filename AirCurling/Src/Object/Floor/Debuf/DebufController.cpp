@@ -1,4 +1,5 @@
 ﻿#include "DebufController.h"
+#include "../../../Utility/Collision/ObjectCollision.h"
 
 //!デストラクタ
 DebufController::~DebufController()
@@ -57,6 +58,8 @@ void DebufController::Init(std::string stage_str_)
 		//あたり判定用に追加
 		m_stopshapes.push_back(new RectShape(debuf_floor_info.m_pos, debuf_floor_info.m_width, debuf_floor_info.m_height, debuf_floor_info.m_angle.y));
 	}
+
+	SetCollisionInfo(); //当たり判定用情報Set
 }
 
 //!外部データ読み込み関数(リセット床)
@@ -101,6 +104,30 @@ void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 
 		/* ファイルクローズ */
 		fclose(fp);
+	}
+}
+
+//当たり判定用情報Set関数
+void DebufController::SetCollisionInfo()
+{
+	//リセット床
+	for (__int8 i = 0; i < m_resetfloor_num; i++)
+	{
+		ResetFloor::ObjectInfo resetfloor_info;
+
+		m_resetfloors[i]->GetResetFloorInfo(resetfloor_info);
+
+		ObjectCollision::Instance()->SetResetFloorInfo(resetfloor_info);
+	}
+
+	//スピード減衰床
+	for (__int8 i = 0; i < m_stopfloor_num; i++)
+	{
+		StopFloor::ObjectInfo stopfloor_info;
+
+		m_stopfloors[i]->GetStopFloorInfo(stopfloor_info);
+
+		ObjectCollision::Instance()->SetStopFloorInfo(stopfloor_info);
 	}
 }
 

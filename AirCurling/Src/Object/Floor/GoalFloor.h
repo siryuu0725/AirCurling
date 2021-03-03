@@ -8,19 +8,22 @@
 
 #include "../ObjectBase.h"
 
+constexpr float RedGoalRadius = 0.3f;    //!赤色のゴール枠の半径
+constexpr float YellowGoalRadius = 2.0f; //!黄色のゴール枠の半径
+constexpr float GreenGoalRadius = 6.0f;  //!緑色のゴール枠の半径
+
+enum class GoalType
+{
+	Red,
+	Yellow,
+	Green
+};
+
 /**
 * ゴール床クラス
 */
 class Goal :public ObjectBase
 {
-public:
-	struct GoalInfo :public ObjectInfo
-	{
-		float m_red_radius;    //!赤色のゴール枠の半径
-		float m_yellow_radius; //!黄色のゴール枠の半径
-		float m_green_radius;  //!緑色のゴール枠の半径
-	};
-
 public:
 	Goal() {}
 	~Goal() {}
@@ -54,7 +57,7 @@ public:
 	* @param (copy_info_) 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
-	void GetGoalInfo(GoalInfo& copy_info_) { copy_info_ = m_goal_info; }
+	void GetGoalInfo(ObjectInfo& copy_info_) { copy_info_ = m_goal_info; }
 
 private:
 	//!外部データ保存用構造体
@@ -62,24 +65,16 @@ private:
 	{
 		GoalExternalInfo() :
 			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_red_radius(0.0f),
-			m_yellow_radius(0.0f),
-			m_green_radius(0.0f)
+			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
 		{}
 
 		//!座標
 		D3DXVECTOR3 m_pos;
 		//!サイズ
 		D3DXVECTOR3 m_scale;
-
-		float m_red_radius;    //!赤色のゴール枠の半径
-		float m_yellow_radius; //!黄色のゴール枠の半径
-		float m_green_radius;  //!緑色のゴール枠の半径
-
 	};
 
-	GoalInfo m_goal_info;//!ステージ床情報
+	ObjectInfo m_goal_info;//!ステージ床情報
 
 	GoalExternalInfo m_goal_externalinfo;
 

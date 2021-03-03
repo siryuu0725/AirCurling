@@ -53,6 +53,12 @@ public:
 	 */
 	void ReleaseModel();
 
+	/**
+　　* @brief 当たり判定用情報Set関数
+	* @details ObjectCollisionで使用するオブジェクトコピー情報にオリジナルの情報を渡す
+　　*/
+	void SetCollisionInfo();
+
    /**
 	* @brief  各デバフ床情報Getter関数
 	* @return 各デバフ床の座標、サイズの情報を返す

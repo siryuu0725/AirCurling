@@ -2,6 +2,7 @@
 #include "../System/Effect.h"
 #include "../Score/GameScore.h"
 #include <time.h> 
+#include "../Utility/Collision/ObjectCollision.h"
 
 //!コンストラクタ
 Player::Player(Camera* camera_, BlockController* block_, 
@@ -92,6 +93,8 @@ void Player::Update()
 	case PlayerUpdateStep::GameMain:  //!ゲーム本編
 		Move();  //!移動
 
+		ObjectCollision::Instance()->SetPlayerInfo(player_info);
+
 		HitController();   //!当たり判定
 
 		ResetPos();
@@ -128,6 +131,8 @@ void Player::Move()
 		player_info.m_timer += FrameTime;
 
 		player_info.m_speed = player_info.m_setspeed + player_info.m_acceleration * player_info.m_timer;
+
+		player_info.m_acceleration = -player_info.m_friction * Gravity; //!摩擦係数
 
 		//player_info.m_timer++;
 		////!
@@ -181,155 +186,98 @@ void Player::HitController()
 	}
 }
 
-//!矩形型ブロック当たり判定関数
+//矩形型ブロック当たり判定関数
 void Player::HitRectBlock()
 {
-	for (const auto& itr : *mp_block->GetRectShape())
+	if (ObjectCollision::Instance()->HitRectBlock() == true)
 	{
-		//!矩形型ブロックの上下との当たり判定
-		if (Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
+		player_info.m_pos = player_info.m_old_pos;
+
+		RectBlock::ObjectInfo rect_block;
+
+		//矩形ブロック情報取得
+		mp_block->GetRectBlockInfo(rect_block, ObjectCollision::Instance()->GetRectBlockID());
+
+		//エフェクト再生
+		StartHitEffect(rect_block.m_pos);
+
+		//矩形ブロックの上下、もしくは左右に当たった場合
+		if (ObjectCollision::Instance()->GetHitRectPoint() == HitRectPoint::TopOrUnder ||
+			ObjectCollision::Instance()->GetHitRectPoint() == HitRectPoint::LeftOrRight)
 		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionRect("Top", itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
+			//反射
+			player_info.m_nor_vec = ReflectionRect(ObjectCollision::Instance()->GetHitRectPoint(), rect_block.m_angle.y);
 		}
-		//!矩形型ブロックの左右との当たり判定
-		else if (Collision::RectLeftToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
+		//矩形ブロックの各頂点に当たった場合
+		else
 		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionRect("Left", itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
+			//反射
+			player_info.m_nor_vec = ReflectionVertex(ObjectCollision::Instance()->GetHitRectPoint(),
+				rect_block.m_pos, rect_block.m_width, rect_block.m_height, rect_block.m_angle.y);
 		}
-		//!矩形型ブロックの左上との当たり判定
-		else if (Collision::RectVertexToCircle("LeftTop", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
-		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionVertex("LeftTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
-		}
-		//!矩形型ブロックの左下との当たり判定
-		else if (Collision::RectVertexToCircle("LeftDown", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
-		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionVertex("LeftDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
-		}
-		//!矩形型ブロックの右上との当たり判定
-		else if (Collision::RectVertexToCircle("RightTop", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
-		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionVertex("RightTop", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
-		}
-		//!矩形型ブロックの右下との当たり判定
-		else if (Collision::RectVertexToCircle("RightDown", itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
-		{
-			//!エフェクト再生
-			StartHitEffect(itr->GetBoxPos());
-			//!反射
-			player_info.m_nor_vec = ReflectionVertex("RightDown", itr->GetBoxPos(), itr->GetWidth(), itr->GetHeight(), itr->GetRote());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
-		}
+		
+		//サウンド再生
+		SoundManager::Instance()->SoundReflectSE();
+		//反射回数加算
+		player_info.m_reflect_counter++;
 	}
 }
 
 //!円形型ブロック当たり判定関数
 void Player::HitCircleBlock()
 {
-	for (const auto& itr : *mp_block->GetCircleShape())
+	if (ObjectCollision::Instance()->HitCircleBlock() == true)
 	{
-		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
-		{
-			player_info.m_pos = player_info.m_old_pos;
-			//!エフェクト再生
-			StartHitEffect(itr->GetCirclePos());
-			//!反射
-			player_info.m_nor_vec = ReflectionCircle(itr->GetCirclePos());
-			//!サウンド再生
-			SoundManager::Instance()->SoundReflectSE();
-			//!反射回数加算
-			player_info.m_reflect_counter++;
-		}
-	}
-	
+		CircleBlock::ObjectInfo circle_block;
+		
+		//円形ブロック情報取得
+		mp_block->GetCircleBlockInfo(circle_block, ObjectCollision::Instance()->GetCircleBlockID());
 
+		player_info.m_pos = player_info.m_old_pos;
+
+		//エフェクト再生
+		StartHitEffect(circle_block.m_pos);
+		//反射
+		player_info.m_nor_vec = ReflectionCircle(circle_block.m_pos);
+		//サウンド再生
+		SoundManager::Instance()->SoundReflectSE();
+		//反射回数加算
+		player_info.m_reflect_counter++;
+	}
 }
 
 //!リセットデバフ当たり判定関数
 void Player::HitReset()
 {
-	for (const auto& itr : *mp_debuf->GetResetShape())
+	if (ObjectCollision::Instance()->HitResetFloor() == true)
 	{
-		if (Collision::CircleToCircle(player_info.m_pos, itr->GetCirclePos(), player_info.m_radius, itr->GetRadius()) == true)
-		{
-			//!エフェクト再生
-			StartResetEffect();
+		//エフェクト再生
+		StartResetEffect();
 
-			//!座標を初期位置に戻す
-			//player_info.pos = D3DXVECTOR3(-29.0f, -29.0f, -29.0f);
-			player_info.m_pos = D3DXVECTOR3(0.0f, -29.0f, -70.0f);
+		//座標を初期位置に戻す
+		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z);
 
-			//!移動スピードを0に
-			player_info.m_setspeed = 0.0f;
+		//移動スピードを0に
+		player_info.m_setspeed = 0.0f;
 
-			//!サウンド再生
-			SoundManager::Instance()->SoundFallSE();
-		}
+		//サウンド再生
+		SoundManager::Instance()->SoundFallSE();
 	}
 }
 
 //!停止デバフ当たり判定関数
 void Player::HitStop()
 {
-	for (const auto& itr : *mp_debuf->GetStopShape())
+	if (ObjectCollision::Instance()->HitStopFloor() == true)
 	{
-		//!矩形のため上下左右の当たり判定を取る
-		if (Collision::RectLeftToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true
-			|| Collision::RectTopToCircle(itr->GetBoxPos(), player_info.m_pos, itr->GetWidth(), itr->GetHeight(), player_info.m_radius, itr->GetRote()) == true)
-		{
-			//!摩擦係数を増やす
-			player_info.m_friction = StopFloorFriction;
-		}
-		else
-		{
-			player_info.m_friction = m_player_externalinfo.fa;
-		}
+		//摩擦係数を増やす
+		player_info.m_friction = StopFloorFriction;
 	}
-
-	player_info.m_acceleration = -player_info.m_friction * Gravity; //!摩擦係数
+	else
+	{
+		//摩擦係数を元に戻す
+		player_info.m_friction = m_player_externalinfo.fa;
+	}
 }
 
 //!ゴール当たり判定関数
@@ -341,48 +289,35 @@ void Player::HitGoal()
 		//!スコアを更新
 		Score::Instance()->AddGameScore(player_info.m_score_counter);
 
-		Goal::GoalInfo m_goal_infocopy;
+		Goal::ObjectInfo m_goal_infocopy;
 
 		mp_goal->GetGoalInfo(m_goal_infocopy);
 
-		//!赤の円に当たっていた場合
-		if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_red_radius) == true)
+		if (ObjectCollision::Instance()->HitGoal() == true)
 		{
-			//!エフェクト再生
+			//エフェクト再生
 			StartGoalEffect();
-
-			//!スコアを減算するため-
-			player_info.m_score_counter = RedGoalScore;
+			
+			//ゴール時のスコア加算に変更
+			switch ((GoalType)ObjectCollision::Instance()->GetGoalType())
+			{
+			case GoalType::Red:
+				player_info.m_score_counter = RedGoalScore;
+				break;
+			case GoalType::Yellow:
+				player_info.m_score_counter = YellowGoalScore;
+				break;
+			case GoalType::Green:
+				player_info.m_score_counter = GreenGoalScore;
+				break;
+			default:
+				break;
+			}
+			
 			//!スコアを更新
 			Score::Instance()->AddGameScore(player_info.m_score_counter);
 			player_info.m_is_goal = true;
 
-			//!更新ステップを終了演出へ
-			m_update_step = PlayerUpdateStep::EndProduction;
-		}
-		//!黄の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_yellow_radius) == true)
-		{
-			//!エフェクト再生
-			StartGoalEffect();
-			//!スコアを減算するため-
-			player_info.m_score_counter = YellowGoalScore;
-			//!スコアを更新
-			Score::Instance()->AddGameScore(player_info.m_score_counter);
-			player_info.m_is_goal = true;
-			//!更新ステップを終了演出へ
-			m_update_step = PlayerUpdateStep::EndProduction;
-		}
-		//!緑の円に当たっていた場合
-		else if (Collision::CircleToCircle(player_info.m_pos, m_goal_infocopy.m_pos, player_info.m_radius, m_goal_infocopy.m_green_radius) == true)
-		{
-			//!エフェクト再生
-			StartGoalEffect();
-			//!スコアを減算するため-
-			player_info.m_score_counter = GreenGoalScore;
-			//!スコアを更新
-			Score::Instance()->AddGameScore(player_info.m_score_counter);
-			player_info.m_is_goal = true;
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
@@ -393,13 +328,11 @@ void Player::HitGoal()
 			//!更新ステップを終了演出へ
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
-
-		
 	}
 }
 
 //!矩形型ブロック反射方向計算関数
-D3DXVECTOR3 Player::ReflectionRect(std::string type_,float rad_)
+D3DXVECTOR3 Player::ReflectionRect(HitRectPoint type_,float rad_)
 {
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
 	float m_change_radian;
@@ -408,13 +341,16 @@ D3DXVECTOR3 Player::ReflectionRect(std::string type_,float rad_)
 		矩形の上下にあたったら方向ベクトルのy軸(z)を反転
 		矩形の左右にあたったら方向ベクトルのx軸を反転
 	*/
-	if (type_ == "Top")
+	switch (type_)
 	{
+	case HitRectPoint::TopOrUnder:
 		old_direction.z = -old_direction.z;
-	}
-	else if (type_ == "Left")
-	{
+		break;
+	case HitRectPoint::LeftOrRight:
 		old_direction.x = -old_direction.x;
+		break;
+	default:
+		break;
 	}
 
 	//!3Dと2Dで回転する方向が逆のため逆に回転させる
@@ -473,7 +409,7 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 }
 
 //!矩形型ブロック頂点反射方向計算関数
-D3DXVECTOR3 Player::ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
+D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
 {
 	//!値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
@@ -486,30 +422,28 @@ D3DXVECTOR3 Player::ReflectionVertex(std::string type_, D3DXVECTOR3 r_pos_, floa
 	old_direction.x = -old_direction.x;
 	old_direction.z = -old_direction.z;
 
-	//!左上
-	if (type_ == "LeftTop")
+	switch (type_)
 	{
+	case HitRectPoint::LeftTop:
 		ver_pos.x = r_pos_.x - (width_ / 2);
 		ver_pos.z = r_pos_.z + (height_ / 2);
-	}
-	//!左下
-	else if (type_ == "LeftDown")
-	{
+		break;
+	case HitRectPoint::RightTop:
 		ver_pos.x = r_pos_.x - (width_ / 2);
 		ver_pos.z = r_pos_.z - (height_ / 2);
-	}
-	//!右上
-	else if (type_ == "RightTop")
-	{
+		break;
+	case HitRectPoint::LeftUnder:
 		ver_pos.x = r_pos_.x + (width_ / 2);
 		ver_pos.z = r_pos_.z + (height_ / 2);
-	}
-	//!右下
-	else if (type_ == "RightDown")
-	{
+		break;
+	case HitRectPoint::RightUnder:
 		ver_pos.x = r_pos_.x + (width_ / 2);
 		ver_pos.z = r_pos_.z - (height_ / 2);
+		break;
+	default:
+		break;
 	}
+
 	//!Playerと頂点のベクトル
 	D3DXVECTOR3 old_vec = player_lotepos - ver_pos;
 

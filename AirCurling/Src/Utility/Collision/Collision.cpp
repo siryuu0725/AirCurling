@@ -1,50 +1,51 @@
 ﻿#include "Collision.h"
 
+
 #include <math.h>
 
 //!矩形の上下と円の当たり判定
-bool Collision::RectTopToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_,float rad_)
-{
-	D3DXVECTOR3 rote_pos;  //!矩形の回転角度分円をずらした時の座標
-
-	//!衝突時、対象の回転角度分座標をずらす
-	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
-
-	//!矩形の回転前の座標で判定を行う
-	if (rote_pos.x > r_pos.x - (width_ / 2) &&
-		rote_pos.x < r_pos.x + (width_ / 2) &&
-		rote_pos.z + radius_ > r_pos.z - (height_ / 2) &&
-		rote_pos.z - radius_ < r_pos.z + (height_ / 2))
-	{
-		return true;
-	}
-
-	return false;
-}
+//bool Collision::RectTopToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_,float rad_)
+//{
+//	D3DXVECTOR3 rote_pos;  //!矩形の回転角度分円をずらした時の座標
+//
+//	//!衝突時、対象の回転角度分座標をずらす
+//	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
+//
+//	//!矩形の回転前の座標で判定を行う
+//	if (rote_pos.x > r_pos.x - (width_ / 2) &&
+//		rote_pos.x < r_pos.x + (width_ / 2) &&
+//		rote_pos.z + radius_ > r_pos.z - (height_ / 2) &&
+//		rote_pos.z - radius_ < r_pos.z + (height_ / 2))
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
 
 //!矩形の左右と円の当たり判定
-bool Collision::RectLeftToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_)
-{
-	D3DXVECTOR3 rote_pos; //!矩形の回転角度分円をずらした時の座標
-
-	//!衝突時、対象の回転角度分座標をずらす
-	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
-
-	//!矩形の回転前の座標で判定を行う
-	if (rote_pos.x + radius_ > r_pos.x - (width_ / 2) &&
-		rote_pos.x - radius_ < r_pos.x + (width_ / 2) &&
-		rote_pos.z > r_pos.z - (height_ / 2) &&
-		rote_pos.z < r_pos.z + (height_ / 2))
-	{
-		return true;
-
-	}
-
-	return false;
-}
+//bool Collision::RectLeftToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_)
+//{
+//	D3DXVECTOR3 rote_pos; //!矩形の回転角度分円をずらした時の座標
+//
+//	//!衝突時、対象の回転角度分座標をずらす
+//	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
+//
+//	//!矩形の回転前の座標で判定を行う
+//	if (rote_pos.x + radius_ > r_pos.x - (width_ / 2) &&
+//		rote_pos.x - radius_ < r_pos.x + (width_ / 2) &&
+//		rote_pos.z > r_pos.z - (height_ / 2) &&
+//		rote_pos.z < r_pos.z + (height_ / 2))
+//	{
+//		return true;
+//
+//	}
+//
+//	return false;
+//}
 
 //!矩形の頂点と円の当たり判定
-bool Collision::RectVertexToCircle(std::string type_, D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_)
+bool Collision::RectVertexToCircle(__int8 type_, D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_)
 {
 	D3DXVECTOR3 rote_pos; //!矩形の回転角度分円をずらした時の座標
 	D3DXVECTOR3 ver_pos;  //!衝突時の頂点座標保存用
@@ -54,29 +55,47 @@ bool Collision::RectVertexToCircle(std::string type_, D3DXVECTOR3 r_pos, D3DXVEC
 	//!衝突時、対象の回転角度分座標をずらす
 	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
 
-	//!左上頂点
-	if (type_ == "LeftTop")
+	switch ((HitRectPoint)type_)
 	{
+	case HitRectPoint::TopOrUnder: //上下
+		//矩形の回転前の座標で判定を行う
+		if (rote_pos.x > r_pos.x - (width_ / 2) &&
+			rote_pos.x < r_pos.x + (width_ / 2) &&
+			rote_pos.z + radius_ > r_pos.z - (height_ / 2) &&
+			rote_pos.z - radius_ < r_pos.z + (height_ / 2))
+		{
+			return true;
+		}
+		break;
+	case HitRectPoint::LeftOrRight: //左右
+		//矩形の回転前の座標で判定を行う
+		if (rote_pos.x + radius_ > r_pos.x - (width_ / 2) &&
+			rote_pos.x - radius_ < r_pos.x + (width_ / 2) &&
+			rote_pos.z > r_pos.z - (height_ / 2) &&
+			rote_pos.z < r_pos.z + (height_ / 2))
+		{
+			return true;
+
+		}
+		break;
+	case HitRectPoint::LeftTop: //左上頂点
 		ver_pos.x = r_pos.x - (width_ / 2);
 		ver_pos.z = r_pos.z + (height_ / 2);
-	}
-	//!左下頂点
-	else if (type_ == "LeftDown")
-	{
+		break;
+	case HitRectPoint::RightTop: //左下頂点
 		ver_pos.x = r_pos.x - (width_ / 2);
 		ver_pos.z = r_pos.z - (height_ / 2);
-	}
-	//!右上頂点
-	else if (type_ == "RightTop")
-	{
+		break;
+	case HitRectPoint::LeftUnder: //左下頂点
 		ver_pos.x = r_pos.x + (width_ / 2);
 		ver_pos.z = r_pos.z + (height_ / 2);
-	}
-	//!右下頂点
-	else if (type_ == "RightDown")
-	{
+		break;
+	case HitRectPoint::RightUnder: //右下頂点
 		ver_pos.x = r_pos.x + (width_ / 2);
 		ver_pos.z = r_pos.z - (height_ / 2);
+		break;
+	default:
+		break;
 	}
 
 	//!ベクトル算出

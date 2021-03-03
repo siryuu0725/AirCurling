@@ -1,5 +1,6 @@
 ﻿#include "GoalFloor.h"
 #include "../../Object/Player.h"
+#include "../../Utility/Collision/ObjectCollision.h"
 
 //!初期化関数
 void Goal::Init(std::string stage_str_)
@@ -15,10 +16,7 @@ void Goal::Init(std::string stage_str_)
 
 	m_goal_info.m_mat_world = Calculation::Matrix(m_goal_info.m_pos, m_goal_info.m_scale, m_goal_info.m_angle); //!ワールド座標
 
-	m_goal_info.m_red_radius = m_goal_externalinfo.m_red_radius;
-	m_goal_info.m_yellow_radius = m_goal_externalinfo.m_yellow_radius;
-	m_goal_info.m_green_radius = m_goal_externalinfo.m_green_radius;
-
+	ObjectCollision::Instance()->SetGoalInfo(m_goal_info);
 }
 
 //!外部データ読み込み関数
