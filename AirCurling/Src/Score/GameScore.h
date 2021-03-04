@@ -25,6 +25,7 @@ public:
 
 	/**
 　　* @brief  スコア加算関数
+	* @param[in] score_ 加算するスコア数
 　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
 	void AddGameScore(__int16 score_);

@@ -122,7 +122,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
@@ -135,6 +135,7 @@ public:
 
 	/**
 	 * @brief  外部データ読み込み関数
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadPlayerExternalInfo(std::string stage_str_);
@@ -274,12 +275,14 @@ public:
 
 	/**
  　　* @brief  プレイヤー操作可能判定関数
+     * @param[in] move_  trueなら移動可能
  　　* @details 開始演出が終わってから操作できるようにSetterを用意
  　　*/
 	void SetIsMovePlayer(bool move_) { player_info.m_is_movement = move_; }
 
 	/**
  　　* @brief  プレイヤーのスピードSetter
+	 * @param[in] speed_ プレイヤーの移動スピード
  　　* @details プレイヤーの移動スピードをUIの方でSetするよう
  　　*/
 	void SetAddSpeed(float speed_) { player_info.m_setspeed = speed_; }

@@ -66,13 +66,14 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
 
 	/**
 	 * @brief  外部データ読み込み関数
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadCameraExternalInfo(std::string stage_str_);
@@ -85,13 +86,14 @@ public:
 
 	/**
 	 * @brief  更新関数
+	 * @param[in] player_pos_ プレイヤー座標
 	 * @details 更新処理まとめ関数
 	 */
 	void Update(D3DXVECTOR3 player_pos_);
 
 	/**
 	 * @brief  カメラ移動関数
-	 * @param[in] player_pos_ 打つときのカメラ位置
+	 * @param[in] player_pos_ プレイヤー座標(打つときのカメラ位置用)
 	 * @details カメラの移動処理を行う
 	 */
 	void Move(D3DXVECTOR3 player_pos_);
@@ -104,12 +106,14 @@ public:
 
 	/**
 	 * @brief  モード切替関数
+	 * @param[in] player_pos_ プレイヤー座標(上から見るときのカメラ位置用)
 	 * @details shotとviewモードの切り替えを行う
 	 */
 	void ModeChange(D3DXVECTOR3 player_pos_);
 
 	/**
      * @brief  カメラ操作判定Setter関数
+	 * @param[in] operation_ trueなら操作可能
      * @detail カメラの操作フラグを切り替える
 	 * @details UIの開始演出時に使用
      */

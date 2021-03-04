@@ -146,6 +146,8 @@ public:
 
 	/**
 	 * @brief  更新関数
+ 　　* @param[in] player_ プレイヤーアドレス
+ 　　* @param[in] camera_ カメラアドレス
 	 * @details 更新処理まとめ関数
 	 */
 	void Update(Player* player_, Camera* camera_);
@@ -157,6 +159,7 @@ public:
 
 	/**
      * @brief  スピードゲージ停止関数
+ 　　* @param[in] player_ プレイヤーアドレス
      * @details プレイヤーに加えるスピードを決定する
      */
 	void StopGauge(Player* player_);
@@ -181,6 +184,7 @@ public:
 
 	/**
 	 * @brief  開始演出関数
+ 　　* @param[in] camera_ カメラアドレス
 	 * @details プレイヤーがステージに着いた後に「スタート」の文字が流れる処理を行う
 	 */
 	void StartProduction(Camera* camera_);

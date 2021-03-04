@@ -18,13 +18,14 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
 
 	/**
 	 * @brief  外部データ読み込み関数
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadFloorExternalInfo(std::string stage_str_);

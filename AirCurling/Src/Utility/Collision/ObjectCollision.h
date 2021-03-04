@@ -58,36 +58,42 @@ public:
 
 	/**
 　　* @brief  矩形ブロック情報Set関数
+	* @param[in] obj_info_ 矩形ブロックオリジナル情報構造体
 　　* @details 当たり判定用クラスの矩形ブロック情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetRectBlockInfo(ObjectBase::ObjectInfo obj_info_) { m_rectblock_copy.push_back(obj_info_); }
 
 	/**
 　　* @brief  円形ブロック情報Set関数
+	* @param[in] obj_info_ 円形ブロックオリジナル情報構造体
 　　* @details 当たり判定用クラスの円形ブロック情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetCircleBlockInfo(ObjectBase::ObjectInfo obj_info_) { m_circleblock_copy.push_back(obj_info_); }
 
 	/**
 　　* @brief  リセット床情報Set関数
+	* @param[in] obj_info_ リセット床オリジナル情報構造体
 　　* @details 当たり判定用クラスのリセット床情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetResetFloorInfo(ObjectBase::ObjectInfo obj_info_) { m_resetfloor_copy.push_back(obj_info_); }
 
 	/**
 　　* @brief  スピード減衰床情報Set関数
+	* @param[in] obj_info_ スピード減衰床オリジナル情報構造体
 　　* @details 当たり判定用クラスのスピード減衰床情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetStopFloorInfo(ObjectBase::ObjectInfo obj_info_) { m_stopfloor_copy.push_back(obj_info_); }
 
 	/**
 　　* @brief  プレイヤー情報Set関数
+	* @param[in] obj_info_ プレイヤーオリジナル情報構造体
 　　* @details 当たり判定用クラスのプレイヤー情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetPlayerInfo(ObjectBase::ObjectInfo obj_info_) { m_player_copy = obj_info_; }
 
 	/**
 　　* @brief  ゴール情報Set関数
+	* @param[in] obj_info_ ゴールオリジナル情報構造体
 　　* @details 当たり判定用クラスのゴール情報構造体にオリジナルの情報をコピーする
 　　*/
 	void SetGoalInfo(ObjectBase::ObjectInfo obj_info_) { m_goal_copy = obj_info_; }
@@ -121,20 +127,20 @@ public:
 private:
 	static ObjectCollision* mp_instance;
 	 
-	ObjectBase::ObjectInfo m_player_copy;                    //!プレイヤー情報
-	ObjectBase::ObjectInfo m_goal_copy;                      //!ゴール情報
-	std::vector<ObjectBase::ObjectInfo> m_rectblock_copy;    //!矩形ブロック情報
-	std::vector<ObjectBase::ObjectInfo> m_circleblock_copy;  //!円形ブロック情報
-	std::vector<ObjectBase::ObjectInfo> m_resetfloor_copy;   //!リセット床情報
-	std::vector<ObjectBase::ObjectInfo> m_stopfloor_copy;    //!スピード減衰床情報
+	ObjectBase::ObjectInfo m_player_copy;                    //!プレイヤー情報保存用
+	ObjectBase::ObjectInfo m_goal_copy;                      //!ゴール情報保存用
+	std::vector<ObjectBase::ObjectInfo> m_rectblock_copy;    //!矩形ブロック情報保存用
+	std::vector<ObjectBase::ObjectInfo> m_circleblock_copy;  //!円形ブロック情報保存用
+	std::vector<ObjectBase::ObjectInfo> m_resetfloor_copy;   //!リセット床情報保存用
+	std::vector<ObjectBase::ObjectInfo> m_stopfloor_copy;    //!スピード減衰床情報保存用
 
-	__int8 m_hit_circleblock_id;  //!衝突した円形ブロックのID
-	__int8 m_hit_rectblock_id;	  //!衝突した矩形ブロックのID
-	__int8 m_goal_type;		  //!ゴール時のゴールタイプ(色)
+	__int8 m_hit_circleblock_id;  //!衝突した円形ブロックのID保存用
+	__int8 m_hit_rectblock_id;	  //!衝突した矩形ブロックのID保存用
+	__int8 m_goal_type;		  //!ゴール時のゴールタイプ(色)保存用
 
 	float m_goal_radius[GoalTypeNum];  //!各ゴールの半径保存用
 
-	HitRectPoint m_rectpoint; //!矩形の衝突した箇所保存
+	HitRectPoint m_rectpoint; //!矩形の衝突した箇所保存用
 };
 
 
