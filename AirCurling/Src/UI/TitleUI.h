@@ -69,13 +69,13 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @details オブジェクト情報初期化
 	 */
 	void Init();
 
 	/**
 	 * @brief  外部データ読み込み関数
-	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadTitleUIExternalInfo();
 
@@ -91,7 +91,7 @@ public:
 
 	/**
 	 * @brief  更新関数
-	 * @detail 更新処理まとめ関数
+	 * @details 更新処理まとめ関数
 	 */
 	void Update();
 
@@ -102,25 +102,25 @@ public:
 
 	/**
 	 * @brief  UI当たり判定関数
-	 * @detail 次のシーンに移るための当たり判定を行う
+	 * @details 次のシーンに移るための当たり判定を行う
 	 */
 	void Select();
 
 	/**
 	 * @brief  選択画面キャンセル関数
-	 * @detail ステージ選択、またはヘルプ画面時初期のタイトル画面に戻る用
+	 * @details ステージ選択、またはヘルプ画面時初期のタイトル画面に戻る用
 	 */
 	void ReturnSelect();
 
 	/**
 	 * @brief  ステージUI当たり判定関数
-	 * @detail ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
+	 * @details ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
 	 */
 	void SelectStage();
 
 	/**
 　　* @brief  UI情報Getter
-	* @param (copy_info_) 保存用UI情報構造体
+	* @param[out] copy_info_ 保存用UI情報構造体
 	* @details 引数にUIの情報を渡す
 　　*/
 	void GetTitleUIInfo(TitleUIInfo& copy_info_) { copy_info_ = m_titleui_info; }

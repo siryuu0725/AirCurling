@@ -64,7 +64,7 @@ public:
 
 	/**
 　　* @brief  入力情報初期化まとめ関数
-  　* @detail インターフェース、デバイスなどの初期化を行う
+  　* @details インターフェース、デバイスなどの初期化を行う
 　　*/
 	bool InitInput();
 
@@ -80,19 +80,19 @@ public:
 
 	/**
 　　* @brief  マウスデバイス設定関数
-  　* @detail マウスの操作をできるように設定を行う
+  　* @details マウスの操作をできるように設定を行う
 　　*/
 	bool CreateMouseDevice();
 
 	/**
 　　* @brief  キーボードデバイス設定関数
-  　* @detail キーボードの操作をできるように設定を行う
+  　* @details キーボードの操作をできるように設定を行う
 　　*/
 	bool CreateKeyboardDevice();
 
 	/**
 　　* @brief  入力情報の更新関数
-  　* @detail キーボードとマウスの入力情報を更新する
+  　* @details キーボードとマウスの入力情報を更新する
 　　*/
 	void UpdateInput();
 
@@ -103,15 +103,15 @@ public:
 
 	/**
 　　* @brief  キーボードの入力判定関数(押されている間)
-  　* @detail キーボードの押されている間trueを返す判定を行う
-    * @param (key_)  押されたキーの種類
+	* @param[in] key_ 押されたキーの種類
+  　* @details キーボードの押されている間trueを返す判定を行う
 　　*/
 	bool GetKey(KeyInfo key_);
 
 	/**
 　　* @brief  キーボードの入力判定関数(押された瞬間)
-  　* @detail キーボードの押された瞬間trueを返す判定を行う
-	* @param (key_)  押されたキーの種類
+	* @param[in] key_ 押されたキーの種類
+  　* @details キーボードの押された瞬間trueを返す判定を行う
 　　*/
 	bool GetKeyDown(KeyInfo key_);
 
@@ -122,14 +122,14 @@ public:
 
 	/**
 　　* @brief  マウスの入力判定関数
-  　* @detail 引数のボタンが押された場合true返す判定を行う
-	* @param (button_type_)  押されたボタンの種類
+	* @param[in] button_type_ 押されたボタンの種類
+  　* @details 引数のボタンが押された場合true返す判定を行う
 　　*/
 	bool OnMouseDown(MouseButton button_type_);
 
 	/**
 　　* @brief  マウスの座標取得関数
-  　* @detail 現在のマウスの座標をスクリーン座標で返す
+  　* @details 現在のマウスの座標をスクリーン座標で返す
 　　*/
 	Vec2 GetMousePos() { return m_mouse_pos; }
 

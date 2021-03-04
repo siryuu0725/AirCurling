@@ -18,21 +18,21 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param (stage_id_) 選択ステージ名(例"Stage1")
-	 * @detail オブジェクト情報初期化
+	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
 
 	/**
 	 * @brief  外部データ読み込み関数
-	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadSkyDomeExternalInfo(std::string stage_str_);
 
 
 	/**
 	 * @brief   描画情報送信関数
-	 * @detail  Fbx管理クラスにオブジェクト情報を送る
+	 * @details  Fbx管理クラスにオブジェクト情報を送る
 	 */
 	void Draw();
 
@@ -43,7 +43,7 @@ public:
 
 	/**
 　　* @brief  オブジェクト情報Getter
-	* @param (copy_info_) 保存用オブジェクト構造体
+	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
 	void GetSkyDomeInfo(ObjectInfo& copy_info_) { copy_info_ = m_skydome_info; }
@@ -81,20 +81,21 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
 
 	/**
 	 * @brief  外部データ読み込み関数
-	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadSkyFloorExternalInfo(std::string stage_str_);
 
 
 	/**
 	 * @brief   描画情報送信関数
-	 * @detail  Fbx管理クラスにオブジェクト情報を送る
+	 * @details  Fbx管理クラスにオブジェクト情報を送る
 	 */
 	void Draw();
 
@@ -105,7 +106,7 @@ public:
 
 	/**
 　　* @brief  オブジェクト情報Getter
-	* @param (copy_info_) 保存用オブジェクト構造体
+	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
 	void GetSkyFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_skyfloor_info; }

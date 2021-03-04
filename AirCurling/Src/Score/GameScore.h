@@ -19,19 +19,19 @@ public:
 
 	/**
 　　* @brief  インスタンス化関数
-　　* @detail 初回のみインスタンス化し、それ以外は実態を呼ぶ
+　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
 	static Score* Instance();
 
 	/**
 　　* @brief  スコア加算関数
-　　* @detail 初回のみインスタンス化し、それ以外は実態を呼ぶ
+　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
 	void AddGameScore(__int16 score_);
 
 	/**
 　　* @brief  スコア初期化関数
-　　* @detail ResultScene終了時にスコアが残らないようにするため
+　　* @details ResultScene終了時にスコアが残らないようにするため
 　　*/
 	void Reset();
 

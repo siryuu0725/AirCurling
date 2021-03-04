@@ -16,12 +16,12 @@ public:
 
 	/**
  　　* @brief  コンストラクタ
- 　　* @param (pos_)   座標
- 　　* @param (scale_) サイズ
- 　　* @param (angle_) 回転角度
-   　* @param (width_) 横幅
- 　　* @param (height_) 縦幅
- 　　* @param (key_) 描画用キー
+ 　　* @param[in] pos_ 座標
+ 　　* @param[in] scale_ サイズ
+ 　　* @param[in] angle_ 回転角度
+   　* @param[in] width_ 横幅
+ 　　* @param[in] height_ 縦幅
+ 　　* @param[in] key_ 描画用キー
  　　*/
 	RectBlock(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3 angle_, float width_, float height_, std::string key_);
 	~RectBlock() {}
@@ -43,7 +43,7 @@ private:
 public:
     /**
  　　* @brief  オブジェクト情報Getter
-     * @param (copy_info_) 保存用オブジェクト構造体
+     * @param[out] copy_info_ 保存用オブジェクト構造体
 	 * @details 引数にオブジェクトの情報を渡す
  　　*/
 	void GetRectBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_rectblock_info; }

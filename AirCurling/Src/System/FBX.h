@@ -108,62 +108,62 @@ public:
 
 	/**
 	 * @brief  FBXファイル読み込み関数
-	 * @param (file_name) ファイルパス
-	 * @detail 読み込んだファイルのメッシュデータを返す
+	 * @param[in] file_name ファイルパス
+	 * @details 読み込んだファイルのメッシュデータを返す
 	 */
 	FBXMeshData LoadFbx(const char* file_name);
 
 	/**
 	 * @brief  メッシュデータ解析関数
-	 * @param (pMeshData_) メッシュデータ
-	 * @param (pMesh_) メッシュ単位で展開後のデータ
-	 * @detail 頂点、法線、UV情報などの解析を行う
+	 * @param[in] pMeshData_ メッシュデータ
+	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
+	 * @details 頂点、法線、UV情報などの解析を行う
 	 */
 	bool LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief  ポリゴン情報取得関数
-	 * @param (pMeshData_) メッシュデータ
-	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 * @param[in] pMeshData_ メッシュデータ
+	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
 	void GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief  頂点情報取得関数
-	 * @param (pMeshData_) メッシュデータ
-	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 * @param[in] pMeshData_ メッシュデータ
+	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
 	void GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief 法線情報取得関数
-	 * @param (pMeshData_) メッシュデータ
-	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 * @param[in] pMeshData_ メッシュデータ
+	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
 	void GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_);
 	
 	/**
 	 * @brief  UV情報取得関数
-	 * @param (pMeshData_) メッシュデータ
-	 * @param (pMesh_) メッシュ単位で展開後のデータ
+	 * @param[in] pMeshData_ メッシュデータ
+	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
 	void GetUV(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief テクスチャ情報取得
-	 * @param (stage_id_) 選択ステージ名(例"Stage1")
+	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
 	 */
 	void GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief  FBXモデル描画関数
-	 * @param (pModel) 描画させるFBXモデル情報
+	 * @param[in] pModel 描画させるFBXモデル情報
 	 */
 	void DrawModel(FbxInfo* pModel);
 
 	/**
 	 * @brief  メッシュデータ解放関数
-	 * @param (pModel) 解放するFBXモデル情報
+	 * @param[in] pModel 解放するFBXモデル情報
 	 */
 	void ReleaseModel(FbxInfo* pModel);
 

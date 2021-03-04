@@ -26,37 +26,37 @@ public:
 
 	/**
 　　* @brief  初期化ステップ関数
-　　* @detail 各シーン内の初期化を行う
+　　* @details 各シーン内の初期化を行う
 　　*/
 	virtual void InitStep() {};
 
 	/**
  　　* @brief  スレッド更新ステップ関数
- 　　* @detail 各Fbxオブジェクトやテクスチャ読み込み時のロード画面更新ステップ、
+ 　　* @details 各Fbxオブジェクトやテクスチャ読み込み時のロード画面更新ステップ、
  　　*/
 	virtual void UpdateThreadStep() {};
 
 	/**
 　　* @brief  更新ステップ関数
-　　* @detail 本編の更新処理を行う
+　　* @details 本編の更新処理を行う
 　　*/
 	virtual void MainStep() {};
 
 	/**
 　　* @brief  終了ステップ関数
-　　* @detail 次のシーン移行前の解放処理を行う
+　　* @details 次のシーン移行前の解放処理を行う
 　　*/
 	virtual void EndStep() {};
 
 	/**
 　　* @brief  ステップ処理関数
-　　* @detail 各ステップ処理を管理する
+　　* @details 各ステップ処理を管理する
 　　*/
 	virtual void Update();
 
 	/**
 	 * @brief  描画情報送信まとめ関数
-	 * @detail UIの描画情報送信処理を行う
+	 * @details UIの描画情報送信処理を行う
 	 */
 	virtual void Draw() {};
 

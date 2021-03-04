@@ -30,19 +30,19 @@ public:
 
 	/**
 　　* @brief  インスタンス化関数
-　　* @detail 初回のみインスタンス化し、それ以外は実態を呼ぶ
+　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
 	static SceneController* Instance();
 
 	/**
 	 * @brief  初期化関数
-	 * @detail 各シーン初期化関数
+	 * @details 各シーン初期化関数
 	 */
 	void Init();
 
 	/**
      * @brief  更新関数
-     * @detail 更新処理まとめ関数
+     * @details 更新処理まとめ関数
      */
 	void Update();
 
@@ -59,25 +59,25 @@ public:
 
 	/**
      * @brief  シーン切り替え判定関数
-     * @detail 各シーンで切り替え判定を行う
+     * @details 各シーンで切り替え判定を行う
      */
 	void ChangeScene();
 
 	/**
 	 * @brief  選択ステージSetter
-	 * @detail タイトルで選んだステージを保存
+	 * @details タイトルで選んだステージを保存
 	 */
 	void SetStageID(std::string stage_);
 
 	/**
 	 * @brief  選択ステージGettr
-	 * @detail タイトルで選んだステージを取得
+	 * @details タイトルで選んだステージを取得
 	 */
 	std::string GetStageID() { return m_stagename; }
 
 	/**
 	 * @brief  各ゲーム管理クラスアドレス配列
-	 * @detail 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
+	 * @details 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
 	 */
 	static SceneBase* (*s_controller_array[static_cast<int>(SceneId::Max)])();
 

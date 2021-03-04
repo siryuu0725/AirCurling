@@ -66,58 +66,58 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param (stage_id_) 選択ステージ名(例"Stage1")
-	 * @detail オブジェクト情報初期化
+	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
+	 * @details オブジェクト情報初期化
 	 */
 	void Init(std::string stage_str_);
 
 	/**
 	 * @brief  外部データ読み込み関数
-	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadCameraExternalInfo(std::string stage_str_);
 
 	/**
      * @brief  視錐台作成関数
-     * @detail 視錐台作成
+     * @details 視錐台作成
      */
 	void CreateFrustum();
 
 	/**
 	 * @brief  更新関数
-	 * @detail 更新処理まとめ関数
+	 * @details 更新処理まとめ関数
 	 */
 	void Update(D3DXVECTOR3 player_pos_);
 
 	/**
 	 * @brief  カメラ移動関数
-	 * @param (player_pos_) 打つときのカメラ位置
-	 * @detail カメラの移動処理を行う
+	 * @param[in] player_pos_ 打つときのカメラ位置
+	 * @details カメラの移動処理を行う
 	 */
 	void Move(D3DXVECTOR3 player_pos_);
 
 	/**
 	 * @brief  カメラ回転関数
-	 * @detail カメラの回転処理関数
+	 * @details カメラの回転処理関数
 	 */
 	void RoteEyePos();
 
 	/**
 	 * @brief  モード切替関数
-	 * @detail shotとviewモードの切り替えを行う
+	 * @details shotとviewモードの切り替えを行う
 	 */
 	void ModeChange(D3DXVECTOR3 player_pos_);
 
 	/**
      * @brief  カメラ操作判定Setter関数
      * @detail カメラの操作フラグを切り替える
-	 * @detail UIの開始演出時に使用
+	 * @details UIの開始演出時に使用
      */
 	void SetCameraOperation(bool operation_) { m_camerainfo.m_is_operation = operation_; }
 
 	/**
 　　* @brief  オブジェクト情報Getter
-	* @param (copy_info_) 保存用オブジェクト構造体
+	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
 	void GetCameraInfo(CameraInfo& copy_info_) { copy_info_ = m_camerainfo; }

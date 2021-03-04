@@ -24,7 +24,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @param (stage_id_) 選択ステージ名(例"Stage1")
+	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
 	 * @details 各ブロックのメンバ変数初期化
 	 */
 	void Init(std::string stage_str_);
@@ -69,16 +69,16 @@ public:
 
 	/**
  　　* @brief 円形ブロック情報Getter
-	 * @param (copy_info_) 保存用オブジェクト構造体
-	 * @param (id_) 受け取りたいブロックのid
+	 * @param[out] copy_info_ 保存用オブジェクト構造体
+	 * @param[in] id_ 受け取りたいブロックのid
 	 * @details 引数に円形ブロックの情報を渡す
  　　*/
 	void GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_);
 
 	/**
 　　* @brief 矩形ブロック情報Getter
-	* @param (copy_info_) 保存用オブジェクト構造体
-	* @param (id_) 受け取りたいブロックのid
+	* @param[out] copy_info_ 保存用オブジェクト構造体
+	* @param[in] id_ 受け取りたいブロックのid
 	* @details 引数に矩形ブロックの情報を渡す
 　　*/
 	void GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_);

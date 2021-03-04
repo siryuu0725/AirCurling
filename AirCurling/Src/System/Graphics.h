@@ -91,20 +91,20 @@ public:
 
 	/**
 　　* @brief  α値設定関数
-　　* @detail α値の設定を行う
-    * @param (enableAlpa_)  α値の有効(true)か無効(false)
+　　* @details α値の設定を行う
+    * @param[in] enableAlpa_  α値の有効(true)か無効(false)
 　　*/
 	void SetRenderMode(bool enableAlpa_);
 
 	/**
 　　* @brief  描画情報初期化まとめ関数
-　　* @detail インターフェース、デバイス、ビューポートの設定をまとめている
+　　* @details インターフェース、デバイス、ビューポートの設定をまとめている
 　　*/
 	bool InitGraphics();
 
 	/**
 　　* @brief  描画情報解放関数
-　　* @detail インターフェース、デバイスの解放を行う
+　　* @details インターフェース、デバイスの解放を行う
 　　*/
 	void ReleaseGraphics();
 
@@ -135,52 +135,52 @@ public:
 
 	/**
 　　* @brief  テクスチャ描画関数
-  　* @param (texture_)  テクスチャ情報構造体
-    * @param (pos_)      ファイルパス
+  　* @param[in] texture_  テクスチャ情報構造体
+    * @param[in] pos_      ファイルパス
 　　*/
 	void DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_);
 
 	/**
 　　* @brief  テクスチャ描画関数(UV指定用)
-  　* @param (texture_)  テクスチャ情報構造体
-    * @param (pos_)      テクスチャ座標
-	* @param (sprite_width_)  切り抜きサイズ(横幅)
-	* @param (sprite_height_) 切り抜きサイズ(縦幅)
-	* @param (tu_)  指定TU値
-	* @param (tv_)  指定TV値
+  　* @param[in] texture_  テクスチャ情報構造体
+    * @param[in] pos_      テクスチャ座標
+	* @param[in] sprite_width_  切り抜きサイズ(横幅)
+	* @param[in] sprite_height_ 切り抜きサイズ(縦幅)
+	* @param[in] tu_  指定TU値
+	* @param[in] tv_  指定TV値
 　　*/
 	void DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_);
 	
 	/**
 　　* @brief  テクスチャ描画関数(テクスチャ回転用)
-    * @param (texture_)       テクスチャ情報構造体
-	* @param (lefttop_pos_)   テクスチャの左上頂点座標
-	* @param (righttop_pos_)  テクスチャの右上頂点座標
-	* @param (leftdown_pos_)  テクスチャの左下頂点座標
-	* @param (rightdown_pos_) テクスチャの右下頂点座標
+    * @param[in] texture_       テクスチャ情報構造体
+	* @param[in] lefttop_pos_   テクスチャの左上頂点座標
+	* @param[in] righttop_pos_  テクスチャの右上頂点座標
+	* @param[in] leftdown_pos_  テクスチャの左下頂点座標
+	* @param[in] rightdown_pos_ テクスチャの右下頂点座標
 　　*/
 	void DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_);
 
 	/**
 　　* @brief  テクスチャ読み込み関数
-　　* @param (file_name_)  ファイルパス
-　　* @param (texture_)    テクスチャ情報構造体
+　　* @param[in] file_name_  ファイルパス
+　　* @param[in] texture_    テクスチャ情報構造体
 　　*/
 	bool LoadTexture(const char* file_name_, TextureData* texture_);
 
 	/**
 　　* @brief  テクスチャ解放関数
-　　* @param (texture_)  テクスチャ情報構造体
+　　* @param[in] texture_  テクスチャ情報構造体
 　　*/
 	void ReleaseTexture(TextureData* texture_data_);
 
 	/**
 　　* @brief  文字描画関数
-　　* @param (pos_x_)  描画X座標
-  　* @param (pos_y_)  描画Y座標
-    * @param (text_)   描画文字
-	* @param (font_type_)  描画サイズ
-	* @param (color_)  描画カラー
+　　* @param[in] pos_x_  描画X座標
+  　* @param[in] pos_y_  描画Y座標
+    * @param[in] text_   描画文字
+	* @param[in] font_type_  描画サイズ
+	* @param[in] color_  描画カラー
 　　*/
 	void DrawFont(D3DXVECTOR2 pos_, const char* text_, FontSize font_type_, FontColor color_);
 

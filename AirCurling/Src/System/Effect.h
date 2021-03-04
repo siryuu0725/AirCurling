@@ -40,19 +40,19 @@ public:
 
 	/**
 　　* @brief  インスタンス化関数
-　　* @detail 初回のみインスタンス化し、それ以外は実態を呼ぶ
+　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
 	static Effect* Instance();
 
 	/**
 　　* @brief  初期化関数
-　　* @detail Effecseerの初期化など
+　　* @details Effecseerの初期化など
 　　*/
 	void InitEffect();
 
 	/**
 　　* @brief  エフェクト読み込み関数
-　　* @detail 必要なefkファイルを読み込む
+　　* @details 必要なefkファイルを読み込む
 　　*/
 	void LoadEffect();
 
@@ -63,36 +63,36 @@ public:
 
 	/**
 　　* @brief  エフェクト再生関数
-	* @param (type_)  再生するエフェクトの種類
-	* @param (x_)  表示するX座標
-	* @param (y_)  表示するY座標
-	* @param (z_)  表示するZ座標
-　　* @detail 呼び出し時にmanagerに再生するよう問い合わせる
+	* @param[in] type_  再生するエフェクトの種類
+	* @param[in] x_  表示するX座標
+	* @param[in] y_  表示するY座標
+	* @param[in] z_  表示するZ座標
+　　* @details 呼び出し時にmanagerに再生するよう問い合わせる
 　　*/
 	void PlayEffect(EffectType type_, float x_, float y_, float z_);
 
 	/**
 　　* @brief  エフェクト描画開始関数
-　　* @detail エフェクトの描画開始処理を行う。
+　　* @details エフェクトの描画開始処理を行う。
 　　*/
 	void StartEffect();
 
 	/**
 　　* @brief  エフェクト停止関数
-　　* @detail 必要なefkファイルを読み込む
+　　* @details 必要なefkファイルを読み込む
 　　*/
 	void StopEffect();
 
 	/**
 　　* @brief  エフェクト終了関数
-　　* @detail エフェクトの描画終了処理を行う。
+　　* @details エフェクトの描画終了処理を行う。
 　　*/
 	void EndEffect();
 
 	/**
 　　* @brief  エフェクト更新関数
-    * @param (camera_)  カメラのアドレス
-　　* @detail エフェクトのカメラ設定やmanagerの更新を行う
+    * @param[in] camera_  カメラのアドレス
+　　* @details エフェクトのカメラ設定やmanagerの更新を行う
 　　*/
 	void UpdateEffect(Camera* camera_);
 

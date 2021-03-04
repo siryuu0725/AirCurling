@@ -125,13 +125,13 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @details オブジェクト情報初期化
 	 */
 	void Init();
 
 	/**
 	 * @brief  外部データ読み込み関数
-	 * @detail 読み込んだ外部データを外部データ用の構造体に保存する
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadGameUIExternalInfo();
 
@@ -147,7 +147,7 @@ public:
 
 	/**
 	 * @brief  更新関数
-	 * @detail 更新処理まとめ関数
+	 * @details 更新処理まとめ関数
 	 */
 	void Update(Player* player_, Camera* camera_);
 
@@ -158,43 +158,43 @@ public:
 
 	/**
      * @brief  スピードゲージ停止関数
-     * @detail プレイヤーに加えるスピードを決定する
+     * @details プレイヤーに加えるスピードを決定する
      */
 	void StopGauge(Player* player_);
 
 	/**
 	 * @brief  ターン終了時初期化関数
-	 * @detail 1ターン終了するたびターン経過とゲージの数値の初期化を行う
+	 * @details 1ターン終了するたびターン経過とゲージの数値の初期化を行う
 	 */
 	void UpdateTurn();
 
 	/**
 	 * @brief  スコア加算関数
-	 * @detail 1ターン終了時にターン経過によるスコア加算を行う
+	 * @details 1ターン終了時にターン経過によるスコア加算を行う
 	 */
 	void AddScore();
 
 	/**
 	 * @brief  モード切替判定関数
-	 * @detail ゲージがshotモード時にしか表示されないようにフラグを切り替える
+	 * @details ゲージがshotモード時にしか表示されないようにフラグを切り替える
 	 */
 	void ModeChange();
 
 	/**
 	 * @brief  開始演出関数
-	 * @detail プレイヤーがステージに着いた後に「スタート」の文字が流れる処理を行う
+	 * @details プレイヤーがステージに着いた後に「スタート」の文字が流れる処理を行う
 	 */
 	void StartProduction(Camera* camera_);
 
 	/**
 	 * @brief  終了演出関数
-	 * @detail プレイヤーがゴール、またはターン制限後超えた時の終了演出を行う
+	 * @details プレイヤーがゴール、またはターン制限後超えた時の終了演出を行う
 	 */
 	void EndProduction();
 
 	/**
 　　* @brief  UI情報Getter
-	* @param (copy_info_) 保存用UI情報構造体
+	* @param[out] copy_info_ 保存用UI情報構造体
 	* @details 引数にUIの情報を渡す
 　　*/
 	void GetGameUIInfo(GameUIInfo& copy_info_) { copy_info_ = m_gameui_info; }

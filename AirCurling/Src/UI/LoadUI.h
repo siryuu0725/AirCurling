@@ -27,7 +27,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @details オブジェクト情報初期化
 	 */
 	void Init();
 
@@ -43,7 +43,7 @@ public:
 
 	/**
 	 * @brief  更新関数
-	 * @detail 更新処理まとめ関数
+	 * @details 更新処理まとめ関数
 	 */
 	void Update();
 
@@ -54,7 +54,7 @@ public:
 
 	/**
 	 * @brief  ロード中テクスチャ回転関数
-	 * @detail ゲーム読み込み中のテクスチャ回転処理を行う
+	 * @details ゲーム読み込み中のテクスチャ回転処理を行う
 	 */
 	void LoadTexRote();
 

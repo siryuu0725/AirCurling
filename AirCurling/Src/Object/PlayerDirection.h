@@ -18,28 +18,28 @@ class PlayerDirection :public ObjectBase
 public:
 	/**
  　　* @brief  コンストラクタ
-     * @param (player_) プレイヤーアドレス
- 　　* @param (camera_) カメラアドレス
- 　　* @param (ui_)     ゲームUIアドレス
+     * @param[in] player_ プレイヤーアドレス
+ 　　* @param[in] camera_ カメラアドレス
+ 　　* @param[in] ui_     ゲームUIアドレス
  　　*/
 	PlayerDirection(Player* player_, Camera* camera_, GameUI* ui_);
 	~PlayerDirection() {}
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @details オブジェクト情報初期化
 	 */
 	void Init();
 
 	/**
 	 * @brief  更新関数
-	 * @detail 更新処理まとめ関数
+	 * @details 更新処理まとめ関数
 	 */
 	void Update();
 
 	/**
 	 * @brief   描画情報送信関数
-	 * @detail  Fbx管理クラスにオブジェクト情報を送る
+	 * @details  Fbx管理クラスにオブジェクト情報を送る
 	 */
 	void Draw();
 
@@ -56,7 +56,7 @@ public:
 
 	/**
 	 * @brief  モード切替関数
-	 * @detail shotとviewモードの切り替えを行う
+	 * @details shotとviewモードの切り替えを行う
 	 */
 	void ModeChange();
 

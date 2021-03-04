@@ -27,7 +27,7 @@ public:
 
 	/**
 	 * @brief  初期化関数
-	 * @detail オブジェクト情報初期化
+	 * @details オブジェクト情報初期化
 	 */
 	void Init();
 
