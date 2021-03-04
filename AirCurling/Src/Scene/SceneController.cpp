@@ -3,7 +3,7 @@
 #include"../Scene/GameScene.h"
 #include"../Scene/ResultScene.h"
 #include"../System/Inputter.h"
-#include"../System/Graphics.h"
+#include"../System/DirectGraphics.h"
 #include <thread>
 
 SceneController* SceneController::mp_instance = nullptr;

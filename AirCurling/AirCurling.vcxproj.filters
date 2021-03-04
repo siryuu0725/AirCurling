@@ -45,9 +45,6 @@
     <ClCompile Include="Src\System\FBX.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="Src\System\Graphics.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
     <ClCompile Include="Src\System\Inputter.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -151,15 +148,15 @@
     <ClCompile Include="Src\Utility\Collision\ObjectCollision.cpp">
       <Filter>Utility\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Src\System\DirectGraphics.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\System\FBX.h">
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Src\System\Effect.h">
-      <Filter>System</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\System\Graphics.h">
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Src\System\Inputter.h">
@@ -275,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="Src\Utility\Collision\ObjectCollision.h">
       <Filter>Utility\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\System\DirectGraphics.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

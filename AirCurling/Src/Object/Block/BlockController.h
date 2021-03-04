@@ -3,8 +3,8 @@
  * @brief ステージに配置されているブロックオブジェクトを管理している
  * @details　中身：ブロック管理クラス
 **/
-#ifndef BLOCK_CONTROLLER_H_
-#define BLOCK_CONTROLLER_H_
+#ifndef BLOCKCONTROLLER_H_
+#define BLOCKCONTROLLER_H_
 #include "CircleBlock.h"
 #include "RectBlock.h"
 #include <vector>

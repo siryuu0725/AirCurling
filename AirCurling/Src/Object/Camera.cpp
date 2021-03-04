@@ -1,6 +1,5 @@
 ﻿#include "Camera.h"
 #include "../System/Inputter.h"
-#include "../System/Graphics.h"
 #include "../Object/Player.h"
 #include "../System/Window.h"
 

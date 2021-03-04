@@ -1,6 +1,6 @@
 ﻿#include "SystemController.h"
 #include "Window.h"
-#include "Graphics.h"
+#include "DirectGraphics.h"
 #include "Inputter.h"
 
 //!システム初期化関数

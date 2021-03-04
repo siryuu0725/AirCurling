@@ -230,7 +230,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\System\Graphics.cpp">
+    <ClCompile Include="Src\System\DirectGraphics.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -378,7 +378,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\System\Graphics.h">
+    <ClInclude Include="Src\System\DirectGraphics.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -4,8 +4,8 @@
  * @details　中身：摩擦上昇デバフ床クラス
 **/
 
-#ifndef STOP_FLOOR_H
-#define STOP_FLOOR_H_
+#ifndef STOPFLOOR_H
+#define STOPFLOOR_H_
 #include "../../ObjectBase.h"
 
 /**

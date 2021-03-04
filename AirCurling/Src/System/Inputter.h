@@ -3,8 +3,8 @@
  * @brief キーやマウスの入力関係を扱う
  * @details 中身：入力クラス
 **/
-#ifndef INPUT_H_
-#define INPUT_H_
+#ifndef INPUTTER_H_
+#define INPUTTER_H_
 #include <Windows.h>
 #include <dinput.h>
 #include "../Utility/Vec.h"

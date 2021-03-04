@@ -5,7 +5,7 @@
 **/
 #ifndef UIBASE_H_
 #define UIBASE_H_
-#include "../System/Graphics.h"
+#include "../System/DirectGraphics.h"
 #include <d3d9.h>
 #include <d3dx9.h>
 

@@ -3,8 +3,8 @@
  * @brief 立方体(上から見て矩形)のブロックオブジェクト
  * @details　中身：矩形型ブロッククラス
 **/
-#ifndef RECT_BLOCK_H_
-#define RECT_BLOCK_H_
+#ifndef RECTBLOCK_H_
+#define RECTBLOCK_H_
 #include "../ObjectBase.h"
 
 /**

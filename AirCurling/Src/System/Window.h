@@ -2,8 +2,8 @@
  * @file Window.h
  * @brief Window作成を行う
 **/
-#ifndef WINDOW
-#define WINDOW
+#ifndef WINDOW_H_
+#define WINDOW_H_
 
 #include<Windows.h>
 #include <d3dx9.h>

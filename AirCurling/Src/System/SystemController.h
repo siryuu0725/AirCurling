@@ -3,8 +3,8 @@
  * @brief 各Systemファイルをの初期化、解放をまとめたもの
  * @details 中身：システム初期化、解放関数
 **/
-#ifndef ENGINE_H_
-#define ENGINE_H_
+#ifndef SYSTEMCONTROLLER_H_
+#define SYSTEMCONTROLLER_H_
 
 /**
 * @brief エンジン初期化関数@n

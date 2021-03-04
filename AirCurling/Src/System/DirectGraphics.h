@@ -3,8 +3,8 @@
  * @brief 2D描画(UIや文字)を扱う
  * @details 中身：2D描画クラス
 **/
-#ifndef GRAHPICS_H_
-#define GRAHPICS_H_
+#ifndef DIRECTGRAHPICS_H_
+#define DIRECTGRAHPICS_H_
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <string>

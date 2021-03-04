@@ -3,8 +3,8 @@
  * @brief 円柱型(上から見て円形)のブロックオブジェクトを扱う
  * @details　中身：円形ブロッククラス
 **/
-#ifndef CIRCLE_BLOCK_H_
-#define CIRCLE_BLOCK_H_
+#ifndef CIRCLEBLOCK_H_
+#define CIRCLEBLOCK_H_
 #include "../ObjectBase.h"
 
 /**

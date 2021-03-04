@@ -1,4 +1,4 @@
-﻿#include "Graphics.h"
+﻿#include "DirectGraphics.h"
 #include "Window.h"
 #include "FBX.h"
 

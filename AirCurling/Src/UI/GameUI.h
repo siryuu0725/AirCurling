@@ -6,7 +6,6 @@
 #ifndef GAMEUI_H
 #define GAMEUI_H
 #include "UIBase.h"
-#include "../System/Graphics.h"
 #include "../Object/Camera.h"
 #include "../Object/Player.h"
 #include "UIBase.h"

@@ -3,8 +3,8 @@
  * @brief 当たり判定を行う
  * @details 中身：当たり判定クラス
 **/
-#ifndef SHOTUI_H_
-#define SHOTUI_H_
+#ifndef COLLISION_H_
+#define COLLISION_H_
 #include "Shape.h"
 #include "../Vec.h"
 #include "../Calculation.h"

@@ -3,8 +3,8 @@
  * @brief ゲーム内で計算されたスコアを管理する
  * @details 中身：スコアクラス
 **/
-#ifndef GAME_SCORE_H_
-#define GAME_SCORE_H_
+#ifndef GAMESCORE_H_
+#define GAMESCORE_H_
 
 constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
 

@@ -4,8 +4,8 @@
  * @details　中身：リセットデバフ床クラス
 **/
 
-#ifndef RESET_FLOOR_H
-#define RESET_FLOOR_H_
+#ifndef RESETFLOOR_H
+#define RESETFLOOR_H_
 #include "../../ObjectBase.h"
 
 /**

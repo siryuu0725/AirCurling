@@ -4,8 +4,8 @@
  * @details 中身：リザルトシーンクラス
 **/
 
-#ifndef RESULT_SCENE_H_
-#define RESULT_SCENE_H_
+#ifndef RESULTSCENE_H_
+#define RESULTSCENE_H_
 #include"SceneBase.h"
 #include "../System/FBX.h"
 #include "../System/Sound/SoundController.h"

@@ -3,8 +3,8 @@
  * @brief ゴールとなる床オブジェクト
  * @details　中身：ゴール床クラス
 **/
-#ifndef GOAL_H_
-#define GOAL_H_
+#ifndef GOALFLOOR_H_
+#define GOALFLOOR_H_
 
 #include "../ObjectBase.h"
 

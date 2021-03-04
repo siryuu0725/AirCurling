@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 #include <fbxsdk.h>
-#include "Graphics.h"
+#include "DirectGraphics.h"
 #include <map>
 #include <iostream>
 

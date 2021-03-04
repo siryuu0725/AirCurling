@@ -3,8 +3,8 @@
  * @brief 各シーンの元となるクラス
  * @details 中身：シーンベースクラス、シーンステップ列挙体
 **/
-#ifndef BASESCENE_H_
-#define BASESCENE_H_
+#ifndef SCENEBASE_H_
+#define SCENEBASE_H_
 
 //!シーンステップ
 enum class SceneStep

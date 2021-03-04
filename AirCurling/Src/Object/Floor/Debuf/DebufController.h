@@ -3,8 +3,8 @@
  * @brief ステージに配置されているデバフ効果の床オブジェクトを管理している
  * @details　中身：デバフ床管理クラス
 **/
-#ifndef DEBUF_CONTROLLER_H_
-#define DEBUF_CONTROLLER_H_
+#ifndef DEBUFCONTROLLER_H_
+#define DEBUFCONTROLLER_H_
 #include "ResetFloor.h"
 #include "StopFloor.h"
 #include <vector>

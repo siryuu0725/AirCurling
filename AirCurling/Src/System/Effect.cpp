@@ -1,5 +1,4 @@
 ﻿#include "Effect.h"
-#include "Graphics.h"
 
 #include <d3dx9.h>
 

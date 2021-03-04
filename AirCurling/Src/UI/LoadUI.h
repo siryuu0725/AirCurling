@@ -6,7 +6,6 @@
 #ifndef LOADUI_H_
 #define LOADUI_H_
 #include "../UI/UIBase.h"
-#include "../System/Graphics.h"
 
 //!UIの種類
 enum class LoadUICategory :int

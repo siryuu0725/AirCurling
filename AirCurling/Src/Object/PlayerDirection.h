@@ -3,8 +3,8 @@
  * @brief プレイヤーが向いている方向に向く矢印オブジェクト
  * @details 中身：プレイヤーの矢印(向いている方向)クラス
 **/
-#ifndef DIRECTION_H_
-#define DIRECTION_H_
+#ifndef PLAYERDIRECTION_H_
+#define PLAYERDIRECTION_H_
 
 #include "ObjectBase.h"
 #include "Player.h"
