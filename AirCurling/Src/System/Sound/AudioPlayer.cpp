@@ -5,7 +5,7 @@
 //  サウンドプレーヤー
 //==========================================
 
-bool AudioPlayer::LoadUI(std::string alias, std::string file_name) {
+bool AudioPlayer::LoadUI(std::string alias_, std::string file_name_) {
 
 	//まだ読み込んでいないサウンドデータである
 	/*
@@ -13,8 +13,8 @@ bool AudioPlayer::LoadUI(std::string alias, std::string file_name) {
 		 valueをキーとした要素の検索を行う。
 		 要素あり→１　要素なし→０
 	*/
-	if (m_SoundData.count(alias) == 0) {
-		m_SoundData.emplace(alias, m_Sound->LoadWaveFile(file_name));
+	if (m_SoundData.count(alias_) == 0) {
+		m_SoundData.emplace(alias_, m_Sound->LoadWaveFile(file_name_));
 		return true;
 	}
 	return false;
@@ -23,22 +23,22 @@ bool AudioPlayer::LoadUI(std::string alias, std::string file_name) {
 //------------------------------------
 // 再生
 void AudioPlayer::Play(
-	std::string alias,
-	int volume,
-	bool is_loop
+	std::string alias_,
+	int volume_,
+	bool is_loop_
 ) {
 
-	IDirectSoundBuffer8* sound = Find(alias);
+	IDirectSoundBuffer8* sound = Find(alias_);
 	if (sound == nullptr) {
 		return;//サウンドデータがなかった
 	}
 
-	if (is_loop) {
-		sound->SetVolume(volume);
+	if (is_loop_) {
+		sound->SetVolume(volume_);
 		sound->Play(0, 0, DSBPLAY_LOOPING);
 	}
 	else {
-		sound->SetVolume(volume);
+		sound->SetVolume(volume_);
 		sound->Play(0, 0, 0);
 		sound->SetCurrentPosition(0);
 	}
@@ -46,9 +46,9 @@ void AudioPlayer::Play(
 
 //----------------------------------
 // 停止
-void AudioPlayer::Stop(std::string alias) {
+void AudioPlayer::Stop(std::string alias_) {
 
-	IDirectSoundBuffer8* sound = Find(alias);
+	IDirectSoundBuffer8* sound = Find(alias_);
 	if (sound == nullptr) {
 		return;//サウンドデータがなかった
 	}
@@ -57,20 +57,20 @@ void AudioPlayer::Stop(std::string alias) {
 
 //----------------------------------
 // ボリューム調整
-void AudioPlayer::SetVolume(std::string alias, int volume) {
+void AudioPlayer::SetVolume(std::string alias_, int volume_) {
 
-	IDirectSoundBuffer8* sound = Find(alias);
+	IDirectSoundBuffer8* sound = Find(alias_);
 	if (sound == nullptr) {
 		return;//サウンドデータがなかった
 	}
-	sound->SetVolume(volume);
+	sound->SetVolume(volume_);
 }
 
 //-------------------------------
 //解放処理
-void AudioPlayer::Release(std::string alias) {
+void AudioPlayer::Release(std::string alias_) {
 
-	IDirectSoundBuffer8* sound = Find(alias);
+	IDirectSoundBuffer8* sound = Find(alias_);
 	if (sound == nullptr) {
 		return;//サウンドデータがなかった
 	}
@@ -78,14 +78,14 @@ void AudioPlayer::Release(std::string alias) {
 	if (sound) {
 		sound->Release();
 		sound = nullptr;
-		m_SoundData.erase(alias);//要素削除
+		m_SoundData.erase(alias_);//要素削除
 	}
 }
 
-IDirectSoundBuffer8* AudioPlayer::Find(std::string alias) {
+IDirectSoundBuffer8* AudioPlayer::Find(std::string alias_) {
 
 	//サウンドデータをキーで検索
-	auto data = m_SoundData.find(alias);
+	auto data = m_SoundData.find(alias_);
 	//サウンドデータがみつかった場合
 	if (data != m_SoundData.end()) {
 		return data->second;

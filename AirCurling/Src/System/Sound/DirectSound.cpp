@@ -10,11 +10,11 @@
 
 	//--------------------------------------------
 	 //　初回呼び出し用コンストラクタ
-DirectSound::DirectSound(HWND hwnd) {
+DirectSound::DirectSound(HWND hwnd_) {
 
 
 	DirectSoundCreate8(nullptr, &m_DSound8, nullptr);
-	m_DSound8->SetCooperativeLevel(hwnd, DSSCL_NORMAL);
+	m_DSound8->SetCooperativeLevel(hwnd_, DSSCL_NORMAL);
 
 	DSBUFFERDESC desc = {};
 	desc.dwSize = sizeof(DSBUFFERDESC);
@@ -28,12 +28,12 @@ DirectSound::DirectSound(HWND hwnd) {
 }
 //-------------------------------------
 //　データ読み込み
-IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name) {
+IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 
 
 	HMMIO hmmio = nullptr;
 	MMIOINFO mminfo = {};
-	hmmio = mmioOpen((LPSTR)file_name.c_str(), &mminfo, MMIO_READ);
+	hmmio = mmioOpen((LPSTR)file_name_.c_str(), &mminfo, MMIO_READ);
 
 	//ファイルのオープンに失敗した場合
 	if (!hmmio) {

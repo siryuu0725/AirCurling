@@ -16,7 +16,7 @@ class DirectSound {
 public:
 
 
-	DirectSound(HWND hwnd = nullptr);
+	DirectSound(HWND hwnd_ = nullptr);
 
 	/*
 	　
@@ -25,7 +25,7 @@ public:
 	使用方法：
 		DirectSound("hoge.wave");
 	*/
-	IDirectSoundBuffer8* LoadWaveFile(std::string file_name);
+	IDirectSoundBuffer8* LoadWaveFile(std::string file_name_);
 
 	~DirectSound();
 

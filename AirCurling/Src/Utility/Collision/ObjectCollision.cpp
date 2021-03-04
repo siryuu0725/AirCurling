@@ -28,7 +28,7 @@ bool ObjectCollision::HitRectBlock()
 		//上下左右、各頂点分回す
 		for (__int8 point = 0; point < (__int8)HitRectPoint::PointMax; point++)
 		{
-			if (Collision::RectVertexToCircle(point, m_rectblock_copy[i].m_pos, m_player_copy.m_pos, m_rectblock_copy[i].m_width, m_rectblock_copy[i].m_height, m_player_copy.m_radius, m_rectblock_copy[i].m_angle.y) == true)
+			if (Collision::RectToCircle(point, m_rectblock_copy[i].m_pos, m_player_copy.m_pos, m_rectblock_copy[i].m_width, m_rectblock_copy[i].m_height, m_player_copy.m_radius, m_rectblock_copy[i].m_angle.y) == true)
 			{
 				m_hit_rectblock_id = i;
 				m_rectpoint = (HitRectPoint)point;
@@ -81,7 +81,7 @@ bool ObjectCollision::HitStopFloor()
 		//上下左右分回す
 		for (__int8 point = 0; point <= (__int8)HitRectPoint::LeftOrRight; point++)
 		{
-			if (Collision::RectVertexToCircle(point, m_resetfloor_copy[i].m_pos, m_player_copy.m_pos, m_resetfloor_copy[i].m_width, m_resetfloor_copy[i].m_height, m_player_copy.m_radius, m_resetfloor_copy[i].m_angle.y) == true)
+			if (Collision::RectToCircle(point, m_resetfloor_copy[i].m_pos, m_player_copy.m_pos, m_resetfloor_copy[i].m_width, m_resetfloor_copy[i].m_height, m_player_copy.m_radius, m_resetfloor_copy[i].m_angle.y) == true)
 			{
 				return true;
 			}

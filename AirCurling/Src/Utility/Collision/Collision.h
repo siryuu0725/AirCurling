@@ -55,7 +55,8 @@ public:
 	//static bool RectLeftToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
 
 	/**
-　   * @brief  矩形の頂点と円の当たり判定
+　   * @brief  矩形と円の当たり判定
+	 * @param[in] type_ 当たり判定を取る箇所(例:矩形の左右面)
 	 * @param[in] r_pos 矩形の座標
 	 * @param[in] c_pos 円の座標
 	 * @param[in] width_ 矩形の横幅
@@ -63,7 +64,7 @@ public:
 	 * @param[in] radius_ 円の半径
 	 * @param[in] rad_ 矩形の回転角度
 　   */
-	static bool RectVertexToCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
+	static bool RectToCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
 
 #pragma endregion
 

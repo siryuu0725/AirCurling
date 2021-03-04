@@ -18,8 +18,8 @@ class AudioPlayer {
 
 public:
 
-	static AudioPlayer* GetInstance(HWND hwnd = nullptr) {
-		static AudioPlayer instance(hwnd);
+	static AudioPlayer* GetInstance(HWND hwnd_ = nullptr) {
+		static AudioPlayer instance(hwnd_);
 		return &instance;
 	}
 
@@ -31,7 +31,7 @@ public:
 	概要：
 		指定されたサウンドファイルを読み込む
 	*/
-	bool LoadUI(std::string alias, std::string file_name);
+	bool LoadUI(std::string alias_, std::string file_name_);
 
 	/*
 		再生処理
@@ -44,29 +44,29 @@ public:
 	  　再生方法により再生する
 	*/
 	void Play(
-		std::string alias,
-		int volume = -1000,
-		bool is_loop = false);
+		std::string alias_,
+		int volume_ = -1000,
+		bool is_loop_ = false);
 
 	// 停止
-	void Stop(std::string alias);
+	void Stop(std::string alias_);
 
 	/*
 		ボリューム設定
 	引数：
 		volume 音量（0で最大 -10000で無音）
 	*/
-	void SetVolume(std::string alias, int volume);
+	void SetVolume(std::string alias_, int volume_);
 
 	//解放処理
-	void Release(std::string alias);
+	void Release(std::string alias_);
 
 private:
 
 	//コンストラクタ
-	AudioPlayer(HWND hwnd) {
+	AudioPlayer(HWND hwnd_) {
 		//再生先のウィンドウハンドルを取得
-		m_Sound = new DirectSound(hwnd);
+		m_Sound = new DirectSound(hwnd_);
 	}
 
 	/*
@@ -77,7 +77,7 @@ private:
 		成功　→　サウンドデータ
 		失敗　→　null
 	*/
-	IDirectSoundBuffer8* Find(std::string alias);
+	IDirectSoundBuffer8* Find(std::string alias_);
 
 	~AudioPlayer();
 
