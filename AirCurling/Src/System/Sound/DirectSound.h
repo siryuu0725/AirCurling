@@ -18,21 +18,20 @@ public:
 
 	DirectSound(HWND hwnd_ = nullptr);
 
-	/*
-	　
-	 wavファイルの書き出しを行い、データを返す
-
-	使用方法：
-		DirectSound("hoge.wave");
-	*/
+	/**
+	 * @brief  ファイル読み込み書き出し関数
+	 * @param[in] file_name_ ファイルパス
+	 * @param[in] alias_ サウンドを使用する際の別名
+	 * @details wavファイルの書き出しを行い、データを返す
+	 */
 	IDirectSoundBuffer8* LoadWaveFile(std::string file_name_);
 
 	~DirectSound();
 
 private:
 
-	IDirectSound8* m_DSound8;			//サウンドインターフェース
-	IDirectSoundBuffer* m_PrimaryBuffer;//プライマリーバッファ―
+	IDirectSound8* m_DSound8;			 //!サウンドインターフェース
+	IDirectSoundBuffer* m_PrimaryBuffer; //!プライマリーバッファ―
 	IDirectSoundBuffer8* m_SecBuffer;
 };
 
