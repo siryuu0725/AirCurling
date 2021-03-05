@@ -107,12 +107,6 @@ public:
 	void Select();
 
 	/**
-	 * @brief  選択画面キャンセル関数
-	 * @details ステージ選択、またはヘルプ画面時初期のタイトル画面に戻る用
-	 */
-	void ReturnSelect();
-
-	/**
 	 * @brief  ステージUI当たり判定関数
 	 * @details ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
 	 */

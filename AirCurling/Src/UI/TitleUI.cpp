@@ -103,14 +103,20 @@ void TitleUI::Update()
 			m_titleui_info.startui_flg = false;
 		}
 	}
+	else if (m_titleui_info.helpui_flg == true)
+	{
+
+		if (Inputter::Instance()->GetKeyDown(Inputter::ESCKey) ||
+			Inputter::Instance()->OnMouseDown(Inputter::Left))
+		{
+			m_titleui_info.helpui_flg = false;
+		}
+	}
 	else 
 	{
 		//!UI当たり判定関数
 		Select();
 	}
-
-	//!選択画面キャンセル関数
-	ReturnSelect();
 }
 
 //!UI当たり判定関数
@@ -179,20 +185,6 @@ void TitleUI::Select()
 	}
 }
 
-//!選択画面キャンセル関数
-void TitleUI::ReturnSelect()
-{
-	//!ステージ選択画面、もしくはヘルプ画面時
-	if (m_titleui_info.startui_flg == true || m_titleui_info.helpui_flg == true)
-	{
-		//!ESCキーが押された場合
-		if (Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
-		{
-			m_titleui_info.startui_flg = false;
-			m_titleui_info.helpui_flg = false;
-		}
-	}
-}
 
 //!ステージUI当たり判定関数
 void TitleUI::SelectStage()
