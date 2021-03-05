@@ -11,125 +11,135 @@ SoundManager* SoundManager::Instance()
 
 SoundManager::SoundManager()
 {
-	m_select1_flag = false;
+	m_is_select = false;
 
-	bgm = "BGM";
-	select1_se = "SelectSE";
+	m_bgm = "BGM";
+	m_select_se = "SelectSE";
 
-	shot_se = "ShotSE";
-	reflect_se = "ReflectionSE";
-	goal_se = "GoalSE";
-	friction_se = "StopSE";
-	fall_se = "FallSE";
+	m_shot_se = "ShotSE";
+	m_reflect_se = "ReflectionSE";
+	m_goal_se = "GoalSE";
+	m_stop_se = "StopSE";
+	m_reset_se = "FallSE";
 }
 
 
 //タイトルシーン音源設定
 void SoundManager::RegisterTitleSound()
 {
-	bgm_file = "Res/wav/BGM/Title.wav";
-	se1_file = "Res/wav/SE/Select.wav";
-	p_audio->LoadUI(bgm, bgm_file);
-	p_audio->LoadUI(select1_se, se1_file);
+	m_bgm_file = "Res/wav/BGM/Title.wav";
+	m_select_file = "Res/wav/SE/Select.wav";
+	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
+	mp_audio->LoadAudioFail(m_select_se, m_select_file);
 }
 
 //ゲームシーン音源設定
 void SoundManager::RegisterGameSound()
 {
-	bgm_file = "Res/wav/BGM/Game.wav";
-	shot_file = "Res/wav/SE/Shot.wav";
-	reflect_file = "Res/wav/SE/Reflection.wav";
-	goal_file = "Res/wav/SE/Goal.wav";
-	friction_file = "Res/wav/SE/Stop.wav";
-	//m_fall_file= "Res/wav/SE/落ちたとき.wav";
+	m_bgm_file = "Res/wav/BGM/Game.wav";
+	m_shot_file = "Res/wav/SE/Shot.wav";
+	m_reflect_file = "Res/wav/SE/Reflection.wav";
+	m_goal_file = "Res/wav/SE/Goal.wav";
+	m_stop_file = "Res/wav/SE/Stop.wav";
+	m_reset_file= "Res/wav/SE/Reset.wav";
 
-	p_audio->LoadUI(bgm, bgm_file);
-	p_audio->LoadUI(shot_se, shot_file);
-	p_audio->LoadUI(reflect_se, reflect_file);
-	p_audio->LoadUI(goal_se, goal_file);
-	p_audio->LoadUI(friction_se, friction_file);
-	//m_pAudio->Load(m_fall_se, m_fall_file);
-
-
+	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
+	mp_audio->LoadAudioFail(m_shot_se, m_shot_file);
+	mp_audio->LoadAudioFail(m_reflect_se, m_reflect_file);
+	mp_audio->LoadAudioFail(m_goal_se, m_goal_file);
+	mp_audio->LoadAudioFail(m_stop_se, m_stop_file);
+	mp_audio->LoadAudioFail(m_reset_se, m_reset_file);
 }
 
 //リザルト(エンド)シーン音源設定
 void SoundManager::RegisterResultSound()
 {
-	bgm_file = "Res/wav/BGM/Result.wav";
+	m_bgm_file = "Res/wav/BGM/Result.wav";
 
-	p_audio->LoadUI(bgm, bgm_file);
+	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
 }
 
 //BGM再生関数
 void SoundManager::SoundBGM(int volume_)
 {
-	p_audio->Play(bgm, volume_, true);
+	mp_audio->Play(m_bgm, volume_, true);
 }
 
 //選択SE音再生関数
 void SoundManager::SoundSelectSE()
 {
-	if (m_select1_flag == false)
+	if (m_is_select == false)
 	{
-		p_audio->Play(select1_se, SoundVolumeMin, false);
-		m_select1_flag = true;
+		mp_audio->Play(m_select_se, SoundVolumeMin, false);
+		m_is_select = true;
 	}
 }
 
-//打った時のSE音再生関数
-void SoundManager::SoundShotSE()
+//SE音再生関数
+void SoundManager::PlaySoundSE(PlaySEType se_type_)
 {
-	p_audio->Play(shot_se, SoundVolumeMax, false);
+	switch (se_type_)
+	{
+	case PlaySEType::Selsect:
+		if (m_is_select == false)
+		{
+			mp_audio->Play(m_select_se, SoundVolumeMin, false);
+			m_is_select = true;
+		}
+		break;
+	case PlaySEType::Shot:
+		mp_audio->Play(m_shot_se, SoundVolumeMax, false);
+		break;
+	case PlaySEType::Reflect:
+		mp_audio->Play(m_reflect_se, SoundVolumeMax, false);
+		break;
+	case PlaySEType::Goal:
+		mp_audio->Play(m_goal_se, SoundVolumeMax, false);
+		break;
+	case PlaySEType::Stop:
+		if (m_is_stop == false)
+		{
+			mp_audio->Play(m_stop_se, SoundVolumeMax, false);
+			m_is_stop = true;
+		}
+		break;
+	case PlaySEType::Reset:
+		mp_audio->Play(m_reset_se, SoundVolumeMax, false);
+		break;
+	default:
+		break;
+	}
 }
 
-//反射SE音再生関数
-void SoundManager::SoundReflectSE()
-{
-	p_audio->Play(reflect_se, SoundVolumeMax, false);
-}
-
-//ゴールSE音再生関数
-void SoundManager::SoundGoalSE()
-{
-	p_audio->Play(goal_se, SoundVolumeMax, false);
-}
-
-//スピード減衰時SE音再生関数
-void SoundManager::SoundFrictionSE()
-{
-	p_audio->Play(friction_se, SoundVolumeMax, false);
-}
-
-//落下時SE音再生関数
-void SoundManager::SoundFallSE()
-{
-	p_audio->Play(fall_se, SoundVolumeMax, false);
-}
-
-//選択フラグリセット関数
+//選択SEリセット関数
 void SoundManager::ResetSelectFlag()
 {
-	m_select1_flag = false;
+	m_is_select = false;
+}
+
+//ストップSEリセット関数
+void SoundManager::ResetStopFlag()
+{
+	m_is_stop = false;
 }
 
 //タイトルシーンサウンド解放関数
 void SoundManager::ReleaseTitleSound()
 {
-	p_audio->Release(bgm);
-	p_audio->Release(select1_se);
+	mp_audio->Release(m_bgm);
+	mp_audio->Release(m_select_se);
 
 }
 
 //ゲームシーンサウンド解放関数
 void SoundManager::ReleaseGameSound()
 {
-	p_audio->Release(bgm);
+	mp_audio->Release(m_bgm);
 }
 
 //エンド(リザルト)シーンサウンド解放関数
 void SoundManager::ReleaseReselutSound()
 {
-	p_audio->Release(bgm);
+	mp_audio->Release(m_bgm);
 }
 

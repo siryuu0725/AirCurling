@@ -5,7 +5,7 @@
 //  サウンドプレーヤー
 //==========================================
 
-bool AudioPlayer::LoadUI(std::string alias_, std::string file_name_) {
+bool AudioPlayer::LoadAudioFail(std::string alias_, std::string file_name_) {
 
 	//まだ読み込んでいないサウンドデータである
 	/*

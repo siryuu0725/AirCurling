@@ -189,7 +189,7 @@ void GameUI::StopGauge(Player* player_)
 		player_->SetAddSpeed(m_gameui_info.m_add_speed);
 		player_->SetIsMovePlayer(true);
 		//!サウンド再生
-		SoundManager::Instance()->SoundShotSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Shot);
 	}
 
 	//!バーがゲージの最大値or最小値に達した時

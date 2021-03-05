@@ -13,6 +13,16 @@
 constexpr __int16 SoundVolumeMax = 0;      //!各音量の最大値
 constexpr __int16 SoundVolumeMin = -1000;  //!各音量の最小値
 
+enum class PlaySEType
+{
+	Selsect,
+	Shot,
+	Reflect,
+	Goal,
+	Stop,
+	Reset
+};
+
 
 /**
 * サウンド管理クラス
@@ -59,42 +69,24 @@ public:
 	void SoundSelectSE();
 
 	/**
-	*	@brief 打った時のSE音再生関数
-	*	@details プレイヤーを移動させる時(打った時)のSE音の再生
-	*/
-	void SoundShotSE();
-
-	/**
-	*	@brief 反射SE音再生関数
-	*	@details プレイヤーの反射SE音の再生
-	*/
-	void SoundReflectSE();
-
-	/**
-	*	@brief ゴールSE音再生関数
-	*	@details ゴール時のSE音の再生
-	*/
-	void SoundGoalSE();
-
-	/**
-	*	@brief スピード減衰時SE音再生関数
-	*	@details スピード減衰時SE音の再生
-	*/
-	void SoundFrictionSE();
-
-	/**
-	*	@brief 落下時SE音再生関数
+	*	@brief SE音再生関数
+	*   @param[in] se_type_ 鳴らしたいSEの種類
 	*	@details 落下時のSE音の再生
 	*/
-	void SoundFallSE();
+	void PlaySoundSE(PlaySEType se_type_);
 
 	/**
-	*	@brief 選択フラグリセット関数
-	*	@details 選択音が鳴り終わったらフラグを元に戻す
+	*	@brief 選択SEリセット関数
+	*	@details 選択SEをもう一度流れるようにする
 	*/
 	void ResetSelectFlag();
 
-	
+	/**
+	*	@brief ストップSEリセット関数
+	*	@details StopSEをもう一度流れるようにする
+	*/
+	void ResetStopFlag();
+
 	/**
 	*	@brief タイトルシーンサウンド解放関数
 	*	@details タイトルシーンで使用した音を解放する
@@ -118,28 +110,30 @@ private:
 
 
 	// 使用する際の変数名(音ごとに必要)
-	std::string bgm;         //!BGM用(各シーン使い回し)
-	std::string select1_se;	 //!選択時SE
-	std::string shot_se;     //!打った時のSE
-	std::string reflect_se;	 //!反射SE
-	std::string goal_se;	 //!ゴールSE
-	std::string friction_se; //!スピード減衰時SE
-	std::string fall_se;	 //!落下時SE
+	std::string m_bgm;          //!BGM用(各シーン使い回し)
+	std::string m_select_se;    //!選択時SE
+	std::string m_shot_se;      //!打った時のSE
+	std::string m_reflect_se;	//!反射SE
+	std::string m_goal_se;	    //!ゴールSE
+	std::string m_stop_se;      //!スピード減衰時SE
+	std::string m_reset_se;	    //!落下時SE
 
 
 
 	// flie読み込み用変数(音ごとに必要)
-	std::string bgm_file;       //!BGMファイルパス保存用
-	std::string se1_file;		//!選択時SEファイルパス保存用
-	std::string shot_file;		//!打った時のSEファイルパス保存用
-	std::string reflect_file;	//!反射SEファイルパス保存用
-	std::string goal_file;		//!ゴールSEファイルパス保存用
-	std::string friction_file;	//!スピード減衰時SEファイルパス保存用
-	std::string fall_file;		//!落下時SEファイルパス保存用
+	std::string m_bgm_file;       //!BGMファイルパス保存用
+	std::string m_select_file;	  //!選択時SEファイルパス保存用
+	std::string m_shot_file;	  //!打った時のSEファイルパス保存用
+	std::string m_reflect_file;	  //!反射SEファイルパス保存用
+	std::string m_goal_file;	  //!ゴールSEファイルパス保存用
+	std::string m_stop_file;      //!スピード減衰時SEファイルパス保存用
+	std::string m_reset_file;	  //!落下時SEファイルパス保存用
 
-	AudioPlayer* p_audio = AudioPlayer::GetInstance(GetWindowHandle());
+	AudioPlayer* mp_audio = AudioPlayer::GetInstance(GetWindowHandle());
 
-	bool m_select1_flag;  //!selectSEをループさせないためのフラグ
+	bool m_is_select;  //!selectSEをループさせないためのフラグ
+	bool m_is_stop;    //!stopSEをループさせないためのフラグ
+
 
 };
 

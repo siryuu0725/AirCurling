@@ -30,7 +30,7 @@ public:
 	 * @param[in] file_name_ サウンドファイル名
 	 * @details 指定されたサウンドファイルを読み込む
 	 */
-	bool LoadUI(std::string alias_, std::string file_name_);
+	bool LoadAudioFail(std::string alias_, std::string file_name_);
 
 	/**
 	 * @brief  再生処理関数

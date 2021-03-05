@@ -125,7 +125,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 400.0f;
 
-		SoundManager::Instance()->SoundSelectSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -143,7 +143,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 600.0f;
 
-		SoundManager::Instance()->SoundSelectSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -161,7 +161,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 800.0f;
 
-		SoundManager::Instance()->SoundSelectSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//!マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))

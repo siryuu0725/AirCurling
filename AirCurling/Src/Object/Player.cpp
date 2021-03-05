@@ -217,7 +217,7 @@ void Player::HitRectBlock()
 		}
 		
 		//サウンド再生
-		SoundManager::Instance()->SoundReflectSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reflect);
 		//反射回数加算
 		player_info.m_reflect_counter++;
 	}
@@ -240,7 +240,7 @@ void Player::HitCircleBlock()
 		//反射
 		player_info.m_nor_vec = ReflectionCircle(circle_block.m_pos);
 		//サウンド再生
-		SoundManager::Instance()->SoundReflectSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reflect);
 		//反射回数加算
 		player_info.m_reflect_counter++;
 	}
@@ -261,7 +261,7 @@ void Player::HitReset()
 		player_info.m_setspeed = 0.0f;
 
 		//サウンド再生
-		SoundManager::Instance()->SoundFallSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reset);
 	}
 }
 
@@ -272,11 +272,13 @@ void Player::HitStop()
 	{
 		//摩擦係数を増やす
 		player_info.m_friction = StopFloorFriction;
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Stop);
 	}
 	else
 	{
 		//摩擦係数を元に戻す
 		player_info.m_friction = m_player_externalinfo.fa;
+		SoundManager::Instance()->ResetStopFlag();
 	}
 }
 
@@ -297,7 +299,8 @@ void Player::HitGoal()
 		{
 			//エフェクト再生
 			StartGoalEffect();
-			
+			SoundManager::Instance()->PlaySoundSE(PlaySEType::Goal);
+
 			//ゴール時のスコア加算に変更
 			switch ((GoalType)ObjectCollision::Instance()->GetGoalType())
 			{
@@ -501,7 +504,7 @@ void Player::ResetPos()
 		player_info.m_setspeed = 0.0f;
 
 		StartFallEffect();
-		SoundManager::Instance()->SoundFallSE();
+		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reset);
 	}
 }
 

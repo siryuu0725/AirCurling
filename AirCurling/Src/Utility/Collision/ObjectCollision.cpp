@@ -76,12 +76,12 @@ bool ObjectCollision::HitResetFloor()
 bool ObjectCollision::HitStopFloor()
 {
 	//個数分回す
-	for (__int8 i = 0; i < m_resetfloor_copy.size(); i++)
+	for (__int8 i = 0; i < m_stopfloor_copy.size(); i++)
 	{
 		//上下左右分回す
 		for (__int8 point = 0; point <= (__int8)HitRectPoint::LeftOrRight; point++)
 		{
-			if (Collision::RectToCircle(point, m_resetfloor_copy[i].m_pos, m_player_copy.m_pos, m_resetfloor_copy[i].m_width, m_resetfloor_copy[i].m_height, m_player_copy.m_radius, m_resetfloor_copy[i].m_angle.y) == true)
+			if (Collision::RectToCircle(point, m_stopfloor_copy[i].m_pos, m_player_copy.m_pos, m_stopfloor_copy[i].m_width, m_stopfloor_copy[i].m_height, m_player_copy.m_radius, m_stopfloor_copy[i].m_angle.y) == true)
 			{
 				return true;
 			}
