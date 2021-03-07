@@ -29,7 +29,7 @@ CSV* CSV::Instance()
 	return mp_instance;
 }
 
-//!ファイル読み込み関数
+//ファイル読み込み関数
 std::vector<std::string>* CSV::LoadFile(std::string str_)
 {
 	std::ifstream ifs(str_.c_str(), std::ios_base::in);
@@ -49,7 +49,7 @@ std::vector<std::string>* CSV::LoadFile(std::string str_)
 	return &m_ranking_data;
 }
 
-//!データ書き込み関数
+//データ書き込み関数
 void CSV::WriteData(std::string str_, std::vector<__int16> strvec_)
 {
 	std::ofstream ofs(str_, std::ios_base::out);
@@ -74,7 +74,7 @@ void CSV::WriteData(std::string str_, std::vector<__int16> strvec_)
 
 }
 
-//!コンマ区切りで文字列を分割する関数
+//コンマ区切りで文字列を分割する関数
 std::vector<std::string> CSV::Split(std::string& input_, char delimiter_)
 {
 	std::istringstream stream(input_);

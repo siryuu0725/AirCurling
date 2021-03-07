@@ -1,18 +1,9 @@
 ﻿#include "AudioPlayer.h"
 
-
-//==========================================
-//  サウンドプレーヤー
-//==========================================
-
+//ウェブファイル読み込み関数
 bool AudioPlayer::LoadAudioFail(std::string alias_, std::string file_name_) {
 
-	//まだ読み込んでいないサウンドデータである
-	/*
-		std::unordered_map.count(value）
-		 valueをキーとした要素の検索を行う。
-		 要素あり→１　要素なし→０
-	*/
+	//まだ読み込んでいないサウンドデータである場合
 	if (m_SoundData.count(alias_) == 0) {
 		m_SoundData.emplace(alias_, m_Sound->LoadWaveFile(file_name_));
 		return true;
@@ -20,8 +11,7 @@ bool AudioPlayer::LoadAudioFail(std::string alias_, std::string file_name_) {
 	return false;
 }
 
-//------------------------------------
-// 再生
+//再生
 void AudioPlayer::Play(
 	std::string alias_,
 	int volume_,
@@ -44,8 +34,7 @@ void AudioPlayer::Play(
 	}
 }
 
-//----------------------------------
-// 停止
+//停止
 void AudioPlayer::Stop(std::string alias_) {
 
 	IDirectSoundBuffer8* sound = Find(alias_);
@@ -55,7 +44,7 @@ void AudioPlayer::Stop(std::string alias_) {
 	sound->Stop();
 }
 
-//----------------------------------
+
 // ボリューム調整
 void AudioPlayer::SetVolume(std::string alias_, int volume_) {
 
@@ -66,7 +55,6 @@ void AudioPlayer::SetVolume(std::string alias_, int volume_) {
 	sound->SetVolume(volume_);
 }
 
-//-------------------------------
 //解放処理
 void AudioPlayer::Release(std::string alias_) {
 
@@ -82,6 +70,7 @@ void AudioPlayer::Release(std::string alias_) {
 	}
 }
 
+//サウンドファイル検索関数
 IDirectSoundBuffer8* AudioPlayer::Find(std::string alias_) {
 
 	//サウンドデータをキーで検索

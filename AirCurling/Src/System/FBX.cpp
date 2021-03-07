@@ -1,30 +1,30 @@
 ﻿#include "FBX.h"
 
 #pragma region 読み込み
-//!マテリアル情報の初期化
+//マテリアル情報の初期化
 void InitMaterial(MaterialData* pMaterial, int materialNum)
 {
 	ZeroMemory(pMaterial, sizeof(MaterialData) * materialNum);
 
 	D3DMATERIAL9 material;
-	//!材質設定
-	//!アンビエント(環境)カラー
+	//材質設定
+	//アンビエント(環境)カラー
 	material.Ambient.r = 1.0f;
 	material.Ambient.g = 1.0f;
 	material.Ambient.b = 1.0f;
 	material.Ambient.a = 1.0f;
-	//!ディフューズ(素材の)カラー
+	//ディフューズ(素材の)カラー
 	material.Diffuse.r = 1.0f;
 	material.Diffuse.g = 1.0f;
 	material.Diffuse.b = 1.0f;
 	material.Diffuse.a = 1.0f;
-	//!スペキュラー（テカり）カラー
+	//スペキュラー（テカり）カラー
 	material.Specular.r = 1.0f;
 	material.Specular.g = 1.0f;
 	material.Specular.b = 1.0f;
 	material.Specular.a = 1.0f;
 	material.Power = 15.0f;
-	//!エミッシブ（発光）
+	//エミッシブ（発光）
 	material.Emissive.r = 0.0f;
 	material.Emissive.g = 0.0f;
 	material.Emissive.b = 0.0f;
@@ -36,7 +36,7 @@ void InitMaterial(MaterialData* pMaterial, int materialNum)
 	}
 }
 
-//!FBXのマネージャー作成
+//FBXのマネージャー作成
 FBXMeshData Fbx::LoadFbx(const char* file_name)
 {
 	FBXMeshData fbxMeshData;
@@ -50,29 +50,29 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 	}
 	m_RootPath[i] = '\0';
 
-	//!FBXのマネージャー作成
+	//FBXのマネージャー作成
 	FbxManager* m_manager = FbxManager::Create();
-	//!インポーター作成
+	//インポーター作成
 	FbxImporter* importer = FbxImporter::Create(m_manager, "");
-	//!シーン作成
+	//シーン作成
 	FbxScene* m_scene = FbxScene::Create(m_manager, "");
 
-	//!filePathに指定したファイルを読み込む
+	//filePathに指定したファイルを読み込む
 	importer->Initialize(file_name);
-	//!シーンにインポートしたファイルを渡す
+	//シーンにインポートしたファイルを渡す
 	bool result = importer->Import(m_scene);
-	//!シーンのポリゴンを三角にする
+	//シーンのポリゴンを三角にする
 	fbxsdk::FbxGeometryConverter geometryConverter(m_manager);
-	//!マテリアルと1メッシュ毎に分ける
+	//マテリアルと1メッシュ毎に分ける
 	geometryConverter.SplitMeshesPerMaterial(m_scene, true);
 	geometryConverter.Triangulate(m_scene, true);
 
-	//!メッシュ取得
+	//メッシュ取得
 	int meshcount = m_scene->GetSrcObjectCount<FbxMesh>();
 	MeshData* pMeshData = (MeshData*)malloc(meshcount * sizeof(MeshData));
 	ZeroMemory(pMeshData, meshcount * sizeof(MeshData));
 
-	//!マテリアル分のバッファを確保
+	//マテリアル分のバッファを確保
 	int materialcount = meshcount;
 	MaterialData* pMaterialData = (MaterialData*)malloc(materialcount * sizeof(MaterialData));
 	ZeroMemory(pMaterialData, materialcount * sizeof(MaterialData));
@@ -87,7 +87,7 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 	ZeroMemory(fbxMeshData.fbxinfo.bone, sizeof(fbxMeshData.fbxinfo.bone));
 
 
-	//!メッシュ単位で展開していく
+	//メッシュ単位で展開していく
 	for (int i = 0; i < meshcount; i++)
 	{
 		//i番目のメッシュを取得
@@ -105,16 +105,16 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 	return fbxMeshData;
 }
 
-//!各情報取得
+//各情報取得
 bool Fbx::LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_)
 {
-	//!ポリゴン情報取得
+	//ポリゴン情報取得
 	GetIndeces(pMeshData_, pMesh_);
-	//!頂点情報取得
+	//頂点情報取得
 	GetVertex(pMeshData_, pMesh_);
-	//!UV情報取得
+	//UV情報取得
 	GetUV(pMeshData_, pMesh_);
-	//!法線情報取得
+	//法線情報取得
 	GetNormal(pMeshData_, pMesh_);
 
 	int vertexNum = pMesh_->GetPolygonVertexCount();
@@ -131,7 +131,7 @@ bool Fbx::LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_)
 	return true;
 }
 
-//!ポリゴン情報取得関数
+//ポリゴン情報取得関数
 void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 {
 	int polyCount = pMesh_->GetPolygonCount();
@@ -142,7 +142,7 @@ void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 	pMeshData_->pIB = CreateIndexBuffer(nullptr, size);
 
 	UINT16* pIndeces;
-	//!バッファをロックしてデータを書き込む
+	//バッファをロックしてデータを書き込む
 	pMeshData_->pIB->Lock(0, size, (void**)&pIndeces, 0);
 
 	for (int polyIdx = 0; polyIdx < polyCount; polyIdx++)
@@ -154,15 +154,15 @@ void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 	pMeshData_->pIB->Unlock();
 }
 
-//!頂点情報取得関数
+//頂点情報取得関数
 void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 	int vertexCount = pMesh_->GetPolygonVertexCount();
 	UINT size = (UINT)(vertexCount * sizeof(VERTEX_3D));
 
-	//!メッシュに含まれる頂点座標pMesh_を取得
+	//メッシュに含まれる頂点座標pMesh_を取得
 	FbxVector4* vtx = pMesh_->GetControlPoints();
-	//!メッシュのトランスフォーム
+	//メッシュのトランスフォーム
 	FbxVector4 T = pMesh_->GetNode()->GetGeometricTranslation(FbxNode::eSourcePivot);
 	FbxVector4 R = pMesh_->GetNode()->GetGeometricRotation(FbxNode::eSourcePivot);
 	FbxVector4 S = pMesh_->GetNode()->GetGeometricScaling(FbxNode::eSourcePivot);
@@ -178,7 +178,7 @@ void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	pMeshData_->pVB = CreateVertexBuffer(nullptr, size);
 
 	VERTEX_3D* pVertex;
-	//!バッファをロックしてデータを書き込む
+	//バッファをロックしてデータを書き込む
 	pMeshData_->pVB->Lock(0, size, (void**)&pVertex, 0);
 	int* pIndex = pMesh_->GetPolygonVertices();
 	for (int vIdx = 0; vIdx < vertexCount; vIdx++)
@@ -200,24 +200,24 @@ void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 }
 
-//!法線情報取得関数
+//法線情報取得関数
 void Fbx::GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	FbxArray<FbxVector4> normals;
 
-	//!法線を取得
+	//法線を取得
 	pMesh_->GetPolygonVertexNormals(normals);
 
 	UINT size = pMeshData_->vertexCount * sizeof(VERTEX_3D);
 	VERTEX_3D* pVertex;
-	//!バッファをロックしてデータを書き込む
+	//バッファをロックしてデータを書き込む
 	pMeshData_->pVB->Lock(0, size, (void**)&pVertex, 0);
 
-	//!法線の数を取得
-	//!int normalCount = normals.Size();
+	//法線の数を取得
+	//int normalCount = normals.Size();
 	for (int vtxIdx = 0; vtxIdx < normals.Size(); vtxIdx++)
 	{
 		FbxVector4& normal = normals[vtxIdx];
-		//!頂点インデックスに対応した頂点に値を代入
+		//頂点インデックスに対応した頂点に値を代入
 		pVertex[vtxIdx].nor.x = (float)normal[0];
 		pVertex[vtxIdx].nor.y = (float)normal[1];
 		pVertex[vtxIdx].nor.z = (float)normal[2];
@@ -226,11 +226,11 @@ void Fbx::GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 }
 
-//!UV情報取得関数
+//UV情報取得関数
 void Fbx::GetUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 	FbxStringList uvsetName;
-	//!メッシュに含まれるUVSet名をすべて取得
+	//メッシュに含まれるUVSet名をすべて取得
 	pMesh_->GetUVSetNames(uvsetName);
 
 	FbxArray<FbxVector2> uvSets;
@@ -239,7 +239,7 @@ void Fbx::GetUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	UINT size = pMeshData_->vertexCount * sizeof(VERTEX_3D);
 
 	VERTEX_3D* pVertex;
-	//!バッファをロックしてデータを書き込む
+	//バッファをロックしてデータを書き込む
 	pMeshData_->pVB->Lock(0, size, (void**)&pVertex, 0);
 	for (int vtxIdx = 0; vtxIdx < uvSets.Size(); vtxIdx++)
 	{
@@ -251,42 +251,42 @@ void Fbx::GetUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	pMeshData_->pVB->Unlock();
 }
 
-//!テクスチャ情報取得
+//テクスチャ情報取得
 void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 
 	InitMaterial(pMaterialData_, 1);
 	FbxLayerElementMaterial* pElementMaterial = pMesh_->GetElementMaterial();
 	if (pElementMaterial)
 	{
-		//!マテリアル解析
+		//マテリアル解析
 		int index = pElementMaterial->GetIndexArray().GetAt(0);
 		FbxSurfaceMaterial* pMaterial = pMesh_->GetNode()->GetSrcObject<FbxSurfaceMaterial>(index);
 
 		if (pMaterial)
 		{
-			//!diffuseの情報を取得
+			//diffuseの情報を取得
 			FbxProperty prop = pMaterial->FindProperty(FbxSurfaceMaterial::sDiffuse);
 
-			//!テクスチャ読み込み
+			//テクスチャ読み込み
 			const char* filename = nullptr;
 
-			//!テクスチャの数を取得する
+			//テクスチャの数を取得する
 			int fileTextureCount = prop.GetSrcObjectCount<FbxFileTexture>();
 			if (fileTextureCount > 0)
 			{
-				//!テクスチャを取得する
+				//テクスチャを取得する
 				FbxFileTexture* FileTex = prop.GetSrcObject<FbxFileTexture>(0);
 				filename = FileTex->GetFileName();
 			}
 			else
 			{
-				//!レイヤテクスチャの数を取得する
+				//レイヤテクスチャの数を取得する
 				int numLayer = prop.GetSrcObjectCount<FbxLayeredTexture>();
 				if (numLayer > 0)
 				{
-					//!レイヤテクスチャを取得する
+					//レイヤテクスチャを取得する
 					FbxLayeredTexture* LayerTex = prop.GetSrcObject<FbxLayeredTexture>(0);
-					//!テクスチャを取得する
+					//テクスチャを取得する
 					FbxFileTexture* FileTex = LayerTex->GetSrcObject<FbxFileTexture>(0);
 					filename = FileTex->GetFileName();
 				}
@@ -297,7 +297,7 @@ void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 			size_t size = 0;
 			FbxUTF8ToAnsi(filename, pFileName, &size);
 
-			//!PSDが使用されている場合は読めないのでTGAで試す
+			//PSDが使用されている場合は読めないのでTGAで試す
 			char* ext = (char*)strstr(pFileName, ".psd");
 			if (ext)
 			{
@@ -323,7 +323,7 @@ void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 }
 #pragma endregion
 
-//!FBXモデル描画関数
+//FBXモデル描画関数
 void Fbx::DrawModel(FbxInfo* pModel)
 {
 	if (pModel == nullptr) return;
@@ -335,7 +335,7 @@ void Fbx::DrawModel(FbxInfo* pModel)
 	for (UINT matIdx = 0; matIdx < pModel->materialcount; matIdx++)
 	{
 		MaterialData* pMaterial = &pModel->pMaterial[matIdx];
-		//!テクスチャーの設定
+		//テクスチャーの設定
 		pDevice->SetTexture(0, pMaterial->textureData.Texture);
 
 		pDevice->SetMaterial(&pMaterial->material);
@@ -348,29 +348,29 @@ void Fbx::DrawModel(FbxInfo* pModel)
 				continue;
 			}
 
-			//!頂点バッファの設定
+			//頂点バッファの設定
 			pDevice->SetStreamSource(0, p_Mesh->pVB, 0, p_Mesh->vertexStride);
 
-			//!頂点フォーマットの指定
+			//頂点フォーマットの指定
 			pDevice->SetFVF(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1 | D3DFVF_DIFFUSE);
 
 			if (p_Mesh->pIB)
 			{
-				//!インデックスバッファの設定
+				//インデックスバッファの設定
 				pDevice->SetIndices(p_Mesh->pIB);
-				//!描画
+				//描画
 				pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, p_Mesh->vertexCount, 0, p_Mesh->polygonCount);
 			}
 			else
 			{
-				//!描画
+				//描画
 				pDevice->DrawPrimitive(D3DPT_TRIANGLELIST, 0, p_Mesh->polygonCount);
 			}
 		}
 	}
 }
 
-//!メッシュデータ解放関数
+//メッシュデータ解放関数
 void Fbx::ReleaseModel(FbxInfo* pModel)
 {
 	if (pModel == nullptr) return;
@@ -392,11 +392,12 @@ void Fbx::ReleaseModel(FbxInfo* pModel)
 	ZeroMemory(pModel, sizeof(FbxInfo));
 }
 
+//頂点バッファの生成関数
 IDirect3DVertexBuffer9* Fbx::CreateVertexBuffer(const void* pVertices_, UINT size_)
 {
 	IDirect3DVertexBuffer9* pVertexBuffer;
 	IDirect3DDevice9* pDevice = Graphics::Instance()->GetD3DDevice();
-	// 指定したサイズの頂点バッファを作成
+	//指定したサイズの頂点バッファを作成
 	if (FAILED(pDevice->CreateVertexBuffer(size_, 0, 0, D3DPOOL_MANAGED, &pVertexBuffer, nullptr)))
 	{
 		return nullptr;
@@ -416,11 +417,12 @@ IDirect3DVertexBuffer9* Fbx::CreateVertexBuffer(const void* pVertices_, UINT siz
 
 }
 
+//インデックスバッファの生成関数
 IDirect3DIndexBuffer9* Fbx::CreateIndexBuffer(const UINT16* pIndeces_, UINT size_)
 {
 	IDirect3DIndexBuffer9* pIndexBuffer;
 	IDirect3DDevice9* pDevice = Graphics::Instance()->GetD3DDevice();
-	// 16byte型のインデックスバッファを作成
+	//16byte型のインデックスバッファを作成
 	if (FAILED(pDevice->CreateIndexBuffer(size_, 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &pIndexBuffer, nullptr)))
 	{
 		return nullptr;
@@ -428,7 +430,7 @@ IDirect3DIndexBuffer9* Fbx::CreateIndexBuffer(const UINT16* pIndeces_, UINT size
 	if (pIndeces_)
 	{
 		void* pData;
-		// バッファをロックしてデータを書き込む
+		//バッファをロックしてデータを書き込む
 		if (SUCCEEDED(pIndexBuffer->Lock(0, size_, &pData, 0)))
 		{
 			memcpy(pData, pIndeces_, size_);

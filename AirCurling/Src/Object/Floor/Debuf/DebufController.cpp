@@ -1,17 +1,17 @@
 ﻿#include "DebufController.h"
 #include "../../../Utility/Collision/ObjectCollision.h"
 
-//!デストラクタ
+//デストラクタ
 DebufController::~DebufController()
 {
-	//!リセット床
+	//リセット床
 	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		delete m_resetfloors[i];
 		m_resetfloors[i] = nullptr;
 	}
 
-	//!スピード減衰床
+	//スピード減衰床
 	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		delete m_stopfloors[i];
@@ -19,16 +19,16 @@ DebufController::~DebufController()
 	}
 }
 
-//!初期化関数
+//初期化関数
 void DebufController::Init(std::string stage_str_)
 {
 	ObjectBase::ObjectInfo debuf_floor_info;
 
-	//!外部データ読み込み
+	//外部データ読み込み
 	LoadResetFloorExternalInfo(stage_str_);
 	LoadStopFloorExternalInfo(stage_str_);
 
-	//!リセット床
+	//リセット床
 	for (__int8 i = 0; i < m_resetfloor_num; i++)
 	{
 		//!読み込んだ数分追加
@@ -43,10 +43,10 @@ void DebufController::Init(std::string stage_str_)
 		m_resetshapes.push_back(new CircleShape(debuf_floor_info.m_pos, debuf_floor_info.m_radius));
 	}
 
-	//!スピード減衰床
+	//スピード減衰床
 	for (__int8 i = 0; i < m_stopfloor_num; i++)
 	{
-		//!読み込んだ数分追加
+		//読み込んだ数分追加
 		m_stopfloors.push_back(new StopFloor
 		(m_stopfloor_externalinfo[i].m_pos,
 		 m_stopfloor_externalinfo[i].m_scale,
@@ -62,14 +62,14 @@ void DebufController::Init(std::string stage_str_)
 	SetCollisionInfo(); //当たり判定用情報Set
 }
 
-//!外部データ読み込み関数(リセット床)
+//外部データ読み込み関数(リセット床)
 void DebufController::LoadResetFloorExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 
 	std::string file_name = "Res/ObjectData/" + stage_str_ + "ResetFloorData.dat";
 
-	//!ファイル読み込み
+	//ファイル読み込み
 	fopen_s(&fp, file_name.c_str(), "rb");
 
 
@@ -77,32 +77,32 @@ void DebufController::LoadResetFloorExternalInfo(std::string stage_str_)
 	{
 		fread(&m_resetfloor_num, sizeof(m_resetfloor_num), 1, fp);
 
-		//!書き込む
+		//書き込む
 		fread(&m_resetfloor_externalinfo, sizeof(ResetFloorExternalInfo), m_resetfloor_num, fp);
 
-		/* ファイルクローズ */
+		//ファイルクローズ 
 		fclose(fp);
 	}
 }
 
-//!外部データ読み込み関数(スピード減衰床)
+//外部データ読み込み関数(スピード減衰床)
 void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 
 	std::string file_name = "Res/ObjectData/" + stage_str_ + "StopFloorData.dat";
 
-	//!ファイル読み込み
+	//ファイル読み込み
 	fopen_s(&fp, file_name.c_str(), "rb");
 
 	if (fp != nullptr)
 	{
 		fread(&m_stopfloor_num, sizeof(m_stopfloor_num), 1, fp);
 
-		//!書き込む
+		//書き込む
 		fread(&m_stopfloor_externalinfo, sizeof(StopFloorExternalInfo), m_stopfloor_num, fp);
 
-		/* ファイルクローズ */
+		//ファイルクローズ
 		fclose(fp);
 	}
 }
@@ -131,32 +131,32 @@ void DebufController::SetCollisionInfo()
 	}
 }
 
-//!描画情報送信関数
+//描画情報送信関数
 void DebufController::Draw()
 {
-	//!リセット床
+	//リセット床
 	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		m_resetfloors[i]->Draw();
 	}
 
-	//!スピード減衰床
+	//スピード減衰床
 	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		m_stopfloors[i]->Draw();
 	}
 }
 
-//!FBXモデル解放関数
+//FBXモデル解放関数
 void DebufController::ReleaseModel()
 {
-	//!リセット床
+	//リセット床
 	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		m_resetfloors[i]->ReleaseModel();
 	}
 
-	//!スピード減衰床
+	//スピード減衰床
 	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		m_stopfloors[i]->ReleaseModel();

@@ -11,7 +11,7 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	LPSTR lpCmpLine,
 	INT nCmdShow)
 {
-	// エンジンの初期化
+	//エンジンの初期化
 	if (InitEngine(1920, 1080, "エアホッケ―") == false)
 	{
 		return 0;
@@ -50,6 +50,6 @@ int WINAPI WinMain(HINSTANCE hinstance,
 		}
 	}
 
-	// エンジン終了
+	//エンジン終了
 	EndEngine();
 }

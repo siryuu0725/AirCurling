@@ -9,6 +9,7 @@ SoundManager* SoundManager::Instance()
 	return mp_instance;
 }
 
+//コンストラクタ
 SoundManager::SoundManager()
 {
 	m_is_select = false;

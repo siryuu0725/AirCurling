@@ -10,7 +10,7 @@ FbxController* FbxController::Instance()
 	return mp_instance;
 }
 
-//!コンストラクタ
+//コンストラクタ
 FbxController::FbxController()
 {
 	if (p_Fbx == nullptr)
@@ -19,7 +19,7 @@ FbxController::FbxController()
 	}
 }
 
-//!デスクトラクタ
+//デスクトラクタ
 FbxController::~FbxController()
 {
 	if (p_Fbx != nullptr)
@@ -30,7 +30,7 @@ FbxController::~FbxController()
 }
 
 
-//!Meshデータセット関数
+//メッシュデータセット関数
 FBXMeshData FbxController::LoadFbxMesh(std::string key_, const char* pFilename_)
 {
 	m_MeshData[key_] = p_Fbx->LoadFbx(pFilename_);
@@ -38,7 +38,7 @@ FBXMeshData FbxController::LoadFbxMesh(std::string key_, const char* pFilename_)
 	return m_MeshData[key_];
 }
 
-//!メッシュデータ読み込みまとめ関数
+//メッシュデータ読み込みまとめ関数
 void FbxController::LoadFbx()
 {
 	LoadFbxMesh("skydome", "Res/FBX/sky_dome.fbx");
@@ -53,7 +53,7 @@ void FbxController::LoadFbx()
 	LoadFbxMesh("direction", "Res/FBX/Direction.fbx");
 }
 
-//!メッシュデータ解放関数
+//メッシュデータ解放関数
 void FbxController::ReleaseFbxMesh(std::string key_)
 {
 	if (&m_MeshData[key_] == nullptr)return;
@@ -61,7 +61,7 @@ void FbxController::ReleaseFbxMesh(std::string key_)
 	p_Fbx->ReleaseModel(&m_MeshData[key_].fbxinfo);
 }
 
-//!Fbfファイル描画関数
+//Fbfファイル描画関数
 void FbxController::DrawFbx(std::string key_, D3DXMATRIX& mat_world_)
 {
 	m_MeshData[key_].fbxinfo.world = mat_world_;

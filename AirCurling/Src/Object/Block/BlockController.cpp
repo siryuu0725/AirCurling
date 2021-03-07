@@ -2,17 +2,17 @@
 #include "../../System/FBXController.h"
 #include "../../Utility/Collision/ObjectCollision.h"
 
-//!デストラクタ
+//デストラクタ
 BlockController::~BlockController()
 {
-	// 円形ブロック
+	//円形ブロック
 	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		delete m_circleblocks[i];
 		m_circleblocks[i] = nullptr;
 	}
 	
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		delete m_rectblocks[i];
@@ -20,16 +20,16 @@ BlockController::~BlockController()
 	}
 }
 
-//!初期化関数
+//初期化関数
 void BlockController::Init(std::string stage_str_)
 {
 	ObjectBase::ObjectInfo block_info;
 
-	//!外部データ読み込み
+	//外部データ読み込み
 	LoadCircleBlockExternalInfo(stage_str_);
 	LoadRectBlockExternalInfo(stage_str_);
 
-	//!円形ブロック
+	//円形ブロック
 	for (__int8 i = 0; i < m_circleblock_num; i++)
 	{
 		//あたり判定用に追加
@@ -45,7 +45,7 @@ void BlockController::Init(std::string stage_str_)
 		m_circleshapes.push_back(new CircleShape(block_info.m_pos, block_info.m_radius));
 	}
 
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_rectblock_num; i++)
 	{
 		//読み込んだ数分追加
@@ -64,76 +64,76 @@ void BlockController::Init(std::string stage_str_)
 	SetCollisionInfo();
 }
 
-//!外部データ読み込み関数(矩形ブロック)
+//外部データ読み込み関数(矩形ブロック)
 void BlockController::LoadRectBlockExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 
 	std::string file_name = "Res/ObjectData/" + stage_str_ + "RectBlockData.dat";
 
-	//!ファイル読み込み
+	//ファイル読み込み
 	fopen_s(&fp, file_name.c_str(), "rb");
 
 	if (fp != nullptr)
 	{
 		fread(&m_rectblock_num, sizeof(m_rectblock_num), 1, fp);
 
-		//!書き込む
+		//書き込む
 		fread(&m_rectblock_externalinfo, sizeof(RectBlockExternalInfo), m_rectblock_num, fp);
 
-		/* ファイルクローズ */
+		//ファイルクローズ
 		fclose(fp);
 	}
 }
 
-//!外部データ読み込み関数(円形ブロック)
+//外部データ読み込み関数(円形ブロック)
 void BlockController::LoadCircleBlockExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 
 	std::string file_name = "Res/ObjectData/" + stage_str_ + "CircleBlockData.dat";
 
-	//!ファイル読み込み
+	//ファイル読み込み
 	fopen_s(&fp, file_name.c_str(), "rb");
 
 	if (fp != nullptr)
 	{
 		fread(&m_circleblock_num, sizeof(m_circleblock_num), 1, fp);
 
-		//!書き込む
+		//書き込む
 		fread(&m_circleblock_externalinfo, sizeof(CircleBlockExternalInfo), m_circleblock_num, fp);
 
-		/* ファイルクローズ */
+		//ファイルクローズ
 		fclose(fp);
 	}
 }
 
-//!描画情報送信関数
+//描画情報送信関数
 void BlockController::Draw()
 {
-	//!円形ブロック
+	//円形ブロック
 	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		m_circleblocks[i]->Draw();
 	}
 	
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		m_rectblocks[i]->Draw();
 	}
 }
 
-//!FBXモデル解放関数
+//FBXモデル解放関数
 void BlockController::ReleaseModel()
 {
-	//!円形ブロック
+	//円形ブロック
 	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		m_circleblocks[i]->ReleaseModel();
 	}
 
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		m_rectblocks[i]->ReleaseModel();
@@ -142,7 +142,7 @@ void BlockController::ReleaseModel()
 
 void BlockController::SetCollisionInfo()
 {
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_rectblock_num; i++)
 	{
 		RectBlock::ObjectInfo rectblock_info;
@@ -152,7 +152,7 @@ void BlockController::SetCollisionInfo()
 		ObjectCollision::Instance()->SetRectBlockInfo(rectblock_info);
 	}
 
-	//!矩形ブロック
+	//矩形ブロック
 	for (__int8 i = 0; i < m_circleblock_num; i++)
 	{
 		CircleBlock::ObjectInfo circleblock_info;

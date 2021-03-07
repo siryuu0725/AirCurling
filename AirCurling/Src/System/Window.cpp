@@ -28,27 +28,27 @@ LRESULT CALLBACK WindowProc(HWND window_handle_, UINT message_id_, WPARAM wparam
 bool MakeWindow(int width_, int height_, const char* title_)
 {
 	WNDCLASSEX window_class = {
-		sizeof(WNDCLASSEXA),			// 構造体のサイズ
-		CS_HREDRAW | CS_VREDRAW,		// クラスのスタイル
-		WindowProc,						// ウィンドウプロシージャ
-		0,								// 補助メモリ
-		0,								// 補助メモリ
-		GetModuleHandle(nullptr),		// このプログラムのインスタンスハンドル
-		LoadIcon(NULL, IDI_APPLICATION),// アイコン画像
-		LoadCursor(NULL, IDC_ARROW),	// カーソル画像
-		nullptr,							// 背景ブラシ(背景色)
-		nullptr,							// メニュー名
-		WINDOW_CLASS_NAME,				// クラス名									
-		nullptr							// 小さいアイコン
+		sizeof(WNDCLASSEXA),			//構造体のサイズ
+		CS_HREDRAW | CS_VREDRAW,		//クラスのスタイル
+		WindowProc,						//ウィンドウプロシージャ
+		0,								//補助メモリ
+		0,								//補助メモリ
+		GetModuleHandle(nullptr),		//このプログラムのインスタンスハンドル
+		LoadIcon(NULL, IDI_APPLICATION),//アイコン画像
+		LoadCursor(NULL, IDC_ARROW),	//カーソル画像
+		nullptr,						//背景ブラシ(背景色)
+		nullptr,						//メニュー名
+		WINDOW_CLASS_NAME,				//クラス名									
+		nullptr							//小さいアイコン
 	};
 
-	// 構造体の登録
+	//構造体の登録
 	if (RegisterClassEx(&window_class) == 0)
 	{
 		return 0;
 	}
 
-	// ウィンドウ作成
+	//ウィンドウ作成
 	hWnd = CreateWindow(
 		WINDOW_CLASS_NAME,
 		title_,

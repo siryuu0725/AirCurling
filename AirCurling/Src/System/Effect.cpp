@@ -4,7 +4,7 @@
 
 Effect* Effect::mp_instance = nullptr;
 
-//!インスタンス化関数
+//インスタンス化関数
 Effect* Effect::Instance()
 {
 	if (mp_instance == nullptr) { mp_instance = new Effect; }
@@ -12,7 +12,7 @@ Effect* Effect::Instance()
 	return mp_instance;
 }
 
-//!初期化関数
+//初期化関数
 void Effect::InitEffect()
 {
 	//databank = DataBank::Instance();
@@ -42,7 +42,7 @@ void Effect::InitEffect()
 	e_position = ::Effekseer::Vector3D(0.0f, 30.0f, 0.0f);
 }
 
-//!エフェクト読み込み関数
+//エフェクト読み込み関数
 void Effect::LoadEffect()
 {
 	hit_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/reflection.efk");
@@ -51,66 +51,66 @@ void Effect::LoadEffect()
 	goal_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/goal.efk");
 }
 
-//!描画関数
+//描画関数
 void Effect::DrawEffect()
 {
 	e_manager->Draw();
 }
 
-//!エフェクト再生関数
+//エフェクト再生関数
 void Effect::PlayEffect(EffectType type_, float x_, float y_, float z_)
 {
-	//!ブロック衝突時
+	//ブロック衝突時
 	if (type_ == EffectType::HitEfc)
 	{
 		e_handle = e_manager->Play(hit_efc, x_, y_, z_);
 	}
-	//!死亡時
+	//死亡時
 	else if (type_ == EffectType::ResetEfc)
 	{
 		e_handle = e_manager->Play(reset_efc, x_, y_, z_);
 	}
-	//!落下時
+	//落下時
 	else if (type_ == EffectType::FallEfc)
 	{
 		e_handle = e_manager->Play(fall_efc, x_, y_, z_);
 	}
-	//!ゴール時
+	//ゴール時
 	else if (type_ == EffectType::GoalEfc)
 	{
 		e_handle = e_manager->Play(goal_efc, x_, y_, z_);
 	}
 }
 
-//!エフェクト描画開始関数
+//エフェクト描画開始関数
 void Effect::StartEffect()
 {
-	//!エフェクトの描画開始処理を行う。
+	//エフェクトの描画開始処理を行う。
 	e_renderer->BeginRendering();
 }
 
-//!エフェクト停止関数
+//エフェクト停止関数
 void Effect::StopEffect()
 {
-	//!エフェクトの停止
+	//エフェクトの停止
 	e_manager->StopEffect(e_handle);
 }
 
-//!エフェクト終了関数
+//エフェクト終了関数
 void Effect::EndEffect()
 {
-	//!エフェクトの描画終了処理を行う。
+	//エフェクトの描画終了処理を行う。
 	e_renderer->EndRendering();
 }
 
-//!エフェクト更新関数
+//エフェクト更新関数
 void Effect::UpdateEffect(Camera* camera_)
 {
 	Camera::CameraInfo camera_info;
 
 	camera_->GetCameraInfo(camera_info);
 
-	//!Shotモード時
+	//Shotモード時
 	if (camera_info.m_is_shotmode == true)
 	{
 		e_camera_pos.X = camera_info.m_pos.x;
@@ -121,7 +121,7 @@ void Effect::UpdateEffect(Camera* camera_)
 		e_eye_pos.Y = camera_info.m_eye_pos.y;
 		e_eye_pos.Z = camera_info.m_eye_pos.z;
 	}
-	//!Viewモード時
+	//Viewモード時
 	else
 	{
 		e_camera_pos.X = camera_info.m_pos.x;
@@ -142,7 +142,7 @@ void Effect::UpdateEffect(Camera* camera_)
 
 }
 
-//!エフェクト解放関数
+//エフェクト解放関数
 void Effect::ReleaseEffect()
 {
 	// エフェクトの破棄

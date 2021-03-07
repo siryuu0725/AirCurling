@@ -5,7 +5,7 @@
 
 #include <thread>
 
-//!コンストラクタ
+//コンストラクタ
 GameScene::GameScene() :
 	mp_camera(nullptr),
 	mp_block(nullptr), 
@@ -24,7 +24,7 @@ GameScene::GameScene() :
 	m_cur_step = SceneStep::InitStep;
 }
 
-//!描画情報送信まとめ関数
+//描画情報送信まとめ関数
 void GameScene::Draw()
 {
 	//ロード画面描画
@@ -34,30 +34,30 @@ void GameScene::Draw()
 		return;
 	}
 
-	//!オブジェクト
+	//オブジェクト
 	ObjectDraw();
 
-	//!ゲームUI
+	//ゲームUI
 	mp_gmae_ui->Draw();
 
-	//!ポーズ中のみ
+	//ポーズ中のみ
 	if (m_is_pose == true)
 	{
 		mp_pose_ui->Draw();
 	}
 
-	//!エフェクト描画開始
+	//エフェクト描画開始
 	Effect::Instance()->StartEffect();
 
-	//!エフェクト描画
+	//エフェクト描画
 	Effect::Instance()->DrawEffect();
 
-	//!エフェクト描画終了
+	//エフェクト描画終了
 	Effect::Instance()->EndEffect();
 
 }
 
-//!初期化ステップ関数
+//初期化ステップ関数
 void GameScene::InitStep()
 {
 	//各読み込み関数をマルチ化
@@ -69,12 +69,12 @@ void GameScene::InitStep()
 		0,
 		&thread_id);
 
-	//!UIインスタンス化
+	//UIインスタンス化
 	if (mp_gmae_ui == nullptr) { mp_gmae_ui = new GameUI(); }
 	if (mp_load_ui == nullptr) { mp_load_ui = new LoadUI(); }
 	if (mp_pose_ui == nullptr) { mp_pose_ui = new PoseUI(); }
 
-	//!オブジェクトインスタンス化
+	//オブジェクトインスタンス化
 	if (mp_block == nullptr) { mp_block = new BlockController; }
 	if (mp_sky_dome == nullptr) { mp_sky_dome = new SkyDome; }
 	if (mp_sky_floor == nullptr) { mp_sky_floor = new SkyFloor; }
@@ -85,26 +85,26 @@ void GameScene::InitStep()
 	if (mp_player == nullptr) { mp_player = new Player(mp_camera, mp_block, mp_floor, mp_debuf, mp_goal); }
 	if (mp_player_direction == nullptr) { mp_player_direction = new PlayerDirection(mp_player,mp_camera, mp_gmae_ui); }
 
-	//!オブジェクト初期化
+	//オブジェクト初期化
 	ObjectInit();
 
-	//!UI初期化
+	//UI初期化
 	mp_gmae_ui->Init();
 	mp_load_ui->Init();
 	mp_pose_ui->Init();
 
-	//!エフェクト初期化
+	//エフェクト初期化
 	Effect::Instance()->InitEffect();
 
-	//!サウンド初期化
+	//サウンド初期化
 	SoundManager::Instance()->RegisterGameSound();
 	SoundManager::Instance()->SoundBGM(GameBGMVolume);
 
-	//!スレッドステップへ
+	//スレッドステップへ
 	m_cur_step = SceneStep::ThreadStep;
 }
 
-//!ロード画面更新ステップ関数
+//ロード画面更新ステップ関数
 void GameScene::UpdateThreadStep()
 {
 	//ロード画面演出用
@@ -117,7 +117,7 @@ void GameScene::UpdateThreadStep()
 	m_cur_step = SceneStep::MainStep;
 }
 
-//!更新ステップ関数
+//更新ステップ関数
 void GameScene::MainStep()
 {
 	PoseUI::HelpUIInfo pose_ui_infocopy;
@@ -126,33 +126,33 @@ void GameScene::MainStep()
 	GameUI::GameUIInfo game_ui_infocopy;
 	mp_gmae_ui->GetGameUIInfo(game_ui_infocopy);
 
-	//!ポーズ中出ない時
+	//ポーズ中出ない時
 	if (m_is_pose == false)
 	{
-		//!オブジェクトの更新
+		//オブジェクトの更新
 		ObjectUpdate();
 
-		//!UIの更新
+		//UIの更新
 		mp_gmae_ui->Update(mp_player, mp_camera);
 
-		//!エフェクト更新
+		//エフェクト更新
 		Effect::Instance()->UpdateEffect(mp_camera);
 	}
 	else
 	{
 		PoseUI::HelpUIInfo pose_ui_infocopy;
 
-		//!ポーズ中UI更新
+		//ポーズ中UI更新
 		mp_pose_ui->Update();
 
 		mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
-		//!ポーズ中、「つづける」が押された場合
+		//ポーズ中、「つづける」が押された場合
 		if (pose_ui_infocopy.m_continue == true)
 		{
 			m_is_pose = false;
 		}
-		//!ポーズ中、「おわる」が押された場合
+		//ポーズ中、「おわる」が押された場合
 		else if (pose_ui_infocopy.m_end == true)
 		{
 			PostQuitMessage(0);
@@ -161,10 +161,10 @@ void GameScene::MainStep()
 
 	
 
-	//!ポーズ画面切り替え
+	//ポーズ画面切り替え
 	if(Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 	{
-		//!ポーズ中、「つづける」が押された場合
+		//ポーズ中、「つづける」が押された場合
 		if (pose_ui_infocopy.m_help == false)
 		{
 			m_is_pose = (m_is_pose == true) ? false : true;
@@ -172,7 +172,7 @@ void GameScene::MainStep()
 		
 	}
 
-	//!ゴール、もしくはターン制限を超えた時
+	//ゴール、もしくはターン制限を超えた時
 	if (game_ui_infocopy.m_end_game == true)
 	{
 		m_cur_step = SceneStep::EndStep;
@@ -184,7 +184,7 @@ void GameScene::MainStep()
 	}
 }
 
-//!終了ステップ関数
+//終了ステップ関数
 void GameScene::EndStep()
 {
 	SoundManager::Instance()->ReleaseGameSound();
@@ -196,7 +196,7 @@ void GameScene::EndStep()
 	m_change_scene = true;
 }
 
-//!オブジェクト初期化関数
+//オブジェクト初期化関数
 void GameScene::ObjectInit()
 {
 	mp_camera->Init(SceneController::Instance()->GetStageID());
@@ -210,7 +210,7 @@ void GameScene::ObjectInit()
 	mp_player_direction->Init();
 }
 
-//!オブジェクト更新関数
+//オブジェクト更新関数
 void GameScene::ObjectUpdate()
 {
 	Player::PlayerInfo player_info;
@@ -221,7 +221,7 @@ void GameScene::ObjectUpdate()
 	mp_player_direction->Update();
 }
 
-//!オブジェクト描画情報送信関数
+//オブジェクト描画情報送信関数
 void GameScene::ObjectDraw()
 {
 	mp_block->Draw();
@@ -234,74 +234,74 @@ void GameScene::ObjectDraw()
 	mp_goal->Draw();
 }
 
-//!オブジェクト解放関数
+//オブジェクト解放関数
 void GameScene::ObjectDelete()
 {
-	//!カメラ
+	//カメラ
 	delete mp_camera;
 	mp_camera = nullptr;
 
-	//!ブロック
+	//ブロック
 	mp_block->ReleaseModel();
 	delete mp_block;
 	mp_block = nullptr;
 
-	//!プレイヤー
+	//プレイヤー
 	mp_player->ReleaseModel();
 	delete mp_player;
 	mp_player = nullptr;
 
-	//!プレイヤー矢印
+	//プレイヤー矢印
 	mp_player_direction->ReleaseModel();
 	delete mp_player_direction;
 	mp_player_direction = nullptr;
 
-	//!背景
+	//背景
 	mp_sky_dome->ReleaseModel();
 	delete mp_sky_dome;
 	mp_sky_dome = nullptr;
 
-	//!背景床
+	//背景床
 	mp_sky_floor->ReleaseModel();
 	delete mp_sky_floor;
 	mp_sky_floor = nullptr;
 
-	//!ステージ床
+	//ステージ床
 	mp_floor->ReleaseModel();
 	delete mp_floor;
 	mp_floor = nullptr;
 
-	//!デバフ床
+	//デバフ床
 	mp_debuf->ReleaseModel();
 	delete mp_debuf;
 	mp_debuf = nullptr;
 
-	//!ゴール床
+	//ゴール床
 	mp_goal->ReleaseModel();
 	delete mp_goal;
 	mp_goal = nullptr;
 }
 
-//!UI解放関数
+//UI解放関数
 void GameScene::UIDelete()
 {
-	//!ゲーム本編用UI
+	//ゲーム本編用UI
 	mp_gmae_ui->ReleaseTex();
 	delete mp_gmae_ui;
 	mp_gmae_ui = nullptr;
 
-	//!ロード画面用UI
+	//ロード画面用UI
 	mp_load_ui->ReleaseTex();
 	delete mp_load_ui;
 	mp_load_ui = nullptr;
 
-	//!ポーズ画面用UI
+	//ポーズ画面用UI
 	mp_pose_ui->ReleaseTex();
 	delete mp_pose_ui;
 	mp_pose_ui = nullptr;
 }
 
-//!インスタンス返還関数
+//インスタンス返還関数
 SceneBase* GameScene::InstanceGameScene()
 {
 	return static_cast<SceneBase*>(new GameScene);

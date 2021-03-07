@@ -19,18 +19,13 @@ public:
 	CSV() {}
 	~CSV() {}
 
-	CSV(const CSV&);
-	CSV& operator=(const CSV&) = delete;
-
-	CSV& operator=(const CSV&&) = delete;
-
 	static CSV* Instance();
 	/**
 	*	@brief<Get> 指定されたキーの中のパラメータ取得する関数
 	*	@param[in] key_ keyの名前を入れる
 	*	@return	キーの中の値を返す
 	*/
-	std::vector<std::string>* GetParam(std::string key_)
+	/*std::vector<std::string>* GetParam(std::string key_)
 	{
 		std::map<std::string, std::vector<std::string>>::iterator itr = character_param.find(key_);
 		if (itr == character_param.end())
@@ -39,17 +34,17 @@ public:
 		}
 
 		return &character_param[key_];
-	}
+	}*/
 
 	/**
-     *	@brief csv(txt)     ファイル読み込み関数
+     *	@brief ファイル読み込み関数
      *	@param[in] str_		string型の文字列を入れる
      *	@param[in] string_	vector型を返す(string型を格納して)
      */
 	std::vector<std::string>* LoadFile(std::string str_);
 
 	/**
-	*	@brief csv(txt) データ書き込み関数
+	*	@brief データ書き込み関数
 	*	@param[in] str_    string型の文字列を入れる
 	*	@param[in] string_ vector型を返す(string型を格納して)
 	*	※今はランキングしか考えていないので、上位3位までを書き込むようにしている
@@ -68,7 +63,7 @@ private:
 private:
 	static CSV* mp_instance;
 
-	std::vector<std::string> m_ranking_data;
+	std::vector<std::string> m_ranking_data; //!
 
 	std::map < std::string, std::vector<std::string> > character_param;
 

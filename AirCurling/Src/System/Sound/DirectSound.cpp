@@ -4,12 +4,7 @@
 #pragma comment(lib, "dsound.lib")
 #pragma comment(lib, "winmm.lib")
 
-//===============================================
-	//	オーディオリソース管理
-	//===============================================
-
-	//--------------------------------------------
-	 //　初回呼び出し用コンストラクタ
+//コンストラクタ
 DirectSound::DirectSound(HWND hwnd_) {
 
 
@@ -26,7 +21,7 @@ DirectSound::DirectSound(HWND hwnd_) {
 
 	m_DSound8->CreateSoundBuffer(&desc, &m_PrimaryBuffer, nullptr);
 }
-//-------------------------------------
+
 //　データ読み込み
 IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 
@@ -46,7 +41,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 	rif_chunk.fccType = mmioFOURCC('W', 'A', 'V', 'E');
 	result = mmioDescend(hmmio, &rif_chunk, NULL, MMIO_FINDRIFF);
 
-	//　リフチャンクの検索に失敗した場合
+	//リフチャンクの検索に失敗した場合
 	if (result != MMSYSERR_NOERROR) {
 		mmioClose(hmmio, 0);
 		return nullptr;
@@ -56,7 +51,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 	fmt_chunk.ckid = mmioFOURCC('f', 'm', 't', ' ');
 	result = mmioDescend(hmmio, &fmt_chunk, &rif_chunk, MMIO_FINDCHUNK);
 
-	// フォーマットチャンクの検索に失敗した場合
+	//フォーマットチャンクの検索に失敗した場合
 	if (result != MMSYSERR_NOERROR) {
 		mmioClose(hmmio, 0);
 		return nullptr;
@@ -82,7 +77,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 		return nullptr;
 	}
 
-	// 波形データ
+	//波形データ
 	DWORD data_size = data_chunk.cksize;
 	BYTE* wav_data = new BYTE[data_chunk.cksize];
 	if (mmioRead(hmmio, (HPSTR)wav_data, data_chunk.cksize) != data_chunk.cksize) {
@@ -101,7 +96,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 		DSBCAPS_CTRLPAN | DSBCAPS_CTRLFREQUENCY;
 	desc.dwBufferBytes = data_size;   //メモリサイズ
 	desc.dwReserved = 0;			  //予約域
-	desc.lpwfxFormat = &format;     //WAVEフォーマット
+	desc.lpwfxFormat = &format;       //WAVEフォーマット
 	desc.guid3DAlgorithm = GUID_NULL; //3Dエフェクトを使用しない
 
 	IDirectSoundBuffer* buf = 0;
@@ -112,7 +107,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 	buf->Release();
 
 
-	// WAVデータ書き込み
+	//WAVデータ書き込み
 	LPVOID write_data;
 	DWORD len;
 	m_SecBuffer->Lock(
@@ -137,7 +132,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 	return m_SecBuffer;
 }
 
-//-----------------------------------
+
 //　デストラクタ
 DirectSound::~DirectSound() {
 

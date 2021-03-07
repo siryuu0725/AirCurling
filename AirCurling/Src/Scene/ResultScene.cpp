@@ -3,71 +3,71 @@
 #include "SceneController.h"
 #include "../Score/GameScore.h"
 
-//!コンストラクタ
+//コンストラクタ
 ResultScene::ResultScene():
 	mp_ui(nullptr)
 {
 	m_cur_step = SceneStep::InitStep;	
 }
 
-//!描画情報送信まとめ関数
+//描画情報送信まとめ関数
 void ResultScene::Draw()
 {
 	mp_ui->Draw();
 }
 
-//! 初期化ステップ関数
+//初期化ステップ関数
 void ResultScene::InitStep()
 {
-	//!UIインスタンス化
+	//UIインスタンス化
 	if (mp_ui == nullptr) { mp_ui = new ResultUI(); }
 
-	//!UI初期化
+	//UI初期化
 	mp_ui->Init();
 
 	SoundManager::Instance()->RegisterResultSound();
 	SoundManager::Instance()->SoundBGM(ResultBGMVolume);
 
-	//!次のステップへ
+	//次のステップへ
 	m_cur_step = SceneStep::ThreadStep;
 }
 
-//!スレッド更新ステップ関数
+//スレッド更新ステップ関数
 void ResultScene::UpdateThreadStep()
 {
-	//!次のステップへ
+	//次のステップへ
 	m_cur_step = SceneStep::MainStep;
 }
 
-//!更新ステップ関数
+//更新ステップ関数
 void ResultScene::MainStep()
 {
 	if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 	{
-		//!次のステップへ
+		//次のステップへ
 		m_cur_step = SceneStep::EndStep;
 	}
 }
 
-//!終了ステップ関数
+//終了ステップ関数
 void ResultScene::EndStep()
 {
-	//!UI解放
+	//UI解放
 	mp_ui->ReleaseTex();
 	delete mp_ui;
 	mp_ui = nullptr;
 
-	//!スコア初期化
+	//スコア初期化
 	Score::Instance()->Reset();
 	
 	SoundManager::Instance()->ReleaseReselutSound();
 	SceneController::Instance()->SetSceneId(SceneId::Title);
 
-	//!シーン移行フラグtrue
+	//シーン移行フラグtrue
 	m_change_scene = true;
 }
 
-//!インスタンス返還関数
+//インスタンス返還関数
 SceneBase* ResultScene::InstanceResultScene()
 {
 	return static_cast<SceneBase*>(new ResultScene);
