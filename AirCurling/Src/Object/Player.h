@@ -58,7 +58,6 @@ public:
 			m_nor_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
-			m_mass(0.0f),
 			m_friction(0.0f),
 			m_timer(0),
 			m_reflect_counter(0),
@@ -82,7 +81,6 @@ public:
 		float m_change_radian; //!回転角度
 
 		/* 摩擦用 */
-		float m_mass;         //!質量
 		float m_friction;     //!動摩擦係数
 		float m_acceleration; //!加速度
 
@@ -303,10 +301,9 @@ private:
 		D3DXVECTOR3 m_scale;
 
 		float m_radius;     //!半径
-		float speed;        //!移動スピード
-		float m;            //!質量
-		float fa;           //!動摩擦係数
-		int score_counter;  //!加算するスコア数
+		float m_speed;        //!移動スピード
+		float m_friction;           //!動摩擦係数
+		int m_score_counter;  //!加算するスコア数
 
 	};
 

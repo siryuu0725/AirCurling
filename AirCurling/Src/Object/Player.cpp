@@ -25,12 +25,12 @@ void Player::Init(std::string stage_str_)
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //ワールド座標
 	
-	player_info.m_friction = m_player_externalinfo.fa;   //動摩擦係数
+	player_info.m_friction = m_player_externalinfo.m_friction;   //動摩擦係数
 	player_info.m_acceleration = -player_info.m_friction * Gravity; //加速度
 
 
 	player_info.m_radius = m_player_externalinfo.m_radius;    //半径
-	player_info.m_speed = m_player_externalinfo.speed;  //移動スピード
+	player_info.m_speed = m_player_externalinfo.m_speed;  //移動スピード
 
 	player_info.m_timer = 0;  //経過時間
 	player_info.m_trun_counter = 0;    //進行ターン数
@@ -38,7 +38,7 @@ void Player::Init(std::string stage_str_)
 	player_info.m_is_turnend = false;  //1ターン終了フラグ
 	player_info.m_is_goal = false;     //ゴールフラグ
 	player_info.m_end = false;         //ゲームエンドフラグ
-	player_info.m_score_counter = m_player_externalinfo.score_counter;
+	player_info.m_score_counter = m_player_externalinfo.m_score_counter;
 
 	player_info.m_is_movement = false;
 
@@ -138,7 +138,7 @@ void Player::Move()
 		////
 		//if (player_info.m_timer == 10)
 		//{
-		//	player_info.speed *= exp((-player_info.fa) * player_info.m_timer / player_info.m_m);//時間tにおける速度
+		//	player_info.m_speed *= exp((-player_info.m_friction) * player_info.m_timer / player_info.m_m);//時間tにおける速度
 		//	player_info.m_timer = 0;
 		//}
 
@@ -277,7 +277,7 @@ void Player::HitStop()
 	else
 	{
 		//摩擦係数を元に戻す
-		player_info.m_friction = m_player_externalinfo.fa;
+		player_info.m_friction = m_player_externalinfo.m_friction;
 		SoundManager::Instance()->ResetStopFlag();
 	}
 }
