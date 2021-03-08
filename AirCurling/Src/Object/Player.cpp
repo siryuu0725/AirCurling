@@ -112,13 +112,13 @@ void Player::Update()
 void Player::Move()
 {
 	Camera::CameraInfo camera_info;
+	mp_camera->GetCameraInfo(camera_info);
 
 	player_info.m_is_turnend = false;
 	
 	//プレイヤーが移動していない間
-	if (player_info.m_is_movement == false)
+	if (player_info.m_is_movement == false && camera_info.m_is_shotmode == true)
 	{
-		mp_camera->GetCameraInfo(camera_info);
 
 		//カメラが向いている方向に方向ベクトルを合わせる
 		player_info.m_nor_vec.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
