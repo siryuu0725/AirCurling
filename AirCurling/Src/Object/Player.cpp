@@ -25,7 +25,7 @@ void Player::Init(std::string stage_str_)
 
 	player_info.m_mat_world = Calculation::Matrix(player_info.m_pos, player_info.m_scale, player_info.m_angle);  //ワールド座標
 	
-	player_info.m_friction = m_player_externalinfo.fa;   //動摩擦係数
+	player_info.m_friction = m_player_externalinfo.m_friction;   //動摩擦係数
 	player_info.m_acceleration = -player_info.m_friction * Gravity; //加速度
 
 
@@ -138,7 +138,7 @@ void Player::Move()
 		////
 		//if (player_info.m_timer == 10)
 		//{
-		//	player_info.speed *= exp((-player_info.fa) * player_info.m_timer / player_info.m_m);//時間tにおける速度
+		//	player_info.speed *= exp((-player_info.m_friction) * player_info.m_timer / player_info.m_m);//時間tにおける速度
 		//	player_info.m_timer = 0;
 		//}
 
@@ -277,7 +277,7 @@ void Player::HitStop()
 	else
 	{
 		//摩擦係数を元に戻す
-		player_info.m_friction = m_player_externalinfo.fa;
+		player_info.m_friction = m_player_externalinfo.m_friction;
 		SoundManager::Instance()->ResetStopFlag();
 	}
 }

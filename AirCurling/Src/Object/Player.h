@@ -21,10 +21,10 @@ constexpr unsigned __int8 GameTrun = 9;       //!ゲームの制限ターン
 constexpr float FrameTime = 0.001f;           //!1フレームで加算する時間
 constexpr float StopSpeed = 0.01f;            //!0に近い数字(摩擦によるプレイヤーの移動停止用)
 constexpr unsigned __int8 ReflectMax = 5;     //!反射によるスコア減算の反射回数
-constexpr unsigned __int8 ReflectScore = -5;  //!反射によるスコア減算数
-constexpr unsigned __int8 RedGoalScore = -3;    //!赤色のゴール地点のスコア減算数
-constexpr unsigned __int8 YellowGoalScore = -2; //!黄色のゴール地点のスコア減算数
-constexpr unsigned __int8 GreenGoalScore = -1;  //!緑色のゴール地点のスコア減算数
+constexpr __int8 ReflectScore = -5;  //!反射によるスコア減算数
+constexpr __int8 RedGoalScore = -3;    //!赤色のゴール地点のスコア減算数
+constexpr __int8 YellowGoalScore = -2; //!黄色のゴール地点のスコア減算数
+constexpr __int8 GreenGoalScore = -1;  //!緑色のゴール地点のスコア減算数
 
 constexpr float StopFloorFriction = 1.0f;     //!スピード減衰床の上での摩擦係数
 constexpr float Gravity= 9.8f;                //!重力
@@ -58,7 +58,6 @@ public:
 			m_nor_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
 			m_change_radian(0.0f),
-			m_mass(0.0f),
 			m_friction(0.0f),
 			m_timer(0),
 			m_reflect_counter(0),
@@ -82,14 +81,13 @@ public:
 		float m_change_radian; //!回転角度
 
 		/* 摩擦用 */
-		float m_mass;         //!質量
 		float m_friction;     //!動摩擦係数
 		float m_acceleration; //!加速度
 
 		float m_timer;  //!経過時間
 
-		int m_reflect_counter; //!反射回数
-		int m_trun_counter;    //!進行ターン数
+		__int8 m_reflect_counter; //!反射回数
+		__int8 m_trun_counter;    //!進行ターン数
 		__int8 m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
@@ -304,10 +302,8 @@ private:
 
 		float m_radius;     //!半径
 		float speed;        //!移動スピード
-		float m;            //!質量
-		float fa;           //!動摩擦係数
+		float m_friction;   //!動摩擦係数
 		int score_counter;  //!加算するスコア数
-
 	};
 
 	PlayerExternalInfo m_player_externalinfo;
