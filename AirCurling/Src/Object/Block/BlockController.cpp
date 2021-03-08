@@ -163,12 +163,12 @@ void BlockController::SetCollisionInfo()
 	}
 }
 
-void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, __int8 id_)
+void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_)
 {
 	m_circleblocks[id_]->GetCircleBlockInfo(copy_info_);
 }
 
-void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, __int8 id_)
+void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_)
 {
 	m_rectblocks[id_]->GetRectBlockInfo(copy_info_);
 }
