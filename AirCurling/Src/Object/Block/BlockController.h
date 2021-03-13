@@ -60,12 +60,6 @@ public:
  　　*/
 	void SetCollisionInfo();
 
-	///**
-	// * @brief 各ブロック情報Getter関数
-	// * @return 各ブロック座標、サイズの情報を返す
-	// */
-	//const std::vector<Shape*>* GetRectShape()const { return &m_rect_shapes; }
-	//const std::vector<Shape*>* GetCircleShape()const { return &m_circleshapes; }
 
 	const std::vector<CircleBlock*>* GetCircleBlock()const { return &m_circleblocks; }
 
@@ -88,9 +82,6 @@ public:
 private:
 	std::vector<CircleBlock*> m_circleblocks;  //!円形ブロック
 	std::vector<RectBlock*> m_rectblocks;	   //!矩形ブロック
-
-	std::vector<Shape*> m_rect_shapes;   //!矩形情報保存用(当たり判定用)
-	std::vector<Shape*> m_circleshapes;	 //!円形情報保存用(当たり判定用)
 
 	int m_rectblock_num;    //!矩形ブロックデータ数
 	int m_circleblock_num;  //!円形ブロックデータ数

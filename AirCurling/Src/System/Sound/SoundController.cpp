@@ -1,16 +1,16 @@
 ﻿#include "SoundController.h"
 
-SoundManager* SoundManager::mp_instance = nullptr;
+SoundController* SoundController::mp_instance = nullptr;
 
-SoundManager* SoundManager::Instance()
+SoundController* SoundController::Instance()
 {
-	if (mp_instance == nullptr) { mp_instance = new SoundManager; }
+	if (mp_instance == nullptr) { mp_instance = new SoundController; }
 
 	return mp_instance;
 }
 
 //コンストラクタ
-SoundManager::SoundManager()
+SoundController::SoundController()
 {
 	m_is_select = false;
 
@@ -26,7 +26,7 @@ SoundManager::SoundManager()
 
 
 //タイトルシーン音源設定
-void SoundManager::RegisterTitleSound()
+void SoundController::RegisterTitleSound()
 {
 	m_bgm_file = "Res/wav/BGM/Title.wav";
 	m_select_file = "Res/wav/SE/Select.wav";
@@ -35,7 +35,7 @@ void SoundManager::RegisterTitleSound()
 }
 
 //ゲームシーン音源設定
-void SoundManager::RegisterGameSound()
+void SoundController::RegisterGameSound()
 {
 	m_bgm_file = "Res/wav/BGM/Game.wav";
 	m_shot_file = "Res/wav/SE/Shot.wav";
@@ -53,7 +53,7 @@ void SoundManager::RegisterGameSound()
 }
 
 //リザルト(エンド)シーン音源設定
-void SoundManager::RegisterResultSound()
+void SoundController::RegisterResultSound()
 {
 	m_bgm_file = "Res/wav/BGM/Result.wav";
 
@@ -61,13 +61,13 @@ void SoundManager::RegisterResultSound()
 }
 
 //BGM再生関数
-void SoundManager::SoundBGM(int volume_)
+void SoundController::SoundBGM(int volume_)
 {
 	mp_audio->Play(m_bgm, volume_, true);
 }
 
 //選択SE音再生関数
-void SoundManager::SoundSelectSE()
+void SoundController::SoundSelectSE()
 {
 	if (m_is_select == false)
 	{
@@ -77,7 +77,7 @@ void SoundManager::SoundSelectSE()
 }
 
 //SE音再生関数
-void SoundManager::PlaySoundSE(PlaySEType se_type_)
+void SoundController::PlaySoundSE(PlaySEType se_type_)
 {
 	switch (se_type_)
 	{
@@ -113,19 +113,19 @@ void SoundManager::PlaySoundSE(PlaySEType se_type_)
 }
 
 //選択SEリセット関数
-void SoundManager::ResetSelectFlag()
+void SoundController::ResetSelectFlag()
 {
 	m_is_select = false;
 }
 
 //ストップSEリセット関数
-void SoundManager::ResetStopFlag()
+void SoundController::ResetStopFlag()
 {
 	m_is_stop = false;
 }
 
 //タイトルシーンサウンド解放関数
-void SoundManager::ReleaseTitleSound()
+void SoundController::ReleaseTitleSound()
 {
 	mp_audio->Release(m_bgm);
 	mp_audio->Release(m_select_se);
@@ -133,13 +133,13 @@ void SoundManager::ReleaseTitleSound()
 }
 
 //ゲームシーンサウンド解放関数
-void SoundManager::ReleaseGameSound()
+void SoundController::ReleaseGameSound()
 {
 	mp_audio->Release(m_bgm);
 }
 
 //エンド(リザルト)シーンサウンド解放関数
-void SoundManager::ReleaseReselutSound()
+void SoundController::ReleaseReselutSound()
 {
 	mp_audio->Release(m_bgm);
 }

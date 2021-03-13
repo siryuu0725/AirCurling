@@ -5,7 +5,6 @@
 **/
 #ifndef COLLISION_H_
 #define COLLISION_H_
-#include "Shape.h"
 #include "../Vec.h"
 #include "../Calculation.h"
 

@@ -18,8 +18,6 @@ DirectSound::DirectSound(HWND hwnd_) {
 	desc.dwReserved = 0;
 	desc.lpwfxFormat = nullptr;
 	desc.guid3DAlgorithm = GUID_NULL;
-
-	m_DSound8->CreateSoundBuffer(&desc, &m_PrimaryBuffer, nullptr);
 }
 
 //　データ読み込み

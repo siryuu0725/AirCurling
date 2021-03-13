@@ -38,9 +38,6 @@ void DebufController::Init(std::string stage_str_)
 		 m_resetfloor_externalinfo[i].m_radius, "reset"));
 
 		m_resetfloors[i]->GetResetFloorInfo(debuf_floor_info);
-
-		//あたり判定用に追加
-		m_resetshapes.push_back(new CircleShape(debuf_floor_info.m_pos, debuf_floor_info.m_radius));
 	}
 
 	//スピード減衰床
@@ -54,9 +51,6 @@ void DebufController::Init(std::string stage_str_)
 		 m_stopfloor_externalinfo[i].m_width, m_stopfloor_externalinfo[i].m_height, "stop"));
 
 		m_stopfloors[i]->GetStopFloorInfo(debuf_floor_info);
-
-		//あたり判定用に追加
-		m_stopshapes.push_back(new RectShape(debuf_floor_info.m_pos, debuf_floor_info.m_width, debuf_floor_info.m_height, debuf_floor_info.m_angle.y));
 	}
 
 	SetCollisionInfo(); //当たり判定用情報Set

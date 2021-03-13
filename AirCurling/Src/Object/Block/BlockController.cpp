@@ -39,10 +39,6 @@ void BlockController::Init(std::string stage_str_)
 		 m_circleblock_externalinfo[i].m_radius, "circleblock"));
 
 		m_circleblocks[i]->GetCircleBlockInfo(block_info);
-
-
-		//あたり判定用に追加
-		m_circleshapes.push_back(new CircleShape(block_info.m_pos, block_info.m_radius));
 	}
 
 	//矩形ブロック
@@ -56,9 +52,6 @@ void BlockController::Init(std::string stage_str_)
 		 m_rectblock_externalinfo[i].m_width, m_rectblock_externalinfo[i].m_height ,"rectblock"));
 
 		m_rectblocks[i]->GetRectBlockInfo(block_info);
-
-		//あたり判定用に追加
-		m_rect_shapes.push_back(new RectShape(block_info.m_pos, block_info.m_width, block_info.m_height, block_info.m_angle.y));
 	}
 
 	SetCollisionInfo();

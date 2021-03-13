@@ -61,19 +61,9 @@ public:
 　　*/
 	void SetCollisionInfo();
 
-   /**
-	* @brief  各デバフ床情報Getter関数
-	* @return 各デバフ床の座標、サイズの情報を返す
-	*/
-	const std::vector<Shape*>* GetResetShape()const { return &m_resetshapes; }
-	const std::vector<Shape*>* GetStopShape()const { return &m_stopshapes; }
-
 private:
 	std::vector<ResetFloor*> m_resetfloors;  //!リセット床情報保存用
 	std::vector<StopFloor*> m_stopfloors;	 //!スピード減衰床情報保存用
-
-	std::vector<Shape*> m_resetshapes;  //!リセット床情報保存用
-	std::vector<Shape*> m_stopshapes;   //!スピード減衰床情報保存用
 
 	int m_resetfloor_num;  //!リセット床数
 	int m_stopfloor_num;   //!スピード減衰床数

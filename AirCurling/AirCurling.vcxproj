@@ -456,10 +456,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\Utility\Collision\Shape.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Src\Utility\Vec.h">
       <SubType>
       </SubType>

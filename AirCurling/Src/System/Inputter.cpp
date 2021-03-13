@@ -274,13 +274,7 @@ void Inputter::UpdateMouse()
 	Vec2 prev = m_mouse_pos;
 	POINT p;
 	GetCursorPos(&p);
-	//ScreenToClient(FindWindowA(TEXT("Window"), nullptr), &p);
-	/*float a=(float)GetSystemMetrics(SM_CXSCREEN);
-	float horizon = (float)GetSystemMetrics(SM_CXSCREEN) / 1920.f;
-	float vertical = (float)GetSystemMetrics(SM_CYSCREEN) / 1080.f;
-	p.x /= horizon;
-	p.y /= vertical;*/
-
+	
 	m_mouse_pos.X = (float)p.x;
 	m_mouse_pos.Y = (float)p.y;
 }

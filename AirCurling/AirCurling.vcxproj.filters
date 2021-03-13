@@ -207,9 +207,6 @@
     <ClInclude Include="Src\Utility\Collision\Collision.h">
       <Filter>Utility\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utility\Collision\Shape.h">
-      <Filter>Utility\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Utility\Calculation.h">
       <Filter>Utility</Filter>
     </ClInclude>

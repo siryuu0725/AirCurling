@@ -1,25 +1,25 @@
 ﻿/**
- * @file CSV.h
+ * @file RankingData.h
  * @brief ランキング保存用csvファイル管理
  * @details 中身：CSVファイル取り扱いクラス
 **/
-#ifndef CSV_H_
-#define CSV_H_
+#ifndef RANKINGDATA_H_
+#define RANKINGDATA_H_
 #include "../Utility/Calculation.h"
 #include <string>
 #include <vector>
 #include <map>
 
 /**
-* CSVファイル取り扱いクラス
+* ランキングデータクラス
 */
-class CSV 
+class RankingData 
 {
 public:
-	CSV() {}
-	~CSV() {}
+	RankingData() {}
+	~RankingData() {}
 
-	static CSV* Instance();
+	static RankingData* Instance();
 	/**
 	*	@brief<Get> 指定されたキーの中のパラメータ取得する関数
 	*	@param[in] key_ keyの名前を入れる
@@ -61,7 +61,7 @@ private:
 	std::vector<std::string> Split(std::string& str_, char delimiter_);
 
 private:
-	static CSV* mp_instance;
+	static RankingData* mp_instance;
 
 	std::vector<std::string> m_ranking_data; //!
 

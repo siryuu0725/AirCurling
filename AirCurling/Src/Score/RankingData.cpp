@@ -1,12 +1,11 @@
-﻿#include "CSV.h"
-
+﻿#include "RankingData.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <vector>
 
-//int CSV::CreateFile_()
+//int RankingData::CreateFile_()
 //{
 //	const char* fileName = "test.txt";
 //	std::ofstream ofs(fileName);
@@ -20,17 +19,17 @@
 //	std::cout << fileName << "に書き込みました。" << std::endl;
 //	std::cin.get();
 //}
-CSV* CSV::mp_instance = nullptr;
+RankingData* RankingData::mp_instance = nullptr;
 
-CSV* CSV::Instance()
+RankingData* RankingData::Instance()
 {
-	if (mp_instance == nullptr) { mp_instance = new CSV; }
+	if (mp_instance == nullptr) { mp_instance = new RankingData; }
 
 	return mp_instance;
 }
 
 //ファイル読み込み関数
-std::vector<std::string>* CSV::LoadFile(std::string str_)
+std::vector<std::string>* RankingData::LoadFile(std::string str_)
 {
 	std::ifstream ifs(str_.c_str(), std::ios_base::in);
 
@@ -50,7 +49,7 @@ std::vector<std::string>* CSV::LoadFile(std::string str_)
 }
 
 //データ書き込み関数
-void CSV::WriteData(std::string str_, std::vector<__int16> strvec_)
+void RankingData::WriteData(std::string str_, std::vector<__int16> strvec_)
 {
 	std::ofstream ofs(str_, std::ios_base::out);
 
@@ -75,7 +74,7 @@ void CSV::WriteData(std::string str_, std::vector<__int16> strvec_)
 }
 
 //コンマ区切りで文字列を分割する関数
-std::vector<std::string> CSV::Split(std::string& input_, char delimiter_)
+std::vector<std::string> RankingData::Split(std::string& input_, char delimiter_)
 {
 	std::istringstream stream(input_);
 	std::string field;

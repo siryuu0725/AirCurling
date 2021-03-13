@@ -28,7 +28,7 @@ public:
 	* @param[in] score_ 加算するスコア数
 　　* @details 初回のみインスタンス化し、それ以外は実態を呼ぶ
 　　*/
-	void AddGameScore(__int16 score_);
+	void Add(__int16 score_);
 
 	/**
 　　* @brief  スコア初期化関数
@@ -39,7 +39,7 @@ public:
 	/**
 　　* @brief  スコアGetter関数
 　　*/
-	const __int16 GetNowScore()const { return m_score; }
+	const __int16 GetScore()const { return m_score; }
 
 private:
 	static Score* mp_instance;

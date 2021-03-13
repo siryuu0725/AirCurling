@@ -1,48 +1,5 @@
 ﻿#include "Collision.h"
-
-
 #include <math.h>
-
-//!矩形の上下と円の当たり判定
-//bool Collision::RectTopToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_,float rad_)
-//{
-//	D3DXVECTOR3 rote_pos;  //!矩形の回転角度分円をずらした時の座標
-//
-//	//!衝突時、対象の回転角度分座標をずらす
-//	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
-//
-//	//!矩形の回転前の座標で判定を行う
-//	if (rote_pos.x > r_pos.x - (width_ / 2) &&
-//		rote_pos.x < r_pos.x + (width_ / 2) &&
-//		rote_pos.z + radius_ > r_pos.z - (height_ / 2) &&
-//		rote_pos.z - radius_ < r_pos.z + (height_ / 2))
-//	{
-//		return true;
-//	}
-//
-//	return false;
-//}
-
-//!矩形の左右と円の当たり判定
-//bool Collision::RectLeftToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_)
-//{
-//	D3DXVECTOR3 rote_pos; //!矩形の回転角度分円をずらした時の座標
-//
-//	//!衝突時、対象の回転角度分座標をずらす
-//	rote_pos = Calculation::Rote(c_pos, r_pos, rad_);
-//
-//	//!矩形の回転前の座標で判定を行う
-//	if (rote_pos.x + radius_ > r_pos.x - (width_ / 2) &&
-//		rote_pos.x - radius_ < r_pos.x + (width_ / 2) &&
-//		rote_pos.z > r_pos.z - (height_ / 2) &&
-//		rote_pos.z < r_pos.z + (height_ / 2))
-//	{
-//		return true;
-//
-//	}
-//
-//	return false;
-//}
 
 //矩形の頂点と円の当たり判定
 bool Collision::RectToCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos_, float width_, float height_, float radius_, float rad_)
