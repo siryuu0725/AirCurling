@@ -10,8 +10,8 @@ void TitleScene::InitStep()
 	mp_ui->Init(); //UI初期化
 
 	//サウンド初期化
-	SoundManager::Instance()->RegisterTitleSound();
-	SoundManager::Instance()->SoundBGM(TitleBGMVolume);
+	SoundController::Instance()->RegisterTitleSound();
+	SoundController::Instance()->SoundBGM(TitleBGMVolume);
 
 	m_cur_step = SceneStep::MainStep;
 }
@@ -56,7 +56,7 @@ void TitleScene::EndStep()
 	mp_ui->ReleaseTex();
 
 	//サウンド解放
-	SoundManager::Instance()->ReleaseTitleSound();
+	SoundController::Instance()->ReleaseTitleSound();
 
 	//マウスを画面中心に
 	SetCursorPos(960, 540);

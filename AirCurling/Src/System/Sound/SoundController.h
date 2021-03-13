@@ -28,14 +28,14 @@ enum class PlaySEType
 * サウンド管理クラス
 */
 
-class SoundManager
+class SoundController
 {
 private:
-	SoundManager();
-	~SoundManager() {}
+	SoundController();
+	~SoundController() {}
 
 public:
-	static SoundManager* Instance();
+	static SoundController* Instance();
 
 	/**
 	*	@brief タイトルシーン音源設定
@@ -106,7 +106,7 @@ public:
 	void ReleaseReselutSound();
 
 private:
-	static SoundManager* mp_instance;
+	static SoundController* mp_instance;
 
 
 	// 使用する際の変数名(音ごとに必要)

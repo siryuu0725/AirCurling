@@ -63,7 +63,7 @@ void PoseUI::SelectUI()
 	m_poseui_info.m_end = false;
 
 	//文字「つづける」にマウスが当たっているとき
-	if (Collision::RectToPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	if (Collision::RectAndPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_poseui_info.m_ui_tex[(int)HelpUICategory::Continue].Width, m_poseui_info.m_ui_tex[(int)HelpUICategory::Continue].Height) == true)
 	{
 		//選択中テクスチャを「つづける」に合わせる
@@ -77,7 +77,7 @@ void PoseUI::SelectUI()
 		}
 	}
 	//文字「おわる」にマウスが当たっているとき
-	else if (Collision::RectToPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::End], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	else if (Collision::RectAndPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::End], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_poseui_info.m_ui_tex[(int)HelpUICategory::End].Width, m_poseui_info.m_ui_tex[(int)HelpUICategory::End].Height) == true)
 	{
 		//選択中テクスチャを「おわる」に合わせる
@@ -93,7 +93,7 @@ void PoseUI::SelectUI()
 		}
 	}
 	//文字「へるぷ」にマウスが当たっているとき
-	else if (Collision::RectToPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::Help], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	else if (Collision::RectAndPoint(m_poseui_info.m_ui_pos[(int)HelpUICategory::Help], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_poseui_info.m_ui_tex[(int)HelpUICategory::Help].Width, m_poseui_info.m_ui_tex[(int)HelpUICategory::Help].Height) == true)
 	{
 		//選択中テクスチャを「へるぷ」に合わせる

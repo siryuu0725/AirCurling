@@ -17,7 +17,7 @@ Score* Score::Instance()
 }
 
 //スコア加算関数
-void Score::AddGameScore(__int16 score_)
+void Score::Add(__int16 score_)
 {
 	//スコア加算
 	m_score += score_;

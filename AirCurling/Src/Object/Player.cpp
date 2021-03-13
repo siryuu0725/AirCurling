@@ -182,7 +182,7 @@ void Player::HitController()
 	//反射が5回以上の行われるたびにスコアを減らす
 	if (player_info.m_reflect_counter >= ReflectMax)
 	{
-		Score::Instance()->AddGameScore(ReflectScore);
+		Score::Instance()->Add(ReflectScore);
 		player_info.m_reflect_counter = 0;
 	}
 }
@@ -218,7 +218,7 @@ void Player::HitRectBlock()
 		}
 		
 		//サウンド再生
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reflect);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Reflect);
 		//反射回数加算
 		player_info.m_reflect_counter++;
 	}
@@ -241,7 +241,7 @@ void Player::HitCircleBlock()
 		//反射
 		player_info.m_nor_vec = ReflectionCircle(circle_block.m_pos);
 		//サウンド再生
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reflect);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Reflect);
 		//反射回数加算
 		player_info.m_reflect_counter++;
 	}
@@ -262,7 +262,7 @@ void Player::HitReset()
 		player_info.m_setspeed = 0.0f;
 
 		//サウンド再生
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reset);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Reset);
 	}
 }
 
@@ -273,13 +273,13 @@ void Player::HitStop()
 	{
 		//摩擦係数を増やす
 		player_info.m_friction = StopFloorFriction;
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Stop);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Stop);
 	}
 	else
 	{
 		//摩擦係数を元に戻す
 		player_info.m_friction = m_player_externalinfo.m_friction;
-		SoundManager::Instance()->ResetStopFlag();
+		SoundController::Instance()->ResetStopFlag();
 	}
 }
 
@@ -290,7 +290,7 @@ void Player::HitGoal()
 	if (player_info.m_is_turnend == true)
 	{
 		//!スコアを更新
-		Score::Instance()->AddGameScore(player_info.m_score_counter);
+		Score::Instance()->Add(player_info.m_score_counter);
 
 		Goal::ObjectInfo m_goal_infocopy;
 
@@ -300,7 +300,7 @@ void Player::HitGoal()
 		{
 			//エフェクト再生
 			StartGoalEffect();
-			SoundManager::Instance()->PlaySoundSE(PlaySEType::Goal);
+			SoundController::Instance()->PlaySoundSE(PlaySEType::Goal);
 
 			//ゴール時のスコア加算に変更
 			switch ((GoalType)ObjectCollision::Instance()->GetGoalType())
@@ -319,7 +319,7 @@ void Player::HitGoal()
 			}
 			
 			//スコアを更新
-			Score::Instance()->AddGameScore(player_info.m_score_counter);
+			Score::Instance()->Add(player_info.m_score_counter);
 			player_info.m_is_goal = true;
 
 			//更新ステップを終了演出へ
@@ -504,7 +504,7 @@ void Player::ResetPos()
 		player_info.m_setspeed = 0.0f;
 
 		StartFallEffect();
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Reset);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Reset);
 	}
 }
 

@@ -31,7 +31,6 @@ public:
 private:
 
 	IDirectSound8* m_DSound8;			 //!サウンドインターフェース
-	IDirectSoundBuffer* m_PrimaryBuffer; //!プライマリーバッファ―
 	IDirectSoundBuffer8* m_SecBuffer;
 };
 

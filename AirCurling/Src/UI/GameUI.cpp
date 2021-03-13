@@ -189,7 +189,7 @@ void GameUI::StopGauge(Player* player_)
 		player_->SetAddSpeed(m_gameui_info.m_add_speed);
 		player_->SetIsMovePlayer(true);
 		//サウンド再生
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Shot);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Shot);
 	}
 
 	//バーがゲージの最大値or最小値に達した時
@@ -235,16 +235,16 @@ void GameUI::AddScore()
 	if (m_player_infocopy.m_is_turnend == true)
 	{
 		//スコアの1の位を算出
-		m_gameui_info.m_one_score = Score::Instance()->GetNowScore() % 10;
+		m_gameui_info.m_one_score = Score::Instance()->GetScore() % 10;
 		//スコアの10の位を算出
-		m_gameui_info.m_ten_score = Score::Instance()->GetNowScore() / 10;
+		m_gameui_info.m_ten_score = Score::Instance()->GetScore() / 10;
 
 		//スコア数分テクスチャのTU値設定
 		m_gameui_info.m_ui_tu[(int)GameUICategory::One_Score] = TrunTexUVAddValue * m_gameui_info.m_one_score;
 		m_gameui_info.m_ui_tu[(int)GameUICategory::Ten_Score] = TrunTexUVAddValue * m_gameui_info.m_ten_score;
 
 		//現在のスコアに加算
-		m_gameui_info.m_now_score += Score::Instance()->GetNowScore();
+		m_gameui_info.m_now_score += Score::Instance()->GetScore();
 	}
 
 	//文字列にスコアをコピー

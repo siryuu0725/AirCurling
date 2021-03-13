@@ -25,8 +25,8 @@ void ResultScene::InitStep()
 	//UI初期化
 	mp_ui->Init();
 
-	SoundManager::Instance()->RegisterResultSound();
-	SoundManager::Instance()->SoundBGM(ResultBGMVolume);
+	SoundController::Instance()->RegisterResultSound();
+	SoundController::Instance()->SoundBGM(ResultBGMVolume);
 
 	//次のステップへ
 	m_cur_step = SceneStep::ThreadStep;
@@ -60,7 +60,7 @@ void ResultScene::EndStep()
 	//スコア初期化
 	Score::Instance()->Reset();
 	
-	SoundManager::Instance()->ReleaseReselutSound();
+	SoundController::Instance()->ReleaseReselutSound();
 	SceneController::Instance()->SetSceneId(SceneId::Title);
 
 	//シーン移行フラグtrue

@@ -2,7 +2,7 @@
 #include <math.h>
 
 //矩形の頂点と円の当たり判定
-bool Collision::RectToCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos_, float width_, float height_, float radius_, float rad_)
+bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos_, float width_, float height_, float radius_, float rad_)
 {
 	D3DXVECTOR3 rote_pos; //矩形の回転角度分円をずらした時の座標
 	D3DXVECTOR3 ver_pos;  //衝突時の頂点座標保存用
@@ -71,7 +71,7 @@ bool Collision::RectToCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos
 }
 
 //円と円の当たり判定
-bool Collision::CircleToCircle(D3DXVECTOR3 c1_pos_, D3DXVECTOR3 c2_pos_, float radius1_, float radius2_)
+bool Collision::CircleAndCircle(D3DXVECTOR3 c1_pos_, D3DXVECTOR3 c2_pos_, float radius1_, float radius2_)
 {
 	float length;        //対象の円との距離
 	float value_radius;  //対象との半径の合計
@@ -96,7 +96,7 @@ bool Collision::CircleToCircle(D3DXVECTOR3 c1_pos_, D3DXVECTOR3 c2_pos_, float r
 }
 
 //矩形と点の当たり判定
-bool Collision::RectToPoint(D3DXVECTOR2 r_pos_, D3DXVECTOR2 p_pos_, float width_, float height_)
+bool Collision::RectAndPoint(D3DXVECTOR2 r_pos_, D3DXVECTOR2 p_pos_, float width_, float height_)
 {
 	if (p_pos_.x >= r_pos_.x
 	 && p_pos_.x <= r_pos_.x + width_

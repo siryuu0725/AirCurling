@@ -17,7 +17,7 @@ void ResultUI::Init()
 	char a[10];
 
 	//ゲームスコア取得
-	sprintf_s(a, "%d", Score::Instance()->GetNowScore());
+	sprintf_s(a, "%d", Score::Instance()->GetScore());
 	m_ranking.score_table.push_back(a);
 
 	//整数型に変換

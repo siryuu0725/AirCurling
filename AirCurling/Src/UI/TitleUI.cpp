@@ -123,7 +123,7 @@ void TitleUI::Update()
 void TitleUI::Select()
 {
 	//文字「はじめる」との当たり判定
-	if (Collision::RectToPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::Start],
+	if (Collision::RectAndPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::Start],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_titleui_info.m_ui_tex[(int)TitleUICategory::Start].Width, m_titleui_info.m_ui_tex[(int)TitleUICategory::Start].Height) == true)
 	{
@@ -131,7 +131,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 400.0f;
 
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -141,7 +141,7 @@ void TitleUI::Select()
 		}
 	}
 	//文字「おわる」との当たり判定
-	else if (Collision::RectToPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::End],
+	else if (Collision::RectAndPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::End],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_titleui_info.m_ui_tex[(int)TitleUICategory::End].Width, m_titleui_info.m_ui_tex[(int)TitleUICategory::End].Height) == true)
 	{
@@ -149,7 +149,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 600.0f;
 
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -159,7 +159,7 @@ void TitleUI::Select()
 		}
 	}
 	//文字「ヘルプ」との当たり判定
-	else if (Collision::RectToPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::Help],
+	else if (Collision::RectAndPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::Help],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_titleui_info.m_ui_tex[(int)TitleUICategory::Help].Width, m_titleui_info.m_ui_tex[(int)TitleUICategory::Help].Height) == true)
 	{
@@ -167,7 +167,7 @@ void TitleUI::Select()
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].x = 210.0f;
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = 800.0f;
 
-		SoundManager::Instance()->PlaySoundSE(PlaySEType::Selsect);
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -181,7 +181,7 @@ void TitleUI::Select()
 		//選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelect].y = -300.0f;
 
-		SoundManager::Instance()->ResetSelectFlag();
+		SoundController::Instance()->ResetSelectFlag();
 	}
 }
 
@@ -190,13 +190,13 @@ void TitleUI::Select()
 void TitleUI::SelectStage()
 {
 	//文字「1」との当たり判定
-	if (Collision::RectToPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage1], 
+	if (Collision::RectAndPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage1], 
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_titleui_info.m_ui_tex[(int)TitleUICategory::SelectStage1].Width, m_titleui_info.m_ui_tex[(int)TitleUICategory::SelectStage1].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage1];
-		SoundManager::Instance()->SoundSelectSE();
+		SoundController::Instance()->SoundSelectSE();
 
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -206,13 +206,13 @@ void TitleUI::SelectStage()
 		}
 	}
 	//文字「2」との当たり判定
-	else if (Collision::RectToPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage2], 
+	else if (Collision::RectAndPoint(m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage2], 
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
 		m_titleui_info.m_ui_tex[(int)TitleUICategory::SelectStage2].Width, m_titleui_info.m_ui_tex[(int)TitleUICategory::SelectStage2].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
 		m_titleui_info.m_ui_pos[(int)TitleUICategory::NowSelectStage] = m_titleui_info.m_ui_pos[(int)TitleUICategory::SelectStage2];
-		SoundManager::Instance()->SoundSelectSE();
+		SoundController::Instance()->SoundSelectSE();
 
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))

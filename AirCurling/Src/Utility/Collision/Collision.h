@@ -63,7 +63,7 @@ public:
 	 * @param[in] radius_ 円の半径
 	 * @param[in] rad_ 矩形の回転角度
 　   */
-	static bool RectToCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
+	static bool RectAndCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
 
 #pragma endregion
 
@@ -74,7 +74,7 @@ public:
 	 * @param[in] radius1_ 円1の半径
 	 * @param[in] radius2_ 円2の半径
 　   */
-	static bool CircleToCircle(D3DXVECTOR3 c1_pos, D3DXVECTOR3 c2_pos, float radius1_, float radius2_);
+	static bool CircleAndCircle(D3DXVECTOR3 c1_pos, D3DXVECTOR3 c2_pos, float radius1_, float radius2_);
 
 	/**
 　   * @brief  矩形と点の当たり判定
@@ -84,7 +84,7 @@ public:
 	 * @param[in] height_ 矩形の縦幅
 	 * @details タイトルのUIの当たり判定で使う
 　   */
-	static bool RectToPoint(D3DXVECTOR2 r_pos, D3DXVECTOR2 p_pos, float width_, float height_);
+	static bool RectAndPoint(D3DXVECTOR2 r_pos, D3DXVECTOR2 p_pos, float width_, float height_);
 
 };
 

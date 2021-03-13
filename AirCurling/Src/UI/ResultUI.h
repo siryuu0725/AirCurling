@@ -47,7 +47,7 @@ public:
 	void ReleaseTex();
 
 private:
-	CSV* csv;
+	RankingData* csv;
 
 	//!スコアランキング情報
 	struct  Ranking

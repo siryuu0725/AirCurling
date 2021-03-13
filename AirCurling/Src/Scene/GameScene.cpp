@@ -97,8 +97,8 @@ void GameScene::InitStep()
 	Effect::Instance()->InitEffect();
 
 	//サウンド初期化
-	SoundManager::Instance()->RegisterGameSound();
-	SoundManager::Instance()->SoundBGM(GameBGMVolume);
+	SoundController::Instance()->RegisterGameSound();
+	SoundController::Instance()->SoundBGM(GameBGMVolume);
 
 	//スレッドステップへ
 	m_cur_step = SceneStep::ThreadStep;
@@ -189,7 +189,7 @@ void GameScene::MainStep()
 //終了ステップ関数
 void GameScene::EndStep()
 {
-	SoundManager::Instance()->ReleaseGameSound();
+	SoundController::Instance()->ReleaseGameSound();
 
 	ObjectDelete();
 
