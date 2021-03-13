@@ -50,6 +50,32 @@ public:
 
 	ObjectBase() {}
 	~ObjectBase() {}
+
+	/**
+     * @brief  初期化関数
+     * @param[in] stage_str_ 選択ステージ名(例"Stage1")
+     * @details オブジェクト情報初期化
+     */
+	virtual void Init(std::string stage_str_) {}
+
+	/**
+	 * @brief  外部データ読み込み関数
+	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
+	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
+	 */
+	virtual void LoadExternalInfo(std::string stage_str_) {}
+
+
+	/**
+	 * @brief   描画情報送信関数
+	 * @details  Fbx管理クラスにオブジェクト情報を送る
+	 */
+	virtual void Draw() {}
+
+	/**
+	 * @brief   FBXモデル解放関数
+	 */
+	virtual void ReleaseModel() {}
 };
 
 #endif

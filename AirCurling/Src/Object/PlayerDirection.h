@@ -41,12 +41,12 @@ public:
 	 * @brief   描画情報送信関数
 	 * @details  Fbx管理クラスにオブジェクト情報を送る
 	 */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 	/**
 	 * @brief   矢印回転関数

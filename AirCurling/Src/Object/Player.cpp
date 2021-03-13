@@ -16,7 +16,7 @@ Player::Player(Camera* camera_, BlockController* block_,
 void Player::Init(std::string stage_str_)
 {
 	//外部データ読み込み
-	LoadPlayerExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	player_info.m_key = "pac";  //描画用キー
 
@@ -51,7 +51,7 @@ void Player::SetOtherObjeInfo()
 }
 
 //外部データ読み込み関数
-void Player::LoadPlayerExternalInfo(std::string stage_str_)
+void Player::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

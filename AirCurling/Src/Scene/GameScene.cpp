@@ -201,14 +201,19 @@ void GameScene::EndStep()
 //オブジェクト初期化関数
 void GameScene::ObjectInit()
 {
-	mp_camera->Init(SceneController::Instance()->GetStageID());
-	mp_block->Init(SceneController::Instance()->GetStageID());
-	mp_player->Init(SceneController::Instance()->GetStageID());
-	mp_sky_dome->Init(SceneController::Instance()->GetStageID());
-	mp_sky_floor->Init(SceneController::Instance()->GetStageID());
-	mp_floor->Init(SceneController::Instance()->GetStageID());
-	mp_debuf->Init(SceneController::Instance()->GetStageID());
-	mp_goal->Init(SceneController::Instance()->GetStageID());
+	//選択ステージ保存
+	std::string stage_str = SceneController::Instance()->GetStageID();
+
+	//各オブジェクトを配列でまとめる
+	ObjectBase* obj[StageObjectNum] =
+	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal };
+
+	for (int i = 0; i < StageObjectNum; i++)
+	{
+		obj[i]->Init(stage_str);
+	}
+
+	//プレイヤー方向オブジェクトだけステージIDが変わっても初期化の処理が変わらないため別
 	mp_player_direction->Init();
 }
 
@@ -226,14 +231,14 @@ void GameScene::ObjectUpdate()
 //オブジェクト描画情報送信関数
 void GameScene::ObjectDraw()
 {
-	mp_block->Draw();
-	mp_player->Draw();
-	mp_player_direction->Draw();
-	mp_sky_dome->Draw();
-	mp_sky_floor->Draw();
-	mp_floor->Draw();
-	mp_debuf->Draw();
-	mp_goal->Draw();
+	//各オブジェクトを配列でまとめる
+	ObjectBase* obj[StageObjectNum] =
+	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal };
+
+	for (int i = 0; i < StageObjectNum; i++)
+	{
+		obj[i]->Draw();
+	}
 }
 
 //オブジェクト解放関数

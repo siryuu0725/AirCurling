@@ -17,7 +17,7 @@ constexpr unsigned __int8 StopFloorMaxNum = 5;  //!スピード減衰床
 /**
 * デバフ床管理クラス
 */
-class DebufController
+class DebufController :public ObjectBase
 {
 public:
 	DebufController() {}
@@ -29,7 +29,7 @@ public:
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
-	void Init(std::string stage_str_);
+	virtual void Init(std::string stage_str_)override;
 
 	/**
 	 * @brief  外部データ読み込み関数(リセット床)
@@ -48,12 +48,12 @@ public:
 	/**
 	 * @brief  描画情報送信関数
 	 */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 	/**
 　　* @brief 当たり判定用情報Set関数

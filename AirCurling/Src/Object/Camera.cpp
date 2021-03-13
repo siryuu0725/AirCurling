@@ -7,7 +7,7 @@
 void Camera::Init(std::string stage_str_)
 {
 	//外部データ読み込み
-	LoadCameraExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	m_camerainfo.m_pos = m_camera_externalinfo.m_pos;   //座標
 
@@ -29,7 +29,7 @@ void Camera::Init(std::string stage_str_)
 }
 
 //外部データ読み込み関数
-void Camera::LoadCameraExternalInfo(std::string stage_str_)
+void Camera::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

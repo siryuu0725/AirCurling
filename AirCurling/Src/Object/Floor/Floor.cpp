@@ -4,7 +4,7 @@
 void Floor::Init(std::string stage_str_)
 {
 	//外部データ読み込み
-	LoadFloorExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	m_floor_info.m_key = "stage"; //描画用キー
 
@@ -19,7 +19,7 @@ void Floor::Init(std::string stage_str_)
 }
 
 //外部データ読み込み関数
-void Floor::LoadFloorExternalInfo(std::string stage_str_)
+void Floor::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

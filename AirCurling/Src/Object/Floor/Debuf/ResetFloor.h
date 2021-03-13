@@ -29,12 +29,12 @@ public:
 	/**
      * @brief  描画情報送信関数
      */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 	/**
 　　* @brief  オブジェクト情報Getter

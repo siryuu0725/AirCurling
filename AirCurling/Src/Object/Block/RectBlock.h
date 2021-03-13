@@ -29,12 +29,12 @@ public:
 	/**
 	 * @brief  描画情報送信関数
 	 */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 private:
 	//!矩形型ブロック情報(頂点情報)

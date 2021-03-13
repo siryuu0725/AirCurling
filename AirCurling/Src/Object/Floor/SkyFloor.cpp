@@ -4,7 +4,7 @@
 void SkyFloor::Init(std::string stage_str_)
 {
 	//外部データ読み込み
-	LoadSkyFloorExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	m_skyfloor_info.m_key = "skyfloor";//!描画用キー
 
@@ -16,7 +16,7 @@ void SkyFloor::Init(std::string stage_str_)
 }
 
 //外部データ読み込み関数
-void SkyFloor::LoadSkyFloorExternalInfo(std::string stage_str_)
+void SkyFloor::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

@@ -69,14 +69,14 @@ public:
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
-	void Init(std::string stage_str_);
+	virtual void Init(std::string stage_str_)override;
 
 	/**
 	 * @brief  外部データ読み込み関数
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
-	void LoadCameraExternalInfo(std::string stage_str_);
+	virtual void LoadExternalInfo(std::string stage_str_)override;
 
 	/**
      * @brief  視錐台作成関数

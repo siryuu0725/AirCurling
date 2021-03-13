@@ -123,7 +123,7 @@ public:
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details オブジェクト情報初期化
 	 */
-	void Init(std::string stage_str_);
+	virtual void Init(std::string stage_str_)override;
 
 	/**
 	 * @brief  他オブジェクト情報取得関数
@@ -136,7 +136,7 @@ public:
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
-	void LoadPlayerExternalInfo(std::string stage_str_);
+	virtual void LoadExternalInfo(std::string stage_str_)override;
 
 	/**
 	 * @brief  更新関数
@@ -148,12 +148,12 @@ public:
 	 * @brief   描画情報送信関数
 	 * @details  Fbx管理クラスにオブジェクト情報を送る
 	 */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 	/**
  　　* @brief  開始演出関数

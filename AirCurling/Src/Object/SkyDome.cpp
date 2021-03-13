@@ -4,7 +4,7 @@
 void SkyDome::Init(std::string stage_str_)
 {
 	//!外部データ読み込み
-	LoadSkyDomeExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	m_skydome_info.m_key = "skydome";  //!描画用キー
 
@@ -16,7 +16,7 @@ void SkyDome::Init(std::string stage_str_)
 }
 
 //!外部データ読み込み関数
-void SkyDome::LoadSkyDomeExternalInfo(std::string stage_str_)
+void SkyDome::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

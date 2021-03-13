@@ -6,7 +6,7 @@
 void Goal::Init(std::string stage_str_)
 {
 	//外部データ読み込み
-	LoadGoalExternalInfo(stage_str_);
+	LoadExternalInfo(stage_str_);
 
 	m_goal_info.m_key = "goal";  //描画用キー
 
@@ -20,7 +20,7 @@ void Goal::Init(std::string stage_str_)
 }
 
 //外部データ読み込み関数
-void Goal::LoadGoalExternalInfo(std::string stage_str_)
+void Goal::LoadExternalInfo(std::string stage_str_)
 {
 	FILE* fp = nullptr;
 

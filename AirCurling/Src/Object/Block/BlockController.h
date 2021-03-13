@@ -16,7 +16,7 @@ constexpr unsigned __int8 CircleBlockMaxNum = 20;
 /**
  * ブロック管理クラス
  */
-class BlockController
+class BlockController :public ObjectBase
 {
 public:
 	BlockController() {}
@@ -27,7 +27,7 @@ public:
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
 	 * @details 各ブロックのメンバ変数初期化
 	 */
-	void Init(std::string stage_str_);
+	virtual void Init(std::string stage_str_)override;
 
 	/**
 	 * @brief  外部データ読み込み関数(矩形ブロック)
@@ -47,12 +47,12 @@ public:
 	/**
      * @brief  描画情報送信関数
      */
-	void Draw();
+	virtual void Draw()override;
 
 	/**
 	 * @brief   FBXモデル解放関数
 	 */
-	void ReleaseModel();
+	virtual void ReleaseModel()override;
 
 	/**
  　　* @brief 当たり判定用情報Set関数
