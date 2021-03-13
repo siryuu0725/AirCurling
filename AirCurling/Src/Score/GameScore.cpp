@@ -19,14 +19,18 @@ Score* Score::Instance()
 //スコア加算関数
 void Score::AddGameScore(__int16 score_)
 {
+	//スコア加算
 	m_score += score_;
 
+	//スコアが最低値以下の場合
 	if (m_score < ScoreMinValue)
 	{
+		//最低値に設定
 		m_score = ScoreMinValue;
 	}
 }
 
+//スコア初期化関数
 void Score::Reset()
 {
 	m_score = ScoreMinValue;

@@ -120,9 +120,11 @@ void GameScene::UpdateThreadStep()
 //更新ステップ関数
 void GameScene::MainStep()
 {
+	//ポーズ中UIの情報取得
 	PoseUI::HelpUIInfo pose_ui_infocopy;
 	mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
+	//ゲームUIの情報取得
 	GameUI::GameUIInfo game_ui_infocopy;
 	mp_gmae_ui->GetGameUIInfo(game_ui_infocopy);
 

@@ -97,7 +97,7 @@ void Player::Update()
 
 		HitController();   //当たり判定
 
-		ResetPos();
+		ResetPos();   //ステージ外に出たかどうか
 		break;
 	case PlayerUpdateStep::EndProduction:  //終了演出
 		EndProduction();
@@ -134,6 +134,7 @@ void Player::Move()
 
 		player_info.m_acceleration = -player_info.m_friction * Gravity; //摩擦係数
 
+		//別の移動方法
 		//player_info.m_timer++;
 		////
 		//if (player_info.m_timer == 10)
@@ -304,13 +305,13 @@ void Player::HitGoal()
 			//ゴール時のスコア加算に変更
 			switch ((GoalType)ObjectCollision::Instance()->GetGoalType())
 			{
-			case GoalType::Red:
+			case GoalType::Red:  //赤色ゴール
 				player_info.m_score_counter = RedGoalScore;
 				break;
-			case GoalType::Yellow:
+			case GoalType::Yellow: //黄色ゴール
 				player_info.m_score_counter = YellowGoalScore;
 				break;
-			case GoalType::Green:
+			case GoalType::Green:  //緑色ゴール
 				player_info.m_score_counter = GreenGoalScore;
 				break;
 			default:
@@ -325,6 +326,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
+		//ターン数が制限以上経過した場合
 		if (player_info.m_trun_counter >= GameTrun)
 		{
 			player_info.m_is_goal = true;
@@ -345,10 +347,10 @@ D3DXVECTOR3 Player::ReflectionRect(HitRectPoint type_,float rad_)
 	//矩形の左右にあたったら方向ベクトルのx軸を反転
 	switch (type_)
 	{
-	case HitRectPoint::TopOrUnder:
+	case HitRectPoint::TopOrUnder:  //上下
 		old_direction.z = -old_direction.z;
 		break;
-	case HitRectPoint::LeftOrRight:
+	case HitRectPoint::LeftOrRight: //左右
 		old_direction.x = -old_direction.x;
 		break;
 	default:
@@ -426,19 +428,19 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	//当たり判定を取る箇所
 	switch (type_)
 	{
-	case HitRectPoint::LeftTop:
+	case HitRectPoint::LeftTop:  //左上
 		ver_pos.x = r_pos_.x - (width_ / 2);
 		ver_pos.z = r_pos_.z + (height_ / 2);
 		break;
-	case HitRectPoint::RightTop:
+	case HitRectPoint::RightTop:  //右上
 		ver_pos.x = r_pos_.x - (width_ / 2);
 		ver_pos.z = r_pos_.z - (height_ / 2);
 		break;
-	case HitRectPoint::LeftUnder:
+	case HitRectPoint::LeftUnder:  //左下
 		ver_pos.x = r_pos_.x + (width_ / 2);
 		ver_pos.z = r_pos_.z + (height_ / 2);
 		break;
-	case HitRectPoint::RightUnder:
+	case HitRectPoint::RightUnder:  //右下
 		ver_pos.x = r_pos_.x + (width_ / 2);
 		ver_pos.z = r_pos_.z - (height_ / 2);
 		break;
@@ -497,7 +499,7 @@ void Player::ResetPos()
 		|| player_info.m_pos.z >= m_floor_infocopy.m_pos.z + m_floor_infocopy.m_height)
 	{
 
-		StartResetEffect();
+		StartResetEffect(); //エフェクト再生
 		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z); //座標
 		player_info.m_setspeed = 0.0f;
 
@@ -547,22 +549,27 @@ void Player::StartHitEffect(D3DXVECTOR3 block_pos_)
 
 	D3DXVec3Normalize(&block_vec, &block_vec);
 
+	//エフェクト座標設定
 	player_info.m_efk_pos = block_vec * HitEffectPosLength + player_info.m_pos;
 
+	//エフェクト再生
 	Effect::Instance()->PlayEffect(EffectType::HitEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
 }
 
 //落下時エフェクト開始関数
 void Player::StartFallEffect()
 {
+	//エフェクト座標設定
 	player_info.m_efk_pos = player_info.m_pos;
 
+	//エフェクト再生
 	Effect::Instance()->PlayEffect(EffectType::FallEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
 }
 
 //リセット時エフェクト開始関数
 void Player::StartResetEffect()
 {
+	//エフェクト座標設定
 	player_info.m_efk_pos = player_info.m_pos;
 
 	Effect::Instance()->PlayEffect(EffectType::ResetEfc, player_info.m_efk_pos.x, PlayerPosMin_Y, player_info.m_efk_pos.z);
@@ -571,6 +578,7 @@ void Player::StartResetEffect()
 //ゲーム終了時エフェクト開始関数
 void Player::StartGoalEffect()
 {
+	//エフェクト座標設定
 	player_info.m_efk_pos = player_info.m_pos;
 
 	Effect::Instance()->PlayEffect(EffectType::GoalEfc, player_info.m_efk_pos.x, player_info.m_efk_pos.y + GoalEffect2PosHeight, player_info.m_efk_pos.z);
