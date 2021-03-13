@@ -16,9 +16,10 @@
 #include "../Object/Camera.h"
 #include "../Object/Player.h"
 #include "../Object/PlayerDirection.h"
-#include "../Object/Sky.h"
 #include "../Object/Floor/Floor.h"
+#include "../Object/Floor/SkyFloor.h"
 #include "../Object/Floor/GoalFloor.h"
+#include "../Object/SkyDome.h"
 
 #include "../UI/GameUI.h"
 #include "../UI/LoadUI.h"

@@ -100,9 +100,6 @@
     <ClCompile Include="Src\Object\Player.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Object\Sky.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Score\CSV.cpp">
       <Filter>Score</Filter>
     </ClCompile>
@@ -150,6 +147,12 @@
     </ClCompile>
     <ClCompile Include="Src\System\DirectGraphics.cpp">
       <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Object\Floor\SkyFloor.cpp">
+      <Filter>Object\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Object\SkyDome.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,9 +228,6 @@
     <ClInclude Include="Src\Object\Player.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Object\Sky.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Score\CSV.h">
       <Filter>Score</Filter>
     </ClInclude>
@@ -275,6 +275,12 @@
     </ClInclude>
     <ClInclude Include="Src\System\DirectGraphics.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Object\Floor\SkyFloor.h">
+      <Filter>Object\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Object\SkyDome.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
