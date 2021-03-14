@@ -7,7 +7,7 @@
 #define RESULTUI_H_
 
 #include "UIBase.h"
-#include "../Score/CSV.h"
+#include "../Score/RankingData.h"
 
 //!UIの種類
 enum class ResultUICategory :int

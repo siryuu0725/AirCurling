@@ -126,34 +126,34 @@ public:
 	 * @param[in] pMeshData_ メッシュデータ
 	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
-	void GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_);
+	void LoadIndeces(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief  頂点情報取得関数
 	 * @param[in] pMeshData_ メッシュデータ
 	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
-	void GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_);
+	void LoadVertex(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief 法線情報取得関数
 	 * @param[in] pMeshData_ メッシュデータ
 	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
-	void GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_);
+	void LoadNormal(MeshData* pMeshData_, FbxMesh* pMesh_);
 	
 	/**
 	 * @brief  UV情報取得関数
 	 * @param[in] pMeshData_ メッシュデータ
 	 * @param[in] pMesh_ メッシュ単位で展開後のデータ
 	 */
-	void GetUV(MeshData* pMeshData_, FbxMesh* pMesh_);
+	void LoadUV(MeshData* pMeshData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief テクスチャ情報取得
 	 * @param[in] stage_id_ 選択ステージ名(例"Stage1")
 	 */
-	void GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_);
+	void LoadTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_);
 
 	/**
 	 * @brief  FBXモデル描画関数

@@ -94,7 +94,7 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 		FbxMesh* p_Mesh = m_scene->GetSrcObject<FbxMesh>(i);
 
 		LoadMesh(&pMeshData[i], p_Mesh);
-		GetTextureInfo(&pMaterialData[i], p_Mesh);
+		LoadTextureInfo(&pMaterialData[i], p_Mesh);
 		pMeshData[i].materialIndex = i;
 	}
 
@@ -109,13 +109,13 @@ FBXMeshData Fbx::LoadFbx(const char* file_name)
 bool Fbx::LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_)
 {
 	//ポリゴン情報取得
-	GetIndeces(pMeshData_, pMesh_);
+	LoadIndeces(pMeshData_, pMesh_);
 	//頂点情報取得
-	GetVertex(pMeshData_, pMesh_);
+	LoadVertex(pMeshData_, pMesh_);
 	//UV情報取得
-	GetUV(pMeshData_, pMesh_);
+	LoadUV(pMeshData_, pMesh_);
 	//法線情報取得
-	GetNormal(pMeshData_, pMesh_);
+	LoadNormal(pMeshData_, pMesh_);
 
 	int vertexNum = pMesh_->GetPolygonVertexCount();
 	UINT size = (UINT)(vertexNum * sizeof(VERTEX_3D));
@@ -132,7 +132,7 @@ bool Fbx::LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_)
 }
 
 //ポリゴン情報取得関数
-void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
+void Fbx::LoadIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 {
 	int polyCount = pMesh_->GetPolygonCount();
 	UINT size = (UINT)((polyCount * 3) * sizeof(UINT16));
@@ -155,7 +155,7 @@ void Fbx::GetIndeces(MeshData* pMeshData_, FbxMesh* pMesh_)
 }
 
 //頂点情報取得関数
-void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
+void Fbx::LoadVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 	int vertexCount = pMesh_->GetPolygonVertexCount();
 	UINT size = (UINT)(vertexCount * sizeof(VERTEX_3D));
@@ -201,7 +201,7 @@ void Fbx::GetVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 }
 
 //法線情報取得関数
-void Fbx::GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
+void Fbx::LoadNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	FbxArray<FbxVector4> normals;
 
 	//法線を取得
@@ -227,7 +227,7 @@ void Fbx::GetNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
 }
 
 //UV情報取得関数
-void Fbx::GetUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
+void Fbx::LoadUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
 
 	FbxStringList uvsetName;
 	//メッシュに含まれるUVSet名をすべて取得
@@ -252,7 +252,7 @@ void Fbx::GetUV(MeshData* pMeshData_, FbxMesh* pMesh_) {
 }
 
 //テクスチャ情報取得
-void Fbx::GetTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
+void Fbx::LoadTextureInfo(MaterialData* pMaterialData_, FbxMesh* pMesh_) {
 
 	InitMaterial(pMaterialData_, 1);
 	FbxLayerElementMaterial* pElementMaterial = pMesh_->GetElementMaterial();
