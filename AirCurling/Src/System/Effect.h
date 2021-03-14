@@ -107,11 +107,7 @@ private:
 	::Effekseer::Manager* e_manager = nullptr;
 	::EffekseerRendererDX9::Renderer* e_renderer = nullptr;
 
-	::Effekseer::Effect* hit_efc = nullptr;    //!衝突時エフェクト
-	::Effekseer::Effect* fall_efc = nullptr;   //!落下時エフェクト
-	::Effekseer::Effect* reset_efc = nullptr;  //!反射時エフェクト
-	::Effekseer::Effect* goal_efc = nullptr;   //!ゴール時エフェクト
-
+	::Effekseer::Effect* efcs[EffectType::MaxNum];    //!エフェクト配列
 
 	::Effekseer::Handle	e_handle = -1;
 	::Effekseer::Vector3D e_position;

@@ -45,10 +45,10 @@ void Effect::InitEffect()
 //エフェクト読み込み関数
 void Effect::LoadEffect()
 {
-	hit_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/reflection.efk");
-	fall_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/respawn.efk");
-	reset_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/fall.efk");
-	goal_efc = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/goal.efk");
+	efcs[HitEfc] = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/reflection.efk");
+	efcs[ResetEfc] = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/respawn.efk");
+	efcs[FallEfc] = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/fall.efk");
+	efcs[GoalEfc] = Effekseer::Effect::Create(e_manager, (const EFK_CHAR*)L"Res/Effect/goal.efk");
 }
 
 //描画関数
@@ -60,26 +60,7 @@ void Effect::DrawEffect()
 //エフェクト再生関数
 void Effect::PlayEffect(EffectType type_, float x_, float y_, float z_)
 {
-	//ブロック衝突時
-	if (type_ == EffectType::HitEfc)
-	{
-		e_handle = e_manager->Play(hit_efc, x_, y_, z_);
-	}
-	//死亡時
-	else if (type_ == EffectType::ResetEfc)
-	{
-		e_handle = e_manager->Play(reset_efc, x_, y_, z_);
-	}
-	//落下時
-	else if (type_ == EffectType::FallEfc)
-	{
-		e_handle = e_manager->Play(fall_efc, x_, y_, z_);
-	}
-	//ゴール時
-	else if (type_ == EffectType::GoalEfc)
-	{
-		e_handle = e_manager->Play(goal_efc, x_, y_, z_);
-	}
+	e_handle = e_manager->Play(efcs[type_], x_, y_, z_);
 }
 
 //エフェクト描画開始関数
@@ -146,10 +127,10 @@ void Effect::UpdateEffect(Camera* camera_)
 void Effect::ReleaseEffect()
 {
 	// エフェクトの破棄
-	ES_SAFE_RELEASE(hit_efc);
-	ES_SAFE_RELEASE(fall_efc);
-	ES_SAFE_RELEASE(reset_efc);
-
+	for (int i = 0; i < sizeof(efcs); i++)
+	{
+		ES_SAFE_RELEASE(efcs[i]);
+	}
 
 	// 先にエフェクト管理用インスタンスを破棄
 	e_manager->Destroy();
