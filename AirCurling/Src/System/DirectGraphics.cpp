@@ -132,15 +132,22 @@ void Graphics::SetRenderMode(bool enableAlpa_)
 
 void Graphics::DrawStart()
 {
-	g_device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0);
+	if (g_device != nullptr)
+	{
+		g_device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255), 1.0f, 0);
 
-	g_device->BeginScene();
+		g_device->BeginScene();
+	}
+	
 }
 
 void Graphics::DrawEnd()
 {
-	g_device->EndScene();
-	g_device->Present(nullptr, nullptr, nullptr, nullptr);
+	if (g_device != nullptr)
+	{
+		g_device->EndScene();
+		g_device->Present(nullptr, nullptr, nullptr, nullptr);
+	}
 }
 
 bool Graphics::LoadTexture(const char* file_name_, TextureData* texture_)
@@ -196,11 +203,14 @@ void Graphics::DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_)
 		{ pos_.x, pos_.y + texture_->Height, 0.0f, 1.0f, 0.0f, 1.0f },
 	};
 
-	g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
+	if (g_device != nullptr)
+	{
+		g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 
-	g_device->SetTexture(0, texture_->Texture);
+		g_device->SetTexture(0, texture_->Texture);
 
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
+		g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
+	}
 }
 
 //UV用
@@ -217,13 +227,15 @@ void Graphics::DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float spri
 		{ pos_.x, pos_.y + sprite_height_, 0.0f, 1.0f, tu_, tv_ + Ttv },
 	};
 
-	// 頂点構造の指定
-	g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
+	if (g_device != nullptr)
+	{
+		// 頂点構造の指定
+		g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 
-	g_device->SetTexture(0, texture_->Texture);
+		g_device->SetTexture(0, texture_->Texture);
 
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
-
+		g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
+	}
 }
 
 void Graphics::DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
@@ -242,14 +254,15 @@ void Graphics::DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, 
 	};
 
 
+	if (g_device != nullptr)
+	{
+		// 頂点構造の指定
+		g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 
-	// 頂点構造の指定
-	g_device->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
+		g_device->SetTexture(0, texture_->Texture);
 
-	g_device->SetTexture(0, texture_->Texture);
-
-	g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
-
+		g_device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertex, sizeof(CustomVertex));
+	}
 }
 
 // テクスチャーの解放
