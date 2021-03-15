@@ -78,31 +78,31 @@ public:
  　　* @brief  オブジェクト初期化関数
  　　* @details 各オブジェクトの初期化を行う
  　　*/
-	void ObjectInit();
+	void InitObject();
 
 	/**
  　　* @brief  オブジェクト更新関数
  　　* @details  各オブジェクトの更新処理を行う
  　　*/
-	void ObjectUpdate();
+	void UpdateObject();
 
 	/**
  　　* @brief  オブジェクト描画情報送信関数
  　　* @details 各オブジェクトの描画情報送信を行う
  　　*/
-	void ObjectDraw();
+	void DrawObject();
 
 	/**
  　　* @brief  オブジェクト解放関数
  　　* @details 各オブジェクトの解放を行う
  　　*/
-	void ObjectDelete();
+	void DeleteObject();
 
 	/**
 　　* @brief  UI解放関数
 　　* @details 各ゲームUIの解放を行う
 　　*/
-	void UIDelete();
+	void DeleteUI();
 
 #pragma endregion
 

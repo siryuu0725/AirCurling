@@ -68,7 +68,7 @@ void SceneController::ChangeScene()
 {
 	if (mp_scene == nullptr) { mp_scene = new TitleScene; }
 
-	if (mp_scene->GetChangeSceneFlg() == true)
+	if (mp_scene->GetIsChangeScene() == true)
 	{
 		delete mp_scene;
 		//指定のゲームの管理クラスに切り替える

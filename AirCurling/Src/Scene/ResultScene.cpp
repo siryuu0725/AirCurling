@@ -64,7 +64,7 @@ void ResultScene::EndStep()
 	SceneController::Instance()->SetSceneId(SceneId::Title);
 
 	//シーン移行フラグtrue
-	m_change_scene = true;
+	m_is_change_scene = true;
 }
 
 //インスタンス返還関数

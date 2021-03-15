@@ -99,7 +99,7 @@ public:
 	/**
 　　* @brief  キーボードの入力情報更新関数
 　　*/
-	void KeyStateUpdate();
+	void UpdateKeyState();
 
 	/**
 　　* @brief  キーボードの入力判定関数(押されている間)

@@ -191,7 +191,7 @@ bool Inputter::CreateKeyboardDevice()
 }
 
 //キーボードの入力情報更新関数
-void Inputter::KeyStateUpdate()
+void Inputter::UpdateKeyState()
 {
 	BYTE Key[256];
 	HRESULT hr = m_key_device->GetDeviceState(256, Key);
@@ -244,7 +244,7 @@ bool Inputter::GetKeyDown(KeyInfo key_)
 void Inputter::UpdateInput()
 {
 	UpdateMouse();
-	KeyStateUpdate();
+	UpdateKeyState();
 
 	m_prev_mouse_state = m_current_mouse_state;
 	//マウスの状態を取得します

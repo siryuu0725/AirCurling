@@ -76,7 +76,7 @@ void TitleScene::EndStep()
 	}
 
 	SceneController::Instance()->SetSceneId(SceneId::Game);
-	m_change_scene = true;
+	m_is_change_scene = true;
 }
 
 //描画情報送信まとめ関数

@@ -35,7 +35,7 @@ void GameScene::Draw()
 	}
 
 	//オブジェクト
-	ObjectDraw();
+	DrawObject();
 
 	//ゲームUI
 	mp_gmae_ui->Draw();
@@ -86,7 +86,7 @@ void GameScene::InitStep()
 	if (mp_player_direction == nullptr) { mp_player_direction = new PlayerDirection(mp_player,mp_camera, mp_gmae_ui); }
 
 	//オブジェクト初期化
-	ObjectInit();
+	InitObject();
 
 	//UI初期化
 	mp_gmae_ui->Init();
@@ -132,7 +132,7 @@ void GameScene::MainStep()
 	if (m_is_pose == false)
 	{
 		//オブジェクトの更新
-		ObjectUpdate();
+		UpdateObject();
 
 		//UIの更新
 		mp_gmae_ui->Update(mp_player, mp_camera);
@@ -191,15 +191,15 @@ void GameScene::EndStep()
 {
 	SoundController::Instance()->ReleaseGameSound();
 
-	ObjectDelete();
+	DeleteObject();
 
 	SceneController::Instance()->SetSceneId(SceneId::Result);
 
-	m_change_scene = true;
+	m_is_change_scene = true;
 }
 
 //オブジェクト初期化関数
-void GameScene::ObjectInit()
+void GameScene::InitObject()
 {
 	//選択ステージ保存
 	std::string stage_str = SceneController::Instance()->GetStageID();
@@ -218,7 +218,7 @@ void GameScene::ObjectInit()
 }
 
 //オブジェクト更新関数
-void GameScene::ObjectUpdate()
+void GameScene::UpdateObject()
 {
 	Player::PlayerInfo player_info;
 	mp_player->GetPlayerInfo(player_info);
@@ -229,7 +229,7 @@ void GameScene::ObjectUpdate()
 }
 
 //オブジェクト描画情報送信関数
-void GameScene::ObjectDraw()
+void GameScene::DrawObject()
 {
 	//各オブジェクトを配列でまとめる
 	ObjectBase* obj[StageObjectNum] =
@@ -242,7 +242,7 @@ void GameScene::ObjectDraw()
 }
 
 //オブジェクト解放関数
-void GameScene::ObjectDelete()
+void GameScene::DeleteObject()
 {
 	//カメラ
 	delete mp_camera;
@@ -290,7 +290,7 @@ void GameScene::ObjectDelete()
 }
 
 //UI解放関数
-void GameScene::UIDelete()
+void GameScene::DeleteUI()
 {
 	//ゲーム本編用UI
 	mp_gmae_ui->ReleaseTex();

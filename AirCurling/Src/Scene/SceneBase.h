@@ -61,14 +61,14 @@ public:
 	virtual void Draw() {};
 
 	//!シーン移行フラグGetter
-	const bool GetChangeSceneFlg()const {return m_change_scene; }
+	const bool GetIsChangeScene()const {return m_is_change_scene; }
 
 	//!現在のシーンステップGetter
 	const SceneStep NowStep()const { return m_cur_step; }
 
 protected:
 	SceneStep m_cur_step;  //!現在のシーンステップ
-	bool m_change_scene;      //!シーン移行フラグ
+	bool m_is_change_scene;      //!シーン移行フラグ
 };
 
 
