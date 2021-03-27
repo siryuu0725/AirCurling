@@ -25,9 +25,9 @@ public:
 		HelpUIInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
 			m_select(false),
-			m_continue(false),
-			m_end(false),
-			m_help(false)
+			m_is_continue(false),
+			m_is_end(false),
+			m_is_help(false)
 		{}
 
 		Graphics::TextureData m_ui_tex[(int)PoseUICategory::CategoryMax];  //!テクスチャ情報構造体
@@ -35,9 +35,9 @@ public:
 		D3DXVECTOR2  m_ui_pos[(int)PoseUICategory::CategoryMax];  //!テクスチャ座標
 
 		bool m_select;    //!ポーズ画面各項目選択中フラグ
-		bool m_continue;  //!「つづける」選択フラグ
-		bool m_end;		  //!「おわる」選択フラグ
-		bool m_help;	  //!「へるぷ」選択フラグ
+		bool m_is_continue;  //!「つづける」選択フラグ
+		bool m_is_end;		  //!「おわる」選択フラグ
+		bool m_is_help;	  //!「へるぷ」選択フラグ
 	};
 
 private:

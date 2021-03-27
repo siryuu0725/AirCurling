@@ -31,18 +31,18 @@ public:
 	{
 		PoseItemInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
-			m_continue(false),
-			m_end(false),
-			m_help(false)
+			m_is_continue(false),
+			m_is_end(false),
+			m_is_help(false)
 		{}
 
 		Graphics::TextureData m_ui_tex[(__int8)PoseItemTexCategory::CategoryMax]; //Textureデータ
 
 		D3DXVECTOR2  m_ui_pos[(__int8)PoseItemTexCategory::CategoryMax]; //Texture座標
 
-		bool m_continue;  //!「つづける」選択フラグ
-		bool m_end;		  //!「おわる」選択フラグ
-		bool m_help;	  //!「へるぷ」選択フラグ
+		bool m_is_continue;  //!「つづける」選択フラグ
+		bool m_is_end;		  //!「おわる」選択フラグ
+		bool m_is_help;	  //!「へるぷ」選択フラグ
 	};
 
 	PoseItemUI() {}

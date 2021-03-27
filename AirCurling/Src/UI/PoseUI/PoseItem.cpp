@@ -19,7 +19,7 @@ void PoseItemUI::Init()
 void PoseItemUI::Update()
 {
 	//ヘルプ画面ではないと時
-	if (m_poseitem_info.m_help == false)
+	if (m_poseitem_info.m_is_help == false)
 	{
 		SelectUI(); //ポーズ中UI当たり判定関数
 	}
@@ -31,7 +31,7 @@ void PoseItemUI::Update()
 
 void PoseItemUI::Draw()
 {
-	if (m_poseitem_info.m_help == false)
+	if (m_poseitem_info.m_is_help == false)
 	{
 		Graphics::Instance()->DrawTexture(&m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::Continue], m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Continue]);
 		Graphics::Instance()->DrawTexture(&m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::End], m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::End]);
@@ -42,8 +42,8 @@ void PoseItemUI::Draw()
 
 void PoseItemUI::SelectUI()
 {
-	m_poseitem_info.m_continue = false;
-	m_poseitem_info.m_end = false;
+	m_poseitem_info.m_is_continue = false;
+	m_poseitem_info.m_is_end = false;
 
 	//文字「つづける」にマウスが当たっているとき
 	if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
@@ -57,7 +57,7 @@ void PoseItemUI::SelectUI()
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
-			m_poseitem_info.m_continue = true;
+			m_poseitem_info.m_is_continue = true;
 		}
 	}
 	//文字「おわる」にマウスが当たっているとき
@@ -69,12 +69,12 @@ void PoseItemUI::SelectUI()
 		//選択中テクスチャを「おわる」に合わせる
 		m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::End];
 
-		m_poseitem_info.m_continue = false;
+		m_poseitem_info.m_is_continue = false;
 
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
-			m_poseitem_info.m_end = true;
+			m_poseitem_info.m_is_end = true;
 		}
 	}
 	//文字「へるぷ」にマウスが当たっているとき
@@ -86,12 +86,12 @@ void PoseItemUI::SelectUI()
 		//選択中テクスチャを「へるぷ」に合わせる
 		m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Help];
 
-		m_poseitem_info.m_continue = false;
+		m_poseitem_info.m_is_continue = false;
 
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
-			m_poseitem_info.m_help = true;
+			m_poseitem_info.m_is_help = true;
 		}
 	}
 	else
@@ -104,7 +104,7 @@ void PoseItemUI::HelpMode()
 {
 	if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 	{
-		m_poseitem_info.m_help = false;
+		m_poseitem_info.m_is_help = false;
 	}
 }
 

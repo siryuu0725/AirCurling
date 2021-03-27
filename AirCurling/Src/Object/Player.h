@@ -66,7 +66,7 @@ public:
 			m_is_turnend(false),
 			m_is_start(false),
 			m_is_goal(false),
-			m_end(false),
+			m_is_end(false),
 			m_is_movement(false),
 			m_efk_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
 		{}
@@ -93,7 +93,7 @@ public:
 		/* 操作可能判定 */
 		bool m_is_start; //!ゲームスタート
 		bool m_is_goal;	 //!ゴール時
-		bool m_end;	     //!ゲームエンドフラグ
+		bool m_is_end;	 //!ゲームエンドフラグ
 
 		bool m_is_movement;
 		bool m_is_turnend;       //!1ターン終了フラグ

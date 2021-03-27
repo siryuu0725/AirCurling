@@ -150,12 +150,12 @@ void GameScene::MainStep()
 		mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
 		//ポーズ中、「つづける」が押された場合
-		if (pose_ui_infocopy.m_continue == true)
+		if (pose_ui_infocopy.m_is_continue == true)
 		{
 			m_is_pose = false;
 		}
 		//ポーズ中、「おわる」が押された場合
-		else if (pose_ui_infocopy.m_end == true)
+		else if (pose_ui_infocopy.m_is_end == true)
 		{
 			PostQuitMessage(0);
 		}
@@ -167,7 +167,7 @@ void GameScene::MainStep()
 	if(Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 	{
 		//ポーズ中、「つづける」が押された場合
-		if (pose_ui_infocopy.m_help == false)
+		if (pose_ui_infocopy.m_is_help == false)
 		{
 			m_is_pose = (m_is_pose == true) ? false : true;
 		}

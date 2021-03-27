@@ -37,7 +37,7 @@ void Player::Init(std::string stage_str_)
 	player_info.m_reflect_counter = 0; //反射回数
 	player_info.m_is_turnend = false;  //1ターン終了フラグ
 	player_info.m_is_goal = false;     //ゴールフラグ
-	player_info.m_end = false;         //ゲームエンドフラグ
+	player_info.m_is_end = false;         //ゲームエンドフラグ
 	player_info.m_score_counter = m_player_externalinfo.m_score_counter;
 
 	player_info.m_is_movement = false;

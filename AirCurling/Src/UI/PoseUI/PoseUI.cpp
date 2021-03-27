@@ -23,9 +23,9 @@ void PoseUI::Init()
 	}
 
 	m_poseui_info.m_select = false;
-	m_poseui_info.m_continue = false;
-	m_poseui_info.m_end = false;
-	m_poseui_info.m_help = false;
+	m_poseui_info.m_is_continue = false;
+	m_poseui_info.m_is_end = false;
+	m_poseui_info.m_is_help = false;
 }
 
 //外部データセット関数
@@ -67,9 +67,9 @@ void PoseUI::Update()
 
 	PoseItemUI::PoseItemInfo item_info;
 	mp_item->GetPoseItemInfo(item_info);
-	m_poseui_info.m_continue = item_info.m_continue;
-	m_poseui_info.m_end = item_info.m_end;
-	m_poseui_info.m_help = item_info.m_help;
+	m_poseui_info.m_is_continue = item_info.m_is_continue;
+	m_poseui_info.m_is_end = item_info.m_is_end;
+	m_poseui_info.m_is_help = item_info.m_is_help;
 }
 
 //描画情報送信関数

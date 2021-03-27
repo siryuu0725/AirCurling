@@ -21,7 +21,7 @@ void PoseBG::Draw()
 	PoseItemUI::PoseItemInfo item_info;
 	mp_pose_item->GetPoseItemInfo(item_info);
 
-	if (item_info.m_help == false)
+	if (item_info.m_is_help == false)
 	{
 		Graphics::Instance()->DrawTexture(&m_bg_info.m_ui_tex[(__int8)PoseUICategory::BG], m_bg_info.m_ui_pos[(__int8)PoseUICategory::BG]);
 	}
