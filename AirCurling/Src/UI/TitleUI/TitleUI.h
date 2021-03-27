@@ -6,26 +6,14 @@
 #ifndef TITLEUI_H_
 #define TITLEUI_H_
 
-#include "UIBase.h"
-#include "../System/Sound/SoundController.h"
-
-//!UIの種類
-enum class TitleUICategory :int
-{
-	BG,            //!背景
-	Name,		   //!タイトル名
-	Start,		   //!文字「スタート」
-	End,		   //!文字「終わり」
-	Help,		   //!文字「ヘルプ」
-	NowSelect,	   //!現在選択枠
-	HelpBG,	       //!ヘルプ画面用BG
-	SelectStage1,  //!文字「1」
-	SelectStage2,  //!文字「2」
-	NowSelectStage,//!現在選択ステージ枠
-	SelectStageFont,//!文字「ステージを選択」
-	CategoryMax,   //!UI数
-};
-
+#include "../UIBase.h"
+#include "TitleUICategory.h"
+#include "../../System/Sound/SoundController.h"
+#include "TitleBG.h"
+#include "TitleItem.h"
+#include "GameName.h"
+#include "StageItem.h"
+constexpr unsigned __int8 TitleUICategoryNum = 4;  //!タイトルシーンで使用するUIオブジェクトの数
 
 /**
 * タイトル用UIクラス
@@ -38,17 +26,12 @@ public:
 	struct TitleUIInfo
 	{
 		TitleUIInfo() :
-			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
 			startui_flg(false),
 			endui_flg(false),
 			helpui_flg(false),
 			m_stage_1(false),
 			m_stage_2(false)
 		{}
-
-		Graphics::TextureData m_ui_tex[(int)TitleUICategory::CategoryMax];  
-
-		D3DXVECTOR2  m_ui_pos[(int)TitleUICategory::CategoryMax];
 
 		/* 各Sceneへ飛ぶ判定 */
 		bool startui_flg;  //!「はじめる」を押した時
@@ -74,15 +57,16 @@ public:
 	void Init();
 
 	/**
+	 * @brief  外部データセット関数
+	 * @details 各UIカテゴリーに必要な座標を渡す
+	 */
+	void SetUIPos();
+
+	/**
 	 * @brief  外部データ読み込み関数
 	 * @details 読み込んだ外部データを外部データ用の構造体に保存する
 	 */
 	void LoadTitleUIExternalInfo();
-
-	/**
-	 * @brief  テクスチャ読み込み関数
-	 */
-	void LoadTex();
 
 	/**
 	 * @brief  描画情報送信関数
@@ -121,5 +105,10 @@ public:
 
 private:
 	UIExternalInfo m_titleui_externalinfo[static_cast<int>(TitleUICategory::CategoryMax)];
+
+	TitleBG* mp_bg;
+	TitleStageItem* mp_stage_item;
+	TitleItem* mp_title_item;
+	GameName* mp_game_name;
 };
 #endif

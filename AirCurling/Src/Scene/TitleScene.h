@@ -6,7 +6,7 @@
 #ifndef TITLESCENE_H_
 #define TITLESCENE_H_
 #include"SceneBase.h"
-#include "../UI/TitleUI.h"
+#include "../UI/TitleUI/TitleUI.h"
 
 constexpr __int16 TitleBGMVolume = -300;   //!ゲームシーンのBGM音量
 

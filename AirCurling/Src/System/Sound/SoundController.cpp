@@ -84,7 +84,7 @@ void SoundController::PlaySoundSE(PlaySEType se_type_)
 	case PlaySEType::Selsect:
 		if (m_is_select == false)
 		{
-			mp_audio->Play(m_select_se, SoundVolumeMin, false);
+			mp_audio->Play(m_select_se, SoundVolumeMax, false);
 			m_is_select = true;
 		}
 		break;

@@ -175,7 +175,7 @@ void GameScene::MainStep()
 	}
 
 	//ゴール、もしくはターン制限を超えた時
-	if (game_ui_infocopy.m_end_game == true)
+	if (game_ui_infocopy.m_is_endgame == true)
 	{
 		m_cur_step = SceneStep::EndStep;
 	}

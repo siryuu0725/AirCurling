@@ -56,7 +56,7 @@ void PlayerDirection::Draw()
 
 	mp_ui->GetGameUIInfo(ui_info);
 
-	if (ui_info.m_gauge_stop == false
+	if (ui_info.m_is_stop_gauge == false
 		&& m_direction_info.m_is_shotmode == true)
 	{
 		FbxController::Instance()->DrawFbx(m_direction_info.m_key, m_direction_info.m_mat_world);
@@ -76,7 +76,7 @@ void PlayerDirection::Rote()
 
 	mp_ui->GetGameUIInfo(ui_info);
 
-	if (ui_info.m_gauge_stop == false)
+	if (ui_info.m_is_stop_gauge == false)
 	{
 		Player::PlayerInfo player_info;
 		Camera::CameraInfo camera_info;

@@ -11,7 +11,7 @@
 #include "../System/Sound/SoundController.h"
 #include "../Scene/SceneController.h"
 
-#include "../UI/ResultUI.h"
+#include "../UI/ResultUI/ResultUI.h"
 
 constexpr __int16 ResultBGMVolume = -300;   //!ゲームシーンのBGM音量
 

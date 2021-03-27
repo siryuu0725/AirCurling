@@ -37,6 +37,21 @@
     <Filter Include="Object\Floor\Debuf">
       <UniqueIdentifier>{610d9cc6-2423-4816-991f-c3e06d9cd1fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\GameUI">
+      <UniqueIdentifier>{bfd441c2-9c08-4620-92eb-6410ca453676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\TitleUI">
+      <UniqueIdentifier>{379b1626-9cfe-42c2-9942-6ec7496c0cf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\ResultUI">
+      <UniqueIdentifier>{cd60706c-3fe9-4a34-a5ed-18407c0ac3fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\LoadUI">
+      <UniqueIdentifier>{9a50dfa4-cee1-46a5-b5e7-fd51480ee71e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\PoseUI">
+      <UniqueIdentifier>{18b8c996-199a-4f1c-a1b6-3b54e3ef47d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\System\Effect.cpp">
@@ -60,15 +75,6 @@
     </ClCompile>
     <ClCompile Include="Src\System\Sound\DirectSound.cpp">
       <Filter>System\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\UI\GameUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\UI\TitleUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\UI\ResultUI.cpp">
-      <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="Src\Scene\SceneBase.cpp">
       <Filter>Scene</Filter>
@@ -118,9 +124,6 @@
     <ClCompile Include="Src\Object\Block\BlockController.cpp">
       <Filter>Object\Block</Filter>
     </ClCompile>
-    <ClCompile Include="Src\UI\LoadUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Score\GameScore.cpp">
       <Filter>Score</Filter>
     </ClCompile>
@@ -136,9 +139,6 @@
     <ClCompile Include="Src\Object\PlayerDirection.cpp">
       <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="Src\UI\PoseUI.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Utility\Collision\ObjectCollision.cpp">
       <Filter>Utility\Collision</Filter>
     </ClCompile>
@@ -153,6 +153,66 @@
     </ClCompile>
     <ClCompile Include="Src\Score\RankingData.cpp">
       <Filter>Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\TitleUI.cpp">
+      <Filter>UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\ResultUI\ResultUI.cpp">
+      <Filter>UI\ResultUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\PoseUI\PoseUI.cpp">
+      <Filter>UI\PoseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadUI.cpp">
+      <Filter>UI\LoadUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\GameUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\GameName.cpp">
+      <Filter>UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\GameScoreUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\ModeUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\ProductionUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\ShotGaugeUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\GameUI\TurnUI.cpp">
+      <Filter>UI\GameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadFontUI.cpp">
+      <Filter>UI\LoadUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\PoseUI\PoseBG.cpp">
+      <Filter>UI\PoseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\PoseUI\PoseItem.cpp">
+      <Filter>UI\PoseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadIconUI.cpp">
+      <Filter>UI\LoadUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\ResultUI\ResultBG.cpp">
+      <Filter>UI\ResultUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\TitleBG.cpp">
+      <Filter>UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\TitleItem.cpp">
+      <Filter>UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\StageItem.cpp">
+      <Filter>UI\TitleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UI\ResultUI\RankingFontUI.cpp">
+      <Filter>UI\ResultUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,15 +238,6 @@
       <Filter>System\Sound</Filter>
     </ClInclude>
     <ClInclude Include="Src\UI\UIBase.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\UI\GameUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\UI\TitleUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\UI\ResultUI.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="Src\Scene\SceneBase.h">
@@ -243,9 +294,6 @@
     <ClInclude Include="Src\Object\Block\BlockController.h">
       <Filter>Object\Block</Filter>
     </ClInclude>
-    <ClInclude Include="Src\UI\LoadUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Score\GameScore.h">
       <Filter>Score</Filter>
     </ClInclude>
@@ -261,9 +309,6 @@
     <ClInclude Include="Src\Object\PlayerDirection.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="Src\UI\PoseUI.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Utility\Collision\ObjectCollision.h">
       <Filter>Utility\Collision</Filter>
     </ClInclude>
@@ -278,6 +323,81 @@
     </ClInclude>
     <ClInclude Include="Src\Score\RankingData.h">
       <Filter>Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\GameUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadUI.h">
+      <Filter>UI\LoadUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseUI.h">
+      <Filter>UI\PoseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\ResultUI.h">
+      <Filter>UI\ResultUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleUI.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\GameName.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\GameScoreUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\ModeUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\ProductionUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\ShotGaugeUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\TurnUI.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadFontUI.h">
+      <Filter>UI\LoadUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseBG.h">
+      <Filter>UI\PoseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseItem.h">
+      <Filter>UI\PoseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadIconUI.h">
+      <Filter>UI\LoadUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\ResultBG.h">
+      <Filter>UI\ResultUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleBG.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleItem.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleUICategory.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\ResultUICategory.h">
+      <Filter>UI\ResultUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseUICategory.h">
+      <Filter>UI\PoseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadUICategory.h">
+      <Filter>UI\LoadUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\GameUICategory.h">
+      <Filter>UI\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\StageItem.h">
+      <Filter>UI\TitleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\RankingFontUI.h">
+      <Filter>UI\ResultUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

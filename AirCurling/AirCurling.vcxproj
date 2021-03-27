@@ -268,26 +268,71 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\UI\GameUI.cpp">
+    <ClCompile Include="Src\UI\GameUI\GameScoreUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\UI\PoseUI.cpp">
+    <ClCompile Include="Src\UI\GameUI\GameUI.cpp" />
+    <ClCompile Include="Src\UI\GameUI\ModeUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\UI\LoadUI.cpp">
+    <ClCompile Include="Src\UI\GameUI\ProductionUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\UI\ResultUI.cpp">
+    <ClCompile Include="Src\UI\GameUI\ShotGaugeUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Src\UI\TitleUI.cpp">
+    <ClCompile Include="Src\UI\GameUI\TurnUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadFontUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadIconUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\LoadUI\LoadUI.cpp" />
+    <ClCompile Include="Src\UI\PoseUI\PoseBG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\PoseUI\PoseItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\PoseUI\PoseUI.cpp" />
+    <ClCompile Include="Src\UI\ResultUI\RankingFontUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\ResultUI\ResultBG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\ResultUI\ResultUI.cpp" />
+    <ClCompile Include="Src\UI\TitleUI\TitleBG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\TitleItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\GameName.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\StageItem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Src\UI\TitleUI\TitleUI.cpp" />
     <ClCompile Include="Src\Utility\Calculation.cpp">
       <SubType>
       </SubType>
@@ -420,23 +465,88 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\GameUI.h">
+    <ClInclude Include="Src\UI\GameUI\GameScoreUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\PoseUI.h">
+    <ClInclude Include="Src\UI\GameUI\GameUI.h" />
+    <ClInclude Include="Src\UI\GameUI\GameUICategory.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\LoadUI.h">
+    <ClInclude Include="Src\UI\GameUI\ModeUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\ResultUI.h">
+    <ClInclude Include="Src\UI\GameUI\ProductionUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\TitleUI.h">
+    <ClInclude Include="Src\UI\GameUI\ShotGaugeUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\GameUI\TurnUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadFontUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadIconUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\LoadUI\LoadUI.h" />
+    <ClInclude Include="Src\UI\LoadUI\LoadUICategory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseBG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseItem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\PoseUI\PoseUI.h" />
+    <ClInclude Include="Src\UI\PoseUI\PoseUICategory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\RankingFontUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\ResultBG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\ResultUI\ResultUI.h" />
+    <ClInclude Include="Src\UI\ResultUI\ResultUICategory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleBG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleItem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\GameName.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\StageItem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Src\UI\TitleUI\TitleUI.h" />
+    <ClInclude Include="Src\UI\TitleUI\TitleUICategory.h">
       <SubType>
       </SubType>
     </ClInclude>

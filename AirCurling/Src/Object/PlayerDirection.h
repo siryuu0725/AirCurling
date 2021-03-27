@@ -8,7 +8,7 @@
 
 #include "ObjectBase.h"
 #include "Player.h"
-#include "../UI/GameUI.h"
+#include "../UI/GameUI/GameUI.h"
 
 /**
 * プレイヤーの矢印(向いている方向)クラス

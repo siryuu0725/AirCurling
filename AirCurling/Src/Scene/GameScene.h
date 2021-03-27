@@ -21,9 +21,9 @@
 #include "../Object/Floor/GoalFloor.h"
 #include "../Object/SkyDome.h"
 
-#include "../UI/GameUI.h"
-#include "../UI/LoadUI.h"
-#include "../UI/PoseUI.h"
+#include "../UI/GameUI/GameUI.h"
+#include "../UI/LoadUI/LoadUI.h"
+#include "../UI/PoseUI/PoseUI.h"
 
 #include <Windows.h>
 
