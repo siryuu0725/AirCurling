@@ -20,7 +20,7 @@ void TitleUI::Init()
 	UIBase* ui[TitleUICategoryNum] =
 	{ mp_bg ,mp_stage_item ,mp_title_item,mp_game_name };
 
-	for (int i = 0; i < TitleUICategoryNum; i++)
+	for (__int8 i = 0; i < TitleUICategoryNum; i++)
 	{
 		ui[i]->Init(); //初期化
 	}
@@ -80,7 +80,7 @@ void TitleUI::Draw()
 	UIBase* ui[TitleUICategoryNum] =
 	{ mp_bg ,mp_stage_item ,mp_title_item,mp_game_name };
 
-	for (int i = 0; i < TitleUICategoryNum; i++)
+	for (__int8 i = 0; i < TitleUICategoryNum; i++)
 	{
 		ui[i]->Draw();
 	}
@@ -132,7 +132,7 @@ void TitleUI::ReleaseTex()
 	UIBase* ui[TitleUICategoryNum] =
 	{ mp_bg ,mp_stage_item ,mp_title_item,mp_game_name };
 
-	for (int i = 0; i < TitleUICategoryNum; i++)
+	for (__int8 i = 0; i < TitleUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
 	}

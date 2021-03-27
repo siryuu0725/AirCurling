@@ -12,8 +12,8 @@ void TurnUI::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/Turn.png", &m_turn_info.m_ui_tex[(__int8)TurnTexCategory::Turn]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Math.png", &m_turn_info.m_ui_tex[(__int8)TurnTexCategory::TurnNumber]);
 
-	m_turn_info.m_ui_tu[(int)TurnTexCategory::TurnNumber] = 0.1f; //ターン数のtu値
-	m_turn_info.m_ui_tv[(int)TurnTexCategory::TurnNumber] = 1.0f; //ターン数のtv値
+	m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] = 0.1f; //ターン数のtu値
+	m_turn_info.m_ui_tv[(__int8)TurnTexCategory::TurnNumber] = 1.0f; //ターン数のtv値
 }
 
 //更新関数
@@ -23,11 +23,11 @@ void TurnUI::Update(bool is_turnend_)
 	if (is_turnend_ == true)
 	{
 		//ターン数加算
-		m_turn_info.m_ui_tu[(int)TurnTexCategory::TurnNumber] += TrunTexUVAddValue;
+		m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] += TrunTexUVAddValue;
 
-		if (m_turn_info.m_ui_tu[(int)TurnTexCategory::TurnNumber] > TrunTexUVMax)
+		if (m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] > TrunTexUVMax)
 		{
-			m_turn_info.m_ui_tu[(int)TurnTexCategory::TurnNumber] = TrunTexUVMax;
+			m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] = TrunTexUVMax;
 		}
 	}
 }
@@ -36,7 +36,7 @@ void TurnUI::Update(bool is_turnend_)
 void TurnUI::Draw()
 {
 	//ターン数
-	Graphics::Instance()->DrawUVTexture(&m_turn_info.m_ui_tex[(int)TurnTexCategory::TurnNumber], m_turn_info.m_ui_pos[(int)TurnTexCategory::TurnNumber], 94.0f, 94.0f, m_turn_info.m_ui_tu[(int)TurnTexCategory::TurnNumber], m_turn_info.m_ui_tv[(int)TurnTexCategory::TurnNumber]);
+	Graphics::Instance()->DrawUVTexture(&m_turn_info.m_ui_tex[(__int8)TurnTexCategory::TurnNumber], m_turn_info.m_ui_pos[(__int8)TurnTexCategory::TurnNumber], 94.0f, 94.0f, m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber], m_turn_info.m_ui_tv[(__int8)TurnTexCategory::TurnNumber]);
 	//文字「ターン」
 	Graphics::Instance()->DrawTexture(&m_turn_info.m_ui_tex[(__int8)TurnTexCategory::Turn], m_turn_info.m_ui_pos[(__int8)TurnTexCategory::Turn]);
 }

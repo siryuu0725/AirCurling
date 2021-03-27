@@ -17,7 +17,7 @@ void PoseUI::Init()
 	//各UIを配列でまとめる
 	UIBase* ui[PoseUICategoryNum] =
 	{ mp_bg ,mp_item };
-	for (int i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PoseUICategoryNum; i++)
 	{
 		ui[i]->Init(); //初期化
 	}
@@ -79,7 +79,7 @@ void PoseUI::Draw()
 	UIBase* ui[PoseUICategoryNum] =
 	{ mp_bg ,mp_item };
 
-	for (int i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PoseUICategoryNum; i++)
 	{
 		ui[i]->Draw();
 	}
@@ -92,7 +92,7 @@ void PoseUI::ReleaseTex()
 	UIBase* ui[PoseUICategoryNum] =
 	{ mp_bg ,mp_item };
 
-	for (int i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PoseUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
 	}

@@ -15,11 +15,11 @@ void GameScoreUI::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/Score.png", &m_gamescoer_info.m_ui_tex[(__int8)GameScoreTexCategory::One_Score]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Score.png", &m_gamescoer_info.m_ui_tex[(__int8)GameScoreTexCategory::Ten_Score]);
 
-	m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::One_Score] = 0.0f; //スコア数1の位のtu値
-	m_gamescoer_info.m_ui_tv[(int)GameScoreTexCategory::One_Score] = 1.0f; //スコア数1の位のtv値
+	m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::One_Score] = 0.0f; //スコア数1の位のtu値
+	m_gamescoer_info.m_ui_tv[(__int8)GameScoreTexCategory::One_Score] = 1.0f; //スコア数1の位のtv値
 
-	m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::Ten_Score] = 0.0f; //スコア数10の位のtu値
-	m_gamescoer_info.m_ui_tv[(int)GameScoreTexCategory::Ten_Score] = 1.0f; //スコア数10の位のtv値
+	m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::Ten_Score] = 0.0f; //スコア数10の位のtu値
+	m_gamescoer_info.m_ui_tv[(__int8)GameScoreTexCategory::Ten_Score] = 1.0f; //スコア数10の位のtv値
 
 	m_gamescoer_info.m_now_score = 0; //総合スコア 
 	m_gamescoer_info.m_one_score = 0; //スコア1の位保存用
@@ -38,8 +38,8 @@ void GameScoreUI::AddScore(bool is_turnend_)
 		m_gamescoer_info.m_ten_score = Score::Instance()->GetScore() / 10;
 
 		//スコア数分テクスチャのTU値設定
-		m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::One_Score] = TrunTexUVAddValue * m_gamescoer_info.m_one_score;
-		m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::Ten_Score] = TrunTexUVAddValue * m_gamescoer_info.m_ten_score;
+		m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::One_Score] = TrunTexUVAddValue * m_gamescoer_info.m_one_score;
+		m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::Ten_Score] = TrunTexUVAddValue * m_gamescoer_info.m_ten_score;
 
 		//現在のスコアに加算
 		m_gamescoer_info.m_now_score += Score::Instance()->GetScore();
@@ -53,11 +53,11 @@ void GameScoreUI::AddScore(bool is_turnend_)
 void GameScoreUI::Draw()
 {
 	//スコア1の位
-	Graphics::Instance()->DrawUVTexture(&m_gamescoer_info.m_ui_tex[(int)GameScoreTexCategory::One_Score], m_gamescoer_info.m_ui_pos[(int)GameScoreTexCategory::One_Score], 64.0f, 64.0f,
-		m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::One_Score], m_gamescoer_info.m_ui_tv[(int)GameScoreTexCategory::One_Score]);
+	Graphics::Instance()->DrawUVTexture(&m_gamescoer_info.m_ui_tex[(__int8)GameScoreTexCategory::One_Score], m_gamescoer_info.m_ui_pos[(__int8)GameScoreTexCategory::One_Score], 64.0f, 64.0f,
+		m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::One_Score], m_gamescoer_info.m_ui_tv[(__int8)GameScoreTexCategory::One_Score]);
 	//スコア10の位
-	Graphics::Instance()->DrawUVTexture(&m_gamescoer_info.m_ui_tex[(int)GameScoreTexCategory::Ten_Score], m_gamescoer_info.m_ui_pos[(int)GameScoreTexCategory::Ten_Score], 64.0f, 64.0f,
-		m_gamescoer_info.m_ui_tu[(int)GameScoreTexCategory::Ten_Score], m_gamescoer_info.m_ui_tv[(int)GameScoreTexCategory::Ten_Score]);
+	Graphics::Instance()->DrawUVTexture(&m_gamescoer_info.m_ui_tex[(__int8)GameScoreTexCategory::Ten_Score], m_gamescoer_info.m_ui_pos[(__int8)GameScoreTexCategory::Ten_Score], 64.0f, 64.0f,
+		m_gamescoer_info.m_ui_tu[(__int8)GameScoreTexCategory::Ten_Score], m_gamescoer_info.m_ui_tv[(__int8)GameScoreTexCategory::Ten_Score]);
 }
 
 //テクスチャ解放関数

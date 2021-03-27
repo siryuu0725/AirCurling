@@ -30,7 +30,7 @@ void ShotGaugeUI::Update(Player* player_, bool is_turnend_)
 	if (m_shotgauge_info.m_is_stop_gauge == false)
 	{
 		//バーを動かす
-		m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotBox].y -= m_shotgauge_info.m_gauge_speed;
+		m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y -= m_shotgauge_info.m_gauge_speed;
 
 		m_shotgauge_info.m_gauge_pos += m_shotgauge_info.m_gauge_speed;
 	}
@@ -50,9 +50,9 @@ void ShotGaugeUI::Update(Player* player_, bool is_turnend_)
 	}
 
 	//バーがゲージの最大値or最小値に達した時
-	if (m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotBox].y + m_shotgauge_info.m_ui_tex[(int)ShotGaugeTexCategory::ShotBox].Height >
-		m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotGauge].y + m_shotgauge_info.m_ui_tex[(int)ShotGaugeTexCategory::ShotGauge].Height
-		|| m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotBox].y < m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotGauge].y)
+	if (m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y + m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotBox].Height >
+		m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge].y + m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotGauge].Height
+		|| m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y < m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge].y)
 	{
 		m_shotgauge_info.m_gauge_speed = -m_shotgauge_info.m_gauge_speed;
 	}
@@ -63,7 +63,7 @@ void ShotGaugeUI::Update(Player* player_, bool is_turnend_)
 		//バー移動フラグ切り替え
 		m_shotgauge_info.m_is_stop_gauge = false;
 		//バーの位置を初期位置に
-		m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotBox].y = m_shotgauge_info.m_ui_pos[(int)ShotGaugeTexCategory::ShotGauge].y + m_shotgauge_info.m_ui_tex[(int)ShotGaugeTexCategory::ShotGauge].Height - m_shotgauge_info.m_ui_tex[(int)ShotGaugeTexCategory::ShotBox].Height;
+		m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y = m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge].y + m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotGauge].Height - m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotBox].Height;
 		m_shotgauge_info.m_gauge_pos = 0.0f;
 
 		m_shotgauge_info.m_gauge_speed = 7.0f;

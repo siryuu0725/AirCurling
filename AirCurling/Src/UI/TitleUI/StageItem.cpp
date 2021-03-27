@@ -36,12 +36,12 @@ void TitleStageItem::Draw()
 void TitleStageItem::Update()
 {
 	//文字「1」との当たり判定
-	if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::SelectStage1],
+	if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage1],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_stageitem_info.m_ui_tex[(int)TitleStageItemTexCategory::SelectStage1].Width, m_stageitem_info.m_ui_tex[(int)TitleStageItemTexCategory::SelectStage1].Height) == true)
+		m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage1].Width, m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage1].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
-		m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::SelectStage1];
+		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage1];
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//マウスの左ボタンが押されたら
@@ -52,12 +52,12 @@ void TitleStageItem::Update()
 		}
 	}
 	//文字「2」との当たり判定
-	else if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::SelectStage2],
+	else if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage2],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_stageitem_info.m_ui_tex[(int)TitleStageItemTexCategory::SelectStage2].Width, m_stageitem_info.m_ui_tex[(int)TitleStageItemTexCategory::SelectStage2].Height) == true)
+		m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage2].Width, m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage2].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
-		m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(int)TitleStageItemTexCategory::SelectStage2];
+		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage2];
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//マウスの左ボタンが押されたら
@@ -77,7 +77,7 @@ void TitleStageItem::Update()
 //テクスチャ解放関数
 void TitleStageItem::ReleaseTex()
 {
-	for (int i = 0; i < (__int8)TitleStageItemTexCategory::CategoryMax; i++)
+	for (__int8 i = 0; i < (__int8)TitleStageItemTexCategory::CategoryMax; i++)
 	{
 		if (&m_stageitem_info.m_ui_tex[i] != nullptr)
 		{

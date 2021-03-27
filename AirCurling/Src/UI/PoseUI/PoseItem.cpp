@@ -46,13 +46,13 @@ void PoseItemUI::SelectUI()
 	m_poseitem_info.m_is_end = false;
 
 	//文字「つづける」にマウスが当たっているとき
-	if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::Continue].Width, m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::Continue].Height) == true)
+	if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::Continue].Width, m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::Continue].Height) == true)
 	{
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//選択中テクスチャを「つづける」に合わせる
-		m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Continue];
+		m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Continue];
 
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -61,13 +61,13 @@ void PoseItemUI::SelectUI()
 		}
 	}
 	//文字「おわる」にマウスが当たっているとき
-	else if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::End], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::End].Width, m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::End].Height) == true)
+	else if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::End], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::End].Width, m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::End].Height) == true)
 	{
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//選択中テクスチャを「おわる」に合わせる
-		m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::End];
+		m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::End];
 
 		m_poseitem_info.m_is_continue = false;
 
@@ -78,13 +78,13 @@ void PoseItemUI::SelectUI()
 		}
 	}
 	//文字「へるぷ」にマウスが当たっているとき
-	else if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Help], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::Help].Width, m_poseitem_info.m_ui_tex[(int)PoseItemTexCategory::Help].Height) == true)
+	else if (Collision::RectAndPoint(m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Help], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::Help].Width, m_poseitem_info.m_ui_tex[(__int8)PoseItemTexCategory::Help].Height) == true)
 	{
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
 		//選択中テクスチャを「へるぷ」に合わせる
-		m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(int)PoseItemTexCategory::Help];
+		m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Select] = m_poseitem_info.m_ui_pos[(__int8)PoseItemTexCategory::Help];
 
 		m_poseitem_info.m_is_continue = false;
 

@@ -6,7 +6,7 @@
 #define GAMEUICATEGORY_H_
 
 //!UIの種類
-enum class GameUICategory :int
+enum class GameUICategory :__int8
 {
 	ShotGauge,       //!打つ威力ゲージ
 	ShotGaugeFlame,	 //!打つ威力ゲージ枠

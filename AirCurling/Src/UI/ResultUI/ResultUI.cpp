@@ -18,7 +18,7 @@ void ResultUI::Init()
 	UIBase* ui[ResultUICategoryNum] =
 	{ mp_bg ,mp_ranking_font };
 
-	for (int i = 0; i < ResultUICategoryNum; i++)
+	for (__int8 i = 0; i < ResultUICategoryNum; i++)
 	{
 		ui[i]->Init(); //初期化
 	}
@@ -60,7 +60,7 @@ void ResultUI::Draw()
 	UIBase* ui[ResultUICategoryNum] =
 	{ mp_bg ,mp_ranking_font };
 
-	for (int i = 0; i < ResultUICategoryNum; i++)
+	for (__int8 i = 0; i < ResultUICategoryNum; i++)
 	{
 		ui[i]->Draw();
 	}

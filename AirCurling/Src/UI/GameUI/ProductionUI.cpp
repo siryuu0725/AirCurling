@@ -28,11 +28,11 @@ void ProductionUI::Init()
 void ProductionUI::StartProduction(Camera* camera_)
 {
 	//画面両サイドから流れてくるようにする
-	m_production_info.m_ui_pos[(int)ProductionTexCategory::Start].x -= m_production_info.m_movespeed;
-	m_production_info.m_ui_pos[(int)ProductionTexCategory::Kacco].x += m_production_info.m_movespeed;
+	m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Start].x -= m_production_info.m_movespeed;
+	m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x += m_production_info.m_movespeed;
 
 	//左右から流れてきたテクスチャの座標が重なり合う位置に来たら
-	if (m_production_info.m_ui_pos[(int)ProductionTexCategory::Kacco].x >= m_production_info.m_ui_pos[(int)ProductionTexCategory::Start].x && m_production_info.m_movestop == false)
+	if (m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Start].x && m_production_info.m_movestop == false)
 	{
 		m_production_info.m_movespeed = 0.0f;
 		m_production_info.m_movestop = true;  //一度テクスチャの移動を止める
@@ -59,7 +59,7 @@ void ProductionUI::StartProduction(Camera* camera_)
 	}
 
 	//再移動後、画面外にテクスチャが出た時
-	if (m_production_info.m_remove == true && m_production_info.m_ui_pos[(int)ProductionTexCategory::Kacco].x >= StartFontEndPosX)
+	if (m_production_info.m_remove == true && m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= StartFontEndPosX)
 	{
 		m_production_info.m_is_start_game = true;
 		camera_->SetCameraOperation(true);
@@ -71,9 +71,9 @@ void ProductionUI::StartProduction(Camera* camera_)
 void ProductionUI::EndProduction()
 {
 	//テクスチャが画面内にある時
-	if (m_production_info.m_ui_pos[(int)ProductionTexCategory::Finish].y >= FinishFontEndPosX)
+	if (m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Finish].y >= FinishFontEndPosX)
 	{
-		m_production_info.m_ui_pos[(int)ProductionTexCategory::Finish].y += Buoyancy * m_production_info.timer + ((-Gravity) * (m_production_info.timer * m_production_info.timer)) / 2.0f;
+		m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Finish].y += Buoyancy * m_production_info.timer + ((-Gravity) * (m_production_info.timer * m_production_info.timer)) / 2.0f;
 
 		m_production_info.timer += m_production_info.flame;
 

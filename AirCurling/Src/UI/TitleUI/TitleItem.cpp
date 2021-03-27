@@ -32,13 +32,13 @@ void TitleItem::Update()
 		}
 	}
 	//文字「はじめる」との当たり判定
-	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::Start],
+	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::Start],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::Start].Width, m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::Start].Height) == true)
+		m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Start].Width, m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Start].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].x = 210.0f;
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].y = 400.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].x = 210.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].y = 400.0f;
 
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
@@ -50,13 +50,13 @@ void TitleItem::Update()
 		}
 	}
 	//文字「おわる」との当たり判定
-	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::End],
+	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::End],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::End].Width, m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::End].Height) == true)
+		m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::End].Width, m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::End].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].x = 210.0f;
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].y = 600.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].x = 210.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].y = 600.0f;
 
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
@@ -68,13 +68,13 @@ void TitleItem::Update()
 		}
 	}
 	//文字「ヘルプ」との当たり判定
-	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::Help],
+	else if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::Help],
 		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::Help].Width, m_titleitem_info.m_ui_tex[(int)TitleItemTexCategory::Help].Height) == true)
+		m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Help].Width, m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Help].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].x = 210.0f;
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].y = 800.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].x = 210.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].y = 800.0f;
 
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
 
@@ -88,7 +88,7 @@ void TitleItem::Update()
 	else
 	{
 		//選択枠テクスチャの座標を代入
-		m_titleitem_info.m_ui_pos[(int)TitleItemTexCategory::NowSelect].y = -300.0f;
+		m_titleitem_info.m_ui_pos[(__int8)TitleItemTexCategory::NowSelect].y = -300.0f;
 
 		SoundController::Instance()->ResetSelectFlag();
 	}
@@ -112,7 +112,7 @@ void TitleItem::Draw()
 //テクスチャ解放関数
 void TitleItem::ReleaseTex()
 {
-	for (int i = 0; i < (__int8)TitleItemTexCategory::CategoryMax; i++)
+	for (__int8 i = 0; i < (__int8)TitleItemTexCategory::CategoryMax; i++)
 	{
 		if (&m_titleitem_info.m_ui_tex[i] != nullptr)
 		{

@@ -86,9 +86,9 @@ public:
 
 		float m_timer;  //!経過時間
 
-		int m_reflect_counter; //!反射回数
-		int m_trun_counter;    //!進行ターン数
-		__int8 m_score_counter;  //!加算するスコア数
+		__int8 m_reflect_counter; //!反射回数
+		__int8 m_trun_counter;    //!進行ターン数
+		int m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
 		bool m_is_start; //!ゲームスタート

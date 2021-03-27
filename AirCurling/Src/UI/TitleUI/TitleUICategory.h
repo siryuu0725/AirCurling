@@ -6,7 +6,7 @@
 #define TITLEUICATEGORY_H_
 
 //!UIの種類
-enum class TitleUICategory :int
+enum class TitleUICategory :__int8
 {
 	BG,              //!背景
 	HelpBG,	         //!ヘルプ画面用BG

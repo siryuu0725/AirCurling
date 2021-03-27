@@ -17,7 +17,7 @@ void LoadUI::Init()
 	UIBase* ui[LoadUICategoryNum] =
 	{ mp_load_font ,mp_load_icon };
 
-	for (int i = 0; i < LoadUICategoryNum; i++)
+	for (__int8 i = 0; i < LoadUICategoryNum; i++)
 	{
 		ui[i]->Init(); //初期化
 	}
@@ -57,7 +57,7 @@ void LoadUI::Draw()
 	UIBase* ui[LoadUICategoryNum] =
 	{ mp_load_font ,mp_load_icon };
 
-	for (int i = 0; i < LoadUICategoryNum; i++)
+	for (__int8 i = 0; i < LoadUICategoryNum; i++)
 	{
 		ui[i]->Draw();
 	}
@@ -77,7 +77,7 @@ void LoadUI::ReleaseTex()
 	UIBase* ui[LoadUICategoryNum] =
 	{ mp_load_font ,mp_load_icon };
 
-	for (int i = 0; i < LoadUICategoryNum; i++)
+	for (__int8 i = 0; i < LoadUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
 	}
