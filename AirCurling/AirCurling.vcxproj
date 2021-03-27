@@ -120,12 +120,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K_PLUGIN;K_FBXSDK;K_NODLL;K_DLLINFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\matuishiryuu\Documents\AirCurling\AirCurling\inc\Effekseer;C:\Users\matuishiryuu\Documents\AirCurling\AirCurling\inc\EffekseerRendererDX9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\inc\Effekseer;$(SolutionDir)\inc\EffekseerRendererDX9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(FBXSDK_DIR)2019.0\lib\vs2015\x64\debug;C:\Users\matuishiryuu\source\repos\AirCurling\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(FBXSDK_DIR)2019.0\lib\vs2015\x64\debug;$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libfbxsdk-md.lib;d3d9.lib;d3dx9.lib;Effekseerd.lib;EffekseerRendererDX9d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
