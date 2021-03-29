@@ -4,10 +4,10 @@
 //矩形の頂点と円の当たり判定
 bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos_, float width_, float height_, float radius_, float rad_)
 {
-	D3DXVECTOR3 rote_pos; //矩形の回転角度分円をずらした時の座標
-	D3DXVECTOR3 ver_pos;  //衝突時の頂点座標保存用
+	D3DXVECTOR3 rote_pos(0.0f, 0.0f, 0.0f); //矩形の回転角度分円をずらした時の座標
+	D3DXVECTOR3 ver_pos(0.0f, 0.0f, 0.0f);  //衝突時の頂点座標保存用
 
-	D3DXVECTOR3 vec; //矩形の頂点と円とのベクトル
+	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f); //矩形の頂点と円とのベクトル
 
 	//衝突時、対象の回転角度分座標をずらす
 	rote_pos = Calculation::Rote(c_pos_, r_pos_, rad_);
@@ -23,6 +23,8 @@ bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_po
 		{
 			return true;
 		}
+		else
+			return false;
 		break;
 	case HitRectPoint::LeftOrRight: //左右
 		//矩形の回転前の座標で判定を行う
@@ -32,8 +34,9 @@ bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_po
 			rote_pos.z < r_pos_.z + (height_ / 2))
 		{
 			return true;
-
 		}
+		else
+			return false;
 		break;
 	case HitRectPoint::LeftTop: //左上頂点
 		ver_pos.x = r_pos_.x - (width_ / 2);

@@ -28,7 +28,9 @@ public:
 			m_height(0.0f),
 			m_radius(0.0f),
 			m_rote(0.0f)
-		{}
+		{
+			D3DXMatrixIdentity(&m_mat_world);
+		}
 
 		D3DXVECTOR3 m_pos;   //!座標
 		D3DXVECTOR3 m_scale; //!サイズ

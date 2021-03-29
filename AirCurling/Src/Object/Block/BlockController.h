@@ -10,8 +10,8 @@
 #include <vector>
 
 //!ステージに置ける最大ブロック数 
-constexpr unsigned __int8 RectBlockMaxNum = 20;
-constexpr unsigned __int8 CircleBlockMaxNum = 20;
+constexpr unsigned __int8 RectBlockMaxNum = 10;
+constexpr unsigned __int8 CircleBlockMaxNum = 10;
 
 /**
  * ブロック管理クラス
@@ -126,8 +126,8 @@ private:
 	};
 
 	//!外部データ保存用
-	CircleBlockExternalInfo m_circleblock_externalinfo[RectBlockMaxNum]; //!円形ブロック
-	RectBlockExternalInfo m_rectblock_externalinfo[CircleBlockMaxNum];	  //!矩形ブロック
+	CircleBlockExternalInfo m_circleblock_externalinfo[CircleBlockMaxNum]; //!円形ブロック
+	RectBlockExternalInfo m_rectblock_externalinfo[RectBlockMaxNum];	  //!矩形ブロック
 };
 
 
