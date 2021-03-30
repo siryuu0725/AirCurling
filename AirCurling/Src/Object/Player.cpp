@@ -416,10 +416,10 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 {
 	//値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
-	D3DXVECTOR3 vec;
+	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f);
 
 	D3DXVECTOR3 player_lotepos = Calculation::Rote(player_info.m_pos, r_pos_, rad_);
-	D3DXVECTOR3 ver_pos;
+	D3DXVECTOR3 ver_pos(0.0f, 0.0f, 0.0f);
 
 	//方向ベクトルを反転
 	old_direction.x = -old_direction.x;

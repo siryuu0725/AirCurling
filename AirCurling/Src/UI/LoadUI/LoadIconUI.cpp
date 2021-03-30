@@ -34,12 +34,12 @@ void LoadIconUI::Init()
 void LoadIconUI::Update()
 {
 	//回転用olpos
-	D3DXVECTOR3 rote_pos = D3DXVECTOR3(m_loadicon_info.left_top_pos.x, 0.0f, m_loadicon_info.left_top_pos.y);
-	D3DXVECTOR3 rote_pos2 = D3DXVECTOR3(m_loadicon_info.left_down_pos.x, 0.0f, m_loadicon_info.left_down_pos.y);
-	D3DXVECTOR3 rote_pos3 = D3DXVECTOR3(m_loadicon_info.right_top_pos.x, 0.0f, m_loadicon_info.right_top_pos.y);
-	D3DXVECTOR3 rote_pos4 = D3DXVECTOR3(m_loadicon_info.right_down_pos.x, 0.0f, m_loadicon_info.right_down_pos.y);
+	D3DXVECTOR3 rote_pos(m_loadicon_info.left_top_pos.x, 0.0f, m_loadicon_info.left_top_pos.y);
+	D3DXVECTOR3 rote_pos2(m_loadicon_info.left_down_pos.x, 0.0f, m_loadicon_info.left_down_pos.y);
+	D3DXVECTOR3 rote_pos3(m_loadicon_info.right_top_pos.x, 0.0f, m_loadicon_info.right_top_pos.y);
+	D3DXVECTOR3 rote_pos4(m_loadicon_info.right_down_pos.x, 0.0f, m_loadicon_info.right_down_pos.y);
 
-	D3DXVECTOR3 center_pos = D3DXVECTOR3(m_loadicon_info.m_center_pos.x, 0.0f, m_loadicon_info.m_center_pos.y);
+	D3DXVECTOR3 center_pos(m_loadicon_info.m_center_pos.x, 0.0f, m_loadicon_info.m_center_pos.y);
 
 	//各頂点を回転
 	//左上

@@ -94,7 +94,7 @@ void Camera::Update(D3DXVECTOR3 player_pos_)
 void Camera::Move(D3DXVECTOR3 player_pos_)
 {
 	//カメラの前向きベクトルを出す
-	D3DXVECTOR3 forward;
+	D3DXVECTOR3 forward(0.0f, 0.0f, 0.0f);
 	m_camerainfo.m_forward = m_camerainfo.m_eye_pos - m_camerainfo.m_pos;
 
 	//ベクトルの正規化
@@ -102,8 +102,7 @@ void Camera::Move(D3DXVECTOR3 player_pos_)
 
 	//カメラの左向きのベクトル
 	//前向きのベクトルに直角なベクトルを算出する
-	D3DXVECTOR3 left;
-	left = D3DXVECTOR3(m_camerainfo.m_forward.z, m_camerainfo.m_forward.y, m_camerainfo.m_forward.x);
+	D3DXVECTOR3 left(m_camerainfo.m_forward.z, m_camerainfo.m_forward.y, m_camerainfo.m_forward.x);
 
 	//モード切り替え判定
 	ModeChange(player_pos_);

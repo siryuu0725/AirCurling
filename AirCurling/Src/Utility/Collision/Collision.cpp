@@ -76,9 +76,9 @@ bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_po
 //円と円の当たり判定
 bool Collision::CircleAndCircle(D3DXVECTOR3 c1_pos_, D3DXVECTOR3 c2_pos_, float radius1_, float radius2_)
 {
-	float length;        //対象の円との距離
-	float value_radius;  //対象との半径の合計
-	D3DXVECTOR3 vec;     //対象とのベクトル
+	float length = 0.0f;        //対象の円との距離
+	float value_radius = 0.0f;  //対象との半径の合計
+	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f);     //対象とのベクトル
 
 	//対象とのベクトル算出
 	vec.x = c1_pos_.x - c2_pos_.x;
