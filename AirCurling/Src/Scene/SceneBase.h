@@ -28,25 +28,31 @@ public:
 　　* @brief  初期化ステップ関数
 　　* @details 各シーン内の初期化を行う
 　　*/
-	virtual void InitStep() {};
+	virtual void InitStep() = 0;
 
 	/**
  　　* @brief  スレッド更新ステップ関数
  　　* @details 各Fbxオブジェクトやテクスチャ読み込み時のロード画面更新ステップ、
  　　*/
-	virtual void UpdateThreadStep() {};
+	virtual void UpdateThreadStep() = 0;
 
 	/**
 　　* @brief  更新ステップ関数
 　　* @details 本編の更新処理を行う
 　　*/
-	virtual void MainStep() {};
+	virtual void MainStep() = 0;
 
 	/**
 　　* @brief  終了ステップ関数
 　　* @details 次のシーン移行前の解放処理を行う
 　　*/
-	virtual void EndStep() {};
+	virtual void EndStep() = 0;
+
+	/**
+	 * @brief  描画情報送信まとめ関数
+	 * @details UIの描画情報送信処理を行う
+	 */
+	virtual void Draw() = 0;
 
 	/**
 　　* @brief  ステップ処理関数
@@ -54,11 +60,7 @@ public:
 　　*/
 	virtual void Update();
 
-	/**
-	 * @brief  描画情報送信まとめ関数
-	 * @details UIの描画情報送信処理を行う
-	 */
-	virtual void Draw() {};
+	
 
 	//!シーン移行フラグGetter
 	const bool GetIsChangeScene()const {return m_is_change_scene; }

@@ -29,30 +29,6 @@ public:
 	Collision() {}
 	~Collision() {}
 
-
-#pragma region 矩形と円
-	/**
-　   * @brief  矩形の上下と点の当たり判定
-	 * @param (r_pos) 矩形の座標
-	 * @param (c_pos) 円の座標
-	 * @param (width_) 矩形の横幅
-	 * @param (height_) 矩形の縦幅
-	 * @param (radius_) 円の半径
-	 * @param (rad_) 矩形の回転角度
-　   */
-	//static bool RectTopToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_,float radius_, float rad_);
-
-	/**
-　   * @brief  矩形の左右と円の当たり判定
-	 * @param (r_pos) 矩形の座標
-	 * @param (c_pos) 円の座標
-	 * @param (width_) 矩形の横幅
-	 * @param (height_) 矩形の縦幅
-	 * @param (radius_) 円の半径
-	 * @param (rad_) 矩形の回転角度
-　   */
-	//static bool RectLeftToCircle(D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
-
 	/**
 　   * @brief  矩形と円の当たり判定
 	 * @param[in] type_ 当たり判定を取る箇所(例:矩形の左右面)
@@ -64,8 +40,6 @@ public:
 	 * @param[in] rad_ 矩形の回転角度
 　   */
 	static bool RectAndCircle(__int8 type_,D3DXVECTOR3 r_pos, D3DXVECTOR3 c_pos, float width_, float height_, float radius_, float rad_);
-
-#pragma endregion
 
 	/**
 　   * @brief  円と円の当たり判定
