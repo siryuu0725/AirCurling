@@ -46,14 +46,8 @@ void PauseItemUI::SelectUI()
 	m_pauseitem_info.m_is_end = false;
 
 	//文字「つづける」にマウスが当たっているとき
-	if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Continue], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Continue].Width, m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Continue].Height) == true)
+	if (HitSelectUI(PauseItemTexCategory::Continue) == true)
 	{
-		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
-
-		//選択中テクスチャを「つづける」に合わせる
-		m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Select] = m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Continue];
-
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
@@ -61,16 +55,8 @@ void PauseItemUI::SelectUI()
 		}
 	}
 	//文字「おわる」にマウスが当たっているとき
-	else if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::End], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_pauseitem_info.m_ui_tex[(int)PauseItemTexCategory::End].Width, m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::End].Height) == true)
+	else if (HitSelectUI(PauseItemTexCategory::End) == true)
 	{
-		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
-
-		//選択中テクスチャを「おわる」に合わせる
-		m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Select] = m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::End];
-
-		m_pauseitem_info.m_is_continue = false;
-
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
@@ -78,16 +64,8 @@ void PauseItemUI::SelectUI()
 		}
 	}
 	//文字「へるぷ」にマウスが当たっているとき
-	else if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Help], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Help].Width, m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Help].Height) == true)
+	else if (HitSelectUI(PauseItemTexCategory::Help) == true)
 	{
-		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
-
-		//選択中テクスチャを「へるぷ」に合わせる
-		m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Select] = m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Help];
-
-		m_pauseitem_info.m_is_continue = false;
-
 		//選択した場合
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
@@ -96,7 +74,29 @@ void PauseItemUI::SelectUI()
 	}
 	else
 	{
+		m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Select].y = -400.0f;
+		//音が連続再生しないようにする
 		SoundController::Instance()->ResetSelectFlag();
+	}
+}
+
+//ポーズ中UI当たり判定関数
+bool PauseItemUI::HitSelectUI(PauseItemTexCategory category_)
+{
+	//引数の文字項目にマウスが当たっているとき
+	if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)category_], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		m_pauseitem_info.m_ui_tex[(__int8)category_].Width, m_pauseitem_info.m_ui_tex[(__int8)category_].Height) == true)
+	{
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
+
+		//選択中テクスチャを引数の文字項目に合わせる
+		m_pauseitem_info.m_ui_pos[(__int8)PauseItemTexCategory::Select] = m_pauseitem_info.m_ui_pos[(__int8)category_];
+
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 

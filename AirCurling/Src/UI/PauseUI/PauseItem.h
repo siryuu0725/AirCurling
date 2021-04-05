@@ -71,10 +71,17 @@ public:
 	virtual void ReleaseTex()override;
 
 	/**
-	 * @brief  ポーズ中UI当たり判定関数
-	 * @details ポーズ画面中の「つづける」などのUIとの当たり判定を行う
+	 * @brief  ポーズ中UIフラグ管理関数
+	 * @details ポーズ画面中の選択した項目のフラグを管理する
 	 */
 	void SelectUI();
+
+	/**
+     * @brief  ポーズ中UI当たり判定関数
+	 * @param[in] category_ 当たり判定を行う項目の種類
+     * @details ポーズ画面中の「つづける」などのUIとの当たり判定を行う
+     */
+	bool HitSelectUI(PauseItemTexCategory category_);
 
 	/**
 	 * @brief  ヘルプ画面切り替え関数
