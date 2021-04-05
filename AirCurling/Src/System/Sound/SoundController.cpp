@@ -66,6 +66,34 @@ void SoundController::SoundBGM(int volume_)
 	mp_audio->Play(m_bgm, volume_, true);
 }
 
+//SE停止関数
+void SoundController::StopSE(PlaySEType se_type_)
+{
+	switch (se_type_)
+	{
+	case PlaySEType::Selsect:
+		mp_audio->Stop(m_select_se);
+		break;
+	case PlaySEType::Shot:
+		mp_audio->Stop(m_shot_se);
+		break;
+	case PlaySEType::Reflect:
+		mp_audio->Stop(m_reflect_se);
+		break;
+	case PlaySEType::Goal:
+		mp_audio->Stop(m_goal_se);
+		break;
+	case PlaySEType::Stop:
+		mp_audio->Stop(m_stop_se);
+		break;
+	case PlaySEType::Reset:
+		mp_audio->Stop(m_reset_se);
+		break;
+	default:
+		break;
+	}
+}
+
 //選択SE音再生関数
 void SoundController::SoundSelectSE()
 {
@@ -128,7 +156,6 @@ void SoundController::ResetStopFlag()
 void SoundController::ReleaseTitleSound()
 {
 	mp_audio->Release(m_bgm);
-	mp_audio->Release(m_select_se);
 
 }
 
@@ -136,6 +163,12 @@ void SoundController::ReleaseTitleSound()
 void SoundController::ReleaseGameSound()
 {
 	mp_audio->Release(m_bgm);
+	mp_audio->Release(m_select_se);
+	mp_audio->Release(m_shot_file);
+	mp_audio->Release(m_reflect_file);
+	mp_audio->Release(m_goal_file);
+	mp_audio->Release(m_stop_file);
+	mp_audio->Release(m_reset_file);
 }
 
 //エンド(リザルト)シーンサウンド解放関数

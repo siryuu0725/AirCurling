@@ -177,6 +177,7 @@ void GameScene::MainStep()
 	//ゴール、もしくはターン制限を超えた時
 	if (game_ui_infocopy.m_is_endgame == true)
 	{
+		SoundController::Instance()->StopSE(PlaySEType::Goal);
 		m_cur_step = SceneStep::EndStep;
 	}
 

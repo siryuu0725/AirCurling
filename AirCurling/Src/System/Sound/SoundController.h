@@ -63,6 +63,12 @@ public:
 	void SoundBGM(int volume_);
 
 	/**
+	*	@brief SE停止関数
+	*	@details SEの停止
+	*/
+	void StopSE(PlaySEType se_type_);
+
+	/**
 	*	@brief 選択SE音再生関数
 	*	@details 選択SE音の再生
 	*/
