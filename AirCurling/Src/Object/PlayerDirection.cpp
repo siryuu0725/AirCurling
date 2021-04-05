@@ -27,8 +27,6 @@ void PlayerDirection::Init()
 	m_direction_info.m_mat_world = Calculation::Matrix(m_direction_info.m_pos, m_direction_info.m_scale, m_direction_info.m_angle);
 
 	m_direction_info.m_add_zpos = 3.0;
-
-	m_direction_info.m_is_shotmode = false;
 }
 
 //更新関数

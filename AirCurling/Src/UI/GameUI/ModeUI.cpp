@@ -20,14 +20,7 @@ void PlayerModeUI::Update()
 	//モード切替キーが押された場合
 	if (Inputter::Instance()->GetKeyDown(Inputter::FKey))
 	{
-		if (m_mode_info.m_is_shotmode == false)
-		{
-			m_mode_info.m_is_shotmode = true;
-		}
-		else
-		{
-			m_mode_info.m_is_shotmode = false;
-		}
+		m_mode_info.m_is_shotmode = !m_mode_info.m_is_shotmode;
 	}
 }
 
