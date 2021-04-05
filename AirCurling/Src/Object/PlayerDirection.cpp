@@ -34,30 +34,21 @@ void PlayerDirection::Init()
 //更新関数
 void PlayerDirection::Update()
 {
-	Camera::CameraInfo camera_info;
-
-	mp_camera->GetCameraInfo(camera_info);
-
-	//カメラが操作できるようなった時(ゲーム開始演出終了後)
-	if (camera_info.m_is_operation == true)
-	{
-		//モード切替判定
-		ModeChange();
-
-		//矢印回転
-		Rotate();
-	}
+	//矢印回転
+	Rotate();
 }
 
 //描画情報送信関数
 void PlayerDirection::Draw()
 {
-	GameUI::GameUIInfo ui_info;
+	Player::PlayerInfo player_info;
+	Camera::CameraInfo camera_info;
 
-	mp_ui->GetGameUIInfo(ui_info);
+	mp_player->GetPlayerInfo(player_info);
+	mp_camera->GetCameraInfo(camera_info);
 
-	if (ui_info.m_is_stop_gauge == false
-		&& m_direction_info.m_is_shotmode == true)
+	if (player_info.m_is_movement == false
+		&& camera_info.m_is_shotmode == true)
 	{
 		FbxController::Instance()->DrawFbx(m_direction_info.m_key, m_direction_info.m_mat_world);
 	}
@@ -97,21 +88,5 @@ void PlayerDirection::Rotate()
 
 		m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rot_angle, 0.0f);
 		m_direction_info.m_mat_world = Calculation::Matrix(m_direction_info.m_pos, m_direction_info.m_scale, m_direction_info.m_angle);
-	}
-}
-
-//モード切替関数
-void PlayerDirection::ModeChange()
-{
-	if (Inputter::Instance()->GetKeyDown(Inputter::FKey))
-	{
-		if (m_direction_info.m_is_shotmode == false)
-		{
-			m_direction_info.m_is_shotmode = true;
-		}
-		else
-		{
-			m_direction_info.m_is_shotmode = false;
-		}
 	}
 }

@@ -207,7 +207,7 @@ void GameScene::InitObject()
 
 	//各オブジェクトを配列でまとめる
 	ObjectBase* obj[StageObjectNum] =
-	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal };
+	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal,mp_player_direction };
 
 	for (int i = 0; i < StageObjectNum; i++)
 	{
@@ -234,7 +234,7 @@ void GameScene::DrawObject()
 {
 	//各オブジェクトを配列でまとめる
 	ObjectBase* obj[StageObjectNum] =
-	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal };
+	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal,mp_player_direction };
 
 	for (int i = 0; i < StageObjectNum; i++)
 	{

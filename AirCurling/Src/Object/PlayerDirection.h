@@ -54,12 +54,6 @@ public:
 	 */
 	void Rotate();
 
-	/**
-	 * @brief  モード切替関数
-	 * @details shotとviewモードの切り替えを行う
-	 */
-	void ModeChange();
-
 private:
 	struct DirectionInfo :public ObjectInfo
 	{
@@ -69,8 +63,7 @@ private:
 			m_dir_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_add_zpos(0.0f),
 			m_rot_angle(0.0f),
-			m_pos_rot(0.0f),
-			m_is_shotmode(false)
+			m_pos_rot(0.0f)
 		{}
 
 		D3DXVECTOR3 m_old_pos;     //!回転用oldpos
@@ -84,9 +77,6 @@ private:
 		float m_rot_angle;              //!モデル回転角度
 							       
 		float m_pos_rot;        //!pos回転角度
-
-		bool m_is_shotmode;        //!打つモードかどうか
-
 	};
 
 	DirectionInfo m_direction_info;

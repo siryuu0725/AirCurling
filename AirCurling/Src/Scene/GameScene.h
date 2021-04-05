@@ -28,7 +28,7 @@
 #include <Windows.h>
 
 constexpr __int16 GameBGMVolume = -300;   //!ゲームシーンのBGM音量
-constexpr __int16 StageObjectNum = 8;   //!ゲームシーンのBGM音量
+constexpr __int16 StageObjectNum = 9;   //!ゲームシーンのBGM音量
 
 /**
 * ゲームシーンクラス
