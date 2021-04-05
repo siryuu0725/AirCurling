@@ -46,12 +46,9 @@ void ProductionUI::StartProduction(Camera* camera_)
 	//一度テクスチャがとまった時
 	if (m_production_info.m_movestop == true)
 	{
+		m_production_info.m_stoptimer++;
 		//1秒程止める
-		if (m_production_info.m_stoptimer <= StartFontStopTime)
-		{
-			m_production_info.m_stoptimer++;
-		}
-		else
+		if (m_production_info.m_stoptimer >= StartFontStopTime)
 		{
 			//再び動かす
 			m_production_info.m_remove = true;
