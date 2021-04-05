@@ -45,7 +45,7 @@ float Calculation::Length(float target_pos_x, float target_pos_y)
 }
 
 //ベクトル回転関数
-D3DXVECTOR3 Calculation::Rote(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_)
+D3DXVECTOR3 Calculation::Rotate(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_)
 {
 	D3DXVECTOR3 oldpos = target_pos_;
 

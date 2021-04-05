@@ -4,22 +4,22 @@
 //矩形の頂点と円の当たり判定
 bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_pos_, float width_, float height_, float radius_, float rad_)
 {
-	D3DXVECTOR3 rote_pos(0.0f, 0.0f, 0.0f); //矩形の回転角度分円をずらした時の座標
+	D3DXVECTOR3 rot_pos(0.0f, 0.0f, 0.0f); //矩形の回転角度分円をずらした時の座標
 	D3DXVECTOR3 ver_pos(0.0f, 0.0f, 0.0f);  //衝突時の頂点座標保存用
 
 	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f); //矩形の頂点と円とのベクトル
 
 	//衝突時、対象の回転角度分座標をずらす
-	rote_pos = Calculation::Rote(c_pos_, r_pos_, rad_);
+	rot_pos = Calculation::Rotate(c_pos_, r_pos_, rad_);
 
 	switch ((HitRectPoint)type_)
 	{
 	case HitRectPoint::TopOrUnder: //上下
 		//矩形の回転前の座標で判定を行う
-		if (rote_pos.x > r_pos_.x - (width_ / 2) &&
-			rote_pos.x < r_pos_.x + (width_ / 2) &&
-			rote_pos.z + radius_ > r_pos_.z - (height_ / 2) &&
-			rote_pos.z - radius_ < r_pos_.z + (height_ / 2))
+		if (rot_pos.x > r_pos_.x - (width_ / 2) &&
+			rot_pos.x < r_pos_.x + (width_ / 2) &&
+			rot_pos.z + radius_ > r_pos_.z - (height_ / 2) &&
+			rot_pos.z - radius_ < r_pos_.z + (height_ / 2))
 		{
 			return true;
 		}
@@ -28,10 +28,10 @@ bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_po
 		break;
 	case HitRectPoint::LeftOrRight: //左右
 		//矩形の回転前の座標で判定を行う
-		if (rote_pos.x + radius_ > r_pos_.x - (width_ / 2) &&
-			rote_pos.x - radius_ < r_pos_.x + (width_ / 2) &&
-			rote_pos.z > r_pos_.z - (height_ / 2) &&
-			rote_pos.z < r_pos_.z + (height_ / 2))
+		if (rot_pos.x + radius_ > r_pos_.x - (width_ / 2) &&
+			rot_pos.x - radius_ < r_pos_.x + (width_ / 2) &&
+			rot_pos.z > r_pos_.z - (height_ / 2) &&
+			rot_pos.z < r_pos_.z + (height_ / 2))
 		{
 			return true;
 		}
@@ -59,8 +59,8 @@ bool Collision::RectAndCircle(__int8 type_, D3DXVECTOR3 r_pos_, D3DXVECTOR3 c_po
 	}
 
 	//ベクトル算出
-	vec.x = ver_pos.x - rote_pos.x;
-	vec.z = ver_pos.z - rote_pos.z;
+	vec.x = ver_pos.x - rot_pos.x;
+	vec.z = ver_pos.z - rot_pos.z;
 
 	//円の半径と矩形の幅の距離
 	float c = sqrtf(vec.x * vec.x + vec.z * vec.z);

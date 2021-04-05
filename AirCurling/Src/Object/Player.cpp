@@ -362,7 +362,7 @@ D3DXVECTOR3 Player::ReflectionRect(HitRectPoint type_,float rad_)
 	m_change_radian *= 2;
 
 	//方向ベクトルを回転
-	return Calculation::Rote(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), m_change_radian);
+	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), m_change_radian);
 }
 
 //円形型ブロック反射方向計算関数
@@ -408,7 +408,7 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 	}
 
 	//方向ベクトルを回転回転
-	return Calculation::Rote(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
+	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
 }
 
 //矩形型ブロック頂点反射方向計算関数
@@ -418,7 +418,7 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
 	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f);
 
-	D3DXVECTOR3 player_lotepos = Calculation::Rote(player_info.m_pos, r_pos_, rad_);
+	D3DXVECTOR3 player_lotepos = Calculation::Rotate(player_info.m_pos, r_pos_, rad_);
 	D3DXVECTOR3 ver_pos(0.0f, 0.0f, 0.0f);
 
 	//方向ベクトルを反転
@@ -452,7 +452,7 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	D3DXVECTOR3 old_vec = player_lotepos - ver_pos;
 
 	//矩形が回転していたらベクトルも回転させる
-	vec = Calculation::Rote(old_vec, D3DXVECTOR3(0.0f, 0.0f, 0.0f), -rad_);
+	vec = Calculation::Rotate(old_vec, D3DXVECTOR3(0.0f, 0.0f, 0.0f), -rad_);
 
 	float direction_rad = atan2f(old_direction.z, old_direction.x);
 	float vec_rad = atan2f(vec.z, vec.x);
@@ -482,7 +482,7 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	}
 
 	//!方向ベクトルを回転
-	return Calculation::Rote(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
+	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
 }
 
 //初期位置移動関数

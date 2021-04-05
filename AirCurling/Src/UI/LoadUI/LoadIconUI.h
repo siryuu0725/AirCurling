@@ -12,7 +12,7 @@
 //!Textureの種類
 enum class LoadIconTexCategory :int
 {
-	RoteTex, //!回転テクスチャ
+	RotTex, //!回転テクスチャ
 	CategoryMax,
 };
 
@@ -33,8 +33,8 @@ public:
 			right_top_pos(D3DXVECTOR2(0.0f, 0.0f)),
 			right_down_pos(D3DXVECTOR2(0.0f, 0.0f)),
 			m_center_pos(D3DXVECTOR2(0.0f, 0.0f)),
-			m_rote_angle(0.0f),
-			m_rote_timer(0)
+			m_rot_angle(0.0f),
+			m_rot_timer(0)
 		{}
 
 		Graphics::TextureData m_ui_tex; //Textureデータ
@@ -48,9 +48,9 @@ public:
 
 		D3DXVECTOR2 m_center_pos;   //!回転用軸pos
 
-		float m_rote_angle;         //!テクスチャ回転角度
+		float m_rot_angle;         //!テクスチャ回転角度
 
-		__int8 m_rote_timer;        //!テクスチャ回転スピード
+		__int8 m_rot_timer;        //!テクスチャ回転スピード
 	};
 
 	LoadIconUI() {}

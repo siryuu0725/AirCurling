@@ -27,7 +27,7 @@ public:
 			m_width(0.0f),
 			m_height(0.0f),
 			m_radius(0.0f),
-			m_rote(0.0f)
+			m_rot_angle(0.0f)
 		{
 			D3DXMatrixIdentity(&m_mat_world);
 		}
@@ -45,7 +45,7 @@ public:
 
 		float m_radius;   //!半径
 
-		float m_rote;   //!回転角度
+		float m_rot_angle;   //!回転角度
 
 	};
 

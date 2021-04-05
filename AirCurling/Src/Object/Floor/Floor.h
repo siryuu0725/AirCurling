@@ -54,7 +54,7 @@ private:
 		FloorExternalInfo() :
 			m_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_scale(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-			m_rote(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+			m_rot_angle(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_width(0.0f),
 			m_height(0.0f)
 		{}
@@ -65,7 +65,7 @@ private:
 		D3DXVECTOR3 m_scale;
 
 		//!回転角度
-		D3DXVECTOR3 m_rote;
+		D3DXVECTOR3 m_rot_angle;
 
 		float m_width;  //!横幅
 		float m_height; //!縦幅

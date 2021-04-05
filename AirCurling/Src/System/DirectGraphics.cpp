@@ -238,7 +238,7 @@ void Graphics::DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float spri
 	}
 }
 
-void Graphics::DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
+void Graphics::DrawRotTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
 {
 
 	CustomVertex vertex[4] =

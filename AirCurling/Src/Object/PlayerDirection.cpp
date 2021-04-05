@@ -14,7 +14,7 @@ void PlayerDirection::Init()
 {
 	m_direction_info.m_key = "direction";  //描画用キー
 
-	m_direction_info.m_rote = 0.0f; //モデル回転角度
+	m_direction_info.m_rot_angle = 0.0f; //モデル回転角度
 
 	Player::PlayerInfo player_info;
 
@@ -22,7 +22,7 @@ void PlayerDirection::Init()
 
 	m_direction_info.m_pos = player_info.m_pos;  //座標
 	m_direction_info.m_scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f); //サイズ
-	m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rote, 0.0f); //回転角度
+	m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rot_angle, 0.0f); //回転角度
 
 	m_direction_info.m_mat_world = Calculation::Matrix(m_direction_info.m_pos, m_direction_info.m_scale, m_direction_info.m_angle);
 
@@ -45,7 +45,7 @@ void PlayerDirection::Update()
 		ModeChange();
 
 		//矢印回転
-		Rote();
+		Rotate();
 	}
 }
 
@@ -70,7 +70,7 @@ void PlayerDirection::ReleaseModel()
 }
 
 //矢印回転関数
-void PlayerDirection::Rote()
+void PlayerDirection::Rotate()
 {
 	GameUI::GameUIInfo ui_info;
 
@@ -90,12 +90,12 @@ void PlayerDirection::Rote()
 
 		m_direction_info.m_dir_vec = camera_info.m_forward;
 
-		m_direction_info.m_pos_rote_r = D3DXToDegree (-atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
-		m_direction_info.m_rote = D3DXToDegree(atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
+		m_direction_info.m_pos_rot = D3DXToDegree (-atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
+		m_direction_info.m_rot_angle = D3DXToDegree(atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
 
-		m_direction_info.m_pos = Calculation::Rote(m_direction_info.m_old_pos, m_direction_info.m_player_pos, m_direction_info.m_pos_rote_r);
+		m_direction_info.m_pos = Calculation::Rotate(m_direction_info.m_old_pos, m_direction_info.m_player_pos, m_direction_info.m_pos_rot);
 
-		m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rote, 0.0f);
+		m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rot_angle, 0.0f);
 		m_direction_info.m_mat_world = Calculation::Matrix(m_direction_info.m_pos, m_direction_info.m_scale, m_direction_info.m_angle);
 	}
 }

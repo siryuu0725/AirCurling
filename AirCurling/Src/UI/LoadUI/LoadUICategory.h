@@ -8,7 +8,7 @@
 //!UIの種類
 enum class LoadUICategory :__int8
 {
-	RoteTex, //!回転テクスチャ
+	RotTex, //!回転テクスチャ
 	NowLoad, //!文字「NowLoad」
 	CategoryMax,
 };

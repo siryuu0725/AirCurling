@@ -10,7 +10,7 @@ void Floor::Init(std::string stage_str_)
 
 	m_floor_info.m_pos = m_floor_externalinfo.m_pos;      //座標
 	m_floor_info.m_scale = m_floor_externalinfo.m_scale;  //描画サイズ
-	m_floor_info.m_angle = m_floor_externalinfo.m_rote;   //回転角度
+	m_floor_info.m_angle = m_floor_externalinfo.m_rot_angle;   //回転角度
 
 	m_floor_info.m_mat_world = Calculation::Matrix(m_floor_info.m_pos, m_floor_info.m_scale, m_floor_info.m_angle);  //ワールド座標
 

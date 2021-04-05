@@ -102,7 +102,7 @@ public:
 	 * @brief  カメラ回転関数
 	 * @details カメラの回転処理関数
 	 */
-	void RoteEyePos();
+	void RotEyePos();
 
 	/**
 	 * @brief  モード切替関数

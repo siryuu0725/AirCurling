@@ -26,7 +26,7 @@ void LoadUI::Init()
 //外部データセット関数
 void LoadUI::SetUIPos()
 {
-	mp_load_icon->SetUIPos(m_loadui_externalinfo[(__int8)LoadUICategory::RoteTex].m_pos);
+	mp_load_icon->SetUIPos(m_loadui_externalinfo[(__int8)LoadUICategory::RotTex].m_pos);
 
 	mp_load_font->SetUIPos(m_loadui_externalinfo[(__int8)LoadUICategory::NowLoad ].m_pos);
 }

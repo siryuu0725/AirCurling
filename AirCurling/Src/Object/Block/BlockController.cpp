@@ -48,7 +48,7 @@ void BlockController::Init(std::string stage_str_)
 		m_rectblocks.push_back(new RectBlock
 		(m_rectblock_externalinfo[i].m_pos,
 		 m_rectblock_externalinfo[i].m_scale,
-		 m_rectblock_externalinfo[i].m_rote,
+		 m_rectblock_externalinfo[i].m_rot_angle,
 		 m_rectblock_externalinfo[i].m_width, m_rectblock_externalinfo[i].m_height ,"rectblock"));
 
 		m_rectblocks[i]->GetRectBlockInfo(block_info);

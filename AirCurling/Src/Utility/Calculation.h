@@ -37,7 +37,7 @@ public:
 	 * @param[in] radian_  回転角度
 	 * @return 引数1のから引数2までのベクトルを引数3度分回転させる
  　　*/
-	static D3DXVECTOR3 Rote(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_);
+	static D3DXVECTOR3 Rotate(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_);
 
 	/**
  　　* @brief  ワールド座標計算関数

@@ -47,7 +47,7 @@ void DebufController::Init(std::string stage_str_)
 		m_stopfloors.push_back(new StopFloor
 		(m_stopfloor_externalinfo[i].m_pos,
 		 m_stopfloor_externalinfo[i].m_scale,
-		 m_stopfloor_externalinfo[i].m_rote,
+		 m_stopfloor_externalinfo[i].m_rot_angle,
 		 m_stopfloor_externalinfo[i].m_width, m_stopfloor_externalinfo[i].m_height, "stop"));
 
 		m_stopfloors[i]->GetStopFloorInfo(debuf_floor_info);

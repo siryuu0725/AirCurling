@@ -52,7 +52,7 @@ public:
 	 * @brief   矢印回転関数
 	 * @detail  プレイヤーが視を動かした時矢印も一緒に動くようにする
 	 */
-	void Rote();
+	void Rotate();
 
 	/**
 	 * @brief  モード切替関数
@@ -68,8 +68,8 @@ private:
 			m_player_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_dir_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_add_zpos(0.0f),
-			m_rote(0.0f),
-			m_pos_rote_r(0.0f),
+			m_rot_angle(0.0f),
+			m_pos_rot(0.0f),
 			m_is_shotmode(false)
 		{}
 
@@ -81,9 +81,9 @@ private:
 
 		float m_add_zpos;          //!プレイヤーの前にくるように足す値
 							       
-		float m_rote;              //!モデル回転角度
+		float m_rot_angle;              //!モデル回転角度
 							       
-		float m_pos_rote_r;        //!pos回転角度
+		float m_pos_rot;        //!pos回転角度
 
 		bool m_is_shotmode;        //!打つモードかどうか
 

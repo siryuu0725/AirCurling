@@ -159,7 +159,7 @@ public:
 	* @param[in] leftdown_pos_  テクスチャの左下頂点座標
 	* @param[in] rightdown_pos_ テクスチャの右下頂点座標
 　　*/
-	void DrawRoteTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_);
+	void DrawRotTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_);
 
 	/**
 　　* @brief  テクスチャ読み込み関数
