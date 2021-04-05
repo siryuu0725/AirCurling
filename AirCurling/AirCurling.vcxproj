@@ -298,15 +298,9 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Src\UI\LoadUI\LoadUI.cpp" />
-    <ClCompile Include="Src\UI\PoseUI\PoseBG.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Src\UI\PoseUI\PoseItem.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Src\UI\PoseUI\PoseUI.cpp" />
+    <ClCompile Include="Src\UI\PauseUI\PauseBG.cpp" />
+    <ClCompile Include="Src\UI\PauseUI\PauseItem.cpp" />
+    <ClCompile Include="Src\UI\PauseUI\PauseUI.cpp" />
     <ClCompile Include="Src\UI\ResultUI\RankingFontUI.cpp">
       <SubType>
       </SubType>
@@ -503,19 +497,10 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\UI\PoseUI\PoseBG.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Src\UI\PoseUI\PoseItem.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Src\UI\PoseUI\PoseUI.h" />
-    <ClInclude Include="Src\UI\PoseUI\PoseUICategory.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="Src\UI\PauseUI\PauseBG.h" />
+    <ClInclude Include="Src\UI\PauseUI\PauseItem.h" />
+    <ClInclude Include="Src\UI\PauseUI\PauseUI.h" />
+    <ClInclude Include="Src\UI\PauseUI\PauseUICategory.h" />
     <ClInclude Include="Src\UI\ResultUI\RankingFontUI.h">
       <SubType>
       </SubType>

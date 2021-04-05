@@ -1,12 +1,12 @@
 ﻿/**
- * @file PoseUICategory.h
+ * @file PauseUICategory.h
  * @brief ポーズ画面で使用するテクスチャの種類を宣言する
 **/
 #ifndef POSEUICATEGORY_H_
 #define POSEUICATEGORY_H_
 
 //!UIの種類
-enum class PoseUICategory :__int8
+enum class PauseUICategory :__int8
 {
 	BG,          //!背景
 	HelpBG,      //!ヘルプ画面背景

@@ -1,12 +1,12 @@
-﻿#include "PoseUI.h"
+﻿#include "PauseUI.h"
 #include "../../Utility/Collision/Collision.h"
 #include "../../System/Inputter.h"
 
 //初期化関数
-void PoseUI::Init()
+void PauseUI::Init()
 {
-	if (mp_item == nullptr) { mp_item = new PoseItemUI; }
-	if (mp_bg == nullptr) { mp_bg = new PoseBG(mp_item); }
+	if (mp_item == nullptr) { mp_item = new PauseItemUI; }
+	if (mp_bg == nullptr) { mp_bg = new PauseBG(mp_item); }
 
 	//外部データ読み込み
 	LoadPoseUIExternalInfo();
@@ -15,9 +15,9 @@ void PoseUI::Init()
 	SetUIPos();
 
 	//各UIを配列でまとめる
-	UIBase* ui[PoseUICategoryNum] =
+	UIBase* ui[PauseUICategoryNum] =
 	{ mp_bg ,mp_item };
-	for (__int8 i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PauseUICategoryNum; i++)
 	{
 		ui[i]->Init(); //初期化
 	}
@@ -29,20 +29,20 @@ void PoseUI::Init()
 }
 
 //外部データセット関数
-void PoseUI::SetUIPos()
+void PauseUI::SetUIPos()
 {
-	mp_bg->SetUIPos(m_poseui_externalinfo[(__int8)PoseUICategory::BG].m_pos,
-		m_poseui_externalinfo[(__int8)PoseUICategory::HelpBG].m_pos);
+	mp_bg->SetUIPos(m_pauseui_externalinfo[(__int8)PauseUICategory::BG].m_pos,
+		m_pauseui_externalinfo[(__int8)PauseUICategory::HelpBG].m_pos);
 
-	mp_item->SetUIPos(m_poseui_externalinfo[(__int8)PoseUICategory::Continue].m_pos,
-		m_poseui_externalinfo[(__int8)PoseUICategory::End].m_pos,
-		m_poseui_externalinfo[(__int8)PoseUICategory::Help].m_pos,
-		m_poseui_externalinfo[(__int8)PoseUICategory::Select].m_pos);
+	mp_item->SetUIPos(m_pauseui_externalinfo[(__int8)PauseUICategory::Continue].m_pos,
+		m_pauseui_externalinfo[(__int8)PauseUICategory::End].m_pos,
+		m_pauseui_externalinfo[(__int8)PauseUICategory::Help].m_pos,
+		m_pauseui_externalinfo[(__int8)PauseUICategory::Select].m_pos);
 
 }
 
 //外部データ読み込み関数
-void PoseUI::LoadPoseUIExternalInfo()
+void PauseUI::LoadPoseUIExternalInfo()
 {
 	FILE* fp = NULL;
 
@@ -53,7 +53,7 @@ void PoseUI::LoadPoseUIExternalInfo()
 		fread(&m_ui_num, sizeof(m_ui_num), 1, fp);
 
 		//書き込む
-		fread(&m_poseui_externalinfo, sizeof(UIExternalInfo), m_ui_num, fp);
+		fread(&m_pauseui_externalinfo, sizeof(UIExternalInfo), m_ui_num, fp);
 
 		//ファイルクローズ
 		fclose(fp);
@@ -61,11 +61,11 @@ void PoseUI::LoadPoseUIExternalInfo()
 }
 
 //更新関数
-void PoseUI::Update()
+void PauseUI::Update()
 {
 	mp_item->Update();
 
-	PoseItemUI::PoseItemInfo item_info;
+	PauseItemUI::PauseItemInfo item_info;
 	mp_item->GetPoseItemInfo(item_info);
 	m_poseui_info.m_is_continue = item_info.m_is_continue;
 	m_poseui_info.m_is_end = item_info.m_is_end;
@@ -73,26 +73,26 @@ void PoseUI::Update()
 }
 
 //描画情報送信関数
-void PoseUI::Draw()
+void PauseUI::Draw()
 {
 	//各UIを配列でまとめる
-	UIBase* ui[PoseUICategoryNum] =
+	UIBase* ui[PauseUICategoryNum] =
 	{ mp_bg ,mp_item };
 
-	for (__int8 i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PauseUICategoryNum; i++)
 	{
 		ui[i]->Draw();
 	}
 }
 
 //テクスチャ解放関数
-void PoseUI::ReleaseTex()
+void PauseUI::ReleaseTex()
 {
 	//各UIを配列でまとめる
-	UIBase* ui[PoseUICategoryNum] =
+	UIBase* ui[PauseUICategoryNum] =
 	{ mp_bg ,mp_item };
 
-	for (__int8 i = 0; i < PoseUICategoryNum; i++)
+	for (__int8 i = 0; i < PauseUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
 	}

@@ -1,15 +1,15 @@
 ﻿/**
- * @file PoseItemUI.h
+ * @file PauseItemUI.h
  * @brief ポーズ中の各選択項目を扱う
  * @details 中身：ポーズ中項目クラス
 **/
-#ifndef POSEUI_ITEM_H_
-#define POSEUI_ITEM_H_
+#ifndef PAUSEUI_ITEM_H_
+#define PAUSEUI_ITEM_H_
 
 #include "../UIBase.h"
-#include "PoseUICategory.h"
+#include "PauseUICategory.h"
 //!Textureの種類
-enum class PoseItemTexCategory :__int8
+enum class PauseItemTexCategory :__int8
 {
 	Continue,    //!文字「つづける」
 	End,         //!文字「おわる」
@@ -23,30 +23,30 @@ enum class PoseItemTexCategory :__int8
 * ポーズ中項目クラス
 */
 
-class PoseItemUI :public UIBase
+class PauseItemUI :public UIBase
 {
 public:
 	//!ポーズ中項目情報
-	struct PoseItemInfo
+	struct PauseItemInfo
 	{
-		PoseItemInfo() :
+		PauseItemInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
 			m_is_continue(false),
 			m_is_end(false),
 			m_is_help(false)
 		{}
 
-		Graphics::TextureData m_ui_tex[(__int8)PoseItemTexCategory::CategoryMax]; //Textureデータ
+		Graphics::TextureData m_ui_tex[(__int8)PauseItemTexCategory::CategoryMax]; //Textureデータ
 
-		D3DXVECTOR2  m_ui_pos[(__int8)PoseItemTexCategory::CategoryMax]; //Texture座標
+		D3DXVECTOR2  m_ui_pos[(__int8)PauseItemTexCategory::CategoryMax]; //Texture座標
 
 		bool m_is_continue;  //!「つづける」選択フラグ
 		bool m_is_end;		  //!「おわる」選択フラグ
 		bool m_is_help;	  //!「へるぷ」選択フラグ
 	};
 
-	PoseItemUI() {}
-	~PoseItemUI() {}
+	PauseItemUI() {}
+	~PauseItemUI() {}
 
 	/**
 	 * @brief  初期化関数
@@ -87,9 +87,9 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetPoseItemInfo(PoseItemInfo& copy_info_) { copy_info_ = m_poseitem_info; }
+	void GetPoseItemInfo(PauseItemInfo& copy_info_) { copy_info_ = m_pauseitem_info; }
 
 private:
-	PoseItemInfo m_poseitem_info; //!ポーズ中項目情報
+	PauseItemInfo m_pauseitem_info; //!ポーズ中項目情報
 };
 #endif

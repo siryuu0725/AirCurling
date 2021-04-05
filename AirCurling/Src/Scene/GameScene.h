@@ -23,7 +23,7 @@
 
 #include "../UI/GameUI/GameUI.h"
 #include "../UI/LoadUI/LoadUI.h"
-#include "../UI/PoseUI/PoseUI.h"
+#include "../UI/PauseUI/PauseUI.h"
 
 #include <Windows.h>
 
@@ -124,7 +124,7 @@ private:
 
 	GameUI* mp_gmae_ui; //!ゲーム用UI
 	LoadUI* mp_load_ui; //!ロード画面用UI
-	PoseUI* mp_pose_ui; //!ヘルプ画面用UI
+	PauseUI* mp_pose_ui; //!ヘルプ画面用UI
 
 
 	HANDLE thread_h;

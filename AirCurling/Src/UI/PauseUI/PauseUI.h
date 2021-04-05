@@ -1,28 +1,28 @@
 ﻿/**
- * @file PoseUI.h
+ * @file PauseUI.h
  * @brief ゲームシーン中のポーズ画面でのUIを扱う
  * @details 中身：ポーズ画面用UIクラス
 **/
-#ifndef POSEUI_H_
-#define POSEUI_H_
+#ifndef PAUSEUI_H_
+#define PAUSEUI_H_
 
 #include "../UIBase.h"
 #include "../../Score/RankingData.h"
-#include "PoseUICategory.h"
-#include "PoseBG.h"
-#include "PoseItem.h"
-constexpr unsigned __int8 PoseUICategoryNum = 2;  //!ポーズ画面で使用するUIオブジェクトの数
+#include "PauseUICategory.h"
+#include "PauseBG.h"
+#include "PauseItem.h"
+constexpr unsigned __int8 PauseUICategoryNum = 2;  //!ポーズ画面で使用するUIオブジェクトの数
 
 /**
 * ポーズ画面用UIクラス
 */
-class PoseUI :public UIBase
+class PauseUI :public UIBase
 {
 public:
 	//!ヘルプ画面UI情報
-	struct HelpUIInfo
+	struct PauseUIInfo
 	{
-		HelpUIInfo() :
+		PauseUIInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
 			m_select(false),
 			m_is_continue(false),
@@ -30,9 +30,9 @@ public:
 			m_is_help(false)
 		{}
 
-		Graphics::TextureData m_ui_tex[(int)PoseUICategory::CategoryMax];  //!テクスチャ情報構造体
+		Graphics::TextureData m_ui_tex[(int)PauseUICategory::CategoryMax];  //!テクスチャ情報構造体
 
-		D3DXVECTOR2  m_ui_pos[(int)PoseUICategory::CategoryMax];  //!テクスチャ座標
+		D3DXVECTOR2  m_ui_pos[(int)PauseUICategory::CategoryMax];  //!テクスチャ座標
 
 		bool m_select;    //!ポーズ画面各項目選択中フラグ
 		bool m_is_continue;  //!「つづける」選択フラグ
@@ -41,12 +41,12 @@ public:
 	};
 
 private:
-	HelpUIInfo m_poseui_info;
+	PauseUIInfo m_poseui_info;
 
 	
 public:
-	PoseUI() {}
-	~PoseUI() {}
+	PauseUI() {}
+	~PauseUI() {}
 
 	/**
 	 * @brief  初期化関数
@@ -87,11 +87,11 @@ public:
 	* @param[out] copy_info_ 保存用UI情報構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetHelpUIInfo(HelpUIInfo& copy_info_) { copy_info_ = m_poseui_info; }
+	void GetHelpUIInfo(PauseUIInfo& copy_info_) { copy_info_ = m_poseui_info; }
 
 private:
-	UIExternalInfo m_poseui_externalinfo[static_cast<int>(PoseUICategory::CategoryMax)];
-	PoseBG* mp_bg;         //!背景
-	PoseItemUI* mp_item;   //!項目
+	UIExternalInfo m_pauseui_externalinfo[static_cast<int>(PauseUICategory::CategoryMax)];
+	PauseBG* mp_bg;         //!背景
+	PauseItemUI* mp_item;   //!項目
 };
 #endif

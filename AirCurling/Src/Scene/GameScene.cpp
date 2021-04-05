@@ -72,7 +72,7 @@ void GameScene::InitStep()
 	//UIインスタンス化
 	if (mp_gmae_ui == nullptr) { mp_gmae_ui = new GameUI(); }
 	if (mp_load_ui == nullptr) { mp_load_ui = new LoadUI(); }
-	if (mp_pose_ui == nullptr) { mp_pose_ui = new PoseUI(); }
+	if (mp_pose_ui == nullptr) { mp_pose_ui = new PauseUI(); }
 
 	//オブジェクトインスタンス化
 	if (mp_block == nullptr) { mp_block = new BlockController; }
@@ -121,7 +121,7 @@ void GameScene::UpdateThreadStep()
 void GameScene::MainStep()
 {
 	//ポーズ中UIの情報取得
-	PoseUI::HelpUIInfo pose_ui_infocopy;
+	PauseUI::PauseUIInfo pose_ui_infocopy;
 	mp_pose_ui->GetHelpUIInfo(pose_ui_infocopy);
 
 	//ゲームUIの情報取得
@@ -142,7 +142,7 @@ void GameScene::MainStep()
 	}
 	else
 	{
-		PoseUI::HelpUIInfo pose_ui_infocopy;
+		PauseUI::PauseUIInfo pose_ui_infocopy;
 
 		//ポーズ中UI更新
 		mp_pose_ui->Update();
