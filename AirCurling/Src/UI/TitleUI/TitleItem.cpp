@@ -10,8 +10,8 @@ void TitleItem::Init()
 	}
 	
 	//テクスチャ読み込み
-	Graphics::Instance()->LoadTexture("Res/Tex/Title_Hazimeru.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Start]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Title_Owaru.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::End]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_Start.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Start]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Title_End.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::End]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Title_Help.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::Help]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Title_SelectFrame.png", &m_titleitem_info.m_ui_tex[(__int8)TitleItemTexCategory::NowSelect]);
 

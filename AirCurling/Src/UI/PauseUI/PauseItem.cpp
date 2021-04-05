@@ -9,8 +9,8 @@ void PauseItemUI::Init()
 	}
 
 	//Texture読み込み
-	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Tudukeru.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Continue]);
-	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Owaru.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::End]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Continue.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Continue]);
+	Graphics::Instance()->LoadTexture("Res/Tex/Pose_End.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::End]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Help.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Help]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_SelectFrame.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Select]);
 }
