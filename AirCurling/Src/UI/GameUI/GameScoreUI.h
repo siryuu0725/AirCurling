@@ -31,7 +31,7 @@ public:
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
 			m_ui_tu{ 0.0f },
 			m_ui_tv{ 0.0f },
-			m_now_score(0),
+			m_total_score(0),
 			m_one_score(0),
 			m_ten_score(0),
 			m_score("")
@@ -44,7 +44,7 @@ public:
 		float  m_ui_tu[(__int8)GameScoreTexCategory::CategoryMax]; //!テクスチャのTU値
 		float  m_ui_tv[(__int8)GameScoreTexCategory::CategoryMax]; //!テクスチャのTV値
 
-		__int8 m_now_score; //!総合スコア 
+		__int8 m_total_score; //!総合スコア 
 
 		__int8 m_one_score;  //!スコア1の位保存用
 		__int8 m_ten_score;  //!スコア10の位保存用
@@ -79,6 +79,6 @@ public:
 	virtual void ReleaseTex()override;
 
 private:
-	GameScoreUIInfo m_gamescoer_info; //!ゲームスコアUIクラス情報
+	GameScoreUIInfo m_gamescore_info; //!ゲームスコアUIクラス情報
 };
 #endif
