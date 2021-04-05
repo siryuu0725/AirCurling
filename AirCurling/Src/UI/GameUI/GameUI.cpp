@@ -113,7 +113,6 @@ void GameUI::Update(Player* player_, Camera* camera_)
 		if (m_player_infocopy.m_is_goal == true)
 		{
 			m_update_step = UpdateStep::EndProduction;
-			break;
 		}
 		break;
 	case UpdateStep::EndProduction: //終了演出ステップ
@@ -126,6 +125,7 @@ void GameUI::Update(Player* player_, Camera* camera_)
 		{
 			m_gameui_info.m_is_endgame = true;
 		}
+		break;
 	default:
 		break;
 	}
