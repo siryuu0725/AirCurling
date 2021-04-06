@@ -83,7 +83,7 @@ void GameScene::InitStep()
 	if (mp_goal == nullptr) { mp_goal = new Goal; }
 	if (mp_camera == nullptr) { mp_camera = new Camera(); }
 	if (mp_player == nullptr) { mp_player = new Player(mp_camera, mp_block, mp_floor, mp_debuf, mp_goal); }
-	if (mp_player_direction == nullptr) { mp_player_direction = new PlayerDirection(mp_player,mp_camera, mp_gmae_ui); }
+	if (mp_player_direction == nullptr) { mp_player_direction = new PlayerDirection(mp_player,mp_camera); }
 
 	//オブジェクト初期化
 	InitObject();
