@@ -1,5 +1,6 @@
 ﻿#include "PauseItem.h"
 
+//初期化関数
 void PauseItemUI::Init()
 {
 	//座標初期化
@@ -15,7 +16,7 @@ void PauseItemUI::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_SelectFrame.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Select]);
 }
 
-
+//更新関数
 void PauseItemUI::Update()
 {
 	//ヘルプ画面ではないと時
@@ -29,6 +30,7 @@ void PauseItemUI::Update()
 	}
 }
 
+//描画情報送信関数
 void PauseItemUI::Draw()
 {
 	if (m_pauseitem_info.m_is_help == false)
@@ -40,6 +42,7 @@ void PauseItemUI::Draw()
 	}
 }
 
+//ポーズ中UIフラグ管理関数
 void PauseItemUI::SelectUI()
 {
 	m_pauseitem_info.m_is_continue = false;
@@ -100,6 +103,7 @@ bool PauseItemUI::HitSelectUI(PauseItemTexCategory category_)
 	}
 }
 
+//ヘルプ画面切り替え関数
 void PauseItemUI::HelpMode()
 {
 	if (Inputter::Instance()->OnMouseDown(Inputter::Left))
@@ -108,6 +112,7 @@ void PauseItemUI::HelpMode()
 	}
 }
 
+//テクスチャ解放関数
 void PauseItemUI::ReleaseTex()
 {
 	for (__int8 i = 0; i < (__int8)PauseItemTexCategory::CategoryMax; i++)
