@@ -19,7 +19,8 @@ GameScene::GameScene() :
 	mp_gmae_ui(nullptr),
 	mp_load_ui(nullptr),
 	mp_pose_ui(nullptr),
-	m_is_pose(false)
+	m_is_pose(false),
+	m_re_title(false)
 {
 	m_cur_step = SceneStep::InitStep;
 }
@@ -101,6 +102,7 @@ void GameScene::InitStep()
 	SoundController::Instance()->SoundBGM(GameBGMVolume);
 
 	m_is_pose = false;
+	m_re_title = false;
 
 	//スレッドステップへ
 	m_cur_step = SceneStep::ThreadStep;
@@ -159,7 +161,8 @@ void GameScene::MainStep()
 		//ポーズ中、「おわる」が押された場合
 		else if (pose_ui_infocopy.m_is_end == true)
 		{
-			PostQuitMessage(0);
+			m_re_title = true;
+			m_cur_step = SceneStep::EndStep;
 		}
 	}
 
@@ -196,8 +199,17 @@ void GameScene::EndStep()
 
 	DeleteObject();
 
-	SceneController::Instance()->SetSceneId(SceneId::Result);
+	DeleteUI();
 
+	if (m_re_title == true)
+	{
+		SceneController::Instance()->SetSceneId(SceneId::Title);
+	}
+	else
+	{
+		SceneController::Instance()->SetSceneId(SceneId::Result);
+	}
+	
 	m_is_change_scene = true;
 }
 

@@ -13,11 +13,6 @@ LRESULT CALLBACK WindowProc(HWND window_handle_, UINT message_id_, WPARAM wparam
 	case WM_CLOSE:
 		PostQuitMessage(0);
 		break;
-	/*case WM_KEYDOWN:
-		if (wparam_ == VK_ESCAPE)
-		{
-			PostMessage(window_handle_, WM_CLOSE, NULL, NULL);
-		}*/
 	default:
 		return DefWindowProc(window_handle_, message_id_, wparam_, lparam_);
 		break;

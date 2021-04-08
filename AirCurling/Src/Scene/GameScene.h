@@ -133,6 +133,8 @@ private:
 	static DWORD WINAPI LoadResorse(LPVOID lpparm_);
 
 	bool m_is_pose; //!ポーズ画面かどうか
+	bool m_re_title; //!タイトル画面に戻るかどうか
+
 };
 
 #endif
