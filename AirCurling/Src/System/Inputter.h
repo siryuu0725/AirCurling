@@ -140,9 +140,9 @@ private:
 	LPDIRECTINPUTDEVICE8 m_key_device;
 	LPDIRECTINPUTDEVICE8 m_mouse_device;		
 
-	DIMOUSESTATE m_prev_mouse_state;			//!マウスの１フレーム前の入力情報
+	DIMOUSESTATE m_prev_mouse_state;		//!マウスの１フレーム前の入力情報
 	DIMOUSESTATE m_current_mouse_state;		//!マウスの現在の入力情報
-	Vec2 m_mouse_pos;                         //!マウスの座標
+	Vec2 m_mouse_pos;                       //!マウスの座標
 
 	InputState g_InputState[Inputter::KeyInfo::MaxKeyInfo]; //!キーの状態を保持する変数
 

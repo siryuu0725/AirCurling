@@ -14,6 +14,10 @@ void PauseItemUI::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_End.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::End]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_Help.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Help]);
 	Graphics::Instance()->LoadTexture("Res/Tex/Pose_SelectFrame.png", &m_pauseitem_info.m_ui_tex[(__int8)PauseItemTexCategory::Select]);
+    
+	m_pauseitem_info.m_is_continue = false;  //「つづける」選択フラグ
+	m_pauseitem_info.m_is_end = false;		 //「おわる」選択フラグ
+	m_pauseitem_info.m_is_help = false;		 //「へるぷ」選択フラグ
 }
 
 //更新関数

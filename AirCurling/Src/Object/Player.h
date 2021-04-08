@@ -57,7 +57,6 @@ public:
 			m_old_pos(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_nor_vec(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 			m_speed(0.0f),
-			m_change_radian(0.0f),
 			m_friction(0.0f),
 			m_timer(0),
 			m_reflect_counter(0),
@@ -76,9 +75,7 @@ public:
 		D3DXVECTOR3 m_nor_vec; //!方向ベクトル
 
 		float m_speed;     //!移動スピード
-		float m_setspeed;  //!移動スピード
-
-		float m_change_radian; //!回転角度
+		float m_setspeed_power;  //!初速度
 
 		/* 摩擦用 */
 		float m_friction;     //!動摩擦係数
@@ -91,14 +88,14 @@ public:
 		int m_score_counter;  //!加算するスコア数
 
 		/* 操作可能判定 */
-		bool m_is_start; //!ゲームスタート
-		bool m_is_goal;	 //!ゴール時
+		bool m_is_start; //!ゲームスタートフラグ
+		bool m_is_goal;	 //!ゴールフラグ
 		bool m_is_end;	 //!ゲームエンドフラグ
 
-		bool m_is_movement;
-		bool m_is_turnend;       //!1ターン終了フラグ
+		bool m_is_movement;   //!プレイヤーが動いているかどうか
+		bool m_is_turnend;    //!1ターン終了フラグ
 
-		D3DXVECTOR3 m_efk_pos;      //!エフェクト表示座標保存用
+		D3DXVECTOR3 m_efk_pos;  //!エフェクト表示座標保存用
 	};
 
 private:
@@ -283,7 +280,7 @@ public:
 	 * @param[in] speed_ プレイヤーの移動スピード
  　　* @details プレイヤーの移動スピードをUIの方でSetするよう
  　　*/
-	void SetAddSpeed(float speed_) { player_info.m_setspeed = speed_; }
+	void SetAddSpeed(float speed_) { player_info.m_setspeed_power = speed_; }
 
 	/**
 　　* @brief  オブジェクト情報Getter

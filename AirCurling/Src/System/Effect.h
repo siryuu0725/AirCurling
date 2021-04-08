@@ -33,7 +33,16 @@ enum EffectType
 class Effect
 {
 private:
-	Effect() {}
+	Effect() :mp_camera(nullptr),
+		e_manager(nullptr),
+		e_renderer(nullptr),
+		e_device(nullptr),
+		e_handle(-1),
+		e_camera_pos(::Effekseer::Vector3D(0.0f, 0.0f, 0.0f)),
+		e_eye_pos(::Effekseer::Vector3D(0.0f, 0.0f, 0.0f)),
+		e_camera_up(::Effekseer::Vector3D(0.0f, 0.0f, 0.0f))
+	{}
+
 	~Effect() {}
 
 public:
@@ -104,14 +113,13 @@ private:
 	static Effect* mp_instance;
 	Camera* mp_camera;
 
-	::Effekseer::Manager* e_manager = nullptr;
-	::EffekseerRendererDX9::Renderer* e_renderer = nullptr;
+	::Effekseer::Manager* e_manager;
+	::EffekseerRendererDX9::Renderer* e_renderer;
 
 	::Effekseer::Effect* efcs[EffectType::MaxNum];    //!エフェクト配列
 
-	::Effekseer::Handle	e_handle = -1;
-	::Effekseer::Vector3D e_position;
-	LPDIRECT3DDEVICE9	e_device = nullptr;
+	::Effekseer::Handle	e_handle;
+	LPDIRECT3DDEVICE9 e_device;
 
 	D3DXVECTOR2 window_size;
 

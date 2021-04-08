@@ -63,7 +63,7 @@ private:
 private:
 	static RankingData* mp_instance;
 
-	std::vector<std::string> m_ranking_data; //!
+	std::vector<std::string> m_ranking_data; 
 
 	std::map < std::string, std::vector<std::string> > character_param;
 

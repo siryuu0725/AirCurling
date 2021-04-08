@@ -15,8 +15,6 @@ Effect* Effect::Instance()
 //初期化関数
 void Effect::InitEffect()
 {
-	//databank = DataBank::Instance();
-
 	e_device = Graphics::Instance()->GetD3DDevice();
 
 	window_size = GetWindowSize();
@@ -39,7 +37,9 @@ void Effect::InitEffect()
 	e_manager->SetTextureLoader(e_renderer->CreateTextureLoader());
 	e_manager->SetModelLoader(e_renderer->CreateModelLoader());
 
-	e_position = ::Effekseer::Vector3D(0.0f, 30.0f, 0.0f);
+	e_camera_pos = ::Effekseer::Vector3D(0.0f, 0.0f, 0.0f); //カメラの位置 
+	e_eye_pos = ::Effekseer::Vector3D(0.0f, 0.0f, 0.0f);    //注視点
+	e_camera_up = ::Effekseer::Vector3D(0.0f, 0.0f, 0.0f);  //カメラの上向きのベクトル
 }
 
 //エフェクト読み込み関数

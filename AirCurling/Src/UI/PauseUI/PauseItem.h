@@ -41,8 +41,8 @@ public:
 		D3DXVECTOR2  m_ui_pos[(__int8)PauseItemTexCategory::CategoryMax]; //Texture座標
 
 		bool m_is_continue;  //!「つづける」選択フラグ
-		bool m_is_end;		  //!「おわる」選択フラグ
-		bool m_is_help;	  //!「へるぷ」選択フラグ
+		bool m_is_end;		 //!「おわる」選択フラグ
+		bool m_is_help;	     //!「へるぷ」選択フラグ
 	};
 
 	PauseItemUI() {}

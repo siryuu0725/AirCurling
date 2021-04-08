@@ -2,12 +2,6 @@
 
 Score* Score::mp_instance = nullptr;
 
-//コンストラクタ
-Score::Score() :
-	m_score(0)
-{
-}
-
 //インスタンス化関数
 Score* Score::Instance()
 {

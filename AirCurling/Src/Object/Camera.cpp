@@ -22,6 +22,8 @@ void Camera::Init(std::string stage_str_)
 	m_camerainfo.m_packup = m_camera_externalinfo.m_packup; //パックの位置からどれだけ離れているか
 
 	m_camerainfo.m_is_shotmode = false;  //打つモードかどうか
+	m_camerainfo.m_is_operation = false; //操作可能フラグ
+
 
 	D3DXMatrixIdentity(&m_camerainfo.mat_view);
 

@@ -14,6 +14,9 @@ void TitleStageItem::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/Stage_2.png", &m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage2]);
 	Graphics::Instance()->LoadTexture("Res/Tex/StageSelectFrame.png", &m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::NowSelectStage]);
 	Graphics::Instance()->LoadTexture("Res/Tex/StageSelect.png", &m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStageFont]);
+
+	m_stageitem_info.m_stage_1 = false; //ステージ1を選んだ場合のフラグ
+	m_stageitem_info.m_stage_2 = false; //ステージ2を選んだ場合のフラグ
 }
 
 //描画情報送信関数

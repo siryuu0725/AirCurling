@@ -100,6 +100,8 @@ void GameScene::InitStep()
 	SoundController::Instance()->RegisterGameSound();
 	SoundController::Instance()->SoundBGM(GameBGMVolume);
 
+	m_is_pose = false;
+
 	//スレッドステップへ
 	m_cur_step = SceneStep::ThreadStep;
 }

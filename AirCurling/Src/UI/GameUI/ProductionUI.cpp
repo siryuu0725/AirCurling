@@ -22,6 +22,9 @@ void ProductionUI::Init()
 	m_production_info.m_movestop = false;  //開始演出の文字が止まるフラグ
 	m_production_info.m_remove = false;    //開始演出の文字が再び動くフラグ
 
+	m_production_info.m_is_start_game = false;  //操作可能になるまでのフラグ
+	m_production_info.m_is_end_game = false;    //リザルトシーンに移行するフラグ
+	m_production_info.m_is_draw_finish = false; //文字「フィニッシュ」の描画フラグ
 }
 
 //開始演出関数

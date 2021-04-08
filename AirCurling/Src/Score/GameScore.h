@@ -14,7 +14,7 @@ constexpr unsigned __int8 ScoreMinValue = 0;   //!スコアの最小値
 class Score
 {
 public:
-	Score();
+	Score() :m_score(0) {}
 	~Score() {}
 
 	/**

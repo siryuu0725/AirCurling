@@ -35,14 +35,16 @@ void Player::Init(std::string stage_str_)
 	player_info.m_timer = 0;  //経過時間
 	player_info.m_trun_counter = 0;    //進行ターン数
 	player_info.m_reflect_counter = 0; //反射回数
-	player_info.m_is_turnend = false;  //1ターン終了フラグ
-	player_info.m_is_goal = false;     //ゴールフラグ
-	player_info.m_is_end = false;         //ゲームエンドフラグ
-	player_info.m_score_counter = m_player_externalinfo.m_score_counter;
 
-	player_info.m_is_movement = false;
+	player_info.m_is_turnend = false;   //1ターン終了フラグ
+	player_info.m_is_start = false;     //ゲームスタートフラグ
+	player_info.m_is_goal = false;      //ゴールフラグ
+	player_info.m_is_end = false;       //ゲームエンドフラグ
+	player_info.m_is_movement = false;  //プレイヤーが動いているかどうか
 
-	player_info.m_nor_vec.y = 0.0f;
+	player_info.m_score_counter = m_player_externalinfo.m_score_counter; //加算するスコア数
+
+	player_info.m_nor_vec = D3DXVECTOR3(0.0f, 0.0f, 0.0f);  //方向ベクトル
 }
 
 //他オブジェクト情報取得関数
@@ -130,7 +132,7 @@ void Player::Move()
 	{
 		player_info.m_timer += FrameTime;
 
-		player_info.m_speed = player_info.m_setspeed + player_info.m_acceleration * player_info.m_timer;
+		player_info.m_speed = player_info.m_setspeed_power + player_info.m_acceleration * player_info.m_timer;
 
 		player_info.m_acceleration = -player_info.m_friction * Gravity; //摩擦係数
 
@@ -259,7 +261,7 @@ void Player::HitReset()
 		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z);
 
 		//移動スピードを0に
-		player_info.m_setspeed = 0.0f;
+		player_info.m_setspeed_power = 0.0f;
 
 		//サウンド再生
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Reset);
@@ -501,7 +503,7 @@ void Player::ResetPos()
 
 		StartResetEffect(); //エフェクト再生
 		player_info.m_pos = D3DXVECTOR3(m_player_externalinfo.m_pos.x, PlayerPosMin_Y, m_player_externalinfo.m_pos.z); //座標
-		player_info.m_setspeed = 0.0f;
+		player_info.m_setspeed_power = 0.0f;
 
 		StartFallEffect();
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Reset);

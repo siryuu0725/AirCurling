@@ -12,6 +12,8 @@ void PlayerModeUI::Init()
 	//Texture読み込み
 	Graphics::Instance()->LoadTexture("Res/Tex/ModeView.png", &m_mode_info.m_ui_tex[(__int8)PlayerModeTexCategory::ViewMode]);
 	Graphics::Instance()->LoadTexture("Res/Tex/ModeShot.png", &m_mode_info.m_ui_tex[(__int8)PlayerModeTexCategory::ShotMode]);
+
+	m_mode_info.m_is_shotmode = false;
 }
 
 //更新関数
