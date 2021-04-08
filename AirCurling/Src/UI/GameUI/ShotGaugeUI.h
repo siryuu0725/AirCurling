@@ -82,6 +82,16 @@ public:
 	 */
 	virtual void ReleaseTex()override;
 
+	/**
+	 * @brief  ShotBox移動切り替え判定関数
+	 * @param[in] bg_tex_pos_ ShtoBoxの座標(動ける範囲のTex)
+	 * @param[in] move_tex_pos_ ShotBarの座標(動いているTex)
+	 * @param[in] bg_tex_ ShotBarのTextuer情報(動いているTex)
+	 * @param[in] move_tex_ ShotBarのTextuer情報(動いているTex)
+	 * @details ShotBoxが移動範囲の限界に来た時移動方向を切り替える
+	 */
+	void SwitchMove(D3DXVECTOR2 bg_tex_pos_, D3DXVECTOR2 move_tex_pos_, Graphics::TextureData bg_tex_, Graphics::TextureData move_tex_);
+
 private:
 	PlayerModeUI* mp_mode; //モードUI
 	ShotGaugeUIInfo m_shotgauge_info; //!ShotGaugeUI情報

@@ -36,7 +36,8 @@ void ShotGaugeUI::Update(Player* player_, bool is_turnend_)
 	}
 
 	//スペースキーが押された場合
-	if (Inputter::Instance()->GetKeyDown(Inputter::SpaceKey) && m_shotgauge_info.m_is_stop_gauge == false
+	if (Inputter::Instance()->GetKeyDown(Inputter::SpaceKey)
+		&& m_shotgauge_info.m_is_stop_gauge == false
 		&& mode_info.m_is_shotmode == true)
 	{
 		m_shotgauge_info.m_gauge_speed = 0.0f; //バーの移動スピードを0に
@@ -49,13 +50,11 @@ void ShotGaugeUI::Update(Player* player_, bool is_turnend_)
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Shot);
 	}
 
-	//バーがゲージの最大値or最小値に達した時
-	if (m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y + m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotBox].Height >
-		m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge].y + m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotGauge].Height
-		|| m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox].y < m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge].y)
-	{
-		m_shotgauge_info.m_gauge_speed = -m_shotgauge_info.m_gauge_speed;
-	}
+	//ShotBox移動切り替え
+	SwitchMove(m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotGauge],
+		m_shotgauge_info.m_ui_pos[(__int8)ShotGaugeTexCategory::ShotBox],
+		m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotGauge],
+		m_shotgauge_info.m_ui_tex[(__int8)ShotGaugeTexCategory::ShotBox]);
 
 	//1ターン終わった時
 	if (is_turnend_ == true)
@@ -94,5 +93,16 @@ void ShotGaugeUI::ReleaseTex()
 			m_shotgauge_info.m_ui_tex[i].Texture->Release();
 			m_shotgauge_info.m_ui_tex[i].Texture = nullptr;
 		}
+	}
+}
+
+//ShotBox移動切り替え判定関数
+void ShotGaugeUI::SwitchMove(D3DXVECTOR2 bg_tex_pos_, D3DXVECTOR2 move_tex_pos_, Graphics::TextureData bg_tex_, Graphics::TextureData move_tex_)
+{
+	//バーがゲージの最大値or最小値に達した時
+	if (move_tex_pos_.y + move_tex_.Height > bg_tex_pos_.y + bg_tex_.Height
+		|| move_tex_pos_.y < bg_tex_pos_.y)
+	{
+		m_shotgauge_info.m_gauge_speed = -m_shotgauge_info.m_gauge_speed;
 	}
 }

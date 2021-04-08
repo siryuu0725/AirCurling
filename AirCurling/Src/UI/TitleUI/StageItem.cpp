@@ -36,14 +36,8 @@ void TitleStageItem::Draw()
 void TitleStageItem::Update()
 {
 	//文字「1」との当たり判定
-	if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage1],
-		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage1].Width, m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage1].Height) == true)
+	if (HitStageItem(TitleStageItemTexCategory::SelectStage1) == true)
 	{
-		//選択枠テクスチャの座標を代入
-		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage1];
-		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
-
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
@@ -51,15 +45,9 @@ void TitleStageItem::Update()
 			m_stageitem_info.m_stage_1 = true;
 		}
 	}
-	//文字「2」との当たり判定
-	else if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage2],
-		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
-		m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage2].Width, m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStage2].Height) == true)
+	//文字「1」との当たり判定
+	else if (HitStageItem(TitleStageItemTexCategory::SelectStage2) == true)
 	{
-		//選択枠テクスチャの座標を代入
-		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::SelectStage2];
-		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
-
 		//マウスの左ボタンが押されたら
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
@@ -70,6 +58,8 @@ void TitleStageItem::Update()
 	//音が連続してならないようにする
 	else
 	{
+		//選択枠テクスチャの座標を代入
+		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage].y = 1200.0f;
 		SoundController::Instance()->ResetSelectFlag();
 	}
 }
@@ -85,4 +75,25 @@ void TitleStageItem::ReleaseTex()
 			m_stageitem_info.m_ui_tex[i].Texture = nullptr;
 		}
 	}
+}
+
+//ステージ項目当たり判定関数
+bool TitleStageItem::HitStageItem(TitleStageItemTexCategory category_)
+{
+	//マウスと引数の項目との当たり判定を行う
+	if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)category_],
+		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		m_stageitem_info.m_ui_tex[(__int8)category_].Width, m_stageitem_info.m_ui_tex[(__int8)category_].Height) == true)
+	{
+		//選択枠テクスチャの座標を代入
+		m_stageitem_info.m_ui_pos[(__int8)TitleStageItemTexCategory::NowSelectStage] = m_stageitem_info.m_ui_pos[(__int8)category_];
+		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);
+
+		//ステージ1を選んだフラグtrue
+		return true;
+		
+	}
+	
+
+	return false;
 }

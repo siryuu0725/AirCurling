@@ -74,6 +74,13 @@ public:
 	virtual void ReleaseTex()override;
 
 	/**
+	 * @brief  ステージ項目当たり判定関数
+	 * @param[in] category_ 当たり判定を行う項目の種類
+	 * @details ステージ選択画面の「1」などのUIとの当たり判定を行う
+	 */
+	bool HitStageItem(TitleStageItemTexCategory category_);
+
+	/**
 　　* @brief  UI情報Getter
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
