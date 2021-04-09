@@ -73,7 +73,7 @@ public:
 	 * @brief  選択ステージGettr
 	 * @details タイトルで選んだステージを取得
 	 */
-	std::string GetStageID() { return m_stagename; }
+	const std::string GetStageID() { return m_stagename; }
 
 	/**
 	 * @brief  各ゲーム管理クラスアドレス配列

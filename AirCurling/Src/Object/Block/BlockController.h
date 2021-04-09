@@ -10,8 +10,8 @@
 #include <vector>
 
 //!ステージに置ける最大ブロック数 
-constexpr unsigned __int8 RectBlockMaxNum = 10;
-constexpr unsigned __int8 CircleBlockMaxNum = 10;
+constexpr unsigned __int8 RectBlockMaxNum = 15;
+constexpr unsigned __int8 CircleBlockMaxNum = 15;
 
 /**
  * ブロック管理クラス
@@ -60,16 +60,13 @@ public:
  　　*/
 	void SetCollisionInfo();
 
-
-	const std::vector<CircleBlock*>* GetCircleBlock()const { return &m_circleblocks; }
-
 	/**
  　　* @brief 円形ブロック情報Getter
 	 * @param[out] copy_info_ 保存用オブジェクト構造体
 	 * @param[in] id_ 受け取りたいブロックのid
 	 * @details 引数に円形ブロックの情報を渡す
  　　*/
-	void GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_);
+	const void GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_);
 
 	/**
 　　* @brief 矩形ブロック情報Getter
@@ -77,7 +74,7 @@ public:
 	* @param[in] id_ 受け取りたいブロックのid
 	* @details 引数に矩形ブロックの情報を渡す
 　　*/
-	void GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_);
+	const void GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_);
 
 private:
 	std::vector<CircleBlock*> m_circleblocks;  //!円形ブロック

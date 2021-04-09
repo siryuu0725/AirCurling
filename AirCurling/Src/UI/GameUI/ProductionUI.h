@@ -104,7 +104,7 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetProductionInfo(ProductionInfo& copy_info_) { copy_info_ = m_production_info; }
+	const void GetProductionInfo(ProductionInfo& copy_info_) { copy_info_ = m_production_info; }
 
 private:
 	ProductionInfo m_production_info; //!演出情報

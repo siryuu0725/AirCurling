@@ -37,8 +37,6 @@ void BlockController::Init(std::string stage_str_)
 		(m_circleblock_externalinfo[i].m_pos,
 		 m_circleblock_externalinfo[i].m_scale,
 		 m_circleblock_externalinfo[i].m_radius, "circleblock"));
-
-		m_circleblocks[i]->GetCircleBlockInfo(block_info);
 	}
 
 	//矩形ブロック
@@ -50,8 +48,6 @@ void BlockController::Init(std::string stage_str_)
 		 m_rectblock_externalinfo[i].m_scale,
 		 m_rectblock_externalinfo[i].m_rot_angle,
 		 m_rectblock_externalinfo[i].m_width, m_rectblock_externalinfo[i].m_height ,"rectblock"));
-
-		m_rectblocks[i]->GetRectBlockInfo(block_info);
 	}
 
 	SetCollisionInfo();
@@ -156,12 +152,12 @@ void BlockController::SetCollisionInfo()
 	}
 }
 
-void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_)
+const void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_)
 {
 	m_circleblocks[id_]->GetCircleBlockInfo(copy_info_);
 }
 
-void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_)
+const void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_)
 {
 	m_rectblocks[id_]->GetRectBlockInfo(copy_info_);
 }

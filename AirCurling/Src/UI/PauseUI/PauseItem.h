@@ -94,7 +94,7 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetPoseItemInfo(PauseItemInfo& copy_info_) { copy_info_ = m_pauseitem_info; }
+	const void GetPoseItemInfo(PauseItemInfo& copy_info_) { copy_info_ = m_pauseitem_info; }
 
 private:
 	PauseItemInfo m_pauseitem_info; //!ポーズ中項目情報

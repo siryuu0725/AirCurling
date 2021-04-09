@@ -39,7 +39,7 @@ public:
      * @param[out] copy_info_ 保存用オブジェクト構造体
 	 * @details 引数にオブジェクトの情報を渡す
  　　*/
-	void GetCircleBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_circleblock_info; }
+	const void GetCircleBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_circleblock_info; }
 
 private:
 	ObjectInfo m_circleblock_info;  //!円型ブロック情報

@@ -49,7 +49,7 @@ public:
 	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
-	void GetSkyFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_skyfloor_info; }
+	const void GetSkyFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_skyfloor_info; }
 
 private:
 	//!外部データ保存用構造体

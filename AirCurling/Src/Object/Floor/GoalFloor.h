@@ -58,7 +58,7 @@ public:
 	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
-	void GetGoalInfo(ObjectInfo& copy_info_) { copy_info_ = m_goal_info; }
+	const void GetGoalInfo(ObjectInfo& copy_info_) { copy_info_ = m_goal_info; }
 
 private:
 	//!外部データ保存用構造体

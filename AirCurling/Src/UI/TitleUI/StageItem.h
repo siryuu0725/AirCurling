@@ -85,7 +85,7 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetStageItemInfo(TitleStageItemInfo& copy_info_) { copy_info_ = m_stageitem_info; }
+	const void GetStageItemInfo(TitleStageItemInfo& copy_info_) { copy_info_ = m_stageitem_info; }
 
 private:
 	TitleStageItemInfo m_stageitem_info; //!ステージ選択画面項目情報

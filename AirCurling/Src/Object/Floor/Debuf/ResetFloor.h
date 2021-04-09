@@ -41,7 +41,7 @@ public:
 	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
-	void GetResetFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_resetfloor_info; }
+	const void GetResetFloorInfo(ObjectInfo& copy_info_) { copy_info_ = m_resetfloor_info; }
 
 private:
 	ObjectInfo m_resetfloor_info; //!リセット床情報

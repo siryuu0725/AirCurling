@@ -87,7 +87,7 @@ public:
 	* @param[out] copy_info_ 保存用UI情報構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetHelpUIInfo(PauseUIInfo& copy_info_) { copy_info_ = m_poseui_info; }
+	const void GetHelpUIInfo(PauseUIInfo& copy_info_) { copy_info_ = m_poseui_info; }
 
 private:
 	UIExternalInfo m_pauseui_externalinfo[static_cast<int>(PauseUICategory::CategoryMax)];

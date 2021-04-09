@@ -97,9 +97,14 @@ void Player::Update()
 
 		ObjectCollision::Instance()->SetPlayerInfo(player_info);
 
-		HitController();   //当たり判定
+		//プレイヤーが移動している間
+		if (player_info.m_is_movement == true)
+		{
+			HitController();   //当たり判定
 
-		ResetPos();   //ステージ外に出たかどうか
+			ResetPos();   //ステージ外に出たかどうか
+		}
+	
 		break;
 	case PlayerUpdateStep::EndProduction:  //終了演出
 		EndProduction();
@@ -148,11 +153,22 @@ void Player::Move()
 		//移動スピードが0に等しくなった場合
 		if (player_info.m_speed <= StopSpeed)
 		{
+			//!スコアを更新
+			Score::Instance()->Add(player_info.m_score_counter);
+
 			player_info.m_speed = 0.0f;  //移動スピードを0に
 			player_info.m_is_turnend = true;  //ターン終了
 			player_info.m_is_movement = false;  //移動終了
 			player_info.m_timer = 0;
 			player_info.m_trun_counter++; //ターン数加算
+
+			//ターン数が制限以上経過した場合
+			if (player_info.m_trun_counter >= GameTrun)
+			{
+				player_info.m_is_goal = true;
+				//更新ステップを終了演出へ
+				m_update_step = PlayerUpdateStep::EndProduction;
+			}
 		}
 	}
 
@@ -291,9 +307,6 @@ void Player::HitGoal()
 	//ターン終了時に当たっているかどうかを判定
 	if (player_info.m_is_turnend == true)
 	{
-		//!スコアを更新
-		Score::Instance()->Add(player_info.m_score_counter);
-
 		Goal::ObjectInfo m_goal_infocopy;
 
 		mp_goal->GetGoalInfo(m_goal_infocopy);
@@ -328,13 +341,7 @@ void Player::HitGoal()
 			m_update_step = PlayerUpdateStep::EndProduction;
 		}
 
-		//ターン数が制限以上経過した場合
-		if (player_info.m_trun_counter >= GameTrun)
-		{
-			player_info.m_is_goal = true;
-			//更新ステップを終了演出へ
-			m_update_step = PlayerUpdateStep::EndProduction;
-		}
+		
 	}
 }
 

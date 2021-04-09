@@ -89,7 +89,7 @@ public:
 	* @param[out] copy_info_ 保存用UI情報構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetGameUIInfo(GameUIInfo& copy_info_) { copy_info_ = m_gameui_info; }
+	const void GetGameUIInfo(GameUIInfo& copy_info_) { copy_info_ = m_gameui_info; }
 
 private:
 	UpdateStep m_update_step;  //!更新ステップ

@@ -90,7 +90,7 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetTitleItemInfo(ItemInfo& copy_info_) { copy_info_ = m_titleitem_info; }
+	const void GetTitleItemInfo(ItemInfo& copy_info_) { copy_info_ = m_titleitem_info; }
 
 private:
 	ItemInfo m_titleitem_info; //!タイトル画面選択項目情報

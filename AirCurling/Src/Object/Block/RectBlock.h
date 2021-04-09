@@ -46,7 +46,7 @@ public:
      * @param[out] copy_info_ 保存用オブジェクト構造体
 	 * @details 引数にオブジェクトの情報を渡す
  　　*/
-	void GetRectBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_rectblock_info; }
+	const void GetRectBlockInfo(ObjectInfo& copy_info_) { copy_info_ = m_rectblock_info; }
 };
 
 #endif

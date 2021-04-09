@@ -70,7 +70,7 @@ public:
 	* @param[out] copy_info_ 保存用UI構造体
 	* @details 引数にUIの情報を渡す
 　　*/
-	void GetPlayerModeUIInfo(PlayerModeUIInfo& copy_info_) { copy_info_ = m_mode_info; }
+	const void GetPlayerModeUIInfo(PlayerModeUIInfo& copy_info_) { copy_info_ = m_mode_info; }
 
 private:
 	PlayerModeUIInfo m_mode_info; //!プレイヤーモード情報

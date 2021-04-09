@@ -36,8 +36,6 @@ void DebufController::Init(std::string stage_str_)
 		(m_resetfloor_externalinfo[i].m_pos,
 		 m_resetfloor_externalinfo[i].m_scale,
 		 m_resetfloor_externalinfo[i].m_radius, "reset"));
-
-		m_resetfloors[i]->GetResetFloorInfo(debuf_floor_info);
 	}
 
 	//スピード減衰床
@@ -49,8 +47,6 @@ void DebufController::Init(std::string stage_str_)
 		 m_stopfloor_externalinfo[i].m_scale,
 		 m_stopfloor_externalinfo[i].m_rot_angle,
 		 m_stopfloor_externalinfo[i].m_width, m_stopfloor_externalinfo[i].m_height, "stop"));
-
-		m_stopfloors[i]->GetStopFloorInfo(debuf_floor_info);
 	}
 
 	SetCollisionInfo(); //当たり判定用情報Set

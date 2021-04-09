@@ -287,7 +287,7 @@ public:
 	* @param[out] copy_info_ 保存用オブジェクト構造体
 	* @details 引数にオブジェクトの情報を渡す
 　　*/
-	void GetPlayerInfo(PlayerInfo& copy_info_) { copy_info_ = player_info; }
+	const void GetPlayerInfo(PlayerInfo& copy_info_) { copy_info_ = player_info; }
 
 private:
 	struct PlayerExternalInfo
@@ -308,9 +308,9 @@ private:
 
 	Camera* mp_camera;         //!カメラ保存用
 	BlockController* mp_block; //!ブロック管理保存用
-	Floor* mp_floor;			  //!ステージ床保存用
+	Floor* mp_floor;		   //!ステージ床保存用
 	DebufController* mp_debuf; //!デバフ床保存用
-	Goal* mp_goal;			  //!ゴール保存用
+	Goal* mp_goal;			   //!ゴール保存用
 
 	PlayerUpdateStep m_update_step; //!更新ステップ
 
