@@ -52,4 +52,6 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 	//エンジン終了
 	EndEngine();
+
+	return 0;
 }
