@@ -47,11 +47,6 @@ void Player::Init(std::string stage_str_)
 	player_info.m_nor_vec = D3DXVECTOR3(0.0f, 0.0f, 0.0f);  //方向ベクトル
 }
 
-//他オブジェクト情報取得関数
-void Player::SetOtherObjeInfo()
-{
-}
-
 //外部データ読み込み関数
 void Player::LoadExternalInfo(std::string stage_str_)
 {
