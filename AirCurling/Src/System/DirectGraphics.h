@@ -124,12 +124,12 @@ public:
 	bool SetUpViewPort(D3DPRESENT_PARAMETERS* present_param_);
 
 	/**
-　　* @brief  テクスチャ描画開始関数
+　　* @brief  描画開始関数
 　　*/
 	void DrawStart();
 
 	/**
-　　* @brief  テクスチャ描画終了関数
+　　* @brief  描画終了関数
 　　*/
 	void DrawEnd();
 
@@ -189,7 +189,10 @@ public:
 　　*/
 	bool CreateFontDevice();
 
-	const LPDIRECT3DDEVICE9 GetD3DDevice(void) { return g_device; }
+	/**
+　　* @brief  文字描画用デバイス作成関数
+　　*/
+	const LPDIRECT3DDEVICE9 GetD3DDevice() { return g_device; }
 
 	/**
 　　* @brief  ライト設定関数
@@ -198,8 +201,8 @@ public:
 private:
 	static Graphics* mp_instance;
 
-	LPDIRECT3D9 g_interface;
-	LPDIRECT3DDEVICE9 g_device;
+	LPDIRECT3D9 g_interface; //!インターフェース
+	LPDIRECT3DDEVICE9 g_device; //!デバイス
 	LPD3DXFONT g_font_list[Graphics::FontSize::FontSizeMax];
 };
 

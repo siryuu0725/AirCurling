@@ -4,6 +4,7 @@
 
 Graphics* Graphics::mp_instance = nullptr;
 
+//インスタンス化関数
 Graphics* Graphics::Instance()
 {
 	if (mp_instance == nullptr) { mp_instance = new Graphics; }
@@ -11,25 +12,28 @@ Graphics* Graphics::Instance()
 	return mp_instance;
 }
 
+//描画情報初期化まとめ関数
 bool Graphics::InitGraphics()
 {
 	D3DPRESENT_PARAMETERS present_param;
 	ZeroMemory(&present_param, sizeof(D3DPRESENT_PARAMETERS));
 
+	//インターフェース作成
 	if (CreateGraphicsInterface() == false)
 	{
 		return false;
 	}
-
+	//デバイス作成
 	if (CreateGraphicsDevice(&present_param) == false)
 	{
 		return false;
 	}
-
+	//ビューポート設定
 	if (SetUpViewPort(&present_param) == false)
 	{
 		return false;
 	}
+	//文字描画用デバイス作成
 	if (CreateFontDevice() == false)
 	{
 		return false;
@@ -38,6 +42,7 @@ bool Graphics::InitGraphics()
 	return true;
 }
 
+//インターフェース作成関数
 bool Graphics::CreateGraphicsInterface()
 {
 	// インターフェース作成
@@ -50,6 +55,7 @@ bool Graphics::CreateGraphicsInterface()
 	return true;
 }
 
+//デバイス作成関数
 bool Graphics::CreateGraphicsDevice(D3DPRESENT_PARAMETERS* present_param_)
 {
 	present_param_->BackBufferCount = 1;
@@ -83,6 +89,7 @@ bool Graphics::CreateGraphicsDevice(D3DPRESENT_PARAMETERS* present_param_)
 	return true;
 }
 
+//ビューポート設定関数
 bool Graphics::SetUpViewPort(D3DPRESENT_PARAMETERS* present_param_)
 {
 	// ビューポートパラメータ
@@ -103,13 +110,14 @@ bool Graphics::SetUpViewPort(D3DPRESENT_PARAMETERS* present_param_)
 	return true;
 }
 
+//描画情報解放関数
 void  Graphics::ReleaseGraphics()
 {
 	g_device->Release();
 	g_interface->Release();
 }
 
-// 描画ステートの設定
+//α値設定関数
 void Graphics::SetRenderMode(bool enableAlpa_)
 {
 	IDirect3DDevice9* pDevice = GetD3DDevice();
@@ -130,6 +138,7 @@ void Graphics::SetRenderMode(bool enableAlpa_)
 	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, enableAlpa_);
 }
 
+//描画開始関数
 void Graphics::DrawStart()
 {
 	if (g_device != nullptr)
@@ -141,6 +150,7 @@ void Graphics::DrawStart()
 	
 }
 
+//描画終了関数
 void Graphics::DrawEnd()
 {
 	if (g_device != nullptr)
@@ -150,6 +160,7 @@ void Graphics::DrawEnd()
 	}
 }
 
+//テクスチャ読み込み関数
 bool Graphics::LoadTexture(const char* file_name_, TextureData* texture_)
 {
 	D3DXIMAGE_INFO info;
@@ -189,6 +200,7 @@ bool Graphics::LoadTexture(const char* file_name_, TextureData* texture_)
 	return true;
 }
 
+//テクスチャ描画関数
 void Graphics::DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_)
 {
 	CustomVertex vertex[4] =
@@ -213,7 +225,7 @@ void Graphics::DrawTexture(TextureData* texture_, D3DXVECTOR2 pos_)
 	}
 }
 
-//UV用
+//テクスチャ描画関数(UV指定用)
 void Graphics::DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float sprite_width_, float sprite_height_, float tu_, float tv_)
 {
 	float Ttu = sprite_width_ / texture_->Width;
@@ -238,6 +250,7 @@ void Graphics::DrawUVTexture(TextureData* texture_, D3DXVECTOR2 pos_, float spri
 	}
 }
 
+//テクスチャ描画関数(テクスチャ回転用)
 void Graphics::DrawRotTexture(TextureData* texture_, D3DXVECTOR2 lefttop_pos_, D3DXVECTOR2 righttop_pos_, D3DXVECTOR2 leftdown_pos_, D3DXVECTOR2 rightdown_pos_)
 {
 
@@ -319,7 +332,7 @@ void Graphics::DrawFont(D3DXVECTOR2 pos_, const char* text_, FontSize font_type_
 	);
 }
 
-
+//文字描画用デバイス作成関数
 bool Graphics::CreateFontDevice()
 {
 	int size_list[] =
@@ -351,8 +364,7 @@ bool Graphics::CreateFontDevice()
 	return true;
 }
 
-
-
+//ライト設定関数
 void Graphics::SetLight()
 {
 	D3DLIGHT9 light;
