@@ -68,7 +68,7 @@ void ResultScene::EndStep()
 }
 
 //インスタンス返還関数
-SceneBase* ResultScene::InstanceResultScene()
+SceneBase* ResultScene::Instance()
 {
 	return static_cast<SceneBase*>(new ResultScene);
 }

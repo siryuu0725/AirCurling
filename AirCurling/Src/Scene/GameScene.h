@@ -110,7 +110,7 @@ public:
      * @brief  インスタンス返還関数
      * @details 管理クラスのポインタ配列に返す
      */
-	static SceneBase* InstanceGameScene();
+	static SceneBase* Instance();
 private:
 	Camera* mp_camera;                    //!カメラオブジェクト
 	BlockController* mp_block; //!ブロック管理オブジェクト

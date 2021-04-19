@@ -174,7 +174,7 @@ void GameScene::MainStep()
 		//ポーズ中、「つづける」が押された場合
 		if (pose_ui_infocopy.m_is_help == false)
 		{
-			m_is_pose = (m_is_pose == true) ? false : true;
+			m_is_pose = !m_is_pose;
 		}
 		
 	}
@@ -184,11 +184,6 @@ void GameScene::MainStep()
 	{
 		SoundController::Instance()->StopSE(PlaySEType::Goal);
 		m_cur_step = SceneStep::EndStep;
-	}
-
-	if (Inputter::Instance()->GetKeyDown(Inputter::EKey))
-	{
-		PostQuitMessage(0);
 	}
 }
 
@@ -324,7 +319,7 @@ void GameScene::DeleteUI()
 }
 
 //インスタンス返還関数
-SceneBase* GameScene::InstanceGameScene()
+SceneBase* GameScene::Instance()
 {
 	return static_cast<SceneBase*>(new GameScene);
 }

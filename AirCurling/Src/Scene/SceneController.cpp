@@ -84,9 +84,9 @@ void SceneController::SetStageID(std::string stage_)
 //各ゲーム管理クラスアドレス配列
 SceneBase* (*SceneController::s_controller_array[static_cast<int>(SceneId::Max)])() =
 {
-	TitleScene::InstanceTitleScene,   //タイトル
-	GameScene::InstanceGameScene,	  //ゲーム
-	ResultScene::InstanceResultScene  //リザルト
+	TitleScene::Instance,   //タイトル
+	GameScene::Instance,	  //ゲーム
+	ResultScene::Instance  //リザルト
 };
 
 //デストラクタ

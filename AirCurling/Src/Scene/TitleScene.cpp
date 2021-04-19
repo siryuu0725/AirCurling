@@ -86,7 +86,7 @@ void TitleScene::Draw()
 }
 
 //インスタンス返還関数
-SceneBase* TitleScene::InstanceTitleScene()
+SceneBase* TitleScene::Instance()
 {
 	return static_cast<SceneBase*>(new TitleScene);
 }

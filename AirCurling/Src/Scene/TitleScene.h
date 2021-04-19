@@ -60,7 +60,7 @@ public:
      * @brief  インスタンス返還関数
      * @details 管理クラスのポインタ配列に返す
      */
-	static SceneBase* InstanceTitleScene();
+	static SceneBase* Instance();
 
 private:
 	TitleUI* mp_ui; //!タイトル用UI
