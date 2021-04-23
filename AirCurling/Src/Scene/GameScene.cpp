@@ -5,6 +5,7 @@
 #include "../Utility/Collision/ObjectCollision.h"
 
 #include <thread>
+#include "../Score/GameScore.h"
 
 //コンストラクタ
 GameScene::GameScene() :
@@ -163,6 +164,8 @@ void GameScene::MainStep()
 		else if (pose_ui_infocopy.m_is_end == true)
 		{
 			m_re_title = true;
+			//スコア初期化
+			Score::Instance()->Reset();
 			m_cur_step = SceneStep::EndStep;
 		}
 	}
