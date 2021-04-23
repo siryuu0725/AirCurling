@@ -50,7 +50,7 @@ public:
 	};
 
 	ObjectBase() {}
-	~ObjectBase() {}
+	virtual ~ObjectBase() {}
 
 	/**
      * @brief  初期化関数

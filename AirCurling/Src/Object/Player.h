@@ -115,6 +115,8 @@ public:
 	Player(Camera* camera_, BlockController* block_, 
 		Floor* floor_, DebufController* debuf_, Goal* goal_);
 
+	~Player() {}
+
 	/**
 	 * @brief  初期化関数
 	 * @param[in] stage_str_ 選択ステージ名(例"Stage1")
