@@ -99,6 +99,9 @@ void Player::Update()
 
 			ResetPos();   //ステージ外に出たかどうか
 		}
+
+		HitGoal();	//ゴール床との当たり判定(プレイヤーが動いていない時に判定を取るため別)
+
 	
 		break;
 	case PlayerUpdateStep::EndProduction:  //終了演出
@@ -190,7 +193,6 @@ void Player::HitController()
 
 	HitReset(); //リセットデバフ床との当たり判定
 	HitStop();	//ストップデバフ床との当たり判定
-	HitGoal();	//ゴール床との当たり判定
 
 	//反射が5回以上の行われるたびにスコアを減らす
 	if (player_info.m_reflect_counter >= ReflectMax)

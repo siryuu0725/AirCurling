@@ -254,49 +254,25 @@ void GameScene::DrawObject()
 //オブジェクト解放関数
 void GameScene::DeleteObject()
 {
-	//カメラ
-	delete mp_camera;
-	mp_camera = nullptr;
+	//各オブジェクトを配列でまとめる
+	ObjectBase* obj[StageObjectNum] =
+	{ mp_camera ,mp_player ,mp_block,mp_debuf,mp_sky_dome ,mp_sky_floor ,mp_floor ,mp_goal,mp_player_direction };
 
-	//ブロック
-	mp_block->ReleaseModel();
-	delete mp_block;
-	mp_block = nullptr;
-
-	//プレイヤー
-	mp_player->ReleaseModel();
-	delete mp_player;
-	mp_player = nullptr;
-
-	//プレイヤー矢印
-	mp_player_direction->ReleaseModel();
-	delete mp_player_direction;
-	mp_player_direction = nullptr;
-
-	//背景
-	mp_sky_dome->ReleaseModel();
-	delete mp_sky_dome;
-	mp_sky_dome = nullptr;
-
-	//背景床
-	mp_sky_floor->ReleaseModel();
-	delete mp_sky_floor;
-	mp_sky_floor = nullptr;
-
-	//ステージ床
-	mp_floor->ReleaseModel();
-	delete mp_floor;
-	mp_floor = nullptr;
-
-	//デバフ床
-	mp_debuf->ReleaseModel();
-	delete mp_debuf;
-	mp_debuf = nullptr;
-
-	//ゴール床
-	mp_goal->ReleaseModel();
-	delete mp_goal;
-	mp_goal = nullptr;
+	for (int i = 0; i < StageObjectNum; i++)
+	{
+		obj[i]->ReleaseModel();
+		delete obj[i];
+	}
+	
+	mp_camera = nullptr; //カメラ	
+	mp_block = nullptr; //ブロック	
+	mp_player = nullptr; //プレイヤー	
+	mp_player_direction = nullptr; //プレイヤー矢印	 
+	mp_sky_dome = nullptr;//背景	
+	mp_sky_floor = nullptr; //背景床
+	mp_floor = nullptr; //ステージ床
+	mp_debuf = nullptr; //デバフ床
+	mp_goal = nullptr; //ゴール床
 }
 
 //UI解放関数
