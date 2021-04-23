@@ -2,6 +2,7 @@
 #include "../System/Inputter.h"
 #include "../System/FBX.h"
 #include "../System/Effect.h"
+#include "../Utility/Collision/ObjectCollision.h"
 
 #include <thread>
 
@@ -195,6 +196,8 @@ void GameScene::EndStep()
 	DeleteObject();
 
 	DeleteUI();
+
+	ObjectCollision::Instance()->ResetObjectInfo();
 
 	if (m_re_title == true)
 	{

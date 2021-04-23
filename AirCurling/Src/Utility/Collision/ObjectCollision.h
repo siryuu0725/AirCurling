@@ -124,6 +124,12 @@ public:
 　　*/
 	const HitRectPoint GetHitRectPoint() { return m_rectpoint; }
 
+	/**
+　　* @brief 各オブジェクト情報リセット関数
+　　* @details 前回と違うステージを選んだ場合前のオブジェクト情報が残っているため使用する
+　　*/
+	void ResetObjectInfo();
+
 private:
 	static ObjectCollision* mp_instance;
 	 

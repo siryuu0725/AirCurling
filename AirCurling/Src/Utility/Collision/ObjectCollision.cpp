@@ -106,3 +106,12 @@ bool ObjectCollision::HitGoal()
 	return false;
 }
 
+//各オブジェクト情報リセット関数
+void ObjectCollision::ResetObjectInfo()
+{
+	m_rectblock_copy.clear();
+	m_circleblock_copy.clear();
+	m_resetfloor_copy.clear();
+	m_stopfloor_copy.clear();
+}
+
