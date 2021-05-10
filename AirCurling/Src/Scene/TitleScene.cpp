@@ -42,6 +42,16 @@ void TitleScene::MainStep()
 	else if (ui_info.endui_flg == true)
 	{
 		PostQuitMessage(0);
+
+		//UI解放
+		mp_ui->ReleaseTex();
+
+		delete mp_ui;
+		mp_ui = nullptr;
+
+		//サウンド解放
+		SoundController::Instance()->ReleaseTitleSound();
+		SoundController::Instance()->ReleaseInstance();
 	}
 }
 
@@ -54,6 +64,9 @@ void TitleScene::EndStep()
 
 	//UI解放
 	mp_ui->ReleaseTex();
+
+	delete mp_ui;
+	mp_ui = nullptr;
 
 	//サウンド解放
 	SoundController::Instance()->ReleaseTitleSound();
@@ -82,7 +95,10 @@ void TitleScene::EndStep()
 //描画情報送信まとめ関数
 void TitleScene::Draw()
 {
-	mp_ui->Draw();
+	if (mp_ui != nullptr)
+	{
+		mp_ui->Draw();
+	}
 }
 
 //インスタンス返還関数

@@ -88,13 +88,13 @@ public:
 	 * @brief  UI当たり判定関数
 	 * @details 次のシーンに移るための当たり判定を行う
 	 */
-	void Select();
+	//void Select();
 
 	/**
 	 * @brief  ステージUI当たり判定関数
 	 * @details ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
 	 */
-	void SelectStage();
+	//void SelectStage();
 
 	/**
 　　* @brief  UI情報Getter

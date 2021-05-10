@@ -135,6 +135,7 @@ IDirectSoundBuffer8* DirectSound::LoadWaveFile(std::string file_name_) {
 DirectSound::~DirectSound() {
 
 	m_DSound8->Release();
+	m_SecBuffer->Release();
 	//m_PrimaryBuffer->Release();
 }
 

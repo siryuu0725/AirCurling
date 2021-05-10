@@ -114,7 +114,16 @@ bool Graphics::SetUpViewPort(D3DPRESENT_PARAMETERS* present_param_)
 void  Graphics::ReleaseGraphics()
 {
 	g_device->Release();
+	g_device = nullptr;
+
 	g_interface->Release();
+	g_interface = nullptr;
+
+	for (__int8 i = 0; i < (__int8)Graphics::FontSize::FontSizeMax; i++)
+	{
+		g_font_list[i]->Release();
+		g_font_list[i] = nullptr;
+	}
 }
 
 //α値設定関数
@@ -387,4 +396,10 @@ void Graphics::SetLight()
 	g_device->SetLight(0, &light);
 	g_device->LightEnable(0, true);
 	g_device->SetRenderState(D3DRS_LIGHTING, true);
+}
+
+void Graphics::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }

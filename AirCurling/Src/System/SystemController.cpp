@@ -35,4 +35,7 @@ void EndEngine()
 
 	//入力情報解放
 	Inputter::Instance()->EndInput();
+
+	Graphics::Instance()->ReleaseInstance();
+	Inputter::Instance()->ReleaseInstance();
 }

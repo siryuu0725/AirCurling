@@ -128,6 +128,12 @@ public:
 	bool OnMouseDown(MouseButton button_type_);
 
 	/**
+	*	@brief Instance解放関数
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
+	/**
 　　* @brief  マウスの座標取得関数
   　* @details 現在のマウスの座標をスクリーン座標で返す
 　　*/

@@ -9,6 +9,11 @@ SoundController* SoundController::Instance()
 	return mp_instance;
 }
 
+SoundController::~SoundController()
+{
+	AudioPlayer::Instance()->ReleaseInstance();
+}
+
 //コンストラクタ
 SoundController::SoundController()
 {
@@ -30,26 +35,28 @@ void SoundController::RegisterTitleSound()
 {
 	m_bgm_file = "Res/wav/BGM/Title.wav";
 	m_select_file = "Res/wav/SE/Select.wav";
-	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
-	mp_audio->LoadAudioFail(m_select_se, m_select_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_bgm, m_bgm_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_select_se, m_select_file);
 }
 
 //ゲームシーン音源設定
 void SoundController::RegisterGameSound()
 {
 	m_bgm_file = "Res/wav/BGM/Game.wav";
+	m_select_file = "Res/wav/SE/Select.wav";
 	m_shot_file = "Res/wav/SE/Shot.wav";
 	m_reflect_file = "Res/wav/SE/Reflection.wav";
 	m_goal_file = "Res/wav/SE/Goal.wav";
 	m_stop_file = "Res/wav/SE/Stop.wav";
 	m_reset_file= "Res/wav/SE/Reset.wav";
 
-	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
-	mp_audio->LoadAudioFail(m_shot_se, m_shot_file);
-	mp_audio->LoadAudioFail(m_reflect_se, m_reflect_file);
-	mp_audio->LoadAudioFail(m_goal_se, m_goal_file);
-	mp_audio->LoadAudioFail(m_stop_se, m_stop_file);
-	mp_audio->LoadAudioFail(m_reset_se, m_reset_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_bgm, m_bgm_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_select_se, m_select_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_shot_se, m_shot_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_reflect_se, m_reflect_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_goal_se, m_goal_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_stop_se, m_stop_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_reset_se, m_reset_file);
 }
 
 //リザルト(エンド)シーン音源設定
@@ -57,13 +64,13 @@ void SoundController::RegisterResultSound()
 {
 	m_bgm_file = "Res/wav/BGM/Result.wav";
 
-	mp_audio->LoadAudioFail(m_bgm, m_bgm_file);
+	AudioPlayer::Instance()->LoadAudioFail(m_bgm, m_bgm_file);
 }
 
 //BGM再生関数
 void SoundController::SoundBGM(int volume_)
 {
-	mp_audio->Play(m_bgm, volume_, true);
+	AudioPlayer::Instance()->Play(m_bgm, volume_, true);
 }
 
 //SE停止関数
@@ -72,22 +79,22 @@ void SoundController::StopSE(PlaySEType se_type_)
 	switch (se_type_)
 	{
 	case PlaySEType::Selsect:
-		mp_audio->Stop(m_select_se);
+		AudioPlayer::Instance()->Stop(m_select_se);
 		break;
 	case PlaySEType::Shot:
-		mp_audio->Stop(m_shot_se);
+		AudioPlayer::Instance()->Stop(m_shot_se);
 		break;
 	case PlaySEType::Reflect:
-		mp_audio->Stop(m_reflect_se);
+		AudioPlayer::Instance()->Stop(m_reflect_se);
 		break;
 	case PlaySEType::Goal:
-		mp_audio->Stop(m_goal_se);
+		AudioPlayer::Instance()->Stop(m_goal_se);
 		break;
 	case PlaySEType::Stop:
-		mp_audio->Stop(m_stop_se);
+		AudioPlayer::Instance()->Stop(m_stop_se);
 		break;
 	case PlaySEType::Reset:
-		mp_audio->Stop(m_reset_se);
+		AudioPlayer::Instance()->Stop(m_reset_se);
 		break;
 	default:
 		break;
@@ -99,7 +106,7 @@ void SoundController::SoundSelectSE()
 {
 	if (m_is_select == false)
 	{
-		mp_audio->Play(m_select_se, SoundVolumeMin, false);
+		AudioPlayer::Instance()->Play(m_select_se, SoundVolumeMin, false);
 		m_is_select = true;
 	}
 }
@@ -112,28 +119,28 @@ void SoundController::PlaySoundSE(PlaySEType se_type_)
 	case PlaySEType::Selsect:
 		if (m_is_select == false)
 		{
-			mp_audio->Play(m_select_se, SoundVolumeMax, false);
+			AudioPlayer::Instance()->Play(m_select_se, SoundVolumeMax, false);
 			m_is_select = true;
 		}
 		break;
 	case PlaySEType::Shot:
-		mp_audio->Play(m_shot_se, SoundVolumeMax, false);
+		AudioPlayer::Instance()->Play(m_shot_se, SoundVolumeMax, false);
 		break;
 	case PlaySEType::Reflect:
-		mp_audio->Play(m_reflect_se, SoundVolumeMax, false);
+		AudioPlayer::Instance()->Play(m_reflect_se, SoundVolumeMax, false);
 		break;
 	case PlaySEType::Goal:
-		mp_audio->Play(m_goal_se, SoundVolumeMax, false);
+		AudioPlayer::Instance()->Play(m_goal_se, SoundVolumeMax, false);
 		break;
 	case PlaySEType::Stop:
 		if (m_is_stop == false)
 		{
-			mp_audio->Play(m_stop_se, SoundVolumeMax, false);
+			AudioPlayer::Instance()->Play(m_stop_se, SoundVolumeMax, false);
 			m_is_stop = true;
 		}
 		break;
 	case PlaySEType::Reset:
-		mp_audio->Play(m_reset_se, SoundVolumeMax, false);
+		AudioPlayer::Instance()->Play(m_reset_se, SoundVolumeMax, false);
 		break;
 	default:
 		break;
@@ -155,25 +162,31 @@ void SoundController::ResetStopFlag()
 //タイトルシーンサウンド解放関数
 void SoundController::ReleaseTitleSound()
 {
-	mp_audio->Release(m_bgm);
-
+	AudioPlayer::Instance()->Release(m_bgm);
+	AudioPlayer::Instance()->Release(m_select_se);
 }
 
 //ゲームシーンサウンド解放関数
 void SoundController::ReleaseGameSound()
 {
-	mp_audio->Release(m_bgm);
-	mp_audio->Release(m_select_se);
-	mp_audio->Release(m_shot_file);
-	mp_audio->Release(m_reflect_file);
-	mp_audio->Release(m_goal_file);
-	mp_audio->Release(m_stop_file);
-	mp_audio->Release(m_reset_file);
+	AudioPlayer::Instance()->Release(m_bgm);
+	AudioPlayer::Instance()->Release(m_select_se);
+	AudioPlayer::Instance()->Release(m_shot_file);
+	AudioPlayer::Instance()->Release(m_reflect_file);
+	AudioPlayer::Instance()->Release(m_goal_file);
+	AudioPlayer::Instance()->Release(m_stop_file);
+	AudioPlayer::Instance()->Release(m_reset_file);
 }
 
 //エンド(リザルト)シーンサウンド解放関数
 void SoundController::ReleaseReselutSound()
 {
-	mp_audio->Release(m_bgm);
+	AudioPlayer::Instance()->Release(m_bgm);
+}
+
+void SoundController::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }
 

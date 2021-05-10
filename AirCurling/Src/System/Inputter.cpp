@@ -268,6 +268,12 @@ bool Inputter::OnMouseDown(MouseButton button_type_)
 	return false;
 }
 
+void Inputter::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
+}
+
 //マウスの入力情報更新関数
 void Inputter::UpdateMouse()
 {

@@ -3,7 +3,9 @@
 #include <thread>
 #include "System/SystemController.h"
 #include "Scene/SceneController.h"
-
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 
 
 int WINAPI WinMain(HINSTANCE hinstance,
@@ -11,6 +13,8 @@ int WINAPI WinMain(HINSTANCE hinstance,
 	LPSTR lpCmpLine,
 	INT nCmdShow)
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	//エンジンの初期化
 	if (InitEngine(1920, 1080, "エアホッケ―") == false)
 	{
@@ -49,6 +53,8 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 		}
 	}
+
+	SceneController::Instance()->ReleaseInstance();
 
 	//エンジン終了
 	EndEngine();

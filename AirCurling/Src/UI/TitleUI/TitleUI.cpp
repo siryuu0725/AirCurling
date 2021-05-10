@@ -135,7 +135,13 @@ void TitleUI::ReleaseTex()
 	for (__int8 i = 0; i < TitleUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
+		delete ui[i];
 	}
+
+	mp_bg = nullptr; 
+	mp_stage_item = nullptr; 
+	mp_title_item = nullptr; 
+	mp_game_name = nullptr;
 }
 
 

@@ -22,7 +22,7 @@ class SceneBase
 {
 public:
 	SceneBase() {}
-	~SceneBase() {}
+	virtual ~SceneBase() {}
 
 	/**
 　　* @brief  初期化ステップ関数

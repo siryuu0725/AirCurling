@@ -198,6 +198,13 @@ public:
 　　* @brief  ライト設定関数
 　　*/
 	void SetLight();
+
+	/**
+	*	@brief Instance解放関数
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	static Graphics* mp_instance;
 

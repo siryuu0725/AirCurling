@@ -76,6 +76,12 @@ public:
 	const std::string GetStageID() { return m_stagename; }
 
 	/**
+	*	@brief Instance解放関数
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
+	/**
 	 * @brief  各ゲーム管理クラスアドレス配列
 	 * @details 配列に指定したゲームを入れるとそのゲームの管理クラスのnewが返ってくる
 	 */

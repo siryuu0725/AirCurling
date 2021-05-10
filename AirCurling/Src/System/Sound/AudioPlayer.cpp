@@ -1,5 +1,14 @@
 ﻿#include "AudioPlayer.h"
 
+AudioPlayer* AudioPlayer::mp_instance = nullptr;
+
+AudioPlayer* AudioPlayer::Instance()
+{
+	if (mp_instance == nullptr) { mp_instance = new AudioPlayer(GetWindowHandle()); }
+
+	return mp_instance;
+}
+
 //ウェブファイル読み込み関数
 bool AudioPlayer::LoadAudioFail(std::string alias_, std::string file_name_) {
 
@@ -68,6 +77,12 @@ void AudioPlayer::Release(std::string alias_) {
 		sound = nullptr;
 		m_SoundData.erase(alias_);//要素削除
 	}
+}
+
+void AudioPlayer::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }
 
 //サウンドファイル検索関数

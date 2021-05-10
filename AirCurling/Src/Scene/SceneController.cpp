@@ -94,5 +94,11 @@ SceneController::~SceneController()
 {
 	delete mp_scene;
 	mp_scene = nullptr;
-
 }
+
+void SceneController::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
+}
+

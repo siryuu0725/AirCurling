@@ -32,7 +32,7 @@ class SoundController
 {
 private:
 	SoundController();
-	~SoundController() {}
+	~SoundController();
 
 public:
 	static SoundController* Instance();
@@ -111,6 +111,12 @@ public:
     */
 	void ReleaseReselutSound();
 
+	/**
+	*	@brief Instance解放関数
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	static SoundController* mp_instance;
 
@@ -135,7 +141,7 @@ private:
 	std::string m_stop_file;      //!スピード減衰時SEファイルパス保存用
 	std::string m_reset_file;	  //!落下時SEファイルパス保存用
 
-	AudioPlayer* mp_audio = AudioPlayer::GetInstance(GetWindowHandle());
+	AudioPlayer* mp_audio;
 
 	bool m_is_select;  //!selectSEをループさせないためのフラグ
 	bool m_is_stop;    //!stopSEをループさせないためのフラグ

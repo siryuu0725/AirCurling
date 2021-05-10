@@ -17,13 +17,8 @@
 class AudioPlayer {
 
 public:
+	static AudioPlayer* Instance();
 
-	static AudioPlayer* GetInstance(HWND hwnd_ = nullptr) {
-		static AudioPlayer instance(hwnd_);
-		return &instance;
-	}
-
-	
 	/**
 	 * @brief  ウェブファイル読み込み関数
 	 * @param[in] alias_ サウンドを使用する際の別名
@@ -63,6 +58,12 @@ public:
 	 */
 	void Release(std::string alias_);
 
+	/**
+	*	@brief Instance解放関数
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 
 	/**
@@ -83,6 +84,8 @@ private:
 	~AudioPlayer();
 
 private:
+	static AudioPlayer* mp_instance;
+
 	DirectSound* m_Sound;
 	std::unordered_map<std::string, IDirectSoundBuffer8*> m_SoundData; //!セカンダリバッファ
 	WAVEFORMATEX m_format;			  //!データフォーマット構造体
