@@ -27,7 +27,7 @@ void TurnUI::Update(bool is_turnend_)
 
 		if (m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] > TrunTexUVMax)
 		{
-			m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] = TrunTexUVMax;
+			m_turn_info.m_ui_tu[(__int8)TurnTexCategory::TurnNumber] = TrunTexUVMax - TrunTexUVAddValue;
 		}
 	}
 }
