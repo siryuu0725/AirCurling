@@ -37,6 +37,12 @@ public:
 	void Reset();
 
 	/**
+	*	@brief Instance解放関数(Debug用)
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
+	/**
 　　* @brief  スコアGetter関数
 　　*/
 	const __int16 GetScore()const { return m_score; }

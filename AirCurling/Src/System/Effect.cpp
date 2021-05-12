@@ -127,9 +127,10 @@ void Effect::UpdateEffect(Camera* camera_)
 void Effect::ReleaseEffect()
 {
 	// エフェクトの破棄
-	for (int i = 0; i < sizeof(efcs); i++)
+	for (__int8 i = 0; i < (__int8)EffectType::MaxNum; i++)
 	{
-		ES_SAFE_RELEASE(efcs[i]);
+		//ES_SAFE_RELEASE(efcs[i]);
+		efcs[i]->Release();
 	}
 
 	// 先にエフェクト管理用インスタンスを破棄
@@ -137,6 +138,12 @@ void Effect::ReleaseEffect()
 
 	// 次に描画用インスタンスを破棄
 	e_renderer->Destroy();
+}
+
+void Effect::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }
 
 

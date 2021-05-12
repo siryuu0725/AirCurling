@@ -130,6 +130,12 @@ public:
 　　*/
 	void ResetObjectInfo();
 
+	/**
+	*	@brief Instance解放関数(Debug用)
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	static ObjectCollision* mp_instance;
 	 

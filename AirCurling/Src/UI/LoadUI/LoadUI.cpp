@@ -80,5 +80,9 @@ void LoadUI::ReleaseTex()
 	for (__int8 i = 0; i < LoadUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
+		delete ui[i];
 	}
+
+	mp_load_font = nullptr;
+	mp_load_icon = nullptr;
 }

@@ -141,6 +141,13 @@ void GameUI::ReleaseTex()
 	for (int i = 0; i < GameUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
+		delete ui[i];
 	}
+
+	mp_game_score = nullptr;
+	mp_player_mode = nullptr;
+	mp_production = nullptr;
+	mp_shot_gauge = nullptr;
+	mp_turn = nullptr;
 }
 

@@ -53,6 +53,13 @@ public:
 	 * @details 各オブジェクトのLoadFbxMesh関数をまとめたもの
 	 */
 	FBXMeshData GetMeshData(std::string key_) { return m_MeshData[key_]; }
+
+	/**
+	*	@brief Instance解放関数(Debug用)
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	static FbxController* mp_instance;
 

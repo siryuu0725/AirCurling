@@ -51,6 +51,12 @@ public:
 	*/
 	void WriteData(std::string str_, std::vector<__int16> strvec_);
 
+	/**
+	*	@brief Instance解放関数(Debug用)
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	/**
 	*	@brief コンマ区切りで文字列を分割する関数

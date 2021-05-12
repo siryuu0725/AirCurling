@@ -29,3 +29,9 @@ void Score::Reset()
 {
 	m_score = ScoreMinValue;
 }
+
+void Score::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
+}

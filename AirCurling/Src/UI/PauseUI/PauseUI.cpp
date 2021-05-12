@@ -95,5 +95,9 @@ void PauseUI::ReleaseTex()
 	for (__int8 i = 0; i < PauseUICategoryNum; i++)
 	{
 		ui[i]->ReleaseTex();
+		delete ui[i];
 	}
+
+	mp_bg = nullptr;
+	mp_item = nullptr;
 }

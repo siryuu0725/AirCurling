@@ -73,6 +73,12 @@ void RankingData::WriteData(std::string str_, std::vector<__int16> strvec_)
 
 }
 
+void RankingData::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
+}
+
 //コンマ区切りで文字列を分割する関数
 std::vector<std::string> RankingData::Split(std::string& input_, char delimiter_)
 {

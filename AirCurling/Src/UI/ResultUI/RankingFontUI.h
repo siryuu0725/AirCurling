@@ -66,10 +66,9 @@ public:
 	/**
 	 * @brief  テクスチャ解放関数
 	 */
-	virtual void ReleaseTex()override {}
+	virtual void ReleaseTex()override;
 
 private:
-	RankingData* mp_ranking_data;
 	RankingFontInfo m_ranking_info; //!ランキング文字情報
 };
 #endif

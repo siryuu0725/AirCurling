@@ -33,7 +33,7 @@ enum EffectType
 class Effect
 {
 private:
-	Effect() :mp_camera(nullptr),
+	Effect():
 		e_manager(nullptr),
 		e_renderer(nullptr),
 		e_device(nullptr),
@@ -109,9 +109,15 @@ public:
 　　* @brief  エフェクト解放関数
 　　*/
 	void ReleaseEffect();
+
+	/**
+	*	@brief Instance解放関数(Debug用)
+	*	@details 手動でインスタンスを解放する
+	*/
+	void ReleaseInstance();
+
 private:
 	static Effect* mp_instance;
-	Camera* mp_camera;
 
 	::Effekseer::Manager* e_manager;
 	::EffekseerRendererDX9::Renderer* e_renderer;
@@ -123,7 +129,6 @@ private:
 
 	D3DXVECTOR2 window_size;
 
-	
 	::Effekseer::Vector3D e_camera_pos; //!カメラの位置 
 
 	::Effekseer::Vector3D e_eye_pos;    //!注視点

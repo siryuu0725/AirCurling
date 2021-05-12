@@ -70,4 +70,10 @@ void ResultUI::Draw()
 void ResultUI::ReleaseTex()
 {
 	mp_bg->ReleaseTex();
+	delete mp_bg;
+	mp_bg = nullptr;
+
+	mp_ranking_font->ReleaseTex();
+	delete mp_ranking_font;
+	mp_ranking_font = nullptr;
 }

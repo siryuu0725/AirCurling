@@ -170,7 +170,10 @@ void GameScene::MainStep()
 		}
 	}
 
-	
+	if (Inputter::Instance()->GetKeyDown(Inputter::EKey))
+	{
+		m_cur_step = SceneStep::EndStep;
+	}
 
 	//ポーズ画面切り替え
 	if(Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
@@ -194,14 +197,24 @@ void GameScene::MainStep()
 //終了ステップ関数
 void GameScene::EndStep()
 {
+	CloseHandle(thread_h);
+
+	//ゲームシーンサウンド解放
 	SoundController::Instance()->ReleaseGameSound();
 
+	//各オブジェクト解放
 	DeleteObject();
 
+	//各UI解放
 	DeleteUI();
 
+	//当たり判定用情報リセット
 	ObjectCollision::Instance()->ResetObjectInfo();
 
+	//エフェクト解放
+	Effect::Instance()->ReleaseEffect();
+
+	//タイトルに戻る場合
 	if (m_re_title == true)
 	{
 		SceneController::Instance()->SetSceneId(SceneId::Title);
@@ -212,6 +225,12 @@ void GameScene::EndStep()
 	}
 	
 	m_is_change_scene = true;
+
+#ifdef _DEBUG
+	ObjectCollision::Instance()->ReleaseInstance();
+	Effect::Instance()->ReleaseInstance();
+	FbxController::Instance()->ReleaseInstance();
+#endif
 }
 
 //オブジェクト初期化関数

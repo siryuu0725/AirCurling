@@ -115,3 +115,9 @@ void ObjectCollision::ResetObjectInfo()
 	m_stopfloor_copy.clear();
 }
 
+void ObjectCollision::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
+}
+

@@ -1,6 +1,7 @@
 ﻿#include "TitleScene.h"
 #include <WinUser.h>
 #include "SceneController.h"
+#include "../Score/GameScore.h"
 
 //初期化ステップ関数
 void TitleScene::InitStep()
@@ -51,7 +52,11 @@ void TitleScene::MainStep()
 
 		//サウンド解放
 		SoundController::Instance()->ReleaseTitleSound();
+
+#ifdef _DEBUG
 		SoundController::Instance()->ReleaseInstance();
+		Score::Instance()->ReleaseInstance();
+#endif
 	}
 }
 
@@ -64,7 +69,6 @@ void TitleScene::EndStep()
 
 	//UI解放
 	mp_ui->ReleaseTex();
-
 	delete mp_ui;
 	mp_ui = nullptr;
 
