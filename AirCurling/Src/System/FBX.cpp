@@ -117,17 +117,6 @@ bool Fbx::LoadMesh(MeshData* pMeshData_, FbxMesh* pMesh_)
 	//法線情報取得
 	LoadNormal(pMeshData_, pMesh_);
 
-	int vertexNum = pMesh_->GetPolygonVertexCount();
-	UINT size = (UINT)(vertexNum * sizeof(VERTEX_3D));
-	VERTEX_3D* vertex;
-	// バッファをロックしてデータを書き込む
-	pMeshData_->pVB->Lock(0, size, (void**)&vertex, 0);
-
-	pMeshData_->vertex = (VERTEX_3D*)malloc(size);
-	memcpy(pMeshData_->vertex, vertex, size);
-
-	pMeshData_->pVB->Unlock();
-
 	return true;
 }
 
@@ -167,7 +156,7 @@ void Fbx::LoadVertex(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	FbxVector4 R = pMesh_->GetNode()->GetGeometricRotation(FbxNode::eSourcePivot);
 	FbxVector4 S = pMesh_->GetNode()->GetGeometricScaling(FbxNode::eSourcePivot);
 	FbxAMatrix TRS = FbxAMatrix(T, R, S);
-	//!全頂点変換
+	//全頂点変換
 	for (int v = 0; v < pMesh_->GetControlPointsCount(); v++)
 	{
 		vtx[v] = TRS.MultT(vtx[v]);
@@ -213,7 +202,6 @@ void Fbx::LoadNormal(MeshData* pMeshData_, FbxMesh* pMesh_) {
 	pMeshData_->pVB->Lock(0, size, (void**)&pVertex, 0);
 
 	//法線の数を取得
-	//int normalCount = normals.Size();
 	for (int vtxIdx = 0; vtxIdx < normals.Size(); vtxIdx++)
 	{
 		FbxVector4& normal = normals[vtxIdx];
