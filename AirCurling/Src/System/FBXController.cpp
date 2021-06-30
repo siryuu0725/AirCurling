@@ -71,13 +71,6 @@ void FbxController::DrawFbx(std::string key_, D3DXMATRIX& mat_world_)
 	p_Fbx->DrawModel(&m_MeshData[key_].fbxinfo);
 }
 
-
-void FbxController::ReleaseInstance()
-{
-	delete mp_instance;
-	mp_instance = nullptr;
-}
-
 bool FbxController::HasKey(std::string key_)
 {
 	auto itr = m_MeshData.find(key_);
@@ -86,4 +79,11 @@ bool FbxController::HasKey(std::string key_)
 		return true;
 	}
 	return false;
+}
+
+//Instance解放関数(Debug用)
+void FbxController::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }

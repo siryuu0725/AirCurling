@@ -19,8 +19,8 @@ void ProductionUI::Init()
 	m_production_info.flame = 0.01666667f;
 
 	m_production_info.m_movespeed = 20.0f; //開始演出の文字が動くスピード
-	m_production_info.m_movestop = false;  //開始演出の文字が止まるフラグ
-	m_production_info.m_remove = false;    //開始演出の文字が再び動くフラグ
+	m_production_info.m_is_stop = false;  //開始演出の文字が止まるフラグ
+	m_production_info.m_is_remove = false;    //開始演出の文字が再び動くフラグ
 
 	m_production_info.m_is_start_game = false;  //操作可能になるまでのフラグ
 	m_production_info.m_is_end_game = false;    //リザルトシーンに移行するフラグ
@@ -35,31 +35,31 @@ void ProductionUI::StartProduction(Camera* camera_)
 	m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x += m_production_info.m_movespeed;
 
 	//左右から流れてきたテクスチャの座標が重なり合う位置に来たら
-	if (m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Start].x && m_production_info.m_movestop == false)
+	if (m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Start].x && m_production_info.m_is_stop == false)
 	{
 		m_production_info.m_movespeed = 0.0f;
-		m_production_info.m_movestop = true;  //一度テクスチャの移動を止める
+		m_production_info.m_is_stop = true;  //一度テクスチャの移動を止める
 	}
 	//再び動かせるようになった時
-	else if (m_production_info.m_remove == true)
+	else if (m_production_info.m_is_remove == true)
 	{
 		m_production_info.m_movespeed = 20.0f;
 	}
 
 	//一度テクスチャがとまった時
-	if (m_production_info.m_movestop == true)
+	if (m_production_info.m_is_stop == true)
 	{
 		m_production_info.m_stoptimer++;
 		//1秒程止める
 		if (m_production_info.m_stoptimer >= StartFontStopTime)
 		{
 			//再び動かす
-			m_production_info.m_remove = true;
+			m_production_info.m_is_remove = true;
 		}
 	}
 
 	//再移動後、画面外にテクスチャが出た時
-	if (m_production_info.m_remove == true && m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= StartFontEndPosX)
+	if (m_production_info.m_is_remove == true && m_production_info.m_ui_pos[(__int8)ProductionTexCategory::Kacco].x >= StartFontEndPosX)
 	{
 		m_production_info.m_is_start_game = true;
 		camera_->SetCameraOperation(true);

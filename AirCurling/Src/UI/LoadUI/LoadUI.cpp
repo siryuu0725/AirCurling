@@ -67,7 +67,6 @@ void LoadUI::Draw()
 void LoadUI::Update()
 {
 	mp_load_icon->Update();
-	//LoadTexRote();
 }
 
 //テクスチャ解放関数

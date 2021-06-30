@@ -34,7 +34,7 @@ void TitleScene::MainStep()
 	mp_ui->GetTitleUIInfo(ui_info);
 
 	//ステージ選択が終わった場合
-	if (ui_info.m_stage_1 == true || ui_info.m_stage_2 == true)
+	if (ui_info.m_is_stage_1 == true || ui_info.m_is_stage_2 == true)
 	{
 		//m_sound_manager->SoundClickSE();
 		m_cur_step = SceneStep::EndStep;
@@ -82,12 +82,12 @@ void TitleScene::EndStep()
 	m_cur_step = SceneStep::InitStep;
 
 	//ステージ1が選ばれた場合
-	if (ui_info.m_stage_1 == true)
+	if (ui_info.m_is_stage_1 == true)
 	{
 		SceneController::Instance()->SetStageID("Stage1");
 	}
 	//ステージ2が選ばれた場合
-	else if(ui_info.m_stage_2 == true)
+	else if(ui_info.m_is_stage_2 == true)
 	{
 		SceneController::Instance()->SetStageID("Stage2");
 	}

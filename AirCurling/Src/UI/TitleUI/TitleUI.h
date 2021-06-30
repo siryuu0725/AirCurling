@@ -29,8 +29,8 @@ public:
 			startui_flg(false),
 			endui_flg(false),
 			helpui_flg(false),
-			m_stage_1(false),
-			m_stage_2(false)
+			m_is_stage_1(false),
+			m_is_stage_2(false)
 		{}
 
 		/* 各Sceneへ飛ぶ判定 */
@@ -38,8 +38,8 @@ public:
 		bool endui_flg;	   //!「おわる」を押した時
 		bool helpui_flg;   //!「ヘルプ」を押した時
 
-		bool m_stage_1;   //!ステージ1を選んだ場合
-		bool m_stage_2;   //!ステージ2を選んだ場合
+		bool m_is_stage_1;   //!ステージ1を選んだ場合
+		bool m_is_stage_2;   //!ステージ2を選んだ場合
 
 	};
 
@@ -83,18 +83,6 @@ public:
 	 * @brief  テクスチャ解放関数
 	 */
 	void ReleaseTex();
-
-	/**
-	 * @brief  UI当たり判定関数
-	 * @details 次のシーンに移るための当たり判定を行う
-	 */
-	//void Select();
-
-	/**
-	 * @brief  ステージUI当たり判定関数
-	 * @details ステージ選択画面のUIとの当たり判定と選択したステージ情報保存を行う
-	 */
-	//void SelectStage();
 
 	/**
 　　* @brief  UI情報Getter

@@ -29,28 +29,28 @@ D3DXMATRIX Calculation::Matrix(D3DXVECTOR3 pos_, D3DXVECTOR3 scale_, D3DXVECTOR3
 }
 
 //なす角計算関数
-float Calculation::EggplantAngle(D3DXVECTOR3 direction_, D3DXVECTOR3 vec_)
+float Calculation::EggplantAngle(D3DXVECTOR3 vec1_, D3DXVECTOR3 vec2_)
 {
-	//方向ベクトルと接線に垂直なベクトルのなす角を求める
-	float a = (vec_.x * direction_.x) + (vec_.z * direction_.z);
-	float b = sqrtf(vec_.x * vec_.x + vec_.z * vec_.z) * sqrtf(direction_.x * direction_.x + direction_.z * direction_.z);
+	//vec1_とvec2_のなす角を求める
+	float a = (vec2_.x * vec1_.x) + (vec2_.z * vec1_.z);
+	float b = sqrtf(vec2_.x * vec2_.x + vec2_.z * vec2_.z) * sqrtf(vec1_.x * vec1_.x + vec1_.z * vec1_.z);
 	float radian = a / b;
 	return acosf(radian);
 }
 
 //ベクトルの距離算出関数
-float Calculation::Length(float target_pos_x, float target_pos_y)
+float Calculation::Length(D3DXVECTOR3 target_vec_)
 {
-	return sqrtf(target_pos_x * target_pos_x + target_pos_y * target_pos_y);
+	return sqrtf(target_vec_.x * target_vec_.x + target_vec_.y * target_vec_.y + target_vec_.z * target_vec_.z);
 }
 
-//ベクトル回転関数
-D3DXVECTOR3 Calculation::Rotate(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_)
+//ベクトルY軸回転関数
+D3DXVECTOR3 Calculation::Rotate_Y(D3DXVECTOR3 target_pos_, D3DXVECTOR3 axis_pos_, float rote_rad_)
 {
 	D3DXVECTOR3 oldpos = target_pos_;
 
-	target_pos_.x = (oldpos.x - target2_pos_.x) * cos(D3DXToRadian(radian_)) - (oldpos.z - target2_pos_.z) * sin(D3DXToRadian(radian_)) + target2_pos_.x;
-	target_pos_.z = (oldpos.x - target2_pos_.x) * sin(D3DXToRadian(radian_)) + (oldpos.z - target2_pos_.z) * cos(D3DXToRadian(radian_)) + target2_pos_.z;
+	target_pos_.x = (oldpos.x - axis_pos_.x) * cos(D3DXToRadian(rote_rad_)) - (oldpos.z - axis_pos_.z) * sin(D3DXToRadian(rote_rad_)) + axis_pos_.x;
+	target_pos_.z = (oldpos.x - axis_pos_.x) * sin(D3DXToRadian(rote_rad_)) + (oldpos.z - axis_pos_.z) * cos(D3DXToRadian(rote_rad_)) + axis_pos_.z;
 
 	return target_pos_;
 }

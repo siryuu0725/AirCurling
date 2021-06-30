@@ -140,6 +140,7 @@ void Effect::ReleaseEffect()
 	e_renderer->Destroy();
 }
 
+//Instance解放関数(Debug用)
 void Effect::ReleaseInstance()
 {
 	delete mp_instance;

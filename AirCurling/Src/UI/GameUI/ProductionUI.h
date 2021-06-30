@@ -36,8 +36,8 @@ public:
 	{
 		ProductionInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
-			m_movestop(false),
-			m_remove(false),
+			m_is_stop(false),
+			m_is_remove(false),
 			m_is_start_game(false),
 			m_is_end_game(false),
 			m_is_draw_finish(false),
@@ -55,9 +55,9 @@ public:
 
 		float m_movespeed;  //!開始演出の文字が動くスピード
 
-		bool m_movestop;   //!開始演出の文字が止まるフラグ
+		bool m_is_stop;   //!開始演出の文字が止まるフラグ
 
-		bool m_remove;//!開始演出の文字が再び動くフラグ
+		bool m_is_remove;//!開始演出の文字が再び動くフラグ
 
 		bool m_is_start_game;   //!操作可能になるまでのフラグ
 		bool m_is_end_game;     //!リザルトシーンに移行するフラグ

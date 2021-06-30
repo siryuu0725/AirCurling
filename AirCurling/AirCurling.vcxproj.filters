@@ -261,9 +261,6 @@
     <ClInclude Include="Src\Utility\Calculation.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utility\Vec.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Object\ObjectBase.h">
       <Filter>Object</Filter>
     </ClInclude>

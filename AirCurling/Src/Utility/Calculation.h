@@ -28,16 +28,7 @@ public:
      * @param[in] target_pos_y_  対象のベクトルのY座標
 	 * @return ベクトルの長さを出す
  　　*/
-	static float Length(float target_pos_x_, float target_pos_y_);
-
-	/**
- 　　* @brief  ベクトル回転関数
-	 * @param[in] target_pos_  回転させるベクトル
-	 * @param[in] target2_pos_  回転させる中心点(軸)
-	 * @param[in] radian_  回転角度
-	 * @return 引数1のから引数2までのベクトルを引数3度分回転させる
- 　　*/
-	static D3DXVECTOR3 Rotate(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_);
+	static float Length(D3DXVECTOR3 target_vec_);
 
 	/**
  　　* @brief  ワールド座標計算関数
@@ -54,7 +45,16 @@ public:
 	 * @param[in] vec_ 対象2のベクトル
 	 * @return 引数1と引数2に指定したベクトルのなす角を求める
  　　*/
-	static float EggplantAngle(D3DXVECTOR3 direction_, D3DXVECTOR3 vec_);
+	static float EggplantAngle(D3DXVECTOR3 vec1_, D3DXVECTOR3 vec2_);
+
+	/**
+ 　　* @brief  ベクトルY軸回転関数
+	 * @param[in] target_pos_  回転させるベクトル
+	 * @param[in] target2_pos_  回転させる中心点(軸)
+	 * @param[in] radian_  回転角度
+	 * @return 引数1のから引数2までのベクトルを引数3度分Y軸回転させる
+ 　　*/
+	static D3DXVECTOR3 Rotate_Y(D3DXVECTOR3 target_pos_, D3DXVECTOR3 target2_pos_, float radian_);
 };
 
 

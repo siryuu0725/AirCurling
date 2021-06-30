@@ -74,7 +74,7 @@ void TitleItem::Update()
 bool TitleItem::HitSelectUI(TitleItemTexCategory category_)
 {
 	if (Collision::RectAndPoint(m_titleitem_info.m_ui_pos[(__int8)category_],
-		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		D3DXVECTOR2(Inputter::Instance()->GetMousePos().x, Inputter::Instance()->GetMousePos().y),
 		m_titleitem_info.m_ui_tex[(__int8)category_].Width, m_titleitem_info.m_ui_tex[(__int8)category_].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入

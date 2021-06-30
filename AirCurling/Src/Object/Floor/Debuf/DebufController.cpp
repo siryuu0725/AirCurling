@@ -101,7 +101,7 @@ void DebufController::LoadStopFloorExternalInfo(std::string stage_str_)
 void DebufController::SetCollisionInfo()
 {
 	//リセット床
-	for (__int8 i = 0; i < m_resetfloor_num; i++)
+	for (__int8 i = 0; i < m_resetfloors.size(); i++)
 	{
 		ResetFloor::ObjectInfo resetfloor_info;
 
@@ -111,7 +111,7 @@ void DebufController::SetCollisionInfo()
 	}
 
 	//スピード減衰床
-	for (__int8 i = 0; i < m_stopfloor_num; i++)
+	for (__int8 i = 0; i < m_stopfloors.size(); i++)
 	{
 		StopFloor::ObjectInfo stopfloor_info;
 

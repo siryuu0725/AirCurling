@@ -113,11 +113,11 @@ public:
 
 	/**
      * @brief  カメラ操作判定Setter関数
-	 * @param[in] operation_ trueなら操作可能
+	 * @param[in] is_operation_ trueなら操作可能
      * @detail カメラの操作フラグを切り替える
 	 * @details UIの開始演出時に使用
      */
-	void SetCameraOperation(bool operation_) { m_camerainfo.m_is_operation = operation_; }
+	void SetCameraOperation(bool is_operation_) { m_camerainfo.m_is_operation = is_operation_; }
 
 	/**
 　　* @brief  オブジェクト情報Getter

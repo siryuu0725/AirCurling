@@ -6,7 +6,6 @@
 #ifndef OBJECTCOLLISION_H_
 #define OBJECTCOLLISION_H_
 #include "Collision.h"
-#include "../Vec.h"
 #include "../Calculation.h"
 #include "../../Object/ObjectBase.h"
 

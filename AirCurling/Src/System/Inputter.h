@@ -7,7 +7,8 @@
 #define INPUTTER_H_
 #include <Windows.h>
 #include <dinput.h>
-#include "../Utility/Vec.h"
+#include <d3d9.h>
+#include <d3dx9.h>
 
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -137,7 +138,7 @@ public:
 　　* @brief  マウスの座標取得関数
   　* @details 現在のマウスの座標をスクリーン座標で返す
 　　*/
-	Vec2 GetMousePos() { return m_mouse_pos; }
+	D3DXVECTOR2 GetMousePos() { return m_mouse_pos; }
 
 private:
 	static Inputter* mp_instance;
@@ -148,7 +149,7 @@ private:
 
 	DIMOUSESTATE m_prev_mouse_state;		//!マウスの１フレーム前の入力情報
 	DIMOUSESTATE m_current_mouse_state;		//!マウスの現在の入力情報
-	Vec2 m_mouse_pos;                       //!マウスの座標
+	D3DXVECTOR2 m_mouse_pos;                       //!マウスの座標
 
 	InputState g_InputState[Inputter::KeyInfo::MaxKeyInfo]; //!キーの状態を保持する変数
 

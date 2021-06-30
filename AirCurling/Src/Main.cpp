@@ -21,11 +21,12 @@ int WINAPI WinMain(HINSTANCE hinstance,
 #endif
 
 	//エンジンの初期化
-	if (InitEngine(1920, 1080, "エアホッケ―") == false)
+	if (InitEngine(1920, 1080, "AirCurring") == false)
 	{
 		return 0;
 	}
 
+	//初期化
 	SceneController::Instance()->Init();
 
 
@@ -51,9 +52,10 @@ int WINAPI WinMain(HINSTANCE hinstance,
 		}
 		else
 		{
-
+			//更新処理
 			SceneController::Instance()->Update();
 
+			//描画
 			SceneController::Instance()->Draw();
 
 		}

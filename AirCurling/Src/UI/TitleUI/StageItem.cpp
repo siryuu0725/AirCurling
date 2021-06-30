@@ -15,8 +15,8 @@ void TitleStageItem::Init()
 	Graphics::Instance()->LoadTexture("Res/Tex/StageSelectFrame.png", &m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::NowSelectStage]);
 	Graphics::Instance()->LoadTexture("Res/Tex/StageSelect.png", &m_stageitem_info.m_ui_tex[(__int8)TitleStageItemTexCategory::SelectStageFont]);
 
-	m_stageitem_info.m_stage_1 = false; //ステージ1を選んだ場合のフラグ
-	m_stageitem_info.m_stage_2 = false; //ステージ2を選んだ場合のフラグ
+	m_stageitem_info.m_is_stage_1 = false; //ステージ1を選んだ場合のフラグ
+	m_stageitem_info.m_is_stage_2 = false; //ステージ2を選んだ場合のフラグ
 }
 
 //描画情報送信関数
@@ -45,7 +45,7 @@ void TitleStageItem::Update()
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
 			//ステージ1を選んだフラグtrue
-			m_stageitem_info.m_stage_1 = true;
+			m_stageitem_info.m_is_stage_1 = true;
 		}
 	}
 	//文字「1」との当たり判定
@@ -55,7 +55,7 @@ void TitleStageItem::Update()
 		if (Inputter::Instance()->OnMouseDown(Inputter::Left))
 		{
 			//ステージ2を選んだフラグtrue
-			m_stageitem_info.m_stage_2 = true;
+			m_stageitem_info.m_is_stage_2 = true;
 		}
 	}
 	//音が連続してならないようにする
@@ -85,7 +85,7 @@ bool TitleStageItem::HitStageItem(TitleStageItemTexCategory category_)
 {
 	//マウスと引数の項目との当たり判定を行う
 	if (Collision::RectAndPoint(m_stageitem_info.m_ui_pos[(__int8)category_],
-		D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+		D3DXVECTOR2(Inputter::Instance()->GetMousePos().x, Inputter::Instance()->GetMousePos().y),
 		m_stageitem_info.m_ui_tex[(__int8)category_].Width, m_stageitem_info.m_ui_tex[(__int8)category_].Height) == true)
 	{
 		//選択枠テクスチャの座標を代入

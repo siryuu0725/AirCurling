@@ -126,8 +126,8 @@ void Player::Move()
 	{
 
 		//カメラが向いている方向に方向ベクトルを合わせる
-		player_info.m_nor_vec.x = camera_info .m_forward.x / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
-		player_info.m_nor_vec.z = camera_info.m_forward.z / Calculation::Length(camera_info.m_forward.x, camera_info.m_forward.z);
+		player_info.m_nor_vec.x = camera_info.m_forward.x / Calculation::Length(camera_info.m_forward);
+		player_info.m_nor_vec.z = camera_info.m_forward.z / Calculation::Length(camera_info.m_forward);
 	}
 
 	//プレイヤーが移動している間
@@ -304,9 +304,9 @@ void Player::HitGoal()
 	//ターン終了時に当たっているかどうかを判定
 	if (player_info.m_is_turnend == true)
 	{
-		Goal::ObjectInfo m_goal_infocopy;
+		Goal::ObjectInfo goal_info_copy;
 
-		mp_goal->GetGoalInfo(m_goal_infocopy);
+		mp_goal->GetGoalInfo(goal_info_copy);
 
 		if (ObjectCollision::Instance()->HitGoal() == true)
 		{
@@ -343,15 +343,15 @@ void Player::HitGoal()
 }
 
 //矩形型ブロック反射方向計算関数
-D3DXVECTOR3 Player::ReflectionRect(HitRectPoint type_,float rad_)
+D3DXVECTOR3 Player::ReflectionRect(HitRectPoint hit_type_,float rect_rote_rad_)
 {
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
-	float m_change_radian;
+	float change_radian;
 
 
 	//矩形の上下にあたったら方向ベクトルのy軸(z)を反転
 	//矩形の左右にあたったら方向ベクトルのx軸を反転
-	switch (type_)
+	switch (hit_type_)
 	{
 	case HitRectPoint::TopOrUnder:  //上下
 		old_direction.z = -old_direction.z;
@@ -364,11 +364,11 @@ D3DXVECTOR3 Player::ReflectionRect(HitRectPoint type_,float rad_)
 	}
 
 	//3Dと2Dで回転する方向が逆のため逆に回転させる
-	m_change_radian = -rad_;
-	m_change_radian *= 2;
+	change_radian = -rect_rote_rad_;
+	change_radian *= 2;
 
 	//方向ベクトルを回転
-	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), m_change_radian);
+	return Calculation::Rotate_Y(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), change_radian);
 }
 
 //円形型ブロック反射方向計算関数
@@ -381,7 +381,7 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 	old_direction.x = -old_direction.x;
 	old_direction.z = -old_direction.z;
 
-	//プレイヤーと円の接線に垂直なベクトル
+	//プレイヤーと円のベクトル
 	D3DXVECTOR3 vec = player_info.m_pos - circle_pos_;
 
 	//Playerの進む方向ベクトルと
@@ -390,19 +390,19 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 	float vec_rad = atan2f(vec.z, vec.x);
 
 	//方向ベクトルと接線に垂直なベクトルのなす角を求める
-	float degree2 = 0;
-	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
+	float dir_vec_degree = 0;
+	dir_vec_degree = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
 
 	//atan()が0～180、0～-180の範囲でしか値が出せないため、どちらかのベクトルが負の場合360度足して比較する値を直す
 	if (direction_rad > 0 && vec_rad < 0 &&
-		D3DXToDegree(direction_rad) > 90 && D3DXToDegree(vec_rad) < -90)
+		D3DXToDegree(direction_rad) > MaxRoteAngle && D3DXToDegree(vec_rad) < -MaxRoteAngle)
 	{
-		vec_rad = D3DXToRadian(360) + vec_rad;
+		vec_rad = D3DXToRadian(MatchRoteAngle) + vec_rad;
 	}
 	else if (vec_rad > 0 && direction_rad < 0 &&
-		D3DXToDegree(vec_rad) > 90 && D3DXToDegree(direction_rad) < -90)
+		D3DXToDegree(vec_rad) > MaxRoteAngle && D3DXToDegree(direction_rad) < -MaxRoteAngle)
 	{
-		direction_rad = D3DXToRadian(360) + direction_rad;
+		direction_rad = D3DXToRadian(MatchRoteAngle) + direction_rad;
 	}
 
 
@@ -410,21 +410,21 @@ D3DXVECTOR3 Player::ReflectionCircle(D3DXVECTOR3 circle_pos_)
 	//方向ベクトルを回転させる方向を決める(右回転か左回転か)
 	if (direction_rad > vec_rad)
 	{
-		degree2 = -degree2;
+		dir_vec_degree = -dir_vec_degree;
 	}
 
 	//方向ベクトルを回転回転
-	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
+	return Calculation::Rotate_Y(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), dir_vec_degree * 2);
 }
 
 //矩形型ブロック頂点反射方向計算関数
-D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_)
+D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint hit_type_, D3DXVECTOR3 rect_pos_, float width_, float height_, float rect_rote_rad_)
 {
 	//値初期化
 	D3DXVECTOR3 old_direction = player_info.m_nor_vec;
-	D3DXVECTOR3 vec(0.0f, 0.0f, 0.0f);
+	D3DXVECTOR3 player_rect_vec(0.0f, 0.0f, 0.0f);
 
-	D3DXVECTOR3 player_lotepos = Calculation::Rotate(player_info.m_pos, r_pos_, rad_);
+	D3DXVECTOR3 player_lotepos = Calculation::Rotate_Y(player_info.m_pos, rect_pos_, rect_rote_rad_);
 	D3DXVECTOR3 ver_pos(0.0f, 0.0f, 0.0f);
 
 	//方向ベクトルを反転
@@ -432,23 +432,23 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	old_direction.z = -old_direction.z;
 
 	//当たり判定を取る箇所
-	switch (type_)
+	switch (hit_type_)
 	{
 	case HitRectPoint::LeftTop:  //左上
-		ver_pos.x = r_pos_.x - (width_ / 2);
-		ver_pos.z = r_pos_.z + (height_ / 2);
+		ver_pos.x = rect_pos_.x - (width_ / 2);
+		ver_pos.z = rect_pos_.z + (height_ / 2);
 		break;
 	case HitRectPoint::RightTop:  //右上
-		ver_pos.x = r_pos_.x - (width_ / 2);
-		ver_pos.z = r_pos_.z - (height_ / 2);
+		ver_pos.x = rect_pos_.x - (width_ / 2);
+		ver_pos.z = rect_pos_.z - (height_ / 2);
 		break;
 	case HitRectPoint::LeftUnder:  //左下
-		ver_pos.x = r_pos_.x + (width_ / 2);
-		ver_pos.z = r_pos_.z + (height_ / 2);
+		ver_pos.x = rect_pos_.x + (width_ / 2);
+		ver_pos.z = rect_pos_.z + (height_ / 2);
 		break;
 	case HitRectPoint::RightUnder:  //右下
-		ver_pos.x = r_pos_.x + (width_ / 2);
-		ver_pos.z = r_pos_.z - (height_ / 2);
+		ver_pos.x = rect_pos_.x + (width_ / 2);
+		ver_pos.z = rect_pos_.z - (height_ / 2);
 		break;
 	default:
 		break;
@@ -458,25 +458,25 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	D3DXVECTOR3 old_vec = player_lotepos - ver_pos;
 
 	//矩形が回転していたらベクトルも回転させる
-	vec = Calculation::Rotate(old_vec, D3DXVECTOR3(0.0f, 0.0f, 0.0f), -rad_);
+	player_rect_vec = Calculation::Rotate_Y(old_vec, D3DXVECTOR3(0.0f, 0.0f, 0.0f), -rect_rote_rad_);
 
 	float direction_rad = atan2f(old_direction.z, old_direction.x);
-	float vec_rad = atan2f(vec.z, vec.x);
+	float vec_rad = atan2f(player_rect_vec.z, player_rect_vec.x);
 
 	//方向ベクトルと接線に垂直なベクトルのなす角を求める
-	float degree2 = 0;
-	degree2 = D3DXToDegree(Calculation::EggplantAngle(old_direction, vec));
+	float dir_vec_degree = 0;
+	dir_vec_degree = D3DXToDegree(Calculation::EggplantAngle(old_direction, player_rect_vec));
 
 	//atan()が0～180、0～-180の範囲でしか値が出せないため、どちらかのベクトルが負の場合360度足して比較する値を直す
 	if (direction_rad > 0 && vec_rad < 0 &&
-		D3DXToDegree(direction_rad) > 90 && D3DXToDegree(vec_rad) < -90)
+		D3DXToDegree(direction_rad) > 90 && D3DXToDegree(vec_rad) < -MaxRoteAngle)
 	{
-		vec_rad = D3DXToRadian(360) + vec_rad;
+		vec_rad = D3DXToRadian(MatchRoteAngle) + vec_rad;
 	}
 	else if (vec_rad > 0 && direction_rad < 0 &&
-		D3DXToDegree(vec_rad) > 90 && D3DXToDegree(direction_rad) < -90)
+		D3DXToDegree(vec_rad) > MaxRoteAngle && D3DXToDegree(direction_rad) < -MaxRoteAngle)
 	{
-		direction_rad = D3DXToRadian(360) + direction_rad;
+		direction_rad = D3DXToRadian(MatchRoteAngle) + direction_rad;
 	}
 
 	
@@ -484,25 +484,25 @@ D3DXVECTOR3 Player::ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, flo
 	//方向ベクトルを回転させる方向を決める(右回転か左回転か)
 	if (direction_rad > vec_rad)
 	{
-		degree2 = -degree2;
+		dir_vec_degree = -dir_vec_degree;
 	}
 
 	//!方向ベクトルを回転
-	return Calculation::Rotate(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), degree2 * 2);
+	return Calculation::Rotate_Y(old_direction, D3DXVECTOR3(0.0f, 0.0f, 0.0f), dir_vec_degree * 2);
 }
 
 //初期位置移動関数
 void Player::ResetPos()
 {
-	Floor::ObjectInfo m_floor_infocopy;
+	Floor::ObjectInfo floor_info_copy;
 
-	mp_floor->GetFloorInfo(m_floor_infocopy);
+	mp_floor->GetFloorInfo(floor_info_copy);
 
 	//ステージから落ちた場合
-	if (player_info.m_pos.x <= m_floor_infocopy.m_pos.x - m_floor_infocopy.m_width
-		|| player_info.m_pos.x >= m_floor_infocopy.m_pos.x + m_floor_infocopy.m_width
-		|| player_info.m_pos.z <= m_floor_infocopy.m_pos.z - m_floor_infocopy.m_height
-		|| player_info.m_pos.z >= m_floor_infocopy.m_pos.z + m_floor_infocopy.m_height)
+	if (player_info.m_pos.x <= floor_info_copy.m_pos.x - floor_info_copy.m_width
+		|| player_info.m_pos.x >= floor_info_copy.m_pos.x + floor_info_copy.m_width
+		|| player_info.m_pos.z <= floor_info_copy.m_pos.z - floor_info_copy.m_height
+		|| player_info.m_pos.z >= floor_info_copy.m_pos.z + floor_info_copy.m_height)
 	{
 
 		StartResetEffect(); //エフェクト再生

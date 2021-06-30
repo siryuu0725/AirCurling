@@ -132,7 +132,7 @@ void BlockController::ReleaseModel()
 void BlockController::SetCollisionInfo()
 {
 	//円形ブロック
-	for (__int8 i = 0; i < m_circleblock_num; i++)
+	for (__int8 i = 0; i < m_circleblocks.size(); i++)
 	{
 		CircleBlock::ObjectInfo circleblock_info;
 
@@ -142,7 +142,7 @@ void BlockController::SetCollisionInfo()
 	}
 
 	//矩形ブロック
-	for (__int8 i = 0; i < m_rectblock_num; i++)
+	for (__int8 i = 0; i < m_rectblocks.size(); i++)
 	{
 		RectBlock::ObjectInfo rectblock_info;
 
@@ -153,13 +153,13 @@ void BlockController::SetCollisionInfo()
 }
 
 //円形ブロック情報Getter
-const void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_)
+const void BlockController::GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, __int8 id_)
 {
 	m_circleblocks[id_]->GetCircleBlockInfo(copy_info_);
 }
 
 //矩形ブロック情報Getter
-const void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_)
+const void BlockController::GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, __int8 id_)
 {
 	m_rectblocks[id_]->GetRectBlockInfo(copy_info_);
 }

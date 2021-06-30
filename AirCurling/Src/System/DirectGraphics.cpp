@@ -398,6 +398,7 @@ void Graphics::SetLight()
 	g_device->SetRenderState(D3DRS_LIGHTING, true);
 }
 
+//Instance解放関数(Debug用)
 void Graphics::ReleaseInstance()
 {
 	delete mp_instance;

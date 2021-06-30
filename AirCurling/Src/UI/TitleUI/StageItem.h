@@ -32,16 +32,16 @@ public:
 	{
 		TitleStageItemInfo() :
 			m_ui_pos{ D3DXVECTOR2(0.0f,0.0f) },
-			m_stage_1(false),
-			m_stage_2(false)
+			m_is_stage_1(false),
+			m_is_stage_2(false)
 		{}
 
 		Graphics::TextureData m_ui_tex[(__int8)TitleStageItemTexCategory::CategoryMax]; //Textureデータ
 
 		D3DXVECTOR2  m_ui_pos[(__int8)TitleStageItemTexCategory::CategoryMax]; //Texture座標
 
-		bool m_stage_1;  //!ステージ1を選んだ場合
-		bool m_stage_2;	 //!ステージ2を選んだ場合
+		bool m_is_stage_1;  //!ステージ1を選んだ場合
+		bool m_is_stage_2;	 //!ステージ2を選んだ場合
 	};
 
 	/**

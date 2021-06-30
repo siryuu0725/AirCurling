@@ -551,10 +551,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Src\Utility\Vec.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

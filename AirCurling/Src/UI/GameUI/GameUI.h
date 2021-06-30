@@ -14,6 +14,7 @@
 #include "ProductionUI.h"
 #include "ShotGaugeUI.h"
 #include "TurnUI.h"
+
 constexpr unsigned __int8 GameUICategoryNum = 5;  //!ゲームシーンで使用するUIオブジェクトの数
 
 //!更新ステップ

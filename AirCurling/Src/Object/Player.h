@@ -31,9 +31,13 @@ constexpr float Gravity= 9.8f;                //!重力
 constexpr float PlayerPosMin_Y = -29.0;       //!プレイヤー座標の最低値(Y座標のみ)
 constexpr float PlayerUpSpeed = 0.1f;         //!プレイヤーの上に上がるスピード(終了演出用)
 constexpr float HitEffectPosLength = 1.3f;    //!衝突エフェクトをプレイヤーから離す距離の倍率
+
 //!ゴールエフェクトは良く見えるように2つ描画させる
 constexpr float GoalEffectPosHeight = 4.0f;   //!床から出すゴールエフェクトの高さ
-constexpr float GoalEffect2PosHeight = 10.0f; //!床から出すゴールエフェクトの高さ
+constexpr float GoalEffect2PosHeight = 10.0f; //!床から出す2つ目ゴールエフェクトの高さ
+
+constexpr float MaxRoteAngle = 90.0f;    //!反射ベクトルを求める際の角度判定に使用
+constexpr float MatchRoteAngle = 360.0f; //!反射角度を求める際に反射角を0～180に合わせるためのもの
 
 
 //!更新ステップ
@@ -238,7 +242,7 @@ public:
 	 * @param[in] rad_   衝突対象の回転角度
  　　* @details 反射後の方向ベクトルを算出する
  　　*/
-	D3DXVECTOR3 ReflectionRect(HitRectPoint type_, float rad_);
+	D3DXVECTOR3 ReflectionRect(HitRectPoint hit_type_, float rect_rote_rad_);
 
 	/**
 　　* @brief  円形型ブロック反射方向計算関数
@@ -256,7 +260,7 @@ public:
 	* @param[in] rad_    衝突対象の回転角度
 　　* @details 反射後の方向ベクトルを算出する
 　　*/
-	D3DXVECTOR3 ReflectionVertex(HitRectPoint type_, D3DXVECTOR3 r_pos_, float width_, float height_, float rad_);
+	D3DXVECTOR3 ReflectionVertex(HitRectPoint hit_type_, D3DXVECTOR3 rect_pos_, float width_, float height_, float rect_rote_rad_);
 
 	/**
  　　* @brief  初期位置移動関数
@@ -266,10 +270,10 @@ public:
 
 	/**
  　　* @brief  プレイヤー操作可能判定関数
-     * @param[in] move_  trueなら移動可能
+     * @param[in] is_move_  trueなら移動可能
  　　* @details 開始演出が終わってから操作できるようにSetterを用意
  　　*/
-	void SetIsMovePlayer(bool move_) { player_info.m_is_movement = move_; }
+	void SetIsMovePlayer(bool is_move_) { player_info.m_is_movement = is_move_; }
 
 	/**
  　　* @brief  プレイヤーのスピードSetter

@@ -5,20 +5,7 @@
 #include <algorithm>
 #include <vector>
 
-//int RankingData::CreateFile_()
-//{
-//	const char* fileName = "test.txt";
-//	std::ofstream ofs(fileName);
-//	if (!ofs)
-//	{
-//		std::cout << "ファイルが開けませんでした。" << std::endl;
-//		std::cin.get();
-//		return 0;
-//	}
-//	ofs << "player\n" << std::endl;       // 題名とかがいいかも
-//	std::cout << fileName << "に書き込みました。" << std::endl;
-//	std::cin.get();
-//}
+
 RankingData* RankingData::mp_instance = nullptr;
 
 RankingData* RankingData::Instance()
@@ -73,12 +60,6 @@ void RankingData::WriteData(std::string str_, std::vector<__int16> strvec_)
 
 }
 
-void RankingData::ReleaseInstance()
-{
-	delete mp_instance;
-	mp_instance = nullptr;
-}
-
 //コンマ区切りで文字列を分割する関数
 std::vector<std::string> RankingData::Split(std::string& input_, char delimiter_)
 {
@@ -91,4 +72,11 @@ std::vector<std::string> RankingData::Split(std::string& input_, char delimiter_
 	}
 
 	return result;
+}
+
+//Instance解放関数(Debug用)
+void RankingData::ReleaseInstance()
+{
+	delete mp_instance;
+	mp_instance = nullptr;
 }

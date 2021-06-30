@@ -268,19 +268,19 @@ bool Inputter::OnMouseDown(MouseButton button_type_)
 	return false;
 }
 
+//マウスの入力情報更新関数
+void Inputter::UpdateMouse()
+{
+	POINT cursor_pos;
+	GetCursorPos(&cursor_pos);
+	
+	m_mouse_pos.x = (float)cursor_pos.x;
+	m_mouse_pos.y = (float)cursor_pos.y;
+}
+
+//Instance解放関数(Debug用)
 void Inputter::ReleaseInstance()
 {
 	delete mp_instance;
 	mp_instance = nullptr;
-}
-
-//マウスの入力情報更新関数
-void Inputter::UpdateMouse()
-{
-	Vec2 prev = m_mouse_pos;
-	POINT p;
-	GetCursorPos(&p);
-	
-	m_mouse_pos.X = (float)p.x;
-	m_mouse_pos.Y = (float)p.y;
 }

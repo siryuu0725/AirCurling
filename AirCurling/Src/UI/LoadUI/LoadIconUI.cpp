@@ -43,17 +43,17 @@ void LoadIconUI::Update()
 
 	//各頂点を回転
 	//左上
-	m_loadicon_info.left_top_pos.x = Calculation::Rotate(rot_pos, center_pos, m_loadicon_info.m_rot_angle).x;
-	m_loadicon_info.left_top_pos.y = Calculation::Rotate(rot_pos, center_pos, m_loadicon_info.m_rot_angle).z;
+	m_loadicon_info.left_top_pos.x = Calculation::Rotate_Y(rot_pos, center_pos, m_loadicon_info.m_rot_angle).x;
+	m_loadicon_info.left_top_pos.y = Calculation::Rotate_Y(rot_pos, center_pos, m_loadicon_info.m_rot_angle).z;
 	//左下
-	m_loadicon_info.left_down_pos.x = Calculation::Rotate(rot_pos2, center_pos, m_loadicon_info.m_rot_angle).x;
-	m_loadicon_info.left_down_pos.y = Calculation::Rotate(rot_pos2, center_pos, m_loadicon_info.m_rot_angle).z;
+	m_loadicon_info.left_down_pos.x = Calculation::Rotate_Y(rot_pos2, center_pos, m_loadicon_info.m_rot_angle).x;
+	m_loadicon_info.left_down_pos.y = Calculation::Rotate_Y(rot_pos2, center_pos, m_loadicon_info.m_rot_angle).z;
 	//右上																   
-	m_loadicon_info.right_top_pos.x = Calculation::Rotate(rot_pos3, center_pos, m_loadicon_info.m_rot_angle).x;
-	m_loadicon_info.right_top_pos.y = Calculation::Rotate(rot_pos3, center_pos, m_loadicon_info.m_rot_angle).z;
+	m_loadicon_info.right_top_pos.x = Calculation::Rotate_Y(rot_pos3, center_pos, m_loadicon_info.m_rot_angle).x;
+	m_loadicon_info.right_top_pos.y = Calculation::Rotate_Y(rot_pos3, center_pos, m_loadicon_info.m_rot_angle).z;
 	//右下
-	m_loadicon_info.right_down_pos.x = Calculation::Rotate(rot_pos4, center_pos, m_loadicon_info.m_rot_angle).x;
-	m_loadicon_info.right_down_pos.y = Calculation::Rotate(rot_pos4, center_pos, m_loadicon_info.m_rot_angle).z;
+	m_loadicon_info.right_down_pos.x = Calculation::Rotate_Y(rot_pos4, center_pos, m_loadicon_info.m_rot_angle).x;
+	m_loadicon_info.right_down_pos.y = Calculation::Rotate_Y(rot_pos4, center_pos, m_loadicon_info.m_rot_angle).z;
 }
 
 //描画情報送信関数

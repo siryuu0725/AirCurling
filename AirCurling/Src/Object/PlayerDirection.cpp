@@ -32,7 +32,7 @@ void PlayerDirection::Init()
 void PlayerDirection::Update()
 {
 	//矢印回転
-	Rotate();
+	Rotate_Y();
 }
 
 //描画情報送信関数
@@ -59,7 +59,7 @@ void PlayerDirection::ReleaseModel()
 }
 
 //矢印オブジェクト回転関数
-void PlayerDirection::Rotate()
+void PlayerDirection::Rotate_Y()
 {
 	Player::PlayerInfo player_info;
 	mp_player->GetPlayerInfo(player_info);
@@ -84,7 +84,7 @@ void PlayerDirection::Rotate()
 		m_direction_info.m_rot_angle = D3DXToDegree(atan2f(m_direction_info.m_dir_vec.x, m_direction_info.m_dir_vec.z));
 
 		//矢印オブジェクトの座標回転
-		m_direction_info.m_pos = Calculation::Rotate(m_direction_info.m_pos, player_info.m_pos, m_direction_info.m_pos_rot);
+		m_direction_info.m_pos = Calculation::Rotate_Y(m_direction_info.m_pos, player_info.m_pos, m_direction_info.m_pos_rot);
 
 		//矢印オブジェクトの向き回転
 		m_direction_info.m_angle = D3DXVECTOR3(0.0f, m_direction_info.m_rot_angle, 0.0f);

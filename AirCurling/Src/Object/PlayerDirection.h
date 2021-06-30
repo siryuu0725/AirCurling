@@ -52,7 +52,7 @@ public:
 	 * @brief   矢印回転関数
 	 * @detail  プレイヤーが視を動かした時矢印も一緒に動くようにする
 	 */
-	void Rotate();
+	void Rotate_Y();
 
 private:
 	struct DirectionInfo :public ObjectInfo

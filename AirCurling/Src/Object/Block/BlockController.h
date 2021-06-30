@@ -66,7 +66,7 @@ public:
 	 * @param[in] id_ 受け取りたいブロックのid
 	 * @details 引数に円形ブロックの情報を渡す
  　　*/
-	const void GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, int id_);
+	const void GetCircleBlockInfo(CircleBlock::ObjectInfo& copy_info_, __int8 id_);
 
 	/**
 　　* @brief 矩形ブロック情報Getter
@@ -74,7 +74,7 @@ public:
 	* @param[in] id_ 受け取りたいブロックのid
 	* @details 引数に矩形ブロックの情報を渡す
 　　*/
-	const void GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, int id_);
+	const void GetRectBlockInfo(RectBlock::ObjectInfo& copy_info_, __int8 id_);
 
 private:
 	std::vector<CircleBlock*> m_circleblocks;  //!円形ブロック

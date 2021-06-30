@@ -5,9 +5,9 @@
 
 #ifndef OBJBASE_H_
 #define OBJBASE_H_
-#include"../System/FBXController.h"
-#include "../Utility/Calculation.h"
+#include "../System/FBXController.h"
 #include "../System/FBX.h"
+#include "../Utility/Calculation.h"
 #include <vector>
 #include <string>
 

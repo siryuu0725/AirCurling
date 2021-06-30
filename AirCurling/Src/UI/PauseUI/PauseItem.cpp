@@ -91,7 +91,7 @@ void PauseItemUI::SelectUI()
 bool PauseItemUI::HitSelectUI(PauseItemTexCategory category_)
 {
 	//引数の文字項目にマウスが当たっているとき
-	if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)category_], D3DXVECTOR2(Inputter::Instance()->GetMousePos().X, Inputter::Instance()->GetMousePos().Y),
+	if (Collision::RectAndPoint(m_pauseitem_info.m_ui_pos[(__int8)category_], D3DXVECTOR2(Inputter::Instance()->GetMousePos().x, Inputter::Instance()->GetMousePos().y),
 		m_pauseitem_info.m_ui_tex[(__int8)category_].Width, m_pauseitem_info.m_ui_tex[(__int8)category_].Height) == true)
 	{
 		SoundController::Instance()->PlaySoundSE(PlaySEType::Selsect);

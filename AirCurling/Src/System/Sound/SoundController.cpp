@@ -184,6 +184,7 @@ void SoundController::ReleaseReselutSound()
 	AudioPlayer::Instance()->Release(m_bgm);
 }
 
+//Instance解放関数(Debug用)
 void SoundController::ReleaseInstance()
 {
 	delete mp_instance;

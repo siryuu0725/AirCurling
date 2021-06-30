@@ -28,8 +28,8 @@ void TitleUI::Init()
 	m_titleui_info.startui_flg = false; //ゲームシーン移行フラグ
 	m_titleui_info.endui_flg = false;	//終了フラグ
 	m_titleui_info.helpui_flg = false;	//ヘルプシーン移行フラグ
-	m_titleui_info.m_stage_1 = false;	//ステージ1を選んだ場合
-	m_titleui_info.m_stage_2 = false;	//ステージ2を選んだ場合
+	m_titleui_info.m_is_stage_1 = false;	//ステージ1を選んだ場合
+	m_titleui_info.m_is_stage_2 = false;	//ステージ2を選んだ場合
 }
 
 //外部データセット関数
@@ -114,8 +114,8 @@ void TitleUI::Update()
 		mp_stage_item->GetStageItemInfo(stage_item_info);
 
 		//各フラグ保存
-		m_titleui_info.m_stage_1 = stage_item_info.m_stage_1;	//ステージ1を選んだ場合
-		m_titleui_info.m_stage_2 = stage_item_info.m_stage_2;	//ステージ2を選んだ場合
+		m_titleui_info.m_is_stage_1 = stage_item_info.m_is_stage_1;	//ステージ1を選んだ場合
+		m_titleui_info.m_is_stage_2 = stage_item_info.m_is_stage_2;	//ステージ2を選んだ場合
 
 		if (Inputter::Instance()->GetKeyDown(Inputter::ESCKey))
 		{

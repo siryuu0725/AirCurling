@@ -96,6 +96,7 @@ SceneController::~SceneController()
 	mp_scene = nullptr;
 }
 
+//Instance解放関数(Debug用)
 void SceneController::ReleaseInstance()
 {
 	delete mp_instance;

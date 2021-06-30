@@ -12,9 +12,6 @@
 #include <fbxsdk.h>
 #include <Windows.h>
 
-#pragma comment(lib,"d3d9.lib")
-#pragma comment(lib,"d3dx9.lib")
-
 
 // 解放
 #define	SAFE_DESTROY(x)	{ if(x) { (x)->Destroy(); (x) = NULL; } }
